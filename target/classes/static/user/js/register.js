@@ -33,7 +33,7 @@
 		}
 
 		msg.textContent = '';
-		fetch('http://localhost:8080/THA101_G2/user/register2', {
+		fetch('register', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
