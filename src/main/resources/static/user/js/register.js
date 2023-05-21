@@ -1,5 +1,5 @@
 (() => {
-	const btn1 = document.querySelector('#btn');
+	const btn = document.querySelector('#btn');
 	const msg = document.querySelector('#msg');
 	const email = document.querySelector('#email');
 	const password = document.querySelector('#password');
@@ -39,9 +39,9 @@
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify({
-				username: email.value,
-				password: password.value,
-				nickname: phone.value,
+				userAccount: email.value,
+				userPassword: password.value,
+				userTel: phone.value,
 			}),
 		})
 			.then(resp => resp.json())
@@ -51,7 +51,7 @@
 					for (let input of inputs) {
 						input.disabled = true;
 					}
-					btn1.disabled = true;
+					btn.disabled = true;
 					msg.className = 'info';
 					msg.textContent = '註冊成功';
 				} else {

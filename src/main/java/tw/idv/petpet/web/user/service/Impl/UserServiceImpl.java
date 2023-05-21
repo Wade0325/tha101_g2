@@ -28,6 +28,7 @@ public class UserServiceImpl implements UserService{
 			user.setSuccessful(false);
 			return user;
 		}
+		System.out.println("service收到");
 
 //		if (user.getUserName() == null) {
 //			user.setMessage("暱稱未輸入");

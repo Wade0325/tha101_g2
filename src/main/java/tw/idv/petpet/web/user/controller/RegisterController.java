@@ -17,13 +17,14 @@ public class RegisterController {
 	private UserService service;
 
 	@PostMapping
-	public User register(@RequestBody User User) {
-		if (User == null) {
-			User = new User();
-			User.setMessage("無會員資訊");
-			User.setSuccessful(false);
-			return User;
+	public User register(@RequestBody User user) {
+		if (user == null) {
+			user = new User();
+			user.setMessage("無會員資訊");
+			user.setSuccessful(false);
+			return user;
 		}
-		return service.register(User);
+		System.out.println("register controller收到");
+		return service.register(user);
 	}
 }
