@@ -14,6 +14,11 @@
                     recipient: email.value,
                 }),
             })
+                .then(resp => resp.text())
+                .then(resp => {
+                    console.log(resp);
+                })
+
         } else if (email.value == '') {
             window.alert("電子信箱為必填")
         } else if (!(emailRegxp.test(email.value))) {
