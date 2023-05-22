@@ -42,11 +42,13 @@
 				userAccount: email.value,
 				userPassword: password.value,
 				userTel: phone.value,
+				address: address.value
 			}),
 		})
 			.then(resp => resp.json())
 			.then(body => {
-				const { successful } = body;
+				//解構賦值 const successful = body.successful
+				const { successful,message } = body; 
 				if (successful) {
 					for (let input of inputs) {
 						input.disabled = true;
@@ -56,7 +58,8 @@
 					msg.textContent = '註冊成功';
 				} else {
 					msg.className = 'error';
-					msg.textContent = '註冊失敗';
+					msg.textContent = '註冊失敗，' + message;
+					
 				}
 			});
 	});
