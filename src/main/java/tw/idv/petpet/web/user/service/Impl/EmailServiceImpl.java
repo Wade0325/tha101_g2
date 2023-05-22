@@ -42,10 +42,10 @@ public class EmailServiceImpl implements EmailService {
 			// Setting up necessary details
 			mailMessage.setFrom(sender);
 			mailMessage.setTo(details.getRecipient());
-			mailMessage.setText("註冊驗證信");
-			mailMessage.setSubject("隨機六位數");
+			String verifiCode = getAuthCode(); //取得驗證信密碼
+			mailMessage.setText(verifiCode);
+			mailMessage.setSubject("註冊驗證信");
 			
-
 			// Sending the mail
 			javaMailSender.send(mailMessage);
 			return "Mail Sent Successfully...";
@@ -98,5 +98,32 @@ public class EmailServiceImpl implements EmailService {
 			// Display message when exception occurred
 			return "Error while sending mail!!!";
 		}
+	}
+	
+	public static String getAuthCode() {
+		String verifiCode="";
+		// 用亂數決定第i個位置產生英文大寫還是小寫還是數字
+		for (int i = 0; i < 8; i++) {
+			int flag = (int) (Math.random() * 3 + 1); // 產生1,2,3
+			// 產生A-Z
+			if (flag == 1) {
+				for (int j = 0; j < 1; j++) {
+					verifiCode += (char) (Math.random() * 26 + 65);
+				}
+			}
+			// 產生a-z
+			if (flag == 2) {
+				for (int j = 0; j < 1; j++) {
+					verifiCode += (char) (Math.random() * 26 + 65);
+				}
+			}
+			// 產生0-9
+			if (flag == 3) {
+				for (int j = 0; j < 1; j++) {
+					verifiCode += (char) (Math.random() * 26 + 65);
+				}
+			}
+		}
+		return verifiCode;
 	}
 }
