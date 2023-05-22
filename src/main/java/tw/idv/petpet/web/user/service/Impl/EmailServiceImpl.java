@@ -35,7 +35,6 @@ public class EmailServiceImpl implements EmailService {
 
 		// Try block to check for exceptions
 		try {
-
 			// Creating a simple mail message
 			SimpleMailMessage mailMessage
 				= new SimpleMailMessage();
@@ -43,8 +42,9 @@ public class EmailServiceImpl implements EmailService {
 			// Setting up necessary details
 			mailMessage.setFrom(sender);
 			mailMessage.setTo(details.getRecipient());
-			mailMessage.setText(details.getMsgBody());
-			mailMessage.setSubject(details.getSubject());
+			mailMessage.setText("註冊驗證信");
+			mailMessage.setSubject("隨機六位數");
+			
 
 			// Sending the mail
 			javaMailSender.send(mailMessage);
