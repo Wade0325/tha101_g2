@@ -24,6 +24,7 @@ public class RegisterController {
 			user.setSuccessful(false);
 			return user;
 		}
+		
 		System.out.println("register controller收到");
 		return service.register(user);
 	}
