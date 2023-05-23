@@ -52,7 +52,7 @@
         <div class="container">
             <div class="row no-gutters slider-text align-items-end">
                 <div class="col-md-12 ftco-animate d-flex justify-content-center">
-                    <h1 class="mb-0 bread">會員中心 > 個人資料</h1>
+                    <h1 class="mb-0 bread">會員中心 > 更改密碼</h1>
                 </div>
             </div>
         </div>
@@ -61,9 +61,10 @@
 
     <div class="row">
         <div class="col-2" style="background-color:rgb(56, 56, 56);text-align: center;">
-            <li style="list-style:none;"><a href="member_center.html" style="font-size: 28px;color: skyblue;">個人資料</a>
+            <li style="list-style:none;"><a href="member_center.html" style="font-size: 28px;color: white;">個人資料</a>
             </li>
-            <li style="list-style:none;"><a href="member_center_pwd.html" style="font-size: 28px;color: white;">更改密碼</a>
+            <li style="list-style:none;"><a href="member_center_pwd.html"
+                    style="font-size: 28px;color: skyblue;">更改密碼</a>
             </li>
             <li style="list-style:none;"><a href="google.com" style="font-size: 28px;color: white;">購買清單</a></li>
             <li style="list-style:none;"><a href="google.com" style="font-size: 28px;color: white;">看診紀錄</a></li>
@@ -75,40 +76,35 @@
                     <tr>
                         <th scope="row" style="padding-right: 110px;"></th>
                         <td>
-                            <label>電子信箱</label>
+                            <p>舊密碼</p>
                         </td>
                         <td>
-                            <input type="text" readonly class="form-control-plaintext" id="staticEmail"
-                                value="email@example.com">
+                            <input type="text" id="nickName">
                         </td>
                     </tr>
                     <tr>
                         <th></th>
                         <td>
-                            <label for="staticEmail2" class="visually-hidden">暱稱</label>
+                            <p>輸入新密碼</p>
                         </td>
                         <td>
-                            <input type="text" id="nickName">
-                            <button id="btn_update_nickName">修改</button>
+                            <input type="text" id="newPassword">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <td>
+                            <p>確認新密碼</p>
                         </td>
                         <td>
-
+                            <input type="text" id="confirmPassword">
                         </td>
                     </tr>
                     <tr>
                         <th scope="row"></th>
-                        <td>電話</td>
+                        <td></td>
                         <td>
-                            <input type="text" id="phone">
-                            <button id="btn_update_phone">修改</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th scope="row"></th>
-                        <td>地址</td>
-                        <td>
-                            <input type="text" id="address">
-                            <button id="btn_update_address">修改</button>
+                            <button id="btn_update_address">送出</button>
                         </td>
                     </tr>
                 </tbody>
@@ -191,7 +187,7 @@
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
     <script src="js/google-map.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/member.center.js"></script>
+    <script src="js/member.center.pwd.js"></script>
 
 
 </body>
