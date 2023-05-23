@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>PET PET陪陪你後台</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css"
+      rel="stylesheet"
+    />
+    <link href="./css/styles.css" rel="stylesheet" />
+    <script
+      src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      .uploaded-image{
+        height: 25%;
+        width: 25%;
+      }
+    </style>
+  </head>
+  <body class="sb-nav-fixed">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark color">
+      <!-- Navbar Brand-->
+      <img src="./images/petpet.png" width="70px" height="70px" />
+      <img src="./images/Petword.png" width="40px" height="40px" />
+      <a class="navbar-brand ps-3" href="index.html">首頁</a>
+      <!-- Sidebar Toggle-->
+      <button
+        class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0"
+        id="sidebarToggle"
+        href="#!"
+      >
+        <i class="fas fa-bars"></i>
+      </button>
+      <!-- Navbar Search-->
+      <form
+        class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0"
+      >
+        <div class="input-group"></div>
+      </form>
+      <!-- Navbar-->
+      <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            id="navbarDropdown"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            ><i class="fas fa-user fa-fw"></i
+          ></a>
+          <ul
+            class="dropdown-menu dropdown-menu-end"
+            aria-labelledby="navbarDropdown"
+          >
+            <li><a class="dropdown-item" href="Login2.html">註冊</a></li>
+            <li><a class="dropdown-item" href="Login2.html">登入</a></li>
+            <li><hr class="dropdown-divider" /></li>
+            <li><a class="dropdown-item" href="services_login.html">登出</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <!-- end NAVBAR -->
+
+    <div id="layoutSidenav">
+      <div id="layoutSidenav_nav">
+        <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+          <div class="sb-sidenav-menu">
+            <div class="nav">
+              <div class="sb-sidenav-menu-heading">Core</div>
+              <a class="nav-link" href="index.html">
+                <div class="sb-nav-link-icon">
+                  <i class="fas fa-tachometer-alt"></i>
+                </div>
+                首頁
+              </a>
+              <div class="sb-sidenav-menu-heading">操作介面</div>
+              <a
+                class="nav-link collapsed"
+                href="#"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseLayouts"
+                aria-expanded="false"
+                aria-controls="collapseLayouts"
+              >
+                <div class="sb-nav-link-icon">
+                  <i class="fas fa-columns"></i>
+                </div>
+                商家管理
+                <div class="sb-sidenav-collapse-arrow">
+                  <i class="fas fa-angle-down"></i>
+                </div>
+              </a>
+              <div
+                class="collapse"
+                id="collapseLayouts"
+                aria-labelledby="headingOne"
+                data-bs-parent="#sidenavAccordion"
+              >
+                <nav class="sb-sidenav-menu-nested nav">
+                  <a class="nav-link" href="report_firm.html">商家檢舉</a>
+                </nav>
+              </div>
+              <a
+                class="nav-link collapsed"
+                href="#"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapsePages"
+                aria-expanded="false"
+                aria-controls="collapsePages"
+              >
+                <div class="sb-nav-link-icon">
+                  <i class="fas fa-book-open"></i>
+                </div>
+                會員管理
+                <div class="sb-sidenav-collapse-arrow">
+                  <i class="fas fa-angle-down"></i>
+                </div>
+              </a>
+              <div
+                class="collapse"
+                id="collapsePages"
+                aria-labelledby="headingTwo"
+                data-bs-parent="#sidenavAccordion"
+              >
+                <nav
+                  class="sb-sidenav-menu-nested nav accordion"
+                  id="sidenavAccordionPages"
+                >
+                  <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link" href="report_user.html">會員檢舉</a>
+                    <a class="nav-link" href="Login2.html">註冊會員</a>
+                    <a class="nav-link" href="Forgot.html">忘記密碼</a>
+                  </nav>
+                </nav>
+              </div>
+              <div class="sb-sidenav-menu-heading">Addons</div>
+              <a class="nav-link" href="report_from.html">
+                <div class="sb-nav-link-icon">
+                  <i class="fas fa-chart-area"></i>
+                </div>
+                檢舉表單
+              </a>
+            </div>
+          </div>
+        </nav>
+      </div>
+      <div id="layoutSidenav_content">
+        <main>
+            <div class="container-fluid px-4">
+                <!-- <h1 class="mt-4">後台首頁</h1> -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- 內容放入此處 -->
+                        <section>
+                    <div class="container-fluid">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <div class="card">
+                            <div
+                              class="card-header card-header-lg bg-success text-white rounded-top"
+                            >
+                              <h4 class="font-weight-medium font-size-18 mb-0 text-center">
+                                送養資訊
+                              </h4>
+                            </div>
+                            <div class="card-body pt-5">
+                              <fieldset>
+                                <div class="row">
+                                  <div class="form-group col-6">
+                                    <label for="name">動物暱稱/小名 *</label>
+                                    <input
+                                      type="text"
+                                      class="form-control border-stone"
+                                      maxlength="20"
+                                      name="animalName"
+                                      id="animalName"
+                                      value
+                                      required
+                                    />
+                                  </div>
+                                  <div class="form-group col-6">
+                                    <label for="name">收容編號 *</label>
+              
+                                    <input
+                                      type="text"
+                                      class="form-control border-stone"
+                                      maxlength="20"
+                                      name="animalId"
+                                      id="animalId"
+                                      value
+                                      required
+                                    />
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="form-group col-md-4">
+                                    <label for="name">品種 *</label>
+                                    <input
+                                      type="text"
+                                      class="form-control border-stone"
+                                      maxlength="20"
+                                      name="animalCategory"
+                                      id="animalCategory"
+                                      placeholder="如：柴犬"
+                                      value
+                                      required
+                                    />
+                                  </div>
+                                  <div class="form-group col-md-4">
+                                    <label for="name">動物種類 *</label>
+                                    <select
+                                      class="form-control border-stone"
+                                      name="animalType"
+                                      id="animalType"
+                                      required
+                                    >
+                                      <option value>請選擇</option>
+                                      <option value="貓">貓</option>
+                                      <option value="狗">狗</option>
+                                      <option value="兔">兔</option>
+                                      <option value="鳥">鳥</option>
+                                      <option value="其他">其他</option>
+                                    </select>
+                                  </div>
+                                  <div class="form-group col-md-4">
+                                    <label for="name">動物性別</label>
+                                    <select
+                                      class="form-control border-stone"
+                                      name="animalGender"
+                                      id="animalGender"
+                                      required
+                                    >
+                                      <option value>請選擇</option>
+                                      <option value="公">公</option>
+                                      <option value="母">母</option>
+                                      <option value="未知">未知</option>
+                                    </select>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="form-group col-md-4">
+                                    <label for="name">毛色描述 *</label>
+                                    <input
+                                      type="text"
+                                      class="form-control border-stone"
+                                      maxlength="20"
+                                      name="animalColor"
+                                      id="animalColor"
+                                      placeholder="如:虎斑"
+                                      value
+                                      required
+                                    />
+                                  </div>
+                                  <div class="form-group col-md-4">
+                                    <label for="name">年紀</label>
+                                    <select class="form-control  border-stone" name="animalAge" id="animalAge" required>
+                                      <option value=>請選擇</option>
+                                      <option value="幼年">幼年</option>
+                                      <option value="成年">成年</option>
+                                      <option value="老年">老年</option>
+                                    </select>
+                                  </div>
+                                  <div class="form-group col-md-4">
+                                    <label for="name">上傳日期</label>
+                                    <input
+                                      type="text"
+                                      class="form-control border-stone"
+                                      maxlength="20"
+                                      name="animalDate"
+                                      id="animalDate"
+                                      readonly
+                                    />
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="form-group col-md-12">
+                                    <label for="name">其他描述 *</label>
+                                    <textarea class="form-control border-stone" name="animalDescribe" id="animalDescribe" cols="30" rows="10"></textarea>
+                                    <div class="edit_info">
+                                      "已輸入字數"
+                                      <span class="editor_font_now text-danger">0</span>
+                                      " ,還可輸入 "
+                                      <span class="editor_font_last text-danger">1000</span>
+                                      " 字"
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="row">
+                                  <div class="form-group col-md-12">
+                                    <label for="name">照片上傳-請務必上傳四張 *</label>
+                                    <div class="upload_div">
+                                      <span class="btn btn-success btn-sm mb-2 text-white fileinput-button">
+                                        <!-- <span>上傳照片</span> -->
+                                        <input id="fileupload" type="file" class="fileupload" name="fileupload" multiple="multiple
+                                        ">
+                                      </span>
+                                  </div>
+                                  <div id="upload_show_div" class="upload_show_div" row></div>
+                                    
+                                  </div>
+                                </div>
+                                <div class="row"></div>
+                              </fieldset>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-12 pb-5">
+                                <div id="msg" class="error"></div>
+                          <p class="d-flex justify-content-center text-danger font-weight-bold">資訊送出後需經過審核，因此不會立即出現在列表中，請耐心等待審核勿重覆刊登 </p>
+                          <div class="col-md-12 ">
+                            <div class="register-btn">
+                              <div class="d-flex justify-content-center">
+              
+                                <button id="delaybtn" name="delaybtn" type="" class="btn btn-danger text-center">送出</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+              </div>
+            </div>
+          </div>
+        </main>
+        <footer class="py-4 bg-light mt-auto">
+          <div class="container-fluid px-4">
+            <div
+              class="d-flex align-items-center justify-content-between small"
+            >
+              <div class="text-muted">Copyright &copy; Your Website 2023</div>
+              <div>
+                <a href="#">TOP</a>
+                &middot;
+                <a href="#">置頂</a>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+   
+    <script>
+      const fileuploadInput = document.getElementById('fileupload');
+      const uploadShowDiv = document.getElementById('upload_show_div');
+      console.log( uploadShowDiv)
+      fileuploadInput.addEventListener('change', function() {
+  
+        const files = fileuploadInput.files;
+        
+        if (files.length > 4) {
+          alert('最多只能上传四张照片！');
+          return;
+        }
+        console.log(files.length)
+        for (let i = 0; i < files.length; i++) {
+          const file = files[i];
+          const reader = new FileReader();
+  
+          reader.onload = function(event) {
+            const imageSrc = event.target.result;
+            const imageElement = document.createElement('img');
+            imageElement.setAttribute('src', imageSrc);
+            imageElement.setAttribute('class', 'uploaded-image');
+  
+            uploadShowDiv.appendChild(imageElement);
+          };
+  
+          reader.readAsDataURL(file);
+        }
+      });
+    </script>
+    <script>
+      // 获取当前日期
+      var currentDate = new Date();
+    
+      // 格式化日期
+      var formattedDate = currentDate.toISOString().slice(0, 10);
+    
+      // 将日期设置为输入框的值
+      document.getElementById("animalDate").value = formattedDate;
+    </script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/scripts.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/datatables-simple-demo.js"></script>
+     <script src="js/shelterupload.js"></script>
+  </body>
+</html>
