@@ -117,10 +117,18 @@
 			<div class="mb-3">
 				<label for="clinicService" class="form-label">診所服務簡介</label>
 				<input type="text" class="form-control" id="clinicService" maxlength="200">
-
-				<button id="btn" type="button" class="btn btn-primary">送出</button>
-				<div id="msg" class="error"></div>
 			</div>
+
+			<div class="row">
+				<div class="col-2">
+					<button id="btn" type="button" class="btn btn-primary">送出</button>
+					<div id="msg" class="error"></div>
+				</div>
+				<div class="col-2">
+					<button id="btn-manage" type="button" class="btn btn-primary">管理會員</button>
+				</div>
+			</div>
+		</div>
 
 	</section>
 
@@ -203,9 +211,11 @@
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
 	<script src="js/google-map.js"></script>
 	<script src="js/main.js"></script>
-	<script src="js/clinicMemberRegister.js"></script>
 	<script src="js/sendEmail.js"></script>
 	<script src="js/verifyEmail.js"></script>
+	
+	<script src="js/clinicMemberRegister.js"></script>
+	<script src="js/clinicMemberManage.js"></script>
 
 </body>
 
