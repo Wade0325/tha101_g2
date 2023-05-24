@@ -18,10 +18,16 @@ public class ClinicMemberManageController {
 	@Autowired
 	private ClinicMemberService service;
 
+//	@GetMapping
+//	public String manage(Model model) {
+//		List<ClinicMember> clinicMemberList = service.findAll();
+//		model.addAttribute("clinicMemberList", clinicMemberList);
+//		return "../WEB-INF/clinicMember/manage.jsp";
+//	}
 	@GetMapping
 	public String manage(Model model) {
 		List<ClinicMember> clinicMemberList = service.findAll();
 		model.addAttribute("clinicMemberList", clinicMemberList);
-		return "../WEB-INF/clinicMember/manage.jsp";
+		return "templates/manage";
 	}
 }
