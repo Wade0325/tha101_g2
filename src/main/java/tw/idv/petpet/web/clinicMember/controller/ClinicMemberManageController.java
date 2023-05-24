@@ -22,6 +22,6 @@ public class ClinicMemberManageController {
 	public String manage(Model model) {
 		List<ClinicMember> clinicMemberList = service.findAll();
 		model.addAttribute("clinicMemberList", clinicMemberList);
-		return "/clinicMember/manage.html";
+		return "../WEB-INF/clinicMember/manage.jsp";
 	}
 }
