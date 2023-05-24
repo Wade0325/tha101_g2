@@ -66,45 +66,45 @@
             <li style="list-style:none;"><a href="member_center_pwd.html"
                     style="font-size: 28px;color: skyblue;">更改密碼</a>
             </li>
-            <li style="list-style:none;"><a href="google.com" style="font-size: 28px;color: white;">購買清單</a></li>
+            <li style="list-style:none;"><a href="member_center_shopping.html"
+                    style="font-size: 28px;color: white;">購買紀錄</a></li>
             <li style="list-style:none;"><a href="google.com" style="font-size: 28px;color: white;">看診紀錄</a></li>
             <li style="list-style:none;"><a href="google.com" style="font-size: 28px;color: white;">文章紀錄</a></li>
         </div>
         <div class="col-10">
-            <table class="table table-borderless  justify-content-center">
+            <table class="table table-borderless" style="table-layout:fixed; margin-left: 280px;">
                 <tbody>
                     <tr>
-                        <th scope="row" style="padding-right: 110px;"></th>
-                        <td>
-                            <p>舊密碼</p>
+                        <td style="width:15%">
+                            舊密碼
                         </td>
                         <td>
-                            <input type="text" id="nickName">
-                        </td>
-                    </tr>
-                    <tr>
-                        <th></th>
-                        <td>
-                            <p>輸入新密碼</p>
-                        </td>
-                        <td>
-                            <input type="text" id="newPassword">
+                            <input type="text" id="oldPassword">
                         </td>
                     </tr>
                     <tr>
-                        <th></th>
                         <td>
-                            <p>確認新密碼</p>
+                            輸入新密碼
                         </td>
                         <td>
-                            <input type="text" id="confirmPassword">
+                            <input type="password" id="newPassword">
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row"></th>
-                        <td></td>
+                        <td>
+                            確認新密碼
+                        </td>
+                        <td>
+                            <input type="password" id="confirmPassword">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+
+                        </td>
                         <td>
                             <button id="btn_update_address">送出</button>
+                            <div id="msg" class="error"></div>
                         </td>
                     </tr>
                 </tbody>

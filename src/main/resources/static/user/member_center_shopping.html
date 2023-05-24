@@ -23,6 +23,9 @@
 
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+
 </head>
 
 <body>
@@ -52,7 +55,7 @@
         <div class="container">
             <div class="row no-gutters slider-text align-items-end">
                 <div class="col-md-12 ftco-animate d-flex justify-content-center">
-                    <h1 class="mb-0 bread">會員中心 > 更改密碼</h1>
+                    <h1 class="mb-0 bread">會員中心 > 購買紀錄</h1>
                 </div>
             </div>
         </div>
@@ -63,51 +66,61 @@
         <div class="col-2" style="background-color:rgb(56, 56, 56);text-align: center;">
             <li style="list-style:none;"><a href="member_center.html" style="font-size: 28px;color: white;">個人資料</a>
             </li>
-            <li style="list-style:none;"><a href="member_center_pwd.html"
-                    style="font-size: 28px;color: skyblue;">更改密碼</a>
+            <li style="list-style:none;"><a href="member_center_pwd.html" style="font-size: 28px;color: white;">更改密碼</a>
             </li>
             <li style="list-style:none;"><a href="member_center_shopping.html"
-                    style="font-size: 28px;color: white;">購買紀錄</a></li>
+                    style="font-size: 28px;color: skyblue;">購買紀錄</a></li>
             <li style="list-style:none;"><a href="google.com" style="font-size: 28px;color: white;">看診紀錄</a></li>
             <li style="list-style:none;"><a href="google.com" style="font-size: 28px;color: white;">文章紀錄</a></li>
         </div>
         <div class="col-10">
-            <table class="table table-borderless" style="table-layout:fixed; margin-left: 280px;">
+            <table id="example" class="display" style="width:100%">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Position</th>
+                        <th>Office</th>
+                        <th>Age</th>
+                        <th>Start date</th>
+                        <th>Salary</th>
+                    </tr>
+                </thead>
                 <tbody>
                     <tr>
-                        <td style="width:15%">
-                            舊密碼
-                        </td>
-                        <td>
-                            <input type="text" id="oldPassword">
-                        </td>
+                        <td>Tiger Nixon</td>
+                        <td>System Architect</td>
+                        <td>Edinburgh</td>
+                        <td>61</td>
+                        <td>2011-04-25</td>
+                        <td>$320,800</td>
                     </tr>
                     <tr>
-                        <td>
-                            輸入新密碼
-                        </td>
-                        <td>
-                            <input type="password" id="newPassword">
-                        </td>
+                        <td>Garrett Winters</td>
+                        <td>Accountant</td>
+                        <td>Tokyo</td>
+                        <td>63</td>
+                        <td>2011-07-25</td>
+                        <td>$170,750</td>
                     </tr>
                     <tr>
-                        <td>
-                            確認新密碼
-                        </td>
-                        <td>
-                            <input type="password" id="confirmPassword">
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-
-                        </td>
-                        <td>
-                            <button id="btn_update_address">送出</button>
-                            <div id="msg" class="error"></div>
-                        </td>
+                        <td>Ashton Cox</td>
+                        <td>Junior Technical Author</td>
+                        <td>San Francisco</td>
+                        <td>66</td>
+                        <td>2009-01-12</td>
+                        <td>$86,000</td>
                     </tr>
                 </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Name</th>
+                        <th>Position</th>
+                        <th>Office</th>
+                        <th>Age</th>
+                        <th>Start date</th>
+                        <th>Salary</th>
+                    </tr>
+                </tfoot>
             </table>
         </div>
     </div>
@@ -187,7 +200,9 @@
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
     <script src="js/google-map.js"></script>
     <script src="js/main.js"></script>
-    <script src="js/member.center.pwd.js"></script>
+    <script src="js/member.center.shopping.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> -->
 
 
 </body>
