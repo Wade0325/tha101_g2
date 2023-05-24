@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>FindAll</title>
+</head>
+
+<body>
+	<table border="1">
+		<thead>
+			<tr>
+				<th>診所編號</th>
+				<th>診所名稱</th>
+				<th>診所負責人</th>
+				<th>診所信箱</th>
+				<th>診所密碼</th>
+				<th>診所電話</th>
+				<th>診所會員創建日期</th>
+				<th>診所地址</th>
+				<th>診所照片</th>
+				<th>診所服務</th>
+				<th>診所會員最後更新日期</th>
+			</tr>
+		</thead>
+		<tbody></tbody>
+	</table>
+	<script>
+		const tbody = document.querySelector('tbody');
+		fetch('manage', {
+			method: 'GET',
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		})
+			.then(resp => resp.json())
+			.then(clinicMember => {
+				const members = Object.values(clinicMember)
+				for (let member of members) {
+					console.log(member);
+
+					tbody.innerHTML += `
+				    <tr>
+				      <td>${clinicMember.clinicId}</td>
+				      <td>${clinicMember.clinicName}</td>
+				      <td>${clinicMember.clinicPrincipal}</td>
+				      <td>${clinicMember.clinicEmail}</td>
+				      <td>${clinicMember.clinicPassword}</td>
+				      <td>${clinicMember.clinicPhone}</td>
+				      <td>${clinicMember.clinicMemberCreateDate}</td>
+				      <td>${clinicMember.clinicAddress}</td>
+				      <td>${clinicMember.clinicPhoto}</td>
+				      <td>${clinicMember.clinicService}</td>
+				      <td>${clinicMember.clinicMemberLastUpdateDate}</td>
+				    </tr>`
+				}
+			})
+	</script>
+</body>
+
+</html>
