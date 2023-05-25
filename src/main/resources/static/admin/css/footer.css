@@ -1,0 +1,14 @@
+
+footer{
+    background-color: cornsilk;
+    position:sticky;
+    bottom: 0;
+    width: 100%;
+}
+footer span{
+    /* position: fixed; */
+    font-size: 15px;
+    color: black;
+    padding: 35px;
+    font-family: 'Open Sans', sans-serif;
+}
