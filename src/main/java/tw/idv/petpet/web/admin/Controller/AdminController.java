@@ -17,8 +17,7 @@ public class AdminController {
 
 	@GetMapping("/getAdmin")
 	public String getAdmin() {
-		
-//		System.out.println("123");
+
 		return "admin/adminLogin";
 	}
 }
