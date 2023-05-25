@@ -29,60 +29,62 @@
 					<th>變更</th>
 				</tr>
 			</thead>
-			<tbody>
-				<tr th:each="clinicMember : ${clinicMemberList}">
-					<td th:text="${clinicMember.clinicId}"></td>
-					<td th:text="${clinicMember.clinicName}"></td>
-					<td th:text="${clinicMember.clinicPrincipal}"></td>
-					<td th:text="${clinicMember.clinicEmail}"></td>
-					<td th:text="${clinicMember.clinicPassword}"></td>
-					<td th:text="${clinicMember.clinicPhone}"></td>
-					<td th:text="${clinicMember.clinicMemberCreateDate}"></td>
-					<td th:text="${clinicMember.clinicAddress}"></td>
-					<td th:text="${clinicMember.clinicPhoto}"></td>
-					<td th:text="${clinicMember.clinicService}"></td>
-					<td th:text="${clinicMember.clinicMemberLastUpdateDate}"></td>
-					<td>
-						<a th:href="/@{'/edit/' + ${clinicMember.clinicId}}">編輯</a>
-						&nbsp;&nbsp;&nbsp; 
-						<a th:href="/@{'/delete/' + ${clinicMember.clinicId}}">刪除</a>
-					</td>
-				</tr>
-			</tbody>
+			<tbody id="tbody"></tbody>
 		</table>
 	</div>
+	<script>
+		const tbody = document.querySelector('#tbody');
+		fetch('manage', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: {
+
+			}
+		})
+			.then(resp => resp.json())
+			.then(ClinicMember => {
+				for (let member of ClinicMember) {
+					console.log(member);
+
+					tbody.innerHTML += ` 
+			    <tr> 
+				      <td>${member.clinicId}</td> 
+			      	  <td>${member.clinicName}</td> 
+ 				      <td>${member.clinicPrincipal}</td> 
+ 				      <td>${member.clinicEmail}</td> 
+ 				      <td>${member.clinicPassword}</td> 
+ 				      <td>${member.clinicPhone}</td> 
+ 				      <td>${member.clinicMemberCreateDate}</td> 
+ 				      <td>${member.clinicAddress}</td> 
+ 				      <td>${member.clinicPhoto}</td> 
+				      <td>${member.clinicService}</td> 
+				      <td>${member.clinicMemberLastUpdateDate}</td> 
+				    </tr>`
+				}
+			}) 
+	</script>
 </body>
+
 </html>
 
 
-<!-- <script> -->
-<!-- 		const tbody = document.querySelector('tbody'); -->
-<!-- 		fetch('manage', { -->
-<!-- 			method: 'GET', -->
-<!-- 			headers: { -->
-<!-- 				'Content-Type': 'application/json' -->
-<!-- 			} -->
-<!-- 		}) -->
-<!-- 			.then(resp => resp.json()) -->
-<!-- 			.then(clinicMember => { -->
-<!-- 				const members = Object.values(clinicMember) -->
-<!-- 				for (let member of members) { -->
-<!-- 					console.log(member); -->
 
-<!-- 					tbody.innerHTML += ` -->
-<!-- 				    <tr> -->
-<!-- 				      <td>${clinicMember.clinicId}</td> -->
-<!-- 				      <td>${clinicMember.clinicName}</td> -->
-<!-- 				      <td>${clinicMember.clinicPrincipal}</td> -->
-<!-- 				      <td>${clinicMember.clinicEmail}</td> -->
-<!-- 				      <td>${clinicMember.clinicPassword}</td> -->
-<!-- 				      <td>${clinicMember.clinicPhone}</td> -->
-<!-- 				      <td>${clinicMember.clinicMemberCreateDate}</td> -->
-<!-- 				      <td>${clinicMember.clinicAddress}</td> -->
-<!-- 				      <td>${clinicMember.clinicPhoto}</td> -->
-<!-- 				      <td>${clinicMember.clinicService}</td> -->
-<!-- 				      <td>${clinicMember.clinicMemberLastUpdateDate}</td> -->
-<!-- 				    </tr>` -->
-<!-- 				} -->
-<!-- 			}) -->
-<!-- 	</script> -->
+
+<!-- <tr th:each="clinicMember : ${clinicMemberList}"> -->
+<!-- 	<td th:text="${clinicMember.clinicId}"></td> -->
+<!-- 	<td th:text="${clinicMember.clinicName}"></td> -->
+<!-- 	<td th:text="${clinicMember.clinicPrincipal}"></td> -->
+<!-- 	<td th:text="${clinicMember.clinicEmail}"></td> -->
+<!-- 	<td th:text="${clinicMember.clinicPassword}"></td> -->
+<!-- 	<td th:text="${clinicMember.clinicPhone}"></td> -->
+<!-- 	<td th:text="${clinicMember.clinicMemberCreateDate}"></td> -->
+<!-- 	<td th:text="${clinicMember.clinicAddress}"></td> -->
+<!-- 	<td th:text="${clinicMember.clinicPhoto}"></td> -->
+<!-- 	<td th:text="${clinicMember.clinicService}"></td> -->
+<!-- 	<td th:text="${clinicMember.clinicMemberLastUpdateDate}"></td> -->
+<!-- 	<td><a th:href="/@{'/edit/' + ${clinicMember.clinicId}}">編輯</a> -->
+<!-- 		&nbsp;&nbsp;&nbsp; <a -->
+<!-- 		th:href="/@{'/delete/' + ${clinicMember.clinicId}}">刪除</a></td> -->
+<!-- </tr> -->
