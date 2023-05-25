@@ -39,7 +39,8 @@ public class ClinicMember extends Core {
 	private String clinicPassword;
 	@Column
 	private String clinicPhone;
-	@Column(insertable = false)
+	@JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss", timezone = "GMT+8")
+	@Column
 	private Timestamp clinicMemberCreateDate;
 	@Column
 	private String clinicAddress;
@@ -47,8 +48,21 @@ public class ClinicMember extends Core {
 	private byte[] clinicPhoto;
 	@Column
 	private String clinicService;
-	@Column
 	@JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss", timezone = "GMT+8")
+	@Column
 	private Timestamp clinicMemberLastUpdateDate;
+	
+	public void setDate(Timestamp clinicMemberLastUpdateDate) {
+		this.clinicMemberLastUpdateDate = clinicMemberLastUpdateDate;
+		
+		//建立時間為空則最後更新時間為建立時間
+		if (this.clinicMemberCreateDate == null) {
+			this.clinicMemberCreateDate = clinicMemberLastUpdateDate;
+		}
+	}
+
+	public Timestamp getdate(Timestamp clinicMemberLastUpdateDate) {
+		return clinicMemberLastUpdateDate;
+	}
 
 }
