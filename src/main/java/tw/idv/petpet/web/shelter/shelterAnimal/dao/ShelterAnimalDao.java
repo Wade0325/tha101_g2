@@ -1,5 +1,11 @@
 package tw.idv.petpet.web.shelter.shelterAnimal.dao;
 
-public class ShelterAnimalDao {
+import tw.idv.petpet.core.dao.CoreDao;
+import tw.idv.petpet.web.member.entity.Member;
+import tw.idv.petpet.web.shelter.shelterAnimal.entity.ShelterAnimal;
+
+public interface ShelterAnimalDao extends CoreDao<ShelterAnimal, Integer> {
+
+	ShelterAnimal selectForUpload(Integer animalId);
 
 }

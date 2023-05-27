@@ -5,8 +5,8 @@ import tw.idv.petpet.web.shelter.shelterAnimal.entity.ShelterAnimal;
 
 
 public interface ShelterAnimalService extends CoreService {
-	boolean remove(Integer animalId);
+	ShelterAnimal upload(ShelterAnimal ShelterAnimal);
+	
 
-	boolean save(ShelterAnimal ShelterAnimal);
 	
 }
