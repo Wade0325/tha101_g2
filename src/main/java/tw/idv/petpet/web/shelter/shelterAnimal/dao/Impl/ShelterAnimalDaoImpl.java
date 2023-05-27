@@ -20,7 +20,7 @@ public class ShelterAnimalDaoImpl implements ShelterAnimalDao {
 
 	@Override
 	public int insert(ShelterAnimal ShelterAnimal) {
-		session.persist(ShelterAnimal);
+		session.merge(ShelterAnimal);
 		return 1;
 	}
 

@@ -13,6 +13,7 @@
 	const ifAdopted = document.querySelector('#ifAdopted');
 	const fileInputs = document.querySelectorAll('.fileupload');
 
+
 	delaybtn.addEventListener('click', () => {
 		console.log("aaa")
 		const nameLength = animalName.value.trim().length;
@@ -49,8 +50,8 @@
 
 		msg.textContent = '';
 
-		const shelteranimal = {
-			animalId: animalId.value,
+		var shelteranimal = {
+			animalNumber: animalId.value,
 			animalName: animalName.value,
 			animalType: animalType.value,
 			animalCategory: animalCategory.value,
@@ -59,16 +60,20 @@
 			animalDate: animalDate.value,
 			animalAge: animalAge.value,
 			animalDescribe: animalDescribe.value,
+			animalPhoto1: null,
+			animalPhoto2: null,
+			animalPhoto3: null
 		};
 
-		fileInputs.forEach((fileInput) => {
+		fileInputs.forEach((fileInput, index) => {
 			const files = fileInput.files;
-			for (let i = 0; i < files.length; i++) {
-				const file = files[i];
+			if (files.length > 0) {
+				const file = files[0];
 				const reader = new FileReader();
 				reader.onload = function(event) {
 					const base64Data = event.target.result;
-					shelteranimal.animalPhoto = base64Data;
+					shelteranimal['animalPhoto' + (index + 1)] = base64Data;
+				console.log(base64Data)
 				};
 				reader.readAsDataURL(file);
 			}

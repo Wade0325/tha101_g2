@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.PersistenceContext;
 import javax.persistence.Table;
 
 import lombok.AllArgsConstructor;
@@ -22,6 +23,7 @@ import tw.idv.petpet.core.pojo.Core;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
+@PersistenceContext
 public class ShelterAnimal extends Core{
 	/**
 	 * 會員資料
@@ -43,5 +45,6 @@ public class ShelterAnimal extends Core{
     private byte[] animalPhoto2;
     private byte[] animalPhoto3;
     private String animalDescribe;
-    private Integer ifAdopteD;
+    private Integer ifAdopted;
+    private Integer animalNumber;
 }

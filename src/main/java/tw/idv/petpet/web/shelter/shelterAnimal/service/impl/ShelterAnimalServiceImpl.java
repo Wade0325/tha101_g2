@@ -19,7 +19,7 @@ public class ShelterAnimalServiceImpl implements ShelterAnimalService{
 	public ShelterAnimal upload(ShelterAnimal shelteranimal) {
 		final int resultCount = dao.insert(shelteranimal);
 		System.out.println("upload service收到");
-		if (shelteranimal.getAnimalId() == null) {
+		if (shelteranimal.getAnimalName() == null) {
 			shelteranimal.setMessage("收容編號未輸入");
 			shelteranimal.setSuccessful(false);
 			return shelteranimal;
