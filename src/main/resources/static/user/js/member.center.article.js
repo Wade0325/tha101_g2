@@ -1,5 +1,11 @@
 $(document).ready(function () {
-    $('#example').DataTable({
+    $('.nav-link').on('click', function () {
+
+
+    })
+
+
+    $('.example').DataTable({
         columnDefs: [
             {
                 target: 3,
@@ -248,8 +254,7 @@ $(document).ready(function () {
             "infoFiltered": "(從 _MAX_ 筆結果中過濾)",
             "infoThousands": ",",
             "lengthMenu": "顯示 _MENU_ 筆結果",
-            "search": "搜尋診所：",
-            "searchPlaceholder": "請輸入診所名稱",
+            "search": "搜尋文章：",
             "thousands": ","
         },
     });
