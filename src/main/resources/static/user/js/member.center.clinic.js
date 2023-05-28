@@ -2,11 +2,6 @@ $(document).ready(function () {
     $('#example').DataTable({
         columnDefs: [
             {
-                target: 2,
-                visible: false,
-                searchable: false,
-            },
-            {
                 target: 3,
                 visible: false,
                 searchable: false,
@@ -253,8 +248,8 @@ $(document).ready(function () {
             "infoFiltered": "(從 _MAX_ 筆結果中過濾)",
             "infoThousands": ",",
             "lengthMenu": "顯示 _MENU_ 筆結果",
-            "search": "搜尋訂單：",
-            "searchPlaceholder": "請輸入商品名稱",
+            "search": "搜尋診所：",
+            "searchPlaceholder": "請輸入診所名稱",
             "thousands": ","
         },
     });
