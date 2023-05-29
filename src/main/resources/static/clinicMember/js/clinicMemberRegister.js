@@ -1,4 +1,13 @@
 (() => {
+	const btn = document.getElementById('btn-manage')
+
+	btn.addEventListener('click', function() {
+		console.log("有觸發")
+		window.location.href = 'manage.html';
+	})
+})();
+
+(() => {
 	const btn = document.querySelector('#btn');
 	const msg = document.querySelector('#msg');
 	const clinicName = document.querySelector('#clinicName');

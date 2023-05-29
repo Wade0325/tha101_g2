@@ -3,8 +3,9 @@ package tw.idv.petpet.web.clinicMember.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.http.MediaType;
-import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,12 +13,13 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import tw.idv.petpet.core.pojo.Core;
 import tw.idv.petpet.web.clinicMember.entity.ClinicMember;
 import tw.idv.petpet.web.clinicMember.service.ClinicMemberService;
 
-@Controller
+@RestController
 @RequestMapping("clinicMember/manage")
 public class ClinicMemberManageController {
 
@@ -51,6 +53,8 @@ public class ClinicMemberManageController {
 		return core;
 	}
 
+	@Transactional
+	@Modifying
 	@PutMapping
 	@ResponseBody
 	public Core save(@RequestBody ClinicMember clinicMember) {
