@@ -1,4 +1,4 @@
-package tw.idv.petpet.web.product.Controller;
+package tw.idv.petpet.web.shop.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import tw.idv.petpet.web.product.dao.CategoriesRepository;
-import tw.idv.petpet.web.product.dao.ProductRepository;
-import tw.idv.petpet.web.product.entity.Categories;
-import tw.idv.petpet.web.product.entity.Product;
+import tw.idv.petpet.web.shop.dao.CategoriesRepository;
+import tw.idv.petpet.web.shop.dao.ProductRepository;
+import tw.idv.petpet.web.shop.entity.Categories;
+import tw.idv.petpet.web.shop.entity.Product;
 
 @RestController
 @CrossOrigin(origins = "http://127.0.0.1:5500")
