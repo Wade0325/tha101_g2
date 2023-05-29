@@ -249,7 +249,7 @@ $(document).ready(function () {
             "infoThousands": ",",
             "lengthMenu": "顯示 _MENU_ 筆結果",
             "search": "搜尋診所：",
-            "searchPlaceholder": "請輸入診所名稱",
+            "searchPlaceholder": "",
             "thousands": ","
         },
     });
