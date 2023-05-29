@@ -1,11 +1,12 @@
 $(document).ready(function () {
-    $('#example').DataTable({
+    $('.nav-link').on('click', function () {
+
+
+    })
+
+
+    $('.example').DataTable({
         columnDefs: [
-            {
-                target: 2,
-                visible: false,
-                searchable: false,
-            },
             {
                 target: 3,
                 visible: false,
@@ -253,8 +254,7 @@ $(document).ready(function () {
             "infoFiltered": "(從 _MAX_ 筆結果中過濾)",
             "infoThousands": ",",
             "lengthMenu": "顯示 _MENU_ 筆結果",
-            "search": "搜尋訂單：",
-            "searchPlaceholder": "",
+            "search": "搜尋文章：",
             "thousands": ","
         },
     });
