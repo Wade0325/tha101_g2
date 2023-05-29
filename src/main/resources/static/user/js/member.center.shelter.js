@@ -13,8 +13,6 @@ $(document).ready(function () {
             },
         ],
 
-
-
         // 表格翻譯
         "language":
         {
@@ -253,7 +251,7 @@ $(document).ready(function () {
             "infoFiltered": "(從 _MAX_ 筆結果中過濾)",
             "infoThousands": ",",
             "lengthMenu": "顯示 _MENU_ 筆結果",
-            "search": "搜尋訂單：",
+            "search": "搜尋領養紀錄：",
             "searchPlaceholder": "",
             "thousands": ","
         },
