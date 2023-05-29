@@ -14,14 +14,15 @@ function deleteClick(clinicId) {
 }
 
 function saveClick(clinicId) {
-	const clinicName = document.querySelector(`#clinicName${clinicId}`).textContent;
-	const clinicPrincipal = document.querySelector(`#clinicPrincipal${clinicId}`).textContent;
-	const clinicPassword = document.querySelector(`#clinicPassword${clinicId}`).textContent;
-	const clinicPhone = document.querySelector(`#clinicPhone${clinicId}`).textContent;
-	const clinicAddress = document.querySelector(`#clinicAddress${clinicId}`).textContent;
-	const clinicService = document.querySelector(`#clinicService${clinicId}`).textContent;
-	const clinicEmail = sessionStorage.getItem('clinicEmail');
-
+	const clinicName = document.querySelector(`#clinicname${clinicId}`).textContent;
+	const clinicPrincipal = document.querySelector(`#clinicprincipal${clinicId}`).textContent;
+	const clinicPassword = document.querySelector(`#clinicpassword${clinicId}`).textContent;
+	const clinicPhone = document.querySelector(`#clinicphone${clinicId}`).textContent;
+	const clinicAddress = document.querySelector(`#clinicaddress${clinicId}`).textContent;
+	const clinicService = document.querySelector(`#clinicservice${clinicId}`).textContent;
+	// const clinicEmail = sessionStorage.getItem('clinicemail');
+	const clinicEmail = document.querySelector(`#clinicemail${clinicId}`).textContent;
+	console.log(clinicEmail)
 	fetch('manage', {
 		method: 'PUT',
 		headers: { 'Content-Type': 'application/json' },
@@ -47,5 +48,7 @@ function saveClick(clinicId) {
 			}
 		});
 }
+
+
 
 
