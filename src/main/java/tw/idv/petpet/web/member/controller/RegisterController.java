@@ -10,7 +10,7 @@
 //import tw.idv.petpet.web.member.service.MemberService;
 //
 //@RestController
-//@RequestMapping("member/register")
+//@RequestMapping("member/register2")
 //public class RegisterController {
 //	@Autowired
 //	private MemberService service;
