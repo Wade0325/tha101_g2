@@ -20,11 +20,11 @@ public class PriceListController {
 	@Autowired
 	private PriceListRespository priceListRespository;
 	
-	@PostMapping
-	public String insert(@RequestBody PriceList priceList) {
-		priceListRespository.save(priceList);
-		 return "執行資料庫creat操作";
-	}
+//	@PostMapping
+//	public String insert(@RequestBody PriceList priceList) {
+//		priceListRespository.save(priceList);
+//		 return "執行資料庫creat操作";
+//	}
 
 
 	@PutMapping("/{clinicServiceId}")
