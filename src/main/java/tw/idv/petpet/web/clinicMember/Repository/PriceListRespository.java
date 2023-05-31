@@ -10,4 +10,5 @@ public interface PriceListRespository extends CrudRepository<PriceList, Integer>
 
 	 List<PriceList> findByClinicServiceName(String clinicServiceName);
 	 PriceList findByClinicServiceIdAndClinicServiceName(int clinicServiceId, String ClinicServiceName);
+	 List<PriceList> findAll();
 }
