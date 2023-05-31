@@ -14,8 +14,8 @@
 	const fileInputs = document.querySelectorAll('.fileupload');
 
 
-	delaybtn.addEventListener('click', () => {
-		console.log("aaa")
+
+	delaybtn.addEventListener('click', async () => {
 		const nameLength = animalName.value.trim().length;
 		const idLength = animalId.value.trim().length;
 		const typeLength = animalType.value.trim().length;
@@ -24,31 +24,51 @@
 		const genderLength = animalGender.value.trim().length;
 		const ageLength = animalAge.value.trim().length;
 		const inputs = [animalId, userId, animalName, animalType, animalCategory, animalColor, animalGender, animalDate, animalAge, animalDescribe, ifAdopted];
-
+	
 		if (nameLength === 0) {
-			msg.textContent = '名稱不可為空';
+			alert('名稱不可為空');
 			return;
 		} else if (idLength === 0) {
-			msg.textContent = '收容編號不可為空';
+			alert('收容編號不可為空');
 			return;
 		} else if (typeLength === 0) {
-			msg.textContent = '種類不可為空';
+			alert('種類不可為空');
 			return;
 		} else if (categoryLength === 0) {
-			msg.textContent = '品種不可為空';
+			alert('品種不可為空');
 			return;
 		} else if (colorLength === 0) {
-			msg.textContent = '毛色不可為空';
+			alert('毛色不可為空');
 			return;
 		} else if (genderLength === 0) {
-			msg.textContent = '請選擇性別';
+			alert('請選擇性別');
 			return;
 		} else if (ageLength === 0) {
-			msg.textContent = '請選擇年齡';
+			alert('請選擇年齡');
+			return;
+		} else if (uploadedCount < 3) {
+			alert('請上傳三張圖片');
 			return;
 		}
+		console.log(animalphoto1)
+		let base64Data1 = animalPhoto1.src
+		let base64Data2 = animalPhoto2.src
+		let base64Data3 = animalPhoto3.src
 
-		msg.textContent = '';
+		var parts1 = base64Data1.split(",");
+		if (parts1.length > 1) {
+			base64Data1 = parts1[1]; // 去除前缀，保留编码数据部分
+		}
+		var parts2 = base64Data2.split(",");
+		if (parts2.length > 1) {
+			base64Data2 = parts2[1]; // 去除前缀，保留编码数据部分
+		}
+		var parts3 = base64Data3.split(",");
+		if (parts3.length > 1) {
+			base64Data3 = parts3[1]; // 去除前缀，保留编码数据部分
+		}
+	
+
 
 		var shelteranimal = {
 			animalNumber: animalId.value,
@@ -60,24 +80,14 @@
 			animalDate: animalDate.value,
 			animalAge: animalAge.value,
 			animalDescribe: animalDescribe.value,
-			animalPhoto1: null,
-			animalPhoto2: null,
-			animalPhoto3: null
+			animalPhoto1: base64Data1,
+			animalPhoto2: base64Data2,
+			animalPhoto3: base64Data3
 		};
 
-		fileInputs.forEach((fileInput, index) => {
-			const files = fileInput.files;
-			if (files.length > 0) {
-				const file = files[0];
-				const reader = new FileReader();
-				reader.onload = function(event) {
-					const base64Data = event.target.result;
-					shelteranimal['animalPhoto' + (index + 1)] = base64Data;
-				console.log(base64Data)
-				};
-				reader.readAsDataURL(file);
-			}
-		});
+
+
+
 
 		fetch('upload', {
 			method: 'POST',
@@ -94,12 +104,12 @@
 					msg.textContent = '送出成功';
 				} else {
 					msg.className = 'error';
-					msg.textContent = '送出失敗' + message;
+					msg.textContent = '送出失敗';
 				}
 			})
 			.catch((error) => {
 				msg.className = 'error';
-				msg.textContent = '送出失敗' + error.message;
+				msg.textContent = '送出失敗';
 				console.log(error.message);
 			});
 

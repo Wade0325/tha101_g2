@@ -3,6 +3,7 @@ package tw.idv.petpet.web.shelter.shelterAnimal.dao.Impl;
 import java.util.List;
 
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.Root;
 
@@ -32,9 +33,8 @@ public class ShelterAnimalDaoImpl implements ShelterAnimalDao {
 	}
 
 	@Override
-	public int update(ShelterAnimal pojo) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int update(ShelterAnimal shelteranimal) {
+		return 1;
 	}
 
 	@Override

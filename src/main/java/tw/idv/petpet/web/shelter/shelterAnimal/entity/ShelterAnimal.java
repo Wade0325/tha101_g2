@@ -46,5 +46,6 @@ public class ShelterAnimal extends Core{
     private byte[] animalPhoto3;
     private String animalDescribe;
     private Integer ifAdopted;
-    private Integer animalNumber;
+    private String animalNumber;
+    private String shelterName;
 }

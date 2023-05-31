@@ -15,9 +15,22 @@
 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
 	crossorigin="anonymous"></script>
 <style>
+.card {
+	margin-bottom: 10px;
+}
+
 .uploaded-image {
-	height: 25%;
-	width: 25%;
+	height: 90%;
+	width: 90%;
+	margin-bottom: 5px;
+}
+
+.upload_div {
+	margin-bottom: 10px;
+}
+
+.col-md-4 text-center {
+	margin-right: 10px;
 }
 </style>
 </head>
@@ -166,7 +179,7 @@
 																</select>
 															</div>
 															<div class="form-group col-md-4">
-																<label for="name">動物性別</label> <select
+																<label for="name">動物性別 *</label> <select
 																	class="form-control border-stone" name="animalGender"
 																	id="animalGender" required>
 																	<option value>請選擇</option>
@@ -184,7 +197,7 @@
 																	value required />
 															</div>
 															<div class="form-group col-md-4">
-																<label for="name">年紀</label> <select
+																<label for="name">年紀 *</label> <select
 																	class="form-control  border-stone" name="animalAge"
 																	id="animalAge" required>
 																	<option value=>請選擇</option>
@@ -205,30 +218,30 @@
 																<textarea class="form-control border-stone"
 																	name="animalDescribe" id="animalDescribe" cols="30"
 																	rows="10"></textarea>
-<!-- 																<div class="edit_info"> -->
-<!-- 																	"已輸入字數" <span class="editor_font_now text-danger">0</span> -->
-<!-- 																	" ,還可輸入 " <span class="editor_font_last text-danger">1000</span> -->
-<!-- 																	" 字" -->
-<!-- 																</div> -->
+																<!-- 																<div class="edit_info"> -->
+																<!-- 																	"已輸入字數" <span class="editor_font_now text-danger">0</span> -->
+																<!-- 																	" ,還可輸入 " <span class="editor_font_last text-danger">1000</span> -->
+																<!-- 																	" 字" -->
+																<!-- 																</div> -->
 															</div>
 														</div>
 														<div class="row">
 															<div class="form-group col-md-12">
 																<label for="name">照片上傳-請務必上傳三張 *</label>
 																<div class="upload_div">
-																	<span
-																		class="btn btn-success btn-sm mb-2 text-white fileinput-button">
-																		<!-- <span>上傳照片</span> --> <input id="fileupload"
-																		type="file" class="fileupload" name="animalPhoto"
-																		multiple="multiple">
-																	</span>
-																</div>
-																<div id="upload_show_div" class="upload_show_div" row
-																	name="file"></div>
 
+																	<input id="fileupload" type="file" class="fileupload"
+																		name="animalPhoto" accept="image/*"
+																		multiple="multiple" hidden>
+																	<button
+																		onclick="document.getElementById('fileupload').click()"
+																		class="btn btn-success text-center">上傳圖片</button>
+
+																</div>
+																<div id="upload_show_div" class="upload_show_div row"></div>
+																<input name="files" id="files" type="hidden" value>
 															</div>
 														</div>
-														<div class="row"></div>
 													</fieldset>
 												</div>
 											</div>
@@ -272,31 +285,58 @@
 	<script>
 		const fileuploadInput = document.getElementById('fileupload');
 		const uploadShowDiv = document.getElementById('upload_show_div');
-		fileuploadInput.addEventListener('change', function() {
+		let uploadedCount = 0;
 
+		fileuploadInput.addEventListener('change', function() {
 			const files = fileuploadInput.files;
 
-			if (files.length > 4) {
-				alert('最多只能上传四张照片！');
+			if (uploadedCount + files.length > 3) {
+				alert('最多只能上傳三張照片！');
 				return;
 			}
-			console.log(files.length)
+
 			for (let i = 0; i < files.length; i++) {
 				const file = files[i];
 				const reader = new FileReader();
 
 				reader.onload = function(event) {
 					const imageSrc = event.target.result;
-					const imageElement = document.createElement('img');
-					imageElement.setAttribute('src', imageSrc);
-					imageElement.setAttribute('class', 'uploaded-image');
+					const imageElement = document.createElement('div');
+					imageElement.setAttribute('class', 'col-md-4 text-center');
 
+					const imgElement = document.createElement('img');
+					imgElement.setAttribute('src', imageSrc);
+					imgElement.setAttribute('class', 'uploaded-image');
+					imgElement.setAttribute('name', 'animalPhoto'
+							+ uploadedCount);
+					imageElement.appendChild(imgElement);
+
+					const deleteButton = document.createElement('button');
+					deleteButton.textContent = '删除';
+					deleteButton.setAttribute('class',
+							'delete-button btn btn-success');
+					deleteButton.addEventListener('click', function() {
+						imageElement.parentNode.removeChild(imageElement);
+						uploadedCount--;
+					});
+
+					imageElement.appendChild(deleteButton);
 					uploadShowDiv.appendChild(imageElement);
+					if(uploadedCount==1){
+					animalphoto1 = imageSrc;}
+					if(uploadedCount==2){
+					animalphoto2 = imageSrc;}
+					if(uploadedCount==3){
+					animalphoto3 = imageSrc;}
 				};
 
 				reader.readAsDataURL(file);
 			}
+
+			uploadedCount += files.length;
 		});
+
+
 	</script>
 	<script>
 		// 获取当前日期
