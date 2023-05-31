@@ -21,20 +21,7 @@
 	const clinicPhoto = document.querySelector('#clinicPhoto');
 	const inputs = document.querySelectorAll('input');
 
-	const img = document.querySelector('#img');
-	clinicPhoto.addEventListener('change', () => {
-		const file = clinicPhoto.files[0];
-		if (file) {
-			const fileReader = new FileReader();
-			fileReader.onload = function(e) {
-				img.src = e.target.result;
-				console.log(img.src);
-			};
-			fileReader.readAsDataURL(file);
-			//			img.src = URL.createObjectURL(file);
-			//			console.log(img.src);
-		}
-	});
+
 	btn.addEventListener('click', () => {
 
 		const nameLength = clinicName.value.length;
@@ -88,7 +75,7 @@
 		msg.textContent = '';
 		const fileReader = new FileReader();
 		fileReader.addEventListener('load', e => {
-			const clinicPhotoBase64 = e.target.result.split(',')[1];
+			const clinicPhotoBase64 = btoa(e.target.result);
 			fetch('register', {
 				method: 'POST',
 				headers: {
@@ -124,6 +111,18 @@
 				});
 		});
 		fileReader.readAsArrayBuffer(clinicPhoto.files[0]);
+	});
+	const img = document.querySelector('#img');
+	clinicPhoto.addEventListener('change', () => {
+		const file = clinicPhoto.files[0];
+		if (file) {
+			const fileReader = new FileReader();
+			fileReader.onload = function(e) {
+				img.src = e.target.result;
+				console.log(img.src);
+			};
+			fileReader.readAsDataURL(file);
+		}
 	});
 
 })();
