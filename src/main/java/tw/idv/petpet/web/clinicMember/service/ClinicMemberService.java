@@ -14,4 +14,6 @@ public interface ClinicMemberService extends CoreService {
 	boolean remove(Integer clinicId);
 	
 	boolean save (ClinicMember clinicMember);
+	
+	ClinicMember edit(ClinicMember clinicMember);
 }

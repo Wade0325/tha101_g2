@@ -53,8 +53,6 @@ public class ClinicMemberManageController {
 		return core;
 	}
 
-	@Transactional
-	@Modifying
 	@PutMapping
 	@ResponseBody
 	public Core save(@RequestBody ClinicMember clinicMember) {
