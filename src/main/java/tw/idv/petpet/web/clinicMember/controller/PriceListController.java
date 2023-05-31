@@ -55,9 +55,9 @@ public class PriceListController {
 		 return "執行資料庫delect操作";
 	}
 	
-	@GetMapping("/PriceList/{clinicServiceId}")
-	public PriceList read(@PathVariable Integer clinicServiceId) {
-		PriceList priceList = priceListRespository.findById(clinicServiceId).orElse(null);
-		 return priceList;
-	}
+//	@GetMapping("/PriceList/{clinicServiceId}")
+//	public PriceList read(@PathVariable Integer clinicServiceId) {
+//		PriceList priceList = priceListRespository.findById(clinicServiceId).orElse(null);
+//		 return priceList;
+//	}
 }
