@@ -48,7 +48,6 @@ public class ClinicMemberDaoImpl implements ClinicMemberDao{
 		   .append("clinicPrincipal = :clinicPrincipal,")
 		   .append("clinicPhone = :clinicPhone,")
 		   .append("clinicAddress = :clinicAddress,")
-		   .append("clinicPhoto = :clinicPhoto,")
 		   .append("clinicService = :clinicService,")
 		   .append("clinicMemberLastUpdateDate = NOW() ")
 		   .append("WHERE clinicEmail = :clinicEmail");
@@ -64,7 +63,6 @@ public class ClinicMemberDaoImpl implements ClinicMemberDao{
 					.setParameter("clinicPrincipal", clinicMember.getClinicPrincipal())
 					.setParameter("clinicPhone", clinicMember.getClinicPhone())
 					.setParameter("clinicAddress", clinicMember.getClinicAddress())
-					.setParameter("clinicPhoto", clinicMember.getClinicPhoto())
 					.setParameter("clinicService", clinicMember.getClinicService())
 					.setParameter("clinicEmail", clinicMember.getClinicEmail())
 					.executeUpdate();
