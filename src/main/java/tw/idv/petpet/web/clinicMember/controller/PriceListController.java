@@ -1,10 +1,11 @@
 package tw.idv.petpet.web.clinicMember.controller;
 
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,13 +20,6 @@ public class PriceListController {
 	
 	@Autowired
 	private PriceListRespository priceListRespository;
-	
-//	@PostMapping
-//	public String insert(@RequestBody PriceList priceList) {
-//		priceListRespository.save(priceList);
-//		 return "執行資料庫creat操作";
-//	}
-
 
 	@PutMapping("/{clinicServiceId}")
 	public String update(@PathVariable Integer clinicServiceId,
@@ -55,9 +49,19 @@ public class PriceListController {
 		 return "執行資料庫delect操作";
 	}
 	
-	@GetMapping("/PriceList/{clinicServiceId}")
+	@GetMapping("/{clinicServiceId}")
 	public PriceList read(@PathVariable Integer clinicServiceId) {
 		PriceList priceList = priceListRespository.findById(clinicServiceId).orElse(null);
 		 return priceList;
 	}
+	
+	@GetMapping("/priceListAll")
+	public List<PriceList> getAllPriceLists(Model model) {
+	    List<PriceList> priceLists = priceListRespository.findAll();
+	    model.addAttribute("priceLists", priceLists);
+	    return "../"; // 返回前端页面的名称或路径
+	  
+	    
+	}
+
 }
