@@ -59,7 +59,7 @@ public class PriceListController {
 	public List<PriceList> getAllPriceLists(Model model) {
 	    List<PriceList> priceLists = priceListRespository.findAll();
 	    model.addAttribute("priceLists", priceLists);
-	    return "../"; // 返回前端页面的名称或路径
+	    return ""; // 返回前端页面的名称或路径
 	  
 	    
 	}
