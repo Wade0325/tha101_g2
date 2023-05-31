@@ -33,8 +33,12 @@ public class Company {
 	@Column
 	private String companyMan;
 	@Column
+	private String companyEmail;
+	@Column
 	private String companyPhone;
 	@Column
 	private String companyAddress;
+	@Column
+	private String companyNum;
 
 }
