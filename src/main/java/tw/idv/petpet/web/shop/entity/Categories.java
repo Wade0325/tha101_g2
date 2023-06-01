@@ -1,4 +1,4 @@
-package tw.idv.petpet.web.product.entity;
+package tw.idv.petpet.web.shop.entity;
 
 import java.sql.Timestamp;
 

@@ -44,18 +44,27 @@ public class Product {
 	private Integer pro_amount; //商品庫存數量
 	@Column
 	private String pro_det; //商品描述
+//	@Column
+//	private byte[] pro_pic1;
+//	@Column
+//	private byte[] pro_pic2;
+//	@Column
+//	private byte[] pro_pic3;
+	
 	@Column
-	private byte[] pro_pic1;
+	private String pro_pic1;
 	@Column
-	private byte[] pro_pic2;
+	private String pro_pic2;
 	@Column
-	private byte[] pro_pic3;
+	private String pro_pic3;
+	
+	
 	@Column(insertable = false)  
-//	@JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss", timezone = "GMT+8")
+	@JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss", timezone = "GMT+8")
 	private Timestamp create_time;   //上架時間
 	@Column(insertable = false)
 	private Timestamp pro_lastmodified_time; //最後更新時間
-	@Column(insertable = false)
+	
 	private String pro_status; //上架狀態
 	@Column
 	private String cate_name; //商品類別
@@ -63,4 +72,5 @@ public class Product {
 	private String company_id; //廠商會員帳號
 	@Column
 	private String email;
+	
 }
