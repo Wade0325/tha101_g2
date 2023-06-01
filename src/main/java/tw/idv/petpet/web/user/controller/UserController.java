@@ -23,24 +23,22 @@ public class UserController {
 	UserRepository userRepository;
 
 	String userAccount;
+	@PostMapping("/createUser/{userAccount}")
+	public User createUser(@RequestBody User user) {
+		return userRepository.save(user);
+	}
+	
 	@GetMapping("/findUser")
 	public String findUser() {
-
 		List<User> user = new ArrayList<User>();
-
 		user = userRepository.findAll();
-
+		
 		for (int i = 0; i < user.size(); i++) {
 			System.out.println(user.get(i).getUserTel());
 			userAccount = user.get(i).getUserTel();
 		}
 		return userAccount;
 	}
-
-		@PostMapping("/createUser/{userAccount}")
-		public User createUser(@RequestBody User user) {
-			return userRepository.save(user);
-		}
 
         @GetMapping("/findById/{userId}")
         public User findEmailById(@PathVariable Integer userId) {
