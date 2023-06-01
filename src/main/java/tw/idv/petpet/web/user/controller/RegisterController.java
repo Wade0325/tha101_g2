@@ -1,6 +1,7 @@
 package tw.idv.petpet.web.user.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +14,9 @@ import tw.idv.petpet.web.user.service.UserService;
 @RestController
 @RequestMapping("user/register")
 public class RegisterController {
+	
 	@Autowired
+	@Qualifier("UserServiceImpl")
 	private UserService service;
 
 	@PostMapping
