@@ -10,7 +10,7 @@ import tw.idv.petpet.web.admin.Repository.AdminRepository;
 import tw.idv.petpet.web.admin.dto.AdminRegisterVO;
 
 @RestController
-public class RegisterController {
+public class RegisterAdminController {
 
 	@Autowired
 	private AdminRepository adminRepository;

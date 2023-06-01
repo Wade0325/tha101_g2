@@ -9,7 +9,7 @@ import tw.idv.petpet.web.user.dao.UserDao;
 import tw.idv.petpet.web.user.entity.User;
 import tw.idv.petpet.web.user.service.UserService;
 
-@Service("/UserServiceImpl")
+@Service
 public class UserServiceImpl implements UserService{
 	@Autowired
 	private UserDao dao;

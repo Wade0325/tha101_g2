@@ -16,7 +16,6 @@ import tw.idv.petpet.web.user.service.UserService;
 public class RegisterController {
 	
 	@Autowired
-	@Qualifier("UserServiceImpl")
 	private UserService service;
 
 	@PostMapping
