@@ -3,7 +3,6 @@ package tw.idv.petpet.web.shelter.shelterAnimal.dao.Impl;
 import java.util.List;
 
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.Root;
 
@@ -11,6 +10,7 @@ import org.hibernate.Session;
 import org.hibernate.criterion.CriteriaQuery;
 import org.springframework.stereotype.Repository;
 
+import tw.idv.petpet.web.member.entity.Member;
 import tw.idv.petpet.web.shelter.shelterAnimal.dao.ShelterAnimalDao;
 import tw.idv.petpet.web.shelter.shelterAnimal.entity.ShelterAnimal;
 
@@ -38,9 +38,8 @@ public class ShelterAnimalDaoImpl implements ShelterAnimalDao {
 	}
 
 	@Override
-	public ShelterAnimal selectById(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+	public ShelterAnimal selectById(Integer animalId) {
+		return session.get(ShelterAnimal.class, animalId);
 	}
 
 	@Override
@@ -52,11 +51,20 @@ public class ShelterAnimalDaoImpl implements ShelterAnimalDao {
 	}
 
 	@Override
-	public ShelterAnimal selectForUpload(Integer animalId) {
+	public ShelterAnimal selectByanimalId(Integer animalId) {
 		CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
 		javax.persistence.criteria.CriteriaQuery<ShelterAnimal> criteriaQuery = criteriaBuilder.createQuery(ShelterAnimal.class);
 		Root<ShelterAnimal> root = criteriaQuery.from(ShelterAnimal.class);
 		criteriaQuery.where(criteriaBuilder.equal(root.get("animalId"), animalId));
+		return session.createQuery(criteriaQuery).uniqueResult();
+	}
+	
+	@Override
+	public ShelterAnimal selectByanimalNum(String animalNum) {
+		CriteriaBuilder criteriaBuilder = session.getCriteriaBuilder();
+		javax.persistence.criteria.CriteriaQuery<ShelterAnimal> criteriaQuery = criteriaBuilder.createQuery(ShelterAnimal.class);
+		Root<ShelterAnimal> root = criteriaQuery.from(ShelterAnimal.class);
+		criteriaQuery.where(criteriaBuilder.equal(root.get("animal_num"), animalNum));
 		return session.createQuery(criteriaQuery).uniqueResult();
 	}
 

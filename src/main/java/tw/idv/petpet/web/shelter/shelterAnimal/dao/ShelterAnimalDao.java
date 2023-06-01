@@ -6,6 +6,10 @@ import tw.idv.petpet.web.shelter.shelterAnimal.entity.ShelterAnimal;
 
 public interface ShelterAnimalDao extends CoreDao<ShelterAnimal, Integer> {
 
-	ShelterAnimal selectForUpload(Integer animalId);
+	ShelterAnimal selectByanimalId(Integer animalId);
+
+	ShelterAnimal selectByanimalNum(String animalNum);
+
+	
 
 }

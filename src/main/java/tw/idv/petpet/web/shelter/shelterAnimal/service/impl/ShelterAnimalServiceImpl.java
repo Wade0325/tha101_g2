@@ -1,10 +1,13 @@
 package tw.idv.petpet.web.shelter.shelterAnimal.service.impl;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import tw.idv.petpet.web.member.entity.Member;
 import tw.idv.petpet.web.shelter.shelterAnimal.dao.ShelterAnimalDao;
 import tw.idv.petpet.web.shelter.shelterAnimal.entity.ShelterAnimal;
 import tw.idv.petpet.web.shelter.shelterAnimal.service.ShelterAnimalService;
@@ -66,7 +69,16 @@ public class ShelterAnimalServiceImpl implements ShelterAnimalService{
 		return shelteranimal;
 	}
 
-
+	@Override
+	public List<ShelterAnimal> findAll() {
+		return dao.selectAll();
+	}
+	
+	@Transactional
+	@Override
+	public boolean remove(Integer animalId) {
+		return dao.deleteById(animalId) > 0;
+	}
 
 
 }
