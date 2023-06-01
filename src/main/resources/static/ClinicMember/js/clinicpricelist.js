@@ -2,7 +2,7 @@ const btn = document.querySelector('#submitbtn');
 const file = document.querySelector('#file');
 
 file.addEventListener('change', () => {
-  const service_img = document.querySelector('img');
+  const service_img = document.querySelector('#service_img');
   service_img.src = URL.createObjectURL(file.files[0]);
 });
 
