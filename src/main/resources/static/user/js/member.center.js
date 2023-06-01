@@ -1,5 +1,11 @@
 (() => {
-    fetch('findById', {
+    const nickName = document.querySelector("#nickName")
+    const phone = document.querySelector("#phone")
+    const address = document.querySelector("#address")
+    const Email = document.querySelector("#Email")
+    var nickNameV;
+
+    fetch('userController/findById/5', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -8,14 +14,14 @@
         .then(resp => resp.json())
         .then(body => {
             const { userEmail, userName, userTel, userAddr } = body;
+            Email.value = userEmail
             nickName.value = userName
+            nickNameV = nickName.value
+            phone.value = userTel
+            address.value = userAddr
         })
 
 
-    const nickName = document.querySelector("#nickName")
-    const phone = document.querySelector("#phone")
-    const address = document.querySelector("#address")
-    const Email = document.querySelector("#Email")
     $("#btn_update_nickName").on("click", function () {
         const nickName = document.querySelector("#nickName")
         console.log(nickName.hasAttribute('disabled'))
@@ -28,6 +34,7 @@
 
             } else {
                 window.alert("暱稱不得為空")
+                nickName.value = nickNameV
             }
         }
 
