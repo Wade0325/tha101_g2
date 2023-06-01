@@ -1,5 +1,7 @@
 package tw.idv.petpet.web.clinicMember.service.impl;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -76,6 +78,12 @@ public class ClinicMemberServiceImpl implements ClinicMemberService{
 		
 		clinicMember.setMessage("註冊成功");
 		clinicMember.setSuccessful(true);
+		
+		//創建成功再新增日期
+		Timestamp currenTimestamp = new Timestamp(new Date().getTime());
+		clinicMember.setClinicMemberCreateDate(currenTimestamp);
+		clinicMember.setClinicMemberLastUpdateDate(currenTimestamp);
+		
 		return clinicMember;
 	}
 
@@ -86,8 +94,20 @@ public class ClinicMemberServiceImpl implements ClinicMemberService{
 
 	@Transactional
 	@Override
-	public boolean remove(Integer id) {
-		return clinicMemberDao.deleteById(id) > 0;
+	public boolean remove(Integer clinicId) {
+		return clinicMemberDao.deleteById(clinicId) > 0;
+	}
+	
+	@Transactional
+	@Override
+	public boolean save(ClinicMember clinicMember) {
+		return clinicMemberDao.update(clinicMember) > 0;
+	}
+
+	@Override
+	public ClinicMember edit(ClinicMember clinicMember) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
