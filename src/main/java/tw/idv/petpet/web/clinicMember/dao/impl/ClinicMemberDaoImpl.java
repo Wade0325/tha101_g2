@@ -35,7 +35,7 @@ public class ClinicMemberDaoImpl implements ClinicMemberDao{
 
 	@Override
 	public int update(ClinicMember clinicMember) {
-		final StringBuilder hql = new StringBuilder().append("UPDATE ClinicMember SET");
+		final StringBuilder hql = new StringBuilder().append("UPDATE ClinicMember SET ");
 		final String password = clinicMember.getClinicPassword();
 		if (password != null && !password.isEmpty()) {
 			hql.append("clinicPassword = :clinicPassword,");
@@ -48,7 +48,6 @@ public class ClinicMemberDaoImpl implements ClinicMemberDao{
 		   .append("clinicPrincipal = :clinicPrincipal,")
 		   .append("clinicPhone = :clinicPhone,")
 		   .append("clinicAddress = :clinicAddress,")
-		   .append("clinicPhoto = :clinicPhoto,")
 		   .append("clinicService = :clinicService,")
 		   .append("clinicMemberLastUpdateDate = NOW() ")
 		   .append("WHERE clinicEmail = :clinicEmail");
@@ -59,11 +58,11 @@ public class ClinicMemberDaoImpl implements ClinicMemberDao{
 		if (clinicPhoto != null && clinicPhoto.length != 0) {
 			query.setParameter("clinicPhoto", clinicPhoto);
 		}
+		
 		return query.setParameter("clinicName", clinicMember.getClinicName())
 					.setParameter("clinicPrincipal", clinicMember.getClinicPrincipal())
 					.setParameter("clinicPhone", clinicMember.getClinicPhone())
 					.setParameter("clinicAddress", clinicMember.getClinicAddress())
-					.setParameter("clinicPhoto", clinicMember.getClinicPhoto())
 					.setParameter("clinicService", clinicMember.getClinicService())
 					.setParameter("clinicEmail", clinicMember.getClinicEmail())
 					.executeUpdate();

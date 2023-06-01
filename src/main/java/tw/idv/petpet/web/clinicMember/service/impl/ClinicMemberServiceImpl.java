@@ -94,8 +94,20 @@ public class ClinicMemberServiceImpl implements ClinicMemberService{
 
 	@Transactional
 	@Override
-	public boolean remove(Integer id) {
-		return clinicMemberDao.deleteById(id) > 0;
+	public boolean remove(Integer clinicId) {
+		return clinicMemberDao.deleteById(clinicId) > 0;
+	}
+	
+	@Transactional
+	@Override
+	public boolean save(ClinicMember clinicMember) {
+		return clinicMemberDao.update(clinicMember) > 0;
+	}
+
+	@Override
+	public ClinicMember edit(ClinicMember clinicMember) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
