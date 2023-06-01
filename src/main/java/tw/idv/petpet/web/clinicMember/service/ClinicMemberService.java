@@ -11,5 +11,9 @@ public interface ClinicMemberService extends CoreService {
 
 	List<ClinicMember> findAll();
 
-	boolean remove(Integer id);
+	boolean remove(Integer clinicId);
+	
+	boolean save (ClinicMember clinicMember);
+	
+	ClinicMember edit(ClinicMember clinicMember);
 }
