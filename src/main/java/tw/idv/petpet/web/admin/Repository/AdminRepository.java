@@ -7,4 +7,9 @@ import tw.idv.petpet.web.admin.Entity.AdminEntity;
 @Repository
 public interface AdminRepository extends JpaRepository<AdminEntity, Integer> {
 
+	AdminEntity findByAdminAccountAndAdminPassword(String adminAccount, String adminPassword);
+
+	AdminEntity findByAdminAccount(String adminAccount);
+
+	AdminEntity findByAdminId(Integer adminId);
 }
