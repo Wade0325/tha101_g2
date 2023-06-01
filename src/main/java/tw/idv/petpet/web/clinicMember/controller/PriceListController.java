@@ -1,15 +1,13 @@
 package tw.idv.petpet.web.clinicMember.controller;
 
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
-<<<<<<< HEAD
 import org.springframework.http.MediaType;
-=======
-import org.springframework.ui.Model;
->>>>>>> 641cf15cca45b29b3f6225d84735ab2ef5408f59
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +15,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import tw.idv.petpet.web.clinicMember.Repository.PriceListRespository;
-import tw.idv.petpet.web.clinicMember.entity.ClinicMember;
 import tw.idv.petpet.web.clinicMember.entity.PriceList;
 
 @RestController
@@ -26,7 +23,7 @@ public class PriceListController {
 	
 	@Autowired
 	private PriceListRespository priceListRespository;
-<<<<<<< HEAD
+
 	private List<PriceList> PriceList;
 	
 //	@PostMapping
@@ -35,8 +32,6 @@ public class PriceListController {
 //		 return "執行資料庫creat操作";
 //	}
 
-=======
->>>>>>> 641cf15cca45b29b3f6225d84735ab2ef5408f59
 
 	@PutMapping("/{clinicServiceId}")
 	public String update(@PathVariable Integer clinicServiceId,
@@ -72,23 +67,13 @@ public class PriceListController {
 		 return priceList;
 	}
 	
-<<<<<<< HEAD
-//	//findAll
-//	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-//	@ResponseBody
-//	public List<PriceList> manage() {
-//		List<PriceList> priceList = priceListRespository.findAll();
-//		return priceList;
-//	}
-=======
-	@GetMapping("/priceListAll")
-	public List<PriceList> getAllPriceLists(Model model) {
-	    List<PriceList> priceLists = priceListRespository.findAll();
-	    model.addAttribute("priceLists", priceLists);
-	    return "../"; // 返回前端页面的名称或路径
-	  
-	    
+
+	//findAll
+	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+	@ResponseBody
+	public List<PriceList> manage() {
+		List<PriceList> priceList = priceListRespository.findAll();
+		return priceList;
 	}
->>>>>>> 641cf15cca45b29b3f6225d84735ab2ef5408f59
 
 }
