@@ -104,10 +104,33 @@ public class ClinicMemberServiceImpl implements ClinicMemberService{
 		return clinicMemberDao.update(clinicMember) > 0;
 	}
 
+	@Transactional
 	@Override
 	public ClinicMember edit(ClinicMember clinicMember) {
-		// TODO Auto-generated method stub
-		return null;
+		final ClinicMember oClinicMember = clinicMemberDao.selectByClinicName(clinicMember.getClinicName());
+		clinicMember.setClinicName(oClinicMember.getClinicName());
+		clinicMember.setClinicEmail(oClinicMember.getClinicEmail());
+		final int resultCount = clinicMemberDao.update(clinicMember);
+		clinicMember.setSuccessful(resultCount > 0);
+		clinicMember.setMessage(resultCount > 0 ? "修改成功" : "修改失敗");
+		
+		final String password = clinicMember.getClinicPassword();
+		if (password == null || password.isEmpty()) {
+			clinicMember.setClinicPassword(oClinicMember.getClinicPassword());
+		}
+		return clinicMember;
 	}
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
