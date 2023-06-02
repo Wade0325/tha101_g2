@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <title>PetPet陪陪你</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <link rel="stylesheet" href="css/animate.css" />
+
+    <link rel="stylesheet" href="css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="css/owl.theme.default.min.css" />
+    <link rel="stylesheet" href="css/magnific-popup.css" />
+
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css" />
+    <link rel="stylesheet" href="css/jquery.timepicker.css" />
+
+    <link rel="stylesheet" href="css/flaticon.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+      #scroll-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background-color: #8a8787;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s, visibility 0.3s;
+      z-index: 9999;
+      cursor: pointer;
+      /* font-size: 16px; */
+      font-family: Arial;
+      /* font-weight: bold; */
+    }
+    #scroll-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    /* body {
+        padding: 20px;
+      } */
+      .cart-item {
+        display: flex;
+        align-items: center;
+        padding: 10px;
+        border: 1px solid #e9e9e9;
+        border-radius: 5px;
+        margin-bottom: 10px;
+      }
+      .cart-item img {
+        width: 100px;
+        height: auto;
+        margin-right: 10px;
+      }
+      .cart-item .item-details {
+        flex-grow: 1;
+        margin-right: 10px;
+      }
+      .cart-item .item-quantity {
+        width: 60px;
+      }
+      .cart-item .item-price {
+        width: 100px;
+      }
+      .cart-total {
+        margin-top: 20px;
+        font-weight: bold;
+      }
+      .checkout-btn {
+        margin-top: 20px;
+        margin-bottom: 50px;
+      }
+
+    </style>
+  </head>
+
+  <body>
+    <!-- 購物車圖示 -->
+    <div
+    class="cart-icon";
+        style="
+          /* border: 1px solid red; */
+          /* position: sticky; */
+          position: fixed;
+          /* float: right; */
+          top : 20px;
+          left: 1200px;
+          margin-right: 20px;
+          cursor: pointer;
+          z-index: 100;
+        "
+      >
+        <img src="foodimages/cart.jpg" style="width:50px ;height:50px;position: relative;" />
+        <div style="position: absolute; left:30px; bottom:40px;width:20px;height:20px;border: 1px solid red; background-color: red; border-radius: 10px;font-size: 1px;text-align: center; color: #f8f9fd;">
+          <span class="pro_amount">0</span>
+        </div>
+  
+  <div class="cart-dropdown">
+    <button class="in_cart">進入購物車</button>
+    <ul class="cart-items">
+
+    </ul>
+  </div>
+</div>
+  <!-- 購物車圖示 結束-->
+    <div class="wrap" style="z-index: 1;"></div>
+    <nav
+      class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
+      id="ftco-navbar"
+    >
+      <!-- <div
+        style="
+          /* border: 1px solid red; */
+          position: absolute;
+          left: 1200px;
+          top: 20px;
+          
+        "
+      >
+        <img src="foodimages/cart.jpg" width="50px" height="50px" /> -->
+      </div>
+      <div class="container">
+        <a class="navbar-brand" href="index.html"
+          ><img src="images/1.jpg" width="80px" height="80px" />PetPet陪陪你</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#ftco-nav"
+          aria-controls="ftco-nav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="fa fa-bars"></span> MENU
+        </button>
+        <div class="collapse navbar-collapse" id="ftco-nav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a href="index.html" class="nav-link" style="color: black"
+                >首頁</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="vet.html" class="nav-link" style="color: black"
+                >寵物診所</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="gallery.html" class="nav-link" style="color: black"
+                >寵物商城</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="blog.html" class="nav-link" style="color: black"
+                >寵物領養</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="contact.html" class="nav-link" style="color: black"
+                >寵物討論區</a
+              >
+            </li>
+            <li class="nav-item active">
+              <a
+                href="services_login.html"
+                class="nav-link"
+                style="color: black"
+                >登入/註冊</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- END nav -->
+
+    <!-- 輸入搜尋框 -->
+
+   
+    <!-- 商品區 開始 -->
+
+    <!-- 程式放裡面 -->
+    <div class="container">
+      <h1>購物車</h1>
+      <div class="cart-items">
+        <div class="cart-item">
+          <img src="product1.jpg" alt="Product 1" />
+          <div class="item-details">
+            <h3>商品名稱 1</h3>
+            <p>商品描述 1</p>
+          </div>
+          <input type="number" class="item-quantity" value="1" min="1" />
+          <div class="item-price">$100</div>
+          <button class="btn btn-danger remove-item">移除</button>
+        </div>
+        <div class="cart-item">
+          <img src="product2.jpg" alt="Product 2" />
+          <div class="item-details">
+            <h3>商品名稱 2</h3>
+            <p>商品描述 2</p>
+          </div>
+          <input type="number" class="item-quantity" value="2" min="1" />
+          <div class="item-price">$50</div>
+          <button class="btn btn-danger remove-item">移除</button>
+        </div>
+      </div>
+      <div class="cart-total">
+        <h4>總金額: $0</h4>
+      </div>
+      <button class="btn btn-primary checkout-btn">結帳</button>
+    </div>
+
+    <script>
+      // 移除商品項目
+      var removeButtons = document.querySelectorAll(".remove-item");
+      removeButtons.forEach(function (button) {
+        button.addEventListener("click", function (event) {
+          var cartItem = event.target.closest(".cart-item");
+          cartItem.remove();
+          updateCartTotal();
+        });
+      });
+
+      // 更新總金額和商品數量
+      function updateCartTotal() {
+        var cartItems = document.querySelectorAll(".cart-item");
+        var total = 0;
+        var quantity = 0;
+        cartItems.forEach(function (item) {
+          var itemQuantity = parseInt(
+            item.querySelector(".item-quantity").value
+          );
+          var itemPrice = parseFloat(
+            item.querySelector(".item-price").textContent.replace("$", "")
+          );
+          total += itemQuantity * itemPrice;
+          quantity += itemQuantity;
+        });
+        document.querySelector(".cart-total h4").textContent =
+          "總金額: $" + total.toFixed(2);
+        document
+          .querySelector(".cart-total h4")
+          .setAttribute("data-quantity", quantity);
+      }
+
+      // 商品數量變更事件處理
+      var quantityInputs = document.querySelectorAll(".item-quantity");
+      quantityInputs.forEach(function (input) {
+        input.addEventListener("change", function () {
+          var value = parseInt(this.value);
+          if (isNaN(value) || value < 1) {
+            this.value = 1;
+          }
+          updateCartTotal();
+        });
+      });
+
+      // 結帳按鈕事件處理
+      var checkoutButton = document.querySelector(".checkout-btn");
+      checkoutButton.addEventListener("click", function () {
+        var cartItems = document.querySelectorAll(".cart-item");
+        if (cartItems.length === 0) {
+          alert("購物車是空的，無法結帳！");
+        } else {
+          var quantity = document
+            .querySelector(".cart-total h4")
+            .getAttribute("data-quantity");
+          alert("結帳成功！商品數量: " + quantity);
+          // 清空購物車
+          document.querySelector(".cart-items").innerHTML = "";
+          updateCartTotal();
+        }
+      });
+    </script>
+    <!-- 程式放裡面 -->
+
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6 col-lg-4 mb-4 mb-md-0">
+            <h2 class="footer-heading">PetPet陪陪你</h2>
+            <p>一個能提供購物、醫療、送領養的平台</p>
+            <ul class="ftco-footer-social p-0">
+              <li class="ftco-animate">
+                <a
+                  href="#"
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title="Twitter"
+                  ><span class="fa fa-twitter"></span
+                ></a>
+              </li>
+              <li class="ftco-animate">
+                <a
+                  href="#"
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title="Facebook"
+                  ><span class="fa fa-facebook"></span
+                ></a>
+              </li>
+              <li class="ftco-animate">
+                <a
+                  href="#"
+                  data-toggle="tooltip"
+                  data-placement="top"
+                  title="Instagram"
+                  ><span class="fa fa-instagram"></span
+                ></a>
+              </li>
+            </ul>
+          </div>
+          <div class="col-md-6 col-lg-4 mb-4 mb-md-0">
+            <h2 class="footer-heading">寵物討論區</h2>
+            <div class="block-21 mb-4 d-flex">
+              <a
+                class="img mr-4 rounded"
+                style="background-image: url(images/image_1.jpg)"
+              ></a>
+              <div class="text">
+                <h3 class="heading"><a href="#">狗狗討論區</a></h3>
+              </div>
+            </div>
+            <div class="block-21 mb-4 d-flex">
+              <a
+                class="img mr-4 rounded"
+                style="background-image: url(images/image_2.jpg)"
+              ></a>
+              <div class="text">
+                <h3 class="heading"><a href="#">貓咪討論區</a></h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 pl-lg-5 mb-4 mb-md-0">
+            <h2 class="footer-heading">快速連結</h2>
+            <ul class="list-unstyled">
+              <li><a href="#" class="py-2 d-block">首頁</a></li>
+              <li><a href="#" class="py-2 d-block">登入/註冊</a></li>
+              <li><a href="#" class="py-2 d-block">寵物診所</a></li>
+              <li><a href="#" class="py-2 d-block">寵物商城</a></li>
+              <li><a href="#" class="py-2 d-block">寵物領養</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <p class="copyright">
+              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+              Copyright &copy;
+              <script>
+                document.write(new Date().getFullYear());
+              </script>
+              All rights reserved | This template is made with
+              <i class="fa fa-heart" aria-hidden="true"></i> by
+              <a href="https://colorlib.com" target="_blank">Colorlib.com</a>
+              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p>
+          </div>
+        </div>
+      </div>
+
+       <!-- 置頂按鈕 -->
+    <div id="scroll-to-top" class="show">
+      <!-- <img src="path/to/scroll-to-top-icon.png" alt="Scroll To Top" /> -->
+      <p >Top</p>
+    </div>
+
+    <!-- /置頂按鈕 -->
+    </footer>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="js/jquery.stellar.min.js"></script>
+    <script src="js/jquery.animateNumber.min.js"></script>
+    <script src="js/bootstrap-datepicker.js"></script>
+    <script src="js/jquery.timepicker.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/scrollax.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="js/google-map.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

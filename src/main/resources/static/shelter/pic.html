@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Document</title>
+</head>
+<body>
+	<input type="text" id="name" />
+	<br />
+	<input type="file" id="file" />
+	<br />
+	<button>upload</button>
+	<br />
+	<img />
+</body>
+<script>
+      const name = document.querySelector('#name');
+      const file = document.querySelector('#file');
+      const img = document.querySelector('img');
+      file.addEventListener('change', () => {
+        img.src = URL.createObjectURL(file.files[0]);
+      });
+
+      document.querySelector('button').addEventListener("click", () => {
+        const fr = new FileReader();
+        fr.addEventListener('load', e=>{
+        	
+        	 fetch('test/t1', {
+             	method: "POST",
+        		headers: { 'Content-Type': 'application/json' },
+             	body: JSON.stringify({
+             		name: name.value,
+             		avatar:btoa(e.target.result)
+             	})
+        	 })
+        });
+        fr.readAsBinaryString(file.files[0])
+      });
+    </script>
+</html>
