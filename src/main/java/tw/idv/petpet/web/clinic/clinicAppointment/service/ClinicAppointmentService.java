@@ -21,6 +21,22 @@ public class ClinicAppointmentService {
 		clinicAppointmentRepository.save(clinicAppointment);
 	}
 
+	public void update(Integer reservationNumber, ClinicAppointment clinicAppointment) {
+		ClinicAppointment clinicAppointment1 = clinicAppointmentRepository.findById(reservationNumber).orElse(null);
+		// cardId、clinicId、userId不可修改
+		if (clinicAppointment1 != null) {
+			clinicAppointment1.setVetName(clinicAppointment.getVetName());
+			clinicAppointment1.setAppointDate(clinicAppointment.getAppointDate());
+			clinicAppointment1.setAppointTime(clinicAppointment.getAppointTime());
+			clinicAppointment1.setOwnerMobile(clinicAppointment.getOwnerMobile());
+			clinicAppointment1.setPetType(clinicAppointment.getPetType());
+			clinicAppointment1.setPetName(clinicAppointment.getPetName());
+			clinicAppointment1.setServiceItem(clinicAppointment.getServiceItem());
+			clinicAppointment1.setPetSituation(clinicAppointment.getPetSituation());
+			clinicAppointmentRepository.save(clinicAppointment1);
+		}
+	}
+
 	public Optional<ClinicAppointment> findById(Integer reservationNumber) {
 		return clinicAppointmentRepository.findById(reservationNumber);
 	}

@@ -28,25 +28,8 @@ public class PetCasesController {
 
 	@PutMapping("/petCases/{casesSn}")
 	public String update(@PathVariable Integer casesSn, @RequestBody PetCases petCases) {
-		PetCases petCases1 = service.findById(casesSn).orElse(null);
-		// casesSn不能修改
-		if (petCases1 != null) {
-			petCases1.setVetSn(petCases.getVetSn());
-			petCases1.setUserId(petCases.getUserId());
-			petCases1.setAppointDate(petCases.getAppointDate());
-			petCases1.setOwnerMobile(petCases.getOwnerMobile());
-			petCases1.setPetType(petCases.getPetType());
-			petCases1.setPetName(petCases.getPetName());
-			petCases1.setPetGender(petCases.getPetGender());
-			petCases1.setPetAge(petCases.getPetAge());
-			petCases1.setPetSituation(petCases.getPetSituation());
-			petCases1.setTreatment(petCases.getTreatment());
-			petCases1.setResult(petCases.getResult());
-			service.save(petCases1);
-			return "執行update操作";
-		} else {
-			return "資料不存在，操作失敗";
-		}
+		service.update(casesSn, petCases);
+		return "執行update操作";
 	}
 	
 	@DeleteMapping("/petCases/{casesSn}")
