@@ -16,13 +16,14 @@ public class UserServiceImpl implements UserService{
 	
 	@Override
 	public User register(User user) {
-		System.out.println("執行save");
+		System.out.println("執行JPA save");
 		return userRepository.save(user);
 	}
 
 
 	@Override
 	public User findById(Integer userid) {
+		System.out.println("執行JPA findById");
 		return userRepository.findById(userid).orElse(null);
 	}
 	
