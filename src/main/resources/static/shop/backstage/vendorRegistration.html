@@ -108,18 +108,32 @@
                 aria-labelledby="headingOne"
                 data-bs-parent="#sidenavAccordion"
               >
+              
               <nav class="sb-sidenav-menu-nested nav">
-                <a class="nav-link" href="report_firm.html">新增商品</a>
+                <a class="nav-link" href="./addNewProduct.html">新增商品</a>
               </nav>
+              
               <nav class="sb-sidenav-menu-nested nav">
-                <a class="nav-link" href="report_firm.html">商品管理</a>
+                <a class="nav-link" href="./productManagement.html">商品管理</a>
               </nav>
+
               <nav class="sb-sidenav-menu-nested nav">
-                <a class="nav-link" href="report_firm.html">訂單管理</a>
+                <a class="nav-link" href="./vendorManagementShipping.html">訂單管理</a>
+                  <div
+                  class="collapse"
+                  id="collapseLayouts"
+                  aria-labelledby="headingOne"
+                  data-bs-parent="#sidenavAccordion"
+                  >
+                  <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link" href="./orderDetail.html">訂單明細</a>
+                  </nav> 
               </nav>
-                <nav class="sb-sidenav-menu-nested nav">
-                  <a class="nav-link" href="report_firm.html">商家檢舉</a>
-                </nav>
+
+              <nav class="sb-sidenav-menu-nested nav">
+                <a class="nav-link" href="report_firm.html">商家檢舉</a>
+              </nav>
+
               </div>
               <a
                 class="nav-link collapsed"
@@ -149,8 +163,8 @@
                 >
                   <nav class="sb-sidenav-menu-nested nav">
                     <a class="nav-link" href="report_user.html">會員檢舉</a>
-                    <a class="nav-link" href="Login2.html">註冊會員</a>
-                    <a class="nav-link" href="Forgot.html">忘記密碼</a>
+                    <a class="nav-link" href="./vendorRegistration.html">註冊會員</a>
+                    <a class="nav-link" href="./forgetThePassword.html">忘記密碼</a>
                   </nav>
                 </nav>
               </div>
@@ -165,7 +179,7 @@
           </div>
         </nav>
       </div>
-      <div id="layoutSidenav_content">       
+      <div id="layoutSidenav_content"> 
       <main> 
       <!-- html寫在這裡哦 -->
       
@@ -176,14 +190,14 @@
         <body>
           <h2 style="font-size: 20px; text-align: center;">廠商註冊</h2>
           <h2>廠商基本資料</h2>
-          <form action="submit.php" method="post">
+          <form action="submit" method="post" onsubmit="return validateForm()">
             <label for="account" style="display: inline-block; width: 200px;">廠商名稱</label>
             <input type="text" id="companyName" name="account" style="width: 300px;" required><br><br>
         
             <label for="account" style="display: inline-block; width: 200px;">廠商註冊帳號</label>
             <input type="text" id="companyId" name="account" style="width: 300px;" required><br><br>
         
-            <label for="account" style="display: inline-block; width: 200px;">密碼</label>
+            <label for="account" style="display: inline-block; width: 200px;">註冊密碼</label>
             <input type="text" id="companyPassword" name="account" style="width: 300px;" required><br><br>
         
             <label for="account" style="display: inline-block; width: 200px;">公司統一編號</label>
@@ -201,16 +215,73 @@
             <label for="account" style="display: inline-block; width: 200px;">公司地址</label>
             <input type="text" id="companyAddress" name="account" style="width: 300px;" required><br><br>
 
-            <input type="submit" value="送出">
+            <input type="submit" value="送出" submit="window.location.href='./registrationSuccess.html'">
 
-        </form>    
+        </form>
+            
         
         
         </body>
         </html>
 
       <!-- html寫在這裡哦 -->
-      </main>     
+      </main> 
+      <script>
+
+      function validateForm() {
+        var companyName = document.getElementById("companyName").value;
+        var companyId = document.getElementById("companyId").value;
+        var companyPassword = document.getElementById("companyPassword").value
+        var companyNum = document.getElementById("companyNum").value
+        var companyMan = document.getElementById("companyMan").value
+        var companyEmail = document.getElementById("companyEmail").value
+        var companyPhone = document.getElementById("companyPhone").value
+        var companyAddress = document.getElementById("companyAddress").value
+
+
+        // 繼續獲取其他輸入欄位的值
+
+        // 進行驗證
+        if (companyName === "" || companyName === null) {
+          alert("請填寫廠商名稱");
+          return false; // 驗證失敗，阻止表單提交
+        }
+        if (companyId === "" || companyId === null) {
+          alert("請填寫廠商註冊帳號");
+          return false; // 驗證失敗，阻止表單提交
+        }
+        if (companyPassword === "" || companyPassword === null) {
+          alert("請填寫註冊密碼");
+          return false; // 驗證失敗，阻止表單提交
+        }
+        if (companyNum === "" || companyNum === null) {
+          alert("請填寫公司統一編號");
+          return false; // 驗證失敗，阻止表單提交
+        }
+        if (companyMan === "" || companyMan === null) {
+          alert("請填寫負責人");
+          return false; // 驗證失敗，阻止表單提交
+        }
+        if (companyEmail === "" || companyEmail === null) {
+          alert("請填寫公司電子郵件");
+          return false; // 驗證失敗，阻止表單提交
+        }
+        if (companyName === "" || companyName === null) {
+          alert("請填寫公司連絡電話");
+          return false; // 驗證失敗，阻止表單提交
+        }
+        if (companyAddress === "" || companyAddress === null) {
+          alert("請填寫公司地址");
+          return false; // 驗證失敗，阻止表單提交
+        }
+        // 繼續驗證其他輸入欄位
+
+        // 驗證通過，允許表單提交
+        return true;
+      }
+
+
+      </script>    
       </div>   
         <footer class="py-4 bg-light mt-auto">
           <div class="container-fluid px-4">
