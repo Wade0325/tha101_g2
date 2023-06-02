@@ -1,56 +1,51 @@
 package tw.idv.petpet.web.user.service.Impl;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import tw.idv.petpet.web.user.dao.UserDao;
+import tw.idv.petpet.web.user.dao.UserRepository;
 import tw.idv.petpet.web.user.entity.User;
 import tw.idv.petpet.web.user.service.UserService;
 
-@Service
-public class UserServiceImpl implements UserService{
+@Service("userService")
+public class UserServiceImpl implements UserService {
+
 	@Autowired
-	private UserDao dao;
-	
-	@Transactional
+	private UserRepository userRepository;
+
 	@Override
 	public User register(User user) {
-		if (user.getUserAccount() == null) {
-			user.setMessage("帳號未輸入");
+		System.out.println("進入Service 執行 register 方法成功");
+		String str = userRepository.findByAccount(user.getUserAccount());
+
+		if (str != null) {
 			user.setSuccessful(false);
-			return user;
+			user.setMessage("帳號已存在");
+		} else {
+			user.setSuccessful(true);
+			return userRepository.save(user);
 		}
-
-		if (user.getUserPassword() == null) {
-			user.setMessage("密碼未輸入");
-			user.setSuccessful(false);
-			return user;
-		}
-		System.out.println("service收到");
-
-//		if (user.getUserName() == null) {
-//			user.setMessage("暱稱未輸入");
-//			user.setSuccessful(false);
-//			return user;
-//		}
-
-		if (dao.selectByAccount(user.getUserAccount()) != null) {
-			user.setMessage("帳號重複");
-			user.setSuccessful(false);
-			return user;
-		}
-
-		final int resultCount = dao.insert(user);
-		if (resultCount < 1) {
-			user.setMessage("註冊錯誤，請聯絡管理員!");
-			user.setSuccessful(false);
-			return user;
-		}
-
-		user.setMessage("註冊成功");
-		user.setSuccessful(true);
-		return user;
+		return null;
 	}
+
+	@Override
+	public User findById(Integer userid) {
+		System.out.println("執行JPA findById");
+		return userRepository.findById(userid).orElse(null);
+	}
+
+	@Override
+	public String login(User user) {
+		String str = userRepository.login(user.getUserAccount(), user.getUserPassword());
+		if (str != null) {
+			user.setSuccessful(true);
+			System.out.println("登入成功");
+		} else {
+			user.setSuccessful(false);
+			user.setMessage("帳號密碼錯誤");
+			System.out.println("登入失敗");
+		}
+		return user.getMessage();
+	}
+
 }

@@ -3,6 +3,7 @@
 package tw.idv.petpet.web.user.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.data.redis.RedisProperties.Jedis;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -20,6 +21,7 @@ public class EmailController {
 	@PostMapping("/user/sendMail")
 	public String sendMail(@RequestBody EmailDetails details) {
 		String status = emailService.sendSimpleMail(details);
+		
 		return status;
 	}
 
