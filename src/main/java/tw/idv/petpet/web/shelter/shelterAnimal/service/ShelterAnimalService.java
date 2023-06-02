@@ -5,6 +5,7 @@ import java.util.List;
 import tw.idv.petpet.core.service.CoreService;
 import tw.idv.petpet.web.member.entity.Member;
 import tw.idv.petpet.web.shelter.shelterAnimal.entity.ShelterAnimal;
+import tw.idv.petpet.web.shelter.shelterMember.entity.ShelterMember;
 
 
 public interface ShelterAnimalService extends CoreService {
@@ -13,6 +14,8 @@ public interface ShelterAnimalService extends CoreService {
 	List<ShelterAnimal> findAll();
 	
 	boolean remove(Integer animalId);
+
+	ShelterAnimal findById(Integer animalId);
 	
 
 	
