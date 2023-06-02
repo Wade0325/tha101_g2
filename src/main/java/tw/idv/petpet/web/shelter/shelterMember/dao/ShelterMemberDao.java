@@ -8,6 +8,4 @@ public interface ShelterMemberDao extends CoreDao<ShelterMember, Integer>{
 	ShelterMember selectByShelterName(String shelterName);
 
 	ShelterMember selectForLogin(String shelterEmail, String shelterPassword);
-	
-	
 }

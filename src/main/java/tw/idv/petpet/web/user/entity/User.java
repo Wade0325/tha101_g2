@@ -41,4 +41,5 @@ public class User extends Core{
     private Date userCreateTime;
     private Date userUpdateTime;
     private String userStatus;
+    private String userVai;
 }

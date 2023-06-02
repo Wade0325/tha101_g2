@@ -27,3 +27,6 @@ replay_pid*
 /target
 .classpath
 bin
+
+.factorypath
+.settings

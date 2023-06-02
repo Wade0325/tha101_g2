@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 // Importing required classes
 import tw.idv.petpet.web.user.entity.EmailDetails;
+import tw.idv.petpet.web.user.entity.User;
 import tw.idv.petpet.web.user.service.EmailService;
 
 @Service
@@ -24,7 +25,7 @@ public class EmailServiceImpl implements EmailService {
 
 	@Autowired
 	private JavaMailSender javaMailSender;
-
+	
 	@Value("${spring.mail.username}")
 	private String sender;
 
@@ -42,6 +43,7 @@ public class EmailServiceImpl implements EmailService {
 			mailMessage.setTo(details.getRecipient());
 			
 			String verifiCode = getAuthCode(); // 取得驗證信密碼
+		
 			mailMessage.setText(verifiCode);
 			details.setVerifiCode(verifiCode);
 			
