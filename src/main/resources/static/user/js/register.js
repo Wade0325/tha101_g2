@@ -34,7 +34,7 @@
         }
 
         msg.textContent = '';
-        fetch('register', {
+        fetch('userController/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
