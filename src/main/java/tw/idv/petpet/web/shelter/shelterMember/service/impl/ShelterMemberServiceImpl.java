@@ -36,11 +36,11 @@ public class ShelterMemberServiceImpl implements ShelterMemberService{
 			shelterMember.setSuccessful(false);
 			return shelterMember;
 		}
-		if (dao.selectByShelterName(shelterMember.getShelterName()) != null) {
-			shelterMember.setMessage("名稱重複");
-			shelterMember.setSuccessful(false);
-			return shelterMember;
-		}
+//		if (dao.selectByShelterName(shelterMember.getShelterName()) != null) {
+//			shelterMember.setMessage("名稱重複");
+//			shelterMember.setSuccessful(false);
+//			return shelterMember;
+//		}
 		if (shelterMember.getShelterPassword() == null) {
 			shelterMember.setMessage("密碼未輸入");
 			shelterMember.setSuccessful(false);
