@@ -1,6 +1,8 @@
 package tw.idv.petpet.web.user.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,8 +21,9 @@ public class UserController {
 	String userAccount;
 	@PostMapping("/register")
 	public String register(@RequestBody User user) {
-		System.out.println("aaa");
-		return "執行資料庫的 insert 成功";
+		System.out.println("執行 register 方法成功");
+		userService.register(user);
+		return "執行 register 方法成功";
 	}
 	
 //	@GetMapping("/findUser")
@@ -35,9 +38,10 @@ public class UserController {
 //		return userAccount;
 //	}
 
-//        @GetMapping("/findById/{userId}")
-//        public User findEmailById(@PathVariable Integer userId) {
-//            return userRepository.findById(userId).orElse(null);   
-//        }
+        @GetMapping("/findById/{userId}")
+        public User findEmailById(@PathVariable Integer userId) {
+        	System.out.println("執行 findEmailById 方法成功");
+            return userService.findById(userId);
+        }
         
 	}

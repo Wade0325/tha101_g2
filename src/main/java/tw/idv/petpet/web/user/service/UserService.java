@@ -1,8 +1,10 @@
 package tw.idv.petpet.web.user.service;
 
-import org.apache.catalina.User;
+import tw.idv.petpet.web.user.entity.User;
 
 public interface UserService {
 
 	public User register(User user);
+	
+	public User findById(Integer userid);
 }
