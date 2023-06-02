@@ -17,13 +17,12 @@ import lombok.Setter;
 import tw.idv.petpet.core.pojo.Core;
 
 @Entity
+@Table
 @Setter
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "shelter_member")
 public class ShelterMember extends Core{
-	private static final long serialVersionUID = -4258996471247362737L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column

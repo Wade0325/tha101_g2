@@ -6,5 +6,4 @@ import tw.idv.petpet.web.shelter.shelterAnimal.entity.ShelterAnimal;
 
 public interface ShelterAnimalRepo extends JpaRepository<ShelterAnimal, Integer>{
 
-
 }
