@@ -30,12 +30,10 @@ public class AnimalEditController {
 	@ResponseBody
 	public ShelterAnimal update(@PathVariable Integer animalId,@RequestBody ShelterAnimal shelterAnimal) {
 		shelterAnimal.setAnimalId(animalId);
-//		shelterAnimal.setAnimalName(shelterAnimal.getAnimalName());
-//		shelterAnimal.setAnimalName(shelterAnimal.getAnimalName());
-//		shelterAnimal.setAnimalName(shelterAnimal.getAnimalName());
-//		shelterAnimal.setAnimalName(shelterAnimal.getAnimalName());
+		if(shelterAnimal.getAnimalName() != null) {
+		shelterAnimal.setAnimalName(shelterAnimal.getAnimalName());
+		}
 		service.update(shelterAnimal);
-		System.out.println("123");
 		return shelterAnimal;
 	}
 }

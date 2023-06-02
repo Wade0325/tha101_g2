@@ -13,6 +13,7 @@ import tw.idv.petpet.web.shelter.Repository.ShelterAnimalRepo;
 import tw.idv.petpet.web.shelter.shelterAnimal.dao.ShelterAnimalDao;
 import tw.idv.petpet.web.shelter.shelterAnimal.entity.ShelterAnimal;
 import tw.idv.petpet.web.shelter.shelterAnimal.service.ShelterAnimalService;
+import tw.idv.petpet.web.shelter.shelterMember.entity.ShelterMember;
 
 @Service
 public class ShelterAnimalServiceImpl implements ShelterAnimalService{
@@ -86,13 +87,8 @@ public class ShelterAnimalServiceImpl implements ShelterAnimalService{
 	}
 	
 	@Override
-	public ShelterAnimal findById(Integer animalId) {
-        Optional<ShelterAnimal> result = repo.findById(animalId);
-        if (result.isPresent()) {
-        	ShelterAnimal entity = result.get();
-        } else {
-        }
-		return null;
+    public Optional<ShelterAnimal> findById(Integer animalId) {
+        return repo.findById(animalId);
     }
 	
 	@Transactional

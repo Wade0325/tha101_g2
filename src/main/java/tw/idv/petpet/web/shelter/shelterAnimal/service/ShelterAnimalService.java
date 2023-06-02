@@ -1,6 +1,7 @@
 package tw.idv.petpet.web.shelter.shelterAnimal.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import tw.idv.petpet.core.service.CoreService;
 import tw.idv.petpet.web.clinicMember.entity.ClinicMember;
@@ -15,8 +16,10 @@ public interface ShelterAnimalService extends CoreService {
 
 	boolean remove(Integer animalId);
 
-	ShelterAnimal findById(Integer animalId);
+	
+	Optional<ShelterAnimal> findById(Integer animalId);
 
+//	ShelterAnimal findById(Integer animalId);
 //	boolean save(ShelterAnimal ShelterAnimal);
 
 	ShelterAnimal update(ShelterAnimal ShelterAnimal);

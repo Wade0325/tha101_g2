@@ -1,17 +1,14 @@
 package tw.idv.petpet.web.shelter.shelterMember.service.impl;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import tw.idv.petpet.core.pojo.Core;
 import tw.idv.petpet.web.shelter.Repository.ShelterMemberRepo;
-import tw.idv.petpet.web.shelter.shelterAnimal.dao.ShelterAnimalDao;
-import tw.idv.petpet.web.shelter.shelterAnimal.entity.ShelterAnimal;
-import tw.idv.petpet.web.shelter.shelterAnimal.service.ShelterAnimalService;
 import tw.idv.petpet.web.shelter.shelterMember.dao.ShelterMemberDao;
 import tw.idv.petpet.web.shelter.shelterMember.entity.ShelterMember;
 import tw.idv.petpet.web.shelter.shelterMember.service.ShelterMemberService;
@@ -96,4 +93,5 @@ public class ShelterMemberServiceImpl implements ShelterMemberService{
 		return null;
 	}
 
+	
 }
