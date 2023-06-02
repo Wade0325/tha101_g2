@@ -28,52 +28,26 @@ public class ClinicAppointmentController {
 
 	@PutMapping("/clinicAppointment/{reservationNumber}")
 	public String update(@PathVariable Integer reservationNumber, @RequestBody ClinicAppointment clinicAppointment) {
-		
-		ClinicAppointment clinicAppointment1 = service.findById(reservationNumber).orElse(null);
-		//cardId、clinicId、userId不可修改
-		if (clinicAppointment1 != null) {
-			clinicAppointment1.setVetName(clinicAppointment.getVetName());
-			clinicAppointment1.setAppointDate(clinicAppointment.getAppointDate());
-			clinicAppointment1.setAppointTime(clinicAppointment.getAppointTime());
-			clinicAppointment1.setOwnerMobile(clinicAppointment.getOwnerMobile());
-			clinicAppointment1.setPetType(clinicAppointment.getPetType());
-			clinicAppointment1.setPetName(clinicAppointment.getPetName());
-			clinicAppointment1.setServiceItem(clinicAppointment.getServiceItem());
-			clinicAppointment1.setPetSituation(clinicAppointment.getPetSituation());
-			service.save(clinicAppointment1);
-			return "執行updqte操作";
-		} else {
-			return "資料不存在，操作失敗";
-		}
+		service.update(reservationNumber, clinicAppointment);
+		return "執行update操作";
 	}
-	
+
 	@DeleteMapping("/clinicAppointment/{reservationNumber}")
 	public String deleteById(@PathVariable Integer reservationNumber) {
 		service.deleteById(reservationNumber);
 		return "執行delete操作";
 	}
-	
+
 	@GetMapping("/clinicAppointment/{reservationNumber}")
 	public ClinicAppointment findById(@PathVariable Integer reservationNumber) {
 		ClinicAppointment clinicAppointment = service.findById(reservationNumber).orElse(null);
 		return clinicAppointment;
 	}
-	
+
 	@PostMapping("/clinicAppointment/all")
 	public List<ClinicAppointment> findAll() {
 		List<ClinicAppointment> clinicAppointmentlList = service.listAll();
 		return clinicAppointmentlList;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 }
