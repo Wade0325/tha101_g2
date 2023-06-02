@@ -34,7 +34,7 @@
         }
 
         msg.textContent = '';
-        fetch('userController/register', {
+        fetch('register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -43,8 +43,7 @@
                 userAccount: email.value,
                 userPassword: password.value,
                 userTel: phone.value,
-                userName: userName.value,
-                userAddr: address.value
+                userName: userName.value
             }),
         })
             .then(resp => resp.json())

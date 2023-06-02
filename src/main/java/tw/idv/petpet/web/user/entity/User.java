@@ -33,13 +33,15 @@ public class User extends Core{
     private String userAccount;
     private String userPassword;
     private String userName;
+    private String userGender;
+    private Date userBirth;
     private String userTel;
     private String userAddr;
+    private String userEmail;
     private byte[] userPic;
     private String userRep;
     private String userBan;
     private Date userCreateTime;
     private Date userUpdateTime;
     private String userStatus;
-    private String userVai;
 }

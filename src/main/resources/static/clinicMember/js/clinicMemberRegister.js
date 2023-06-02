@@ -75,7 +75,7 @@
 		msg.textContent = '';
 		const fileReader = new FileReader();
 		fileReader.addEventListener('load', e => {
-			const clinicPhotoBase64 = e.target.result.split(',')[1]; //去掉base64編碼逗號前面
+			const clinicPhotoBase64 = btoa(e.target.result);
 			fetch('register', {
 				method: 'POST',
 				headers: {
@@ -110,9 +110,8 @@
 					}
 				});
 		});
-		fileReader.readAsDataURL(clinicPhoto.files[0]);
+		fileReader.readAsArrayBuffer(clinicPhoto.files[0]);
 	});
-
 	const img = document.querySelector('#img');
 	clinicPhoto.addEventListener('change', () => {
 		const file = clinicPhoto.files[0];
@@ -125,4 +124,5 @@
 			fileReader.readAsDataURL(file);
 		}
 	});
+
 })();
