@@ -25,8 +25,7 @@ replay_pid*
 
 #maven
 /target
-.classpath
-bin
+<<<<<<< HEAD
+=======
 
-.factorypath
-.settings
+>>>>>>> Wade

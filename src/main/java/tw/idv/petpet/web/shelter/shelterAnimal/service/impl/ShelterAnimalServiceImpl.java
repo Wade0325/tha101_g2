@@ -1,26 +1,21 @@
 package tw.idv.petpet.web.shelter.shelterAnimal.service.impl;
 
 import java.util.List;
-import java.util.Optional;
 
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import tw.idv.petpet.web.clinicMember.entity.ClinicMember;
-import tw.idv.petpet.web.shelter.Repository.ShelterAnimalRepo;
+import tw.idv.petpet.web.member.entity.Member;
 import tw.idv.petpet.web.shelter.shelterAnimal.dao.ShelterAnimalDao;
 import tw.idv.petpet.web.shelter.shelterAnimal.entity.ShelterAnimal;
 import tw.idv.petpet.web.shelter.shelterAnimal.service.ShelterAnimalService;
-import tw.idv.petpet.web.shelter.shelterMember.entity.ShelterMember;
 
 @Service
 public class ShelterAnimalServiceImpl implements ShelterAnimalService{
 	@Autowired
 	private ShelterAnimalDao dao;
-	@Autowired
-	private ShelterAnimalRepo repo;
 
 	@Transactional
 	@Override
@@ -76,29 +71,14 @@ public class ShelterAnimalServiceImpl implements ShelterAnimalService{
 
 	@Override
 	public List<ShelterAnimal> findAll() {
-	    return repo.findAll();
+		return dao.selectAll();
 	}
-
 	
 	@Transactional
 	@Override
 	public boolean remove(Integer animalId) {
-		repo.deleteById(animalId);		return true;
+		return dao.deleteById(animalId) > 0;
 	}
-	
-	@Override
-    public Optional<ShelterAnimal> findById(Integer animalId) {
-        return repo.findById(animalId);
-    }
-	
-	@Transactional
-	@Override
-	public ShelterAnimal update(ShelterAnimal ShelterAnimal) {
-		 repo.save(ShelterAnimal);
-		 return ShelterAnimal;
-		 
-	}
-
 
 
 }
