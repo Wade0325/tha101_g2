@@ -21,50 +21,50 @@ public class ShelterMemberServiceImpl implements ShelterMemberService{
 	private ShelterMemberRepo repo;
 	@Transactional
 	public ShelterMember register(ShelterMember shelterMember) {
-		if (shelterMember.getShelterName() == null) {
-			shelterMember.setMessage("名稱未輸入");
-			shelterMember.setSuccessful(false);
-			return shelterMember;
-		}
-		if (shelterMember.getShelterPrincipal() == null) {
-			shelterMember.setMessage("負責人未輸入");
-			shelterMember.setSuccessful(false);
-			return shelterMember;
-		}
-		if (shelterMember.getShelterEmail() == null) {
-			shelterMember.setMessage("信箱未輸入");
-			shelterMember.setSuccessful(false);
-			return shelterMember;
-		}
-//		if (dao.selectByShelterName(shelterMember.getShelterName()) != null) {
-//			shelterMember.setMessage("名稱重複");
+//		if (shelterMember.getShelterName() == null) {
+//			shelterMember.setMessage("名稱未輸入");
 //			shelterMember.setSuccessful(false);
 //			return shelterMember;
 //		}
-		if (shelterMember.getShelterPassword() == null) {
-			shelterMember.setMessage("密碼未輸入");
-			shelterMember.setSuccessful(false);
-			return shelterMember;
-		}
-		if (shelterMember.getShelterPhone() == null) {
-			shelterMember.setMessage("電話未輸入");
-			shelterMember.setSuccessful(false);
-			return shelterMember;
-		}
-		if (shelterMember.getShelterAddress() == null) {
-			shelterMember.setMessage("地址未輸入");
-			shelterMember.setSuccessful(false);
-			return shelterMember;
-		}
-		final int id = dao.insert(shelterMember);
-		if (id < 1) {
-			shelterMember.setMessage("註冊有誤，請聯絡管理員!");
-			shelterMember.setSuccessful(false);
-			return shelterMember;
-		}
-		
-		shelterMember.setMessage("註冊成功");
-		shelterMember.setSuccessful(true);
+//		if (shelterMember.getShelterPrincipal() == null) {
+//			shelterMember.setMessage("負責人未輸入");
+//			shelterMember.setSuccessful(false);
+//			return shelterMember;
+//		}
+//		if (shelterMember.getShelterEmail() == null) {
+//			shelterMember.setMessage("信箱未輸入");
+//			shelterMember.setSuccessful(false);
+//			return shelterMember;
+//		}
+////		if (dao.selectByShelterName(shelterMember.getShelterName()) != null) {
+////			shelterMember.setMessage("名稱重複");
+////			shelterMember.setSuccessful(false);
+////			return shelterMember;
+////		}
+//		if (shelterMember.getShelterPassword() == null) {
+//			shelterMember.setMessage("密碼未輸入");
+//			shelterMember.setSuccessful(false);
+//			return shelterMember;
+//		}
+//		if (shelterMember.getShelterPhone() == null) {
+//			shelterMember.setMessage("電話未輸入");
+//			shelterMember.setSuccessful(false);
+//			return shelterMember;
+//		}
+//		if (shelterMember.getShelterAddress() == null) {
+//			shelterMember.setMessage("地址未輸入");
+//			shelterMember.setSuccessful(false);
+//			return shelterMember;
+//		}
+//		final int id = dao.insert(shelterMember);
+//		if (id < 1) {
+//			shelterMember.setMessage("註冊有誤，請聯絡管理員!");
+//			shelterMember.setSuccessful(false);
+//			return shelterMember;
+//		}
+//		
+//		shelterMember.setMessage("註冊成功");
+//		shelterMember.setSuccessful(true);
 		
 		return shelterMember;
 }
