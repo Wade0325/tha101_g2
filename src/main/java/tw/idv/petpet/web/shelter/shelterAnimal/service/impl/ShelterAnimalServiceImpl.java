@@ -8,6 +8,7 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import tw.idv.petpet.web.clinicMember.entity.ClinicMember;
 import tw.idv.petpet.web.shelter.Repository.ShelterAnimalRepo;
 import tw.idv.petpet.web.shelter.shelterAnimal.dao.ShelterAnimalDao;
 import tw.idv.petpet.web.shelter.shelterAnimal.entity.ShelterAnimal;
@@ -94,10 +95,12 @@ public class ShelterAnimalServiceImpl implements ShelterAnimalService{
 		return null;
     }
 	
+	@Transactional
 	@Override
-	public ShelterAnimal update(ShelterAnimal ShelterAnimal) {
-		repo.save(ShelterAnimal);
-		return ShelterAnimal;
+	public boolean save(ShelterAnimal ShelterAnimal) {
+		return repo.save(ShelterAnimal) != null;
 	}
+
+
 
 }

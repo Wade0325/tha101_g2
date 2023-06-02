@@ -37,4 +37,14 @@ public class AnimalEditController {
 		service.update(shelterAnimal);
 		System.out.println("123");
 	}
+	
+	@PutMapping("animaledit/{animalId")
+	public String update(@PathVariable Integer animalId,
+			@RequestBody ShelterAnimal shelterAnimal) {
+		
+		shelterAnimal.setAnimalId(animalId);
+//		service.save(animalId);
+		return "完成";
+		
+	}
 }
