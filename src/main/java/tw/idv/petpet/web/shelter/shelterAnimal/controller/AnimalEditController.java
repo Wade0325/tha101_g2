@@ -17,23 +17,23 @@ import tw.idv.petpet.web.shelter.shelterAnimal.service.ShelterAnimalService;
 @RestController
 @RequestMapping("shelter")
 public class AnimalEditController {
-	@Autowired
-	private ShelterAnimalService service;
-	@PostMapping("animalfindbyid/{animalId}")
-	@ResponseBody
-	public ShelterAnimal read(@PathVariable Integer animalId) {
-		ShelterAnimal shelterAnimal = service.findById(animalId).orElse(null);
+ @Autowired
+ private ShelterAnimalService service;
+ @PostMapping("animalfindbyid/{animalId}")
+ @ResponseBody
+ public ShelterAnimal read(@PathVariable Integer animalId) {
+  ShelterAnimal shelterAnimal = service.findById(animalId).orElse(null);
 
-		service.findById(animalId);
-		System.out.println("findById完成");
-		return shelterAnimal;
-	}
-	
-	@PutMapping("animaledit/{animalId}")
-	@ResponseBody
-	public ShelterAnimal update(@PathVariable Integer animalId,@RequestBody ShelterAnimal shelterAnimal) {
-		shelterAnimal.setAnimalId(animalId);
-		service.update(shelterAnimal);
-		return shelterAnimal;
-	}
+  service.findById(animalId);
+  System.out.println("findById完成");
+  return shelterAnimal;
+ }
+ 
+ @PutMapping("animaledit/{animalId}")
+ @ResponseBody
+ public ShelterAnimal update(@PathVariable Integer animalId,@RequestBody ShelterAnimal shelterAnimal) {
+  shelterAnimal.setAnimalId(animalId);
+  service.update(shelterAnimal);
+  return shelterAnimal;
+ }
 }
