@@ -1,5 +1,6 @@
 package tw.idv.petpet.web.shelter.shelterAnimal.controller;
 
+import java.util.Base64;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +25,17 @@ public class ManageController {
 	@PostMapping("manage")
 	@ResponseBody
 		public List<ShelterAnimal> manage() {
-			List<ShelterAnimal> animal = service.findAll();
-			return animal;
+		  List<ShelterAnimal> animals = service.findAll();
+		    
+//		    for (ShelterAnimal animal : animals) {
+
+//System.out.println(animal.getAnimalPhoto1());		        
+//		        byte[] decodedImage = Base64.getDecoder().decode(base64Image);
+		        
+//		        animal.setAnimalPhoto1(decodedImage);
+//		    }
+		    
+		    return animals;
 		}
 	
 	@DeleteMapping("deleteanimal/{animalId}")

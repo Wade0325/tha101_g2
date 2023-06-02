@@ -1,3 +1,4 @@
+
 package tw.idv.petpet.web.shelter.shelterAnimal.service.impl;
 
 import java.util.List;
@@ -94,11 +95,23 @@ public class ShelterAnimalServiceImpl implements ShelterAnimalService{
 	@Transactional
 	@Override
 	public ShelterAnimal update(ShelterAnimal ShelterAnimal) {
-		 repo.save(ShelterAnimal);
-		 return ShelterAnimal;
-		 
+	    ShelterAnimal existAnimal = repo.findById(ShelterAnimal.getAnimalId()).orElse(null);
+	    if (existAnimal != null) {
+	        existAnimal.setAnimalName(ShelterAnimal.getAnimalName());
+	        existAnimal.setAnimalGender(ShelterAnimal.getAnimalGender());
+	        existAnimal.setAnimalType(ShelterAnimal.getAnimalType());
+	        existAnimal.setAnimalCategory(ShelterAnimal.getAnimalCategory());
+	        existAnimal.setAnimalDescribe(ShelterAnimal.getAnimalDescribe());
+	        existAnimal.setAnimalAge(ShelterAnimal.getAnimalAge());
+	        existAnimal.setAnimalColor(ShelterAnimal.getAnimalColor());
+	        existAnimal.setAnimalPhoto1(ShelterAnimal.getAnimalPhoto1());
+	        existAnimal.setAnimalPhoto2(ShelterAnimal.getAnimalPhoto2());
+	        existAnimal.setAnimalPhoto3(ShelterAnimal.getAnimalPhoto3());
+	        return repo.save(existAnimal);
+	    } else {
+	        return null;
+	    }	 
 	}
-
-
-
 }
+
+

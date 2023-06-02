@@ -28,19 +28,8 @@ public class VetController {
 
 	@PutMapping("/vet/{vetSn}")
 	public String update(@PathVariable Integer vetSn, @RequestBody Vet vet) {
-		Vet vet1 = service.findById(vetSn).orElse(null);
-		// vetSn不能修改
-		if (vet1 != null) {
-			vet1.setClinicId(vet.getClinicId());
-			vet1.setVetName(vet.getVetName());
-			vet1.setVetGender(vet.getVetGender());
-			vet1.setSpecialty(vet.getSpecialty());
-			vet1.setSeniority(vet.getSeniority());
-			service.save(vet1);
-			return "執行update操作";
-		} else {
-			return "資料不存在，操作失敗";
-		}
+		service.update(vetSn, vet);
+		return "執行update操作";
 	}
 
 	@DeleteMapping("/vet/{vetSn}")
@@ -54,25 +43,11 @@ public class VetController {
 		Vet vet = service.findById(vetSn).orElse(null);
 		return vet;
 	}
-	
+
 	@PostMapping("/vet/all")
-	public List<Vet> findAll(){
+	public List<Vet> findAll() {
 		List<Vet> list = service.listAll();
 		return list;
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 }
