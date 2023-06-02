@@ -17,6 +17,9 @@ public interface ShelterAnimalService extends CoreService {
 
 	ShelterAnimal findById(Integer animalId);
 	
+	ShelterAnimal update(ShelterAnimal ShelterAnimal);
+	
+	
 
 	
 }

@@ -93,6 +93,11 @@ public class ShelterAnimalServiceImpl implements ShelterAnimalService{
         }
 		return null;
     }
-
+	
+	@Override
+	public ShelterAnimal update(ShelterAnimal ShelterAnimal) {
+		repo.save(ShelterAnimal);
+		return ShelterAnimal;
+	}
 
 }
