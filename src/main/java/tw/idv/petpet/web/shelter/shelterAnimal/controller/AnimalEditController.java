@@ -15,12 +15,12 @@ import tw.idv.petpet.web.shelter.shelterAnimal.service.ShelterAnimalService;
 @RestController
 @RequestMapping("shelter")
 public class AnimalEditController {
-	@Autowired
-	private ShelterAnimalService service;
-	@PostMapping("animalfindbyid/{animaId}")
-	@ResponseBody
-	public void edit(@PathVariable Integer animalId) {
-		service.findById(animalId);
-		System.out.println("123");
-	}
+//	@Autowired
+//	private ShelterAnimalService service;
+//	@PostMapping("animalfindbyid/{animaId}")
+//	@ResponseBody
+//	public void edit(@PathVariable Integer animalId) {
+//		service.findById(animalId);
+//		System.out.println("123");
+//	}
 }
