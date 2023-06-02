@@ -97,8 +97,10 @@ public class ShelterAnimalServiceImpl implements ShelterAnimalService{
 	
 	@Transactional
 	@Override
-	public boolean save(ShelterAnimal ShelterAnimal) {
-		return repo.save(ShelterAnimal) != null;
+	public ShelterAnimal update(ShelterAnimal ShelterAnimal) {
+		 repo.save(ShelterAnimal);
+		 return ShelterAnimal;
+		 
 	}
 
 
