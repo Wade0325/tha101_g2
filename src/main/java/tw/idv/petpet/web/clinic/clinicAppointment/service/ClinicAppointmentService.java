@@ -39,7 +39,7 @@ public class ClinicAppointmentService {
 		}
 	}
 
-	public Optional<ClinicAppointment> findById(Integer reservationNumber) {
+	public Optional<ClinicAppointment> findByReservationNumber(Integer reservationNumber) {
 		return clinicAppointmentRepository.findById(reservationNumber);
 	}
 
@@ -49,5 +49,9 @@ public class ClinicAppointmentService {
 
 	public List<ClinicAppointment> listAll() {
 		return clinicAppointmentRepository.findAll();
+	}
+	
+	public Optional<ClinicAppointment> findByClinicName(String clinicName) {
+		return clinicAppointmentRepository.findByClinicName(clinicName);
 	}
 }

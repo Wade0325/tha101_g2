@@ -33,6 +33,8 @@ public class ClinicAppointment extends Core {
 	@Column
 	private Integer reservationNumber;
 	@Column
+	private Integer clinicId;
+	@Column
 	private String clinicName;
 	@Column
 	private String vetName;

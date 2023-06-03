@@ -1,5 +1,6 @@
 (() => {
 	const btn = document.querySelector('#btn2');
+	const clinicId	= document.querySelector('#clinicId');
 	const clinicName = document.querySelector('#clinicName');
 	const vetName = document.querySelector('#vetName');
 	const appointDate = document.querySelector('#appointDate');
@@ -21,6 +22,7 @@
 				'Content-Type': 'application/json',
 			},
 			body: JSON.stringify({
+				clinicId: clinicId.value,
 				clinicName: clinicName.value,
 				vetName: vetName.value,
 				appointDate: appointDate.value,
