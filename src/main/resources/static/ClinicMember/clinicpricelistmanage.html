@@ -21,14 +21,11 @@
     ></script>
     <!-- datatable -->
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script
-      defer
-      src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"
-    ></script>
-    <script
-      defer
-      src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap4.min.js"
-    ></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/datetime/1.4.1/js/dataTables.dateTime.min.js"></script>
+    <script src="https://editor.datatables.net/extensions/Editor/js/dataTables.editor.min.js"></script>
+
     <script
       src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
       crossorigin="anonymous"
@@ -41,12 +38,13 @@
       rel="stylesheet"
       href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap4.min.css"
     />
+
     <style>
       #serive_pricelist {
-        font-size: small;
+        font-size: x-small;
       }
       .upload_div {
-        font-size: small;
+        font-size: x-small;
       }
       img.preview {
         width: 150px;
@@ -62,6 +60,14 @@
       }
       .service_pic {
         width: 90px;
+      }
+
+      #serviceImg {
+        width: 90px;
+      }
+      a.editor-create {
+        display: inline-block;
+        margin-bottom: 0.5em;
       }
     </style>
   </head>
@@ -236,7 +242,16 @@
                                 vertical-align: middle;
                               "
                             >
-                              服務項目
+                              產品<br />編號
+                            </th>
+                            <th
+                              style="
+                                width: 9%;
+                                text-align: center;
+                                vertical-align: middle;
+                              "
+                            >
+                              服務<br />項目
                             </th>
                             <th
                               style="
@@ -308,119 +323,21 @@
                                 vertical-align: middle;
                               "
                             >
-                              動作
+                              修改
+                            </th>
+                            <th
+                              style="
+                                width: 9%;
+                                text-align: center;
+                                vertical-align: middle;
+                              "
+                            >
+                              刪除
                             </th>
                           </tr>
                         </thead>
-                        <tbody>
-                          <tr>
-                            <td
-                              style="
-                                width: 9%;
-                                text-align: center;
-                                vertical-align: middle;
-                              "
-                              id="clinic_service_name"
-                            >
-                              洗牙
-                            </td>
-                            <td
-                              style="
-                                width: 9%;
-                                text-align: center;
-                                vertical-align: middle;
-                              "
-                              id="service_price"
-                            >
-                              5000
-                            </td>
-                            <td
-                              style="
-                                width: 9%;
-                                text-align: center;
-                                vertical-align: middle;
-                              "
-                              id="service_discount_price"
-                            >
-                              4010
-                            </td>
-                            <td
-                              style="
-                                width: 9%;
-                                text-align: center;
-                                vertical-align: middle;
-                              "
-                              id="service_item1"
-                            >
-                              血液檢查
-                            </td>
-                            <td
-                              style="
-                                width: 9%;
-                                text-align: center;
-                                vertical-align: middle;
-                              "
-                              id="service_item2"
-                            >
-                              病理檢查
-                            </td>
-                            <td
-                              style="
-                                width: 9%;
-                                text-align: center;
-                                vertical-align: middle;
-                              "
-                              id="service_item3"
-                            >
-                              全身麻醉
-                            </td>
-                            <td
-                              style="
-                                width: 9%;
-                                text-align: center;
-                                vertical-align: middle;
-                              "
-                              id="service_item4"
-                            >
-                              超音波洗牙
-                            </td>
-                            <td
-                              style="
-                                width: 9%;
-                                text-align: center;
-                                vertical-align: middle;
-                              "
-                            >
-                              <img
-                                class="service_pic"
-                                src="images/petpet.png"
-                                alt=""
-                                id="service_img"
-                              />
-                            </td>
-                            <td
-                              style="
-                                width: 9%;
-                                text-align: center;
-                                vertical-align: middle;
-                              "
-                            >
-                              <button id="btn-amend" class="btn-sm">
-                                修改
-                              </button>
-                              <button id="btn-delete" class="btn-sm">
-                                刪除
-                              </button>
-                            </td>
-                          </tr>
-                        </tbody>
+                        <tbody id="tbody"></tbody>
                       </table>
-
-                      <div style="text-align: center">
-                        <button class="btn btn-danger" type="submit">
-                          Submit form
-                        </button>
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -454,8 +371,7 @@
       src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
       crossorigin="anonymous"
     ></script>
-   <!--  <script src="assets/demo/chart-area-demo.js"></script>
-    <script src="assets/demo/chart-bar-demo.js"></script> -->
+
     <script
       src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
       crossorigin="anonymous"
@@ -466,26 +382,57 @@
       // document.getElementById('btn_upload').addEventListener('click', )
     </script>
     <!-- datetable -->
+
     <script>
-      $(document).ready(function () {
+      document.addEventListener("DOMContentLoaded", function () {
         var table = $("#price_list").DataTable({
-          autoWidth: true,
+          ajax: function (d, cb) {
+            fetch("../PriceList/init")
+              .then((response) => response.json())
+              .then((data) => {
+                console.log(data);
+                cb(data);
+              });
+          },
+          columns: [
+            { data: "clinicServiceId" }, //對應資料庫的欄位名稱
+            { data: "clinicServiceName" },
+            { data: "servicePrice" },
+            { data: "serviceDiscountPrice" },
+            { data: "serviceItem1" },
+            { data: "serviceItem2" },
+            { data: "serviceItem3" },
+            { data: "serviceItem4" },
+            {
+              data: "serviceImg",
+              render: function (data, type, row) {
+                if (type === "display") {
+                  var imgElement =
+                    '<img id="serviceImg" src="data:image/png;base64,' +
+                    data +
+                    '"/>';
+                  return imgElement;
+                }
+                return data;
+              },
+            },
+            {
+              data: null,
+              className: "dt-center editor-edit",
+              defaultContent: '<i class="fa fa-pencil"/>',
+              orderable: false,
+            },
+            {
+              data: null,
+              className: "dt-center editor-delete",
+              defaultContent: '<i class="fa fa-trash"/>',
+              orderable: false,
+            },
+          ],
         });
-
-        // $("#fileupload").on("change", function (e) {
-        //   var picture_list = $(".picture_list");
-        //   picture_list.html(""); // 清空
-
-        //   for (let i = 0; i < this.files.length; i++) {
-        //     let reader = new FileReader();
-        //     reader.readAsDataURL(this.files[i]);
-        //     reader.addEventListener("load", function () {
-        //       let li_html = `<li><img src="${reader.result}" class="preview"></li>`;
-        //       picture_list.append(li_html);
-        //     });
-        //   }
-        // });
       });
+
+    
     </script>
   </body>
 </html>
