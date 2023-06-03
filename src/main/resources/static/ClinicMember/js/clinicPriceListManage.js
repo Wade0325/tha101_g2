@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function () {
         render: function (data, type, row) {
           if (type === "display") {
             var imgElement =
-              '<img id="serviceImg" src="data:image/png;base64,' +
+              '<img id="serviceImg" src="data:image/jpge;base64,' +
               data +
               '"/>';
             return imgElement;
@@ -80,6 +80,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 /*  ----------------------------------------------- */
  
+ 
       $(".editor-edit").on("click", function () {
         console.log('有嗎');
         var row = $(this).closest("tr");
@@ -92,8 +93,14 @@ document.addEventListener("DOMContentLoaded", function () {
   var serviceItem2 = data.serviceItem2;
   var serviceItem3 = data.serviceItem3;
   var serviceItem4 = data.serviceItem4;
-  var serviceImg = data.serviceImg;
-       console.log('第一個'+serviceImg);
+  
+
+ 
+ 
+ 
+ 
+ 
+ 
       // 更新模态框中的表单字段值
       $("#clinicServiceId").val(clinicServiceId);
       $("#clinicServiceName").val(clinicServiceName);
@@ -103,17 +110,10 @@ document.addEventListener("DOMContentLoaded", function () {
       $("#serviceItem2").val(serviceItem2);
     $("#serviceItem3").val(serviceItem3);
   $("#serviceItem4").val(serviceItem4);
-//  $("#serviceImg").attr("src", "data:image/png;base64," + serviceImg);
-  $("#serviceImg").attr("src", "data:image/png;base64," + serviceImg).show();
 
-  console.log('第二個'+$("#serviceImg").length);
+ 
   
-  const file = document.querySelector('#file');
-  file.addEventListener('change', () => {
-    const service_img = document.querySelector('#service_img');
-    service_img.src = URL.createObjectURL(file.files[0]);
-  });
-  
+
       // 显示模态框
       $("#updateModal").modal("show");
     });
@@ -128,7 +128,9 @@ $("#updateBtn").on("click", function () {
   var serviceItem2 = $("#serviceItem2").val();
   var serviceItem3 = $("#serviceItem3").val();
   var serviceItem4 = $("#serviceItem4").val();
-//  var serviceImg = document.querySelector("#service_img").src;
+  
+  
+  
   // 在这里可以执行更新操作或发送更新请求到后端
 
   // 添加其他字段
@@ -140,10 +142,10 @@ $("#updateBtn").on("click", function () {
     serviceItem2: serviceItem2,
     serviceItem3: serviceItem3,
     serviceItem4: serviceItem4,
-    serviceImg: serviceImg
+  
     // 添加其他字段
   };
-
+console.log("資料"+data);
 // 发送Ajax请求
 $.ajax({
   url: "../PriceList/update/" + clinicServiceId, // 替换为实际的后端接口URL
@@ -153,7 +155,7 @@ $.ajax({
   success: function (response) {
     // 更新成功的处理逻辑
     console.log('更新成功');
-    
+    table.ajax.reload()
   },
   error: function (xhr, status, error) {
     // 更新失败的处理逻辑

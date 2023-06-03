@@ -362,6 +362,78 @@
         </footer>
       </div>
     </div>
+    
+<!------------彈窗----start-------- -->
+
+<!-- 模态框 -->
+<div class="modal fade" id="updateModal" tabindex="-1" aria-labelledby="updateModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="updateModalLabel">更新信息</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <!-- 在这里添加更新表单或其他内容 -->
+        <form>
+          <div class="mb-3">
+            <label for="clinicServiceId" class="form-label">產品編號</label>
+            <input type="text" class="form-control" id="clinicServiceId" readonly>
+          </div>
+          <div class="mb-3">
+            <label for="clinicServiceName" class="form-label">服務項目</label>
+            <input type="text" class="form-control" id="clinicServiceName">
+          </div>
+          <div class="mb-3">
+            <label for="servicePrice" class="form-label">價格</label>
+            <input type="text" class="form-control" id="servicePrice">
+          </div>
+          <div class="mb-3">
+            <label for="serviceDiscountPrice" class="form-label">優惠價</label>
+            <input type="text" class="form-control" id="serviceDiscountPrice">
+          </div>
+          <div class="mb-3">
+            <label for="serviceItem1" class="form-label">細項一</label>
+            <input type="text" class="form-control" id="serviceItem1">
+          </div>
+          <div class="mb-3">
+            <label for="serviceItem2" class="form-label">細項二</label>
+            <input type="text" class="form-control" id="serviceItem2">
+          </div>
+          <div class="mb-3">
+            <label for="serviceItem3" class="form-label">細項三</label>
+            <input type="text" class="form-control" id="serviceItem3">
+          </div>
+          <div class="mb-3">
+            <label for="serviceItem4" class="form-label">細項四</label>
+            <input type="text" class="form-control" id="serviceItem4">
+          </div>
+         <div>
+         <p>
+             服務照片
+				<input type="file" id="file" multiple />
+				 <br />
+				 <img id="serviceImg"/>
+				</p>
+         </div>
+         
+          
+          <!-- 添加其他需要更新的字段 -->
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-primary" id="updateBtn">更新</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!------------彈窗----end-------- -->
+    
+    
+    
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
       crossorigin="anonymous"
@@ -381,58 +453,10 @@
     <script>
       // document.getElementById('btn_upload').addEventListener('click', )
     </script>
-    <!-- datetable -->
-
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        var table = $("#price_list").DataTable({
-          ajax: function (d, cb) {
-            fetch("../PriceList/init")
-              .then((response) => response.json())
-              .then((data) => {
-                console.log(data);
-                cb(data);
-              });
-          },
-          columns: [
-            { data: "clinicServiceId" }, //對應資料庫的欄位名稱
-            { data: "clinicServiceName" },
-            { data: "servicePrice" },
-            { data: "serviceDiscountPrice" },
-            { data: "serviceItem1" },
-            { data: "serviceItem2" },
-            { data: "serviceItem3" },
-            { data: "serviceItem4" },
-            {
-              data: "serviceImg",
-              render: function (data, type, row) {
-                if (type === "display") {
-                  var imgElement =
-                    '<img id="serviceImg" src="data:image/png;base64,' +
-                    data +
-                    '"/>';
-                  return imgElement;
-                }
-                return data;
-              },
-            },
-            {
-              data: null,
-              className: "dt-center editor-edit",
-              defaultContent: '<i class="fa fa-pencil"/>',
-              orderable: false,
-            },
-            {
-              data: null,
-              className: "dt-center editor-delete",
-              defaultContent: '<i class="fa fa-trash"/>',
-              orderable: false,
-            },
-          ],
-        });
-      });
+    
+    
+    <script src="js/clinicPriceListManage.js">  </script>
 
     
-    </script>
   </body>
 </html>
