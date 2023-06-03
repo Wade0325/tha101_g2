@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -38,9 +37,9 @@ public class ClinicAppointmentController {
 		return "執行delete操作";
 	}
 
-	@GetMapping("/clinicAppointment/{reservationNumber}")
-	public ClinicAppointment findById(@PathVariable Integer reservationNumber) {
-		ClinicAppointment clinicAppointment = service.findById(reservationNumber).orElse(null);
+	@PostMapping("/clinicAppointment/{reservationNumber}")
+	public ClinicAppointment findByReservationNumber(@PathVariable Integer reservationNumber) {
+		ClinicAppointment clinicAppointment = service.findByReservationNumber(reservationNumber).orElse(null);
 		return clinicAppointment;
 	}
 
@@ -49,5 +48,10 @@ public class ClinicAppointmentController {
 		List<ClinicAppointment> clinicAppointmentlList = service.listAll();
 		return clinicAppointmentlList;
 	}
-
+	
+	@PostMapping("/clinicAppointment/{ClinicName}")
+	public ClinicAppointment findByClinicName(@PathVariable String ClinicName) {
+		ClinicAppointment clinicAppointment = service.findByClinicName(ClinicName).orElse(null);
+		return clinicAppointment;
+	}
 }
