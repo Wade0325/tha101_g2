@@ -14,7 +14,7 @@ public class ForumController {
 	@Autowired
 	private ForumRepository forumRepository;
 	
-	@PostMapping("/forum")
+	@PostMapping("/publish")
 	public String insert(@RequestBody Forum forum) {
 		forumRepository.save(forum);
 		return "執行資料庫的 create 操作";
