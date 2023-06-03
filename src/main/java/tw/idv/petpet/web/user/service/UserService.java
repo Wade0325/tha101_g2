@@ -9,5 +9,5 @@ public interface UserService extends CoreService {
 
     public User findById(Integer userid);
 
-    public String login(User user);
+    public User login(User user);
 }

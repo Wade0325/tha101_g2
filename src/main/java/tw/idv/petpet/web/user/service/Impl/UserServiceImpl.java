@@ -38,9 +38,9 @@ public class UserServiceImpl implements UserService{
     
 
     @Override
-    public String login(User user) {
-        String str = userRepository.login(user.getUserAccount(), user.getUserPassword());
-        if (str != null) {
+    public User login(User user) {
+        User user2 = userRepository.login(user.getUserAccount(), user.getUserPassword());
+        if (user2 != null) {
             user.setSuccessful(true);
             System.out.println("登入成功");
         } else {
@@ -48,7 +48,7 @@ public class UserServiceImpl implements UserService{
             user.setMessage("帳號密碼錯誤");
             System.out.println("登入失敗");
         }
-        return user.getMessage();
+        return user2;
     }
 
 }

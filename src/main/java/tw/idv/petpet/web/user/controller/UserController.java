@@ -1,5 +1,7 @@
 package tw.idv.petpet.web.user.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -43,16 +45,22 @@ public class UserController {
 //	}
 
 
-	    @GetMapping("/findById/{userId}")
-	    public User findEmailById(@PathVariable Integer userId) {
+	    @GetMapping("/findById")
+	    public User findEmailById(HttpSession session) {
 	        System.out.println("執行 findEmailById 方法成功");
-	        return userService.findById(userId);
+	        User s =  (User)session.getAttribute("userAccount");
+	       
+	        return s;
 	    }
 	    
 	    @PostMapping("/login")
-	    public User login(@RequestBody User user) {
+	    public User login(@RequestBody User user ,HttpSession session) {
 	        System.out.println("執行 login 方法成功");
 	        userService.login(user);
+	        if(user.isSuccessful()) {
+	        	session.setAttribute("userAccount", user);
+	        }
+	        
 	        return user;
 	    }
         
