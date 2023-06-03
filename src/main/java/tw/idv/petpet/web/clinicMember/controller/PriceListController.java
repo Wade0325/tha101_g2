@@ -71,13 +71,7 @@ public class PriceListController {
 	  // 调用 findAll() 获取数据
 	    List<PriceList> priceLists = priceListRespository.findAll();
 
-	//  // 创建一个包含 "data" 属性的 JsonObject
-	//  JsonObject jsonObject = new JsonObject();
-	//  JsonArray jsonArray = new Gson().toJsonTree(priceLists).getAsJsonArray();
-	//  jsonObject.add("data", jsonArray);
-	//
-	//  // 将 JsonObject 转换为 JSON 字符串
-	//  String json = jsonObject.toString();
+	
 	  Map<String, List<PriceList>> map = new HashMap();
 	  map.put("data", priceLists);
 	  return map;
