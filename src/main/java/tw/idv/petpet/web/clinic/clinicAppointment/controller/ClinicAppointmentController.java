@@ -50,7 +50,7 @@ public class ClinicAppointmentController {
 		return clinicAppointmentlList;
 	}
 
-	@PostMapping(value = "/clinicAppointment/{ClinicName}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@PostMapping("/clinicAppointment/{ClinicName}")
 	public List<ClinicAppointment> findByClinicName(@PathVariable String ClinicName) {
 		List<ClinicAppointment> clinicAppointment = service.findByClinicName(ClinicName);
 		return clinicAppointment;
