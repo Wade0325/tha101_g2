@@ -10,4 +10,6 @@ public interface UserService extends CoreService {
     public User findById(Integer userid);
 
     public User login(User user);
+    
+    public User findByAccount(User user);
 }

@@ -12,15 +12,13 @@ public class UserServiceImpl implements UserService{
 
     @Autowired
     private UserRepository userRepository;
-    
-    
 
     @Override
     public User register(User user) {
         System.out.println("進入Service 執行 register 方法成功");
-        String str = userRepository.findByAccount(user.getUserAccount());
+        String userAccount = userRepository.findByAccount(user).getUserAccount();
 
-        if (str != null) {
+        if (userAccount != null) {
             user.setSuccessful(false);
             user.setMessage("帳號已存在");
         } else {
@@ -39,16 +37,23 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public User login(User user) {
-        User user2 = userRepository.login(user.getUserAccount(), user.getUserPassword());
-        if (user2 != null) {
-            user.setSuccessful(true);
+        User userLogin = userRepository.login(user.getUserAccount(), user.getUserPassword());
+        if (userLogin != null) {
+            userLogin.setSuccessful(true);
             System.out.println("登入成功");
+            return userLogin;
         } else {
-            user.setSuccessful(false);
-            user.setMessage("帳號密碼錯誤");
+            userLogin.setSuccessful(false);
+            userLogin.setMessage("帳號密碼錯誤");
             System.out.println("登入失敗");
+            return null;
         }
-        return user2;
     }
+
+	@Override
+	public User findByAccount(User user) {
+		return userRepository.findByAccount(user);
+		
+	}
 
 }
