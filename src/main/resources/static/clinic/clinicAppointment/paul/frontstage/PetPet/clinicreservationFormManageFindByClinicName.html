@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>FindAll</title>
+</head>
+
+<body>
+	<div align="center">
+		<h1>單一診所預約清單</h1>
+		<input type="text" id="searchInput" placeholder="輸入要搜尋的診所名稱">
+		<button type="button" onclick="searchClinicAppointment()">搜尋</button>
+		<br></br>
+		<table border="1">
+			<thead>
+				<tr>
+					<th>診所名稱</th>
+					<th>獸醫名稱</th>
+					<th>預約日期</th>
+					<th>預約時間</th>
+					<th>飼主姓名</th>
+					<th>飼主電話</th>
+					<th>寵物類別</th>
+					<th>寵物名稱</th>
+					<th>服務項目</th>
+					<th>狀況描述</th>
+				</tr>
+			</thead>
+			<tbody id="tbody"></tbody>
+		</table>
+		<script>
+			function searchClinicAppointment() {
+				const searchInput = document.querySelector('#searchInput');
+				const clinicName = searchInput.value;
+
+				// 清空表格內容
+				tbody.innerHTML = '';
+
+				fetch('../../../../../clinicAppointment/' + clinicName,
+					{
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json'
+						},
+						body: JSON.stringify({
+							clinicName: clinicName
+						})
+					})
+					.then(resp => resp.json())
+					.then(ClinicAppointment => {
+						for (let appointment of ClinicAppointment) {
+							tbody.innerHTML += `
+                    <tr>
+                        <td>${appointment.clinicName}</td>
+                        <td id="vetName${appointment.clinicName}">${appointment.vetName}</td>
+                        <td>${appointment.clinicName}</td>
+                        <td id="appointTime${appointment.clinicName}">${appointment.appointTime}</td>
+                        <td id="ownerMobile${appointment.clinicName}">${appointment.ownerMobile}</td>
+                        <td id="petType${appointment.clinicName}">${appointment.petType}</td>
+                        <td id="petName${appointment.clinicName}">${appointment.petName}</td>
+                        <td id="serviceItem${appointment.clinicName}">${appointment.serviceItem}</td>
+                        <td id="ownerName${appointment.clinicName}">${appointment.ownerName}</td>
+                        <td id="petSituation${appointment.clinicName}">${appointment.petSituation}</td>
+                        
+                        <td>
+                            <button type="button" class="btn-edit" onclick="saveClick(${appointment.clinicName})">儲存</button>
+                            <button type="button" class="btn-delete" onclick="deleteClick(${appointment.clinicName})">刪除</button>
+                        </td>
+                    </tr>`;
+						}
+					});
+			}
+
+
+		</script>
+</body>
+
+</html>
