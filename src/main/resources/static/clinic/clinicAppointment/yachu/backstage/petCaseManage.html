@@ -40,7 +40,7 @@
     />
 
     <style>
-      #serive_pricelist {
+      #petCase {
         font-size: x-small;
       }
       .upload_div {
@@ -229,12 +229,21 @@
                       <div class="pb-2"></div>
 
                       <table
-                        id="vet"
+                        id="petCase"
                         class="table table-striped table-bordered no-footer cell-border"
                         style="width: 100%"
                       >
                         <thead>
                           <tr style="text-align: center">
+                            <th
+                              style="
+                                width: 9%;
+                                text-align: center;
+                                vertical-align: middle;
+                              "
+                            >
+                              病例編號
+                            </th>
                             <th
                               style="
                                 width: 9%;
@@ -251,7 +260,7 @@
                                 vertical-align: middle;
                               "
                             >
-                              診所編號
+                              會員編號
                             </th>
                             <th
                               style="
@@ -260,7 +269,7 @@
                                 vertical-align: middle;
                               "
                             >
-                              姓名
+                              預約日期
                             </th>
                             <th
                               style="
@@ -269,7 +278,7 @@
                                 vertical-align: middle;
                               "
                             >
-                              姓別
+                              飼主手機
                             </th>
                             <th
                               style="
@@ -278,7 +287,7 @@
                                 vertical-align: middle;
                               "
                             >
-                              專長
+                              寵物類別
                             </th>
                             <th
                               style="
@@ -287,9 +296,53 @@
                                 vertical-align: middle;
                               "
                             >
-                              年資
+                              寵物名字
                             </th>
-
+                            <th
+                              style="
+                                width: 9%;
+                                text-align: center;
+                                vertical-align: middle;
+                              "
+                            >
+                              寵物性別
+                            </th>
+                            <th
+                              style="
+                                width: 9%;
+                                text-align: center;
+                                vertical-align: middle;
+                              "
+                            >
+                              寵物年齡
+                            </th>
+                            <th
+                              style="
+                                width: 9%;
+                                text-align: center;
+                                vertical-align: middle;
+                              "
+                            >
+                              寵物慨況
+                            </th>
+                            <th
+                              style="
+                                width: 9%;
+                                text-align: center;
+                                vertical-align: middle;
+                              "
+                            >
+                              治療處方
+                            </th>
+                            <th
+                              style="
+                                width: 9%;
+                                text-align: center;
+                                vertical-align: middle;
+                              "
+                            >
+                              寵物狀態
+                            </th>
                             <th
                               style="
                                 width: 9%;
@@ -362,28 +415,73 @@
             <!-- 在这里添加更新表单或其他内容 -->
             <form>
               <div class="mb-3">
+                <label for="casesSn" class="form-label">病歷編號</label>
+                <input type="text" class="form-control" id="casesSn" readonly />
+              </div>
+              <div class="mb-3">
                 <label for="vetSn" class="form-label">獸醫編號</label>
-                <input type="text" class="form-control" id="vetSn" readonly />
+                <input type="text" class="form-control" id="vetSn" />
               </div>
               <div class="mb-3">
-                <label for="clinicId" class="form-label">診所編號</label>
-                <input type="text" class="form-control" id="clinicId" />
+                <label for="userId" class="form-label">會員編號</label>
+                <input type="text" class="form-control" id="userId" />
               </div>
               <div class="mb-3">
-                <label for="vetName" class="form-label">姓名</label>
-                <input type="text" class="form-control" id="vetName" />
+                <label for="appointDate" class="form-label">預約日期</label>
+                <input type="date" class="form-control" id="appointDate" />
               </div>
               <div class="mb-3">
-                <label for="vetGender" class="form-label" readonly>性別</label>
-                <input type="text" class="form-control" id="vetGender" readonly/>
+                <label for="ownerMobile" class="form-label">飼主電話</label>
+                <input type="text" class="form-control" id="ownerMobile" />
               </div>
               <div class="mb-3">
-                <label for="specialty" class="form-label">專長</label>
-                <input type="text" class="form-control" id="specialty" />
+                <label for="petType" class="form-label">寵物類別</label>
+                <input type="text" class="form-control" id="petType" />
               </div>
               <div class="mb-3">
-                <label for="seniority" class="form-label">年資</label>
-                <input type="text" class="form-control" id="seniority" />
+                <label for="petName" class="form-label">寵物姓名</label>
+                <input type="text" class="form-control" id="petName" />
+              </div>
+              <div class="mb-3">
+                <label for="petGender" class="form-label">寵物性別</label>
+                <input type="text" class="form-control" id="petGender" />
+              </div>
+              <div class="mb-3">
+                <label for="petAge" class="form-label">寵物年齡</label>
+                <input type="text" class="form-control" id="petAge" />
+              </div>
+              <div class="mb-3">
+                <p>
+                  寵物慨況
+                  <textarea
+                    name="petSituation"
+                    class="form-control"
+                    id="petSituation"
+                    cols="30"
+                    rows="4"
+                  ></textarea>
+                </p>
+              </div>
+               <div class="mb-3">
+                <p>
+                  治療處方
+                  <textarea
+                    name="treatment"
+                    class="form-control"
+                    id="treatment"
+                    cols="30"
+                    rows="4"
+                  ></textarea>
+                </p>
+              </div>
+              <div class="mb-3">
+                <p>
+                  狀態
+                  <select name="result" id="result">
+                    <option value="治療中">治療中</option>
+                    <option value="已完成">已完成</option>
+                  </select>
+                </p>
               </div>
               <!-- 添加其他需要更新的字段 -->
             </form>
@@ -426,6 +524,6 @@
       // document.getElementById('btn_upload').addEventListener('click', )
     </script>
 
-    <script src="js/vetManage.js"></script>
+    <script src="js/petCaseManage.js"></script>
   </body>
 </html>

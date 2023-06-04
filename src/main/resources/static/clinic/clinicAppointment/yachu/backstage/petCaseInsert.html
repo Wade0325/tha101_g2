@@ -21,11 +21,14 @@
     ></script>
     <!-- datatable -->
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap4.min.js"></script>
-    <script src="https://cdn.datatables.net/datetime/1.4.1/js/dataTables.dateTime.min.js"></script>
-    <script src="https://editor.datatables.net/extensions/Editor/js/dataTables.editor.min.js"></script>
-
+    <script
+      defer
+      src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap4.min.js"
+    ></script>
     <script
       src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
       crossorigin="anonymous"
@@ -38,13 +41,12 @@
       rel="stylesheet"
       href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap4.min.css"
     />
-
     <style>
       #serive_pricelist {
-        font-size: x-small;
+        font-size: small;
       }
       .upload_div {
-        font-size: x-small;
+        font-size: small;
       }
       img.preview {
         width: 150px;
@@ -60,14 +62,6 @@
       }
       .service_pic {
         width: 90px;
-      }
-
-      #serviceImg {
-        width: 90px;
-      }
-      a.editor-create {
-        display: inline-block;
-        margin-bottom: 0.5em;
       }
     </style>
   </head>
@@ -216,7 +210,7 @@
             <h1
               class="font-weight-medium font-size-18 mb-0 text-center pt-2 pb-2"
             >
-              獸醫資料表
+              新增寵物病例
             </h1>
 
             <!--main-->
@@ -225,93 +219,117 @@
                 <div class="container">
                   <div class="card">
                     <div class="card-body">
-                      <button class="btn-sm">新增獸醫</button>
                       <div class="pb-2"></div>
-
-                      <table
-                        id="vet"
-                        class="table table-striped table-bordered no-footer cell-border"
-                        style="width: 100%"
-                      >
-                        <thead>
-                          <tr style="text-align: center">
-                            <th
-                              style="
-                                width: 9%;
-                                text-align: center;
-                                vertical-align: middle;
-                              "
-                            >
+                      <form id="clinic_insert" action="">
+                        <div class="row">
+                          <div class="col-md-6">
+                            <p>
                               獸醫編號
-                            </th>
-                            <th
-                              style="
-                                width: 9%;
-                                text-align: center;
-                                vertical-align: middle;
-                              "
-                            >
-                              診所編號
-                            </th>
-                            <th
-                              style="
-                                width: 9%;
-                                text-align: center;
-                                vertical-align: middle;
-                              "
-                            >
-                              姓名
-                            </th>
-                            <th
-                              style="
-                                width: 9%;
-                                text-align: center;
-                                vertical-align: middle;
-                              "
-                            >
-                              姓別
-                            </th>
-                            <th
-                              style="
-                                width: 9%;
-                                text-align: center;
-                                vertical-align: middle;
-                              "
-                            >
-                              專長
-                            </th>
-                            <th
-                              style="
-                                width: 9%;
-                                text-align: center;
-                                vertical-align: middle;
-                              "
-                            >
-                              年資
-                            </th>
+                              <input type="Integer" id="vetSn" />
+                            </p>
+                          </div>
+                          <div class="col-md-6">
+                            <p>
+                              會員帳號
+                              <input type="Integer" id="userId" />
+                            </p>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <p>
+                              預約日期
+                              <input type="date" id="appointDate" />
+                            </p>
+                          </div>
+                          <div class="col-md-6">
+                            <p>
+                              飼主手機
+                              <input type="String" id="ownerMobile" />
+                            </p>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <p>
+                              寵物類別
+                              <input type="String" id="petType" />
+                            </p>
+                          </div>
+                          <div class="col-md-6">
+                            <p>
+                              寵物名字
+                              <input type="String" id="petName" />
+                            </p>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <p>
+                              寵物性別
+                               <select name="petGender" id="petGender">
+                                <option value="公">公</option>
+                                <option value="母">母</option>
+                                <option value="未知">未知</option>
+                              </select>
+                             
+                            </p>
+                          </div>
+                          <div class="col-md-6">
+                            <p>
+                              寵物年齡
+                              <input type="Interger" id="petAge" />
+                            </p>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <p>
+                              寵物慨況
+                              <textarea
+                                name="petSituation"
+                                class="form-control"
+                                id="petSituation"
+                                cols="30"
+                                rows="4"
+                              ></textarea>
+                            </p>
+                          </div>
+                         	<div class="col-md-6">
+                            <p>
+                             治療處方
+                              <textarea
+                                name="treatment"
+                                class="form-control"
+                                id="treatment"
+                                cols="30"
+                                rows="4"
+                              ></textarea>
+                            </p>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <p>
+                              狀態
+                              <select name="result" id="result">
+                                <option value="治療中">治療中</option>
+                                <option value="已完成">已完成</option>
+                              </select>
+                            </p>
+                          </div>
+                        </div>
+                      </form>
 
-                            <th
-                              style="
-                                width: 9%;
-                                text-align: center;
-                                vertical-align: middle;
-                              "
-                            >
-                              修改
-                            </th>
-                            <th
-                              style="
-                                width: 9%;
-                                text-align: center;
-                                vertical-align: middle;
-                              "
-                            >
-                              刪除
-                            </th>
-                          </tr>
-                        </thead>
-                        <tbody id="tbody"></tbody>
-                      </table>
+                      <div style="text-align: center">
+                        <button
+                          id="submitbtn"
+                          class="btn btn-danger"
+                          type="submit"
+                        >
+                          送出
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -336,76 +354,6 @@
         </footer>
       </div>
     </div>
-
-    <!------------彈窗----start-------- -->
-
-    <!-- 模态框 -->
-    <div
-      class="modal fade"
-      id="updateModal"
-      tabindex="-1"
-      aria-labelledby="updateModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="updateModalLabel">更新信息</h5>
-            <button
-              type="button"
-              class="btn-close"
-              data-bs-dismiss="modal"
-              aria-label="Close"
-            ></button>
-          </div>
-          <div class="modal-body">
-            <!-- 在这里添加更新表单或其他内容 -->
-            <form>
-              <div class="mb-3">
-                <label for="vetSn" class="form-label">獸醫編號</label>
-                <input type="text" class="form-control" id="vetSn" readonly />
-              </div>
-              <div class="mb-3">
-                <label for="clinicId" class="form-label">診所編號</label>
-                <input type="text" class="form-control" id="clinicId" />
-              </div>
-              <div class="mb-3">
-                <label for="vetName" class="form-label">姓名</label>
-                <input type="text" class="form-control" id="vetName" />
-              </div>
-              <div class="mb-3">
-                <label for="vetGender" class="form-label" readonly>性別</label>
-                <input type="text" class="form-control" id="vetGender" readonly/>
-              </div>
-              <div class="mb-3">
-                <label for="specialty" class="form-label">專長</label>
-                <input type="text" class="form-control" id="specialty" />
-              </div>
-              <div class="mb-3">
-                <label for="seniority" class="form-label">年資</label>
-                <input type="text" class="form-control" id="seniority" />
-              </div>
-              <!-- 添加其他需要更新的字段 -->
-            </form>
-          </div>
-          <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-secondary"
-              data-bs-dismiss="modal"
-            >
-              取消
-            </button>
-            <button type="button" class="btn btn-primary" id="updateBtn">
-              更新
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!------------彈窗----end-------- -->
-
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
       crossorigin="anonymous"
@@ -415,17 +363,14 @@
       src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
       crossorigin="anonymous"
     ></script>
-
+    <!--  <script src="assets/demo/chart-area-demo.js"></script>
+    <script src="assets/demo/chart-bar-demo.js"></script> -->
     <script
       src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
       crossorigin="anonymous"
     ></script>
     <script src="js/datatables-simple-demo.js"></script>
 
-    <script>
-      // document.getElementById('btn_upload').addEventListener('click', )
-    </script>
-
-    <script src="js/vetManage.js"></script>
+    <script src="js/petCaseInsert.js"></script>
   </body>
 </html>

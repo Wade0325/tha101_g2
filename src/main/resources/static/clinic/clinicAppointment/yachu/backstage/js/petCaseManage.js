@@ -1,8 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
-    var table = $("#vet").DataTable({
-		
+    var table = $("#petCase").DataTable({
       ajax: function (d, cb) {
-        fetch("../../../../vet/init")
+        fetch("http://localhost:8080/petpet/petcases")
           .then((response) => response.json())
           .then((data) => {
             console.log(data);
@@ -10,12 +9,18 @@ document.addEventListener("DOMContentLoaded", function () {
           });
       },
       columns: [
-        { data: "vetSn" }, //對應資料庫的欄位名稱
-        { data: "clinicId" },
-        { data: "vetName" },
-        { data: "vetGender" },
-        { data: "specialty" },
-        { data: "seniority" },
+        { data: "casesSn" }, //對應資料庫的欄位名稱
+        { data: "vetSn" },
+        { data: "userId" },
+        { data: "appointDate" },
+        { data: "ownerMobile" },
+        { data: "petType" },
+        { data: "petName" },
+        { data: "petGender" },
+        { data: "petAge" },
+        { data: "petSituation" },
+         { data: "treatment" },
+        { data: "result" },
         {
           data: null,
           className: "dt-center editor-edit ",
@@ -37,13 +42,13 @@ document.addEventListener("DOMContentLoaded", function () {
         $(".editor-delete").on("click", function () {
           let row = $(this).closest("tr");
           
-          var vetSn = table.row(row).data().vetSn;
-          console.log("Clicked vetSn:", vetSn);
+          var casesSn = table.row(row).data().casesSn;
+          console.log("Clicked casesSn:", casesSn);
           // 在这里可以执行你想要的操作，使用vetSn的值
           
             if (confirm('確定要刪除嗎？')) {
         // 發送刪除請求到後端 API
-        fetch('../../../../vet/delete/' + vetSn, {
+        fetch('http://localhost:8080/petpet/petcases/delete/' + casesSn, {
           method: 'DELETE'
         })
         .then(function(response) {
@@ -71,22 +76,32 @@ document.addEventListener("DOMContentLoaded", function () {
           console.log('有嗎');
           var row = $(this).closest("tr");
         var data = table.row(row).data();
+        var casesSn = data.casesSn;
         var vetSn = data.vetSn;
-        var clinicId = data.clinicId;
-        var vetName = data.vetName;
-        var vetGender = data.vetGender;
-        var specialty = data.specialty;
-        var seniority = data.seniority;
+        var userId = data.userId;
+        var appointDate= data.appointDate;
+        var ownerMobile = data.ownerMobile;
+        var petType = data.petType;
+        var petName = data.petName;
+        var petGender = data.petGender;
+        var petAge = data.petAge;
+        var petSituation = data.petSituation;
+         var treatment =data.treatment;
+        var result = data.result;
     
-    
-  
         // 更新模态框中的表单字段值
+        $("#casesSn").val(casesSn);
         $("#vetSn").val(vetSn);
-        $("#clinicId").val(clinicId);
-        $("#vetName").val(vetName);
-        $("#vetGender").val(vetGender);
-        $("#specialty").val(specialty);    
-        $("#seniority").val(seniority);
+        $("#userId").val(userId);
+        $("#appointDate").val(appointDate);
+        $("#ownerMobile").val(ownerMobile);
+        $("#petType").val(petType);
+        $("#petName").val(petName);
+        $("#petGender").val(petGender);
+        $("#petAge").val(petAge);
+        $("#petSituation").val(petSituation);  
+         $("#treatment").val(treatment);  
+        $("#result").val(result);
 
         // 显示模态框
         $("#updateModal").modal("show");
@@ -94,32 +109,43 @@ document.addEventListener("DOMContentLoaded", function () {
       
        // 点击更新按钮的事件处理程序
   $("#updateBtn").on("click", function () {
-    var vetSn = $("#vetSn").val();
-    var clinicId =  $("#clinicId").val();
-    var vetName =   $("#vetName").val();
-    var vetGender =  $("#vetGender").val();
-    var specialty =  $("#specialty").val();    
-    var seniority =  $("#seniority").val();
    
-    
+        var casesSn =  $("#casesSn").val();
+        var vetSn =  $("#vetSn").val();
+        var userId = $("#userId").val();
+        var appointDate= $("#appointDate").val();
+        var ownerMobile = $("#ownerMobile").val();
+        var petType = $("#petType").val();
+        var petName =  $("#petName").val();
+        var petGender =  $("#petGender").val();
+        var petAge = $("#petAge").val();
+        var petSituation = $("#petSituation").val();
+          var treatment= $("#treatment").val();  
+        var result =  $("#result").val();   
     
     // 在这里可以执行更新操作或发送更新请求到后端
   
     // 添加其他字段
     var data = {
+      casesSn:casesSn,
         vetSn : vetSn,
-        clinicId :  clinicId,
-        vetName :  vetName,
-        vetGender :  vetGender,
-        specialty :  specialty,   
-        seniority :   seniority,
+        userId:userId,
+        appointDate:appointDate,
+        ownerMobile: ownerMobile,
+        petType:petType,
+        petName:petName,
+        petAge:petAge,
+        petGender:petGender,
+        petSituation:petSituation,
+  		 treatment: treatment,
+        result:result,
     
       // 添加其他字段
     };
   console.log("資料"+data);
   // 发送Ajax请求
   $.ajax({
-    url: "../../../../vet/update/" + vetSn, // 替换为实际的后端接口URL
+    url: "http://localhost:8080/petpet/petcases/update/" + casesSn, // 替换为实际的后端接口URL
     type: "PUT",
     contentType: "application/json",
     data: JSON.stringify(data),
