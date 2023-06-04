@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     var table = $("#vet").DataTable({
       ajax: function (d, cb) {
-        fetch("../PriceList/init")
+        fetch("../../../../../vet/all")
           .then((response) => response.json())
           .then((data) => {
             console.log(data);
