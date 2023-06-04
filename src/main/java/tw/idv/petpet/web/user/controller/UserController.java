@@ -4,13 +4,11 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import tw.idv.petpet.web.user.dao.UserRepository;
 import tw.idv.petpet.web.user.entity.User;
 import tw.idv.petpet.web.user.service.UserService;
 
@@ -31,7 +29,7 @@ public class UserController {
 	@GetMapping("/findById")
 	public User findById(User user, HttpSession session) {
 		System.out.println("Controller 執行 findById 方法成功");
-		return (User)session.getAttribute("userAccount");
+		return (User) session.getAttribute("userAccount");
 	}
 
 	@PostMapping("/login")
