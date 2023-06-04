@@ -18,9 +18,9 @@ fetch('animalmanage', {
 				<td id="animalName${animal.animalName}">${animal.animalName}</td>
 				<td id="animalNum${animal.animalNameber}">${animal.animalNumber}</td>
 				<td id="userId${animal.userId}">${animal.userId}</td>
-				<td><a href="申請人頁面的URL">查看申請人</a></td>
+				<td><a href="申請人頁面的URL" onclick="apply(${animal.animalId})">查看申請人</a></td>
 				<td class="button-td">
-					<button onclick="editItem(${animal.animalId})">編輯</button>
+					<button type="button" class="btn-edit" onclick="editItem(${animal.animalId})">編輯</button>
 				</td>
 				<td class="button-td">
 					<button type="button" class="btn-delete" onclick="deleteClick(${animal.animalId})">刪除</button>
@@ -51,9 +51,5 @@ function deleteClick(animalId) {
 }
 
 function editItem(animalId) {
-	// 构建目标页面的URL
-	const url = `/animal/${animalId}`;
-
-	// 导航到目标页面
-	window.location.href = url;
+	window.location.href = `animaledit.html?id=${animalId}`;
 }
