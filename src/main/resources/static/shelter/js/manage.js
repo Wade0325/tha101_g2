@@ -1,5 +1,5 @@
 const tbody = document.querySelector('#tbody');
-fetch('manage', {
+fetch('animalmanage', {
 	method: 'POST',
 	headers: {
 		'Content-Type': 'application/json'
