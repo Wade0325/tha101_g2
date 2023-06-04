@@ -95,12 +95,6 @@ document.addEventListener("DOMContentLoaded", function () {
   var serviceItem4 = data.serviceItem4;
   
 
- 
- 
- 
- 
- 
- 
       // 更新模态框中的表单字段值
       $("#clinicServiceId").val(clinicServiceId);
       $("#clinicServiceName").val(clinicServiceName);
