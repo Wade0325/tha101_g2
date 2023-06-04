@@ -28,7 +28,7 @@ public class Vet {
 	@Column
 	private String vetName;
 	@Column
-	private Integer vetGender;
+	private String vetGender;
 	@Column
 	private String specialty;
 	@Column
