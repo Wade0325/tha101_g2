@@ -23,22 +23,22 @@ public class UserController {
 
 	@PostMapping("/register")
 	public User register(@RequestBody User user) {
-		System.out.println("進入Controller 執行 register 方法成功");
+		System.out.println("Controller 執行 register 方法成功");
 		userService.register(user);
 		return user;
 	}
 
 	@GetMapping("/findById")
-	public User findEmailById(User user, HttpSession session) {
-		System.out.println("執行 findEmailById 方法成功");
-		return (User) session.getAttribute("userAccount");
+	public User findById(User user, HttpSession session) {
+		System.out.println("Controller 執行 findById 方法成功");
+		return (User)session.getAttribute("userAccount");
 	}
 
 	@PostMapping("/login")
 	public User login(@RequestBody User user, HttpSession session) {
-		System.out.println("執行 login 方法成功");
+		System.out.println("Controller 執行 login 方法成功");
 		User userLogin = userService.login(user);
-		if (user.isSuccessful()) {
+		if (userLogin.isSuccessful()) {
 			session.setAttribute("userAccount", userLogin);
 		}
 		return userLogin;

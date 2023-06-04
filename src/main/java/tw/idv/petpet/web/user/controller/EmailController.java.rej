@@ -1,9 +1,0 @@
-diff a/src/main/java/tw/idv/petpet/web/user/controller/EmailController.java b/src/main/java/tw/idv/petpet/web/user/controller/EmailController.java	(rejected hunks)
-@@ -3,6 +3,7 @@
- package tw.idv.petpet.web.user.controller;
- 
- import org.springframework.beans.factory.annotation.Autowired;
-+import org.springframework.boot.autoconfigure.data.redis.RedisProperties.Jedis;
- import org.springframework.web.bind.annotation.PostMapping;
- import org.springframework.web.bind.annotation.RequestBody;
- import org.springframework.web.bind.annotation.RestController;

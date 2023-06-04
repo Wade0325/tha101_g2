@@ -53,7 +53,6 @@ public class UserServiceImpl implements UserService{
 	@Override
 	public User findByAccount(User user) {
 		return userRepository.findByAccount(user);
-		
 	}
 
 }
