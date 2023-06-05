@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="UTF-8">
+<title>FindAll</title>
+</head>
+
+<body>
+	<div align="center">
+		<h1>診所會員清單</h1>
+
+		<table border="1">
+			<thead>
+				<tr>
+					<th>診所編號</th>
+					<th>診所名稱</th>
+					<th>獸醫名稱</th>
+					<th>預約日期</th>
+					<th>預約時間</th>
+					<th>飼主姓名</th>
+					<th>飼主電話</th>
+					<th>寵物類別</th>
+					<th>寵物名子</th>
+					<th>服務項目</th>
+					<th>狀況描述</th>
+				</tr>
+			</thead>
+			<tbody id="tbody"></tbody>
+		</table>
+		<script>
+	const tbody = document.querySelector('#tbody');
+	fetch('http://localhost:8080/petpet/clinicAppointment/all', 
+			{
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: {
+
+		}
+	})
+		.then(resp => resp.json())
+		.then(ClinicAppointment => {
+			for (let appointment of ClinicAppointment) {
+				console.log(appointment);
+
+				tbody.innerHTML += `
+				<tr>
+					<td>${appointment.reservationNumber}</td>
+					<td id="clinicName${appointment.reservationNumber}">${appointment.clinicName}</td>
+					<td id="vetName${appointment.reservationNumber}">${appointment.vetName}</td>
+					<td>${appointment.appointDate}</td>
+					<td id="appointTime${appointment.reservationNumber}">${appointment.appointTime}</td>
+					<td id="ownerMobile${appointment.reservationNumber}">${appointment.ownerMobile}</td>
+					<td id="petType${appointment.reservationNumber}">${appointment.petType}</td>
+					<td id="petName${appointment.reservationNumber}">${appointment.petName}</td>
+					<td id="serviceItem${appointment.reservationNumber}">${appointment.serviceItem}</td>
+					<td id="ownerName${appointment.reservationNumber}">${appointment.ownerName}</td>
+					<td id="petSituation${appointment.reservationNumber}">${appointment.petSituation}</td>
+					
+					<td>
+						<button type="button" class="btn-edit" onclick="saveClick(${appointment.reservationNumber})">儲存</button>
+						<button type="button" class="btn-delete" onclick="deleteClick(${appointment.reservationNumber})">刪除</button>
+					</td>
+				</tr>`
+			}
+		})
+</script>
+		<script src="js/05clinicreservationFormManage.js"></script>
+</body>
+
+</html>

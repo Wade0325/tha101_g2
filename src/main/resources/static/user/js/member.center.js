@@ -4,8 +4,11 @@
     const address = document.querySelector("#address")
     const Email = document.querySelector("#Email")
     var nickNameV;
+    var userphoneV;
+    var useraddressV;
 
-    fetch('userController/findById/5', {
+
+    fetch('userController/findById', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -13,12 +16,16 @@
     })
         .then(resp => resp.json())
         .then(body => {
-            const { userEmail, userName, userTel, userAddr } = body;
-            Email.value = userEmail
+            const { userAccount, userName, userTel, userAddr } = body;
+            Email.value = userAccount
             nickName.value = userName
             nickNameV = nickName.value
+
             phone.value = userTel
+            userphoneV = phone.value
+
             address.value = userAddr
+            useraddressV = address.value
         })
 
 
@@ -31,10 +38,9 @@
             nickName.setAttribute('disabled', 'disabled');
             if ((nickName.value != '')) {
 
-
             } else {
                 window.alert("暱稱不得為空")
-                nickName.value = nickNameV
+                nickName.value = userphoneV
             }
         }
 
@@ -48,14 +54,10 @@
         } else {
             phone.setAttribute('disabled', 'disabled');
             if ((phone.value != '')) {
-                fetch('findById', {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                })
+
             } else {
                 window.alert("電話不得為空")
+                phone.value = nickNameV
             }
         }
     })
@@ -68,14 +70,10 @@
         } else {
             address.setAttribute('disabled', 'disabled');
             if ((address.value != '')) {
-                fetch('findById', {
-                    method: 'GET',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                })
+
             } else {
                 window.alert("地址不得為空")
+                address.value = useraddressV
             }
         }
     })
