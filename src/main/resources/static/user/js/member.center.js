@@ -8,7 +8,7 @@
     var useraddressV;
 
 
-    fetch('userController/findById', {
+    fetch('userController/getUser', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -37,7 +37,16 @@
         } else {
             nickName.setAttribute('disabled', 'disabled');
             if ((nickName.value != '')) {
-
+                console.log(nickName.value);
+                fetch('userController/update', {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        userName: nickName.value,
+                    }),
+                })
             } else {
                 window.alert("暱稱不得為空")
                 nickName.value = userphoneV
