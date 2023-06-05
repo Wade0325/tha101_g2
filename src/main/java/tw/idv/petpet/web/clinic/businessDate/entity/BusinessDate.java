@@ -1,11 +1,15 @@
 package tw.idv.petpet.web.clinic.businessDate.entity;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -27,21 +31,22 @@ public class BusinessDate extends Core {
 	@Column
 	private Integer businessSn;
 	@Column
-	private Integer clinicId; //換診所名稱?
+	private String clinicName; 
 	@Column
 	private Integer vetSn;
 	@Column
-	private Integer weekDate; //改成日期?
+	@Temporal(TemporalType.DATE)
+	private Date weekDate;
 	@Column
-	private Integer morningBusiness;
+	private String morningBusiness;
 	@Column
 	private Integer morningAppointMax;
 	@Column
-	private Integer afternoonBusiness;
+	private String afternoonBusiness;
 	@Column
 	private Integer afternoonAppointMax;
 	@Column
-	private Integer nightBusiness;
+	private String nightBusiness;
 	@Column
 	private Integer nightAppointMax;
 }
