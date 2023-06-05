@@ -27,23 +27,9 @@ public class BusinessDateController {
 	}
 
 	@PutMapping("/business/{businessSn}")
-	public String update(@PathVariable Integer businessSn, @RequestBody BusinessDate businessDate) {
-		BusinessDate businessDate1 = service.findById(businessSn).orElse(null);
-		// businessSn、clinicId不可修改
-		if (businessDate1 != null) {
-			businessDate1.setVetSn(businessDate.getVetSn());
-			businessDate1.setWeekDate(businessDate.getWeekDate());
-			businessDate1.setMorningBusiness(businessDate.getMorningBusiness());
-			businessDate1.setMorningAppointMax(businessDate.getMorningAppointMax());
-			businessDate1.setAfternoonBusiness(businessDate.getAfternoonBusiness());
-			businessDate1.setAfternoonAppointMax(businessDate.getAfternoonAppointMax());
-			businessDate1.setNightBusiness(businessDate.getNightBusiness());
-			businessDate1.setNightAppointMax(businessDate.getNightAppointMax());
-			service.save(businessDate1);
-			return "執行update操作";
-		} else {
-			return "資料不存在，操作失敗";
-		}
+	public BusinessDate update(@PathVariable Integer businessSn, @RequestBody BusinessDate businessDate) {
+		service.update(businessSn, businessDate);
+		return businessDate;
 	}
 
 	@DeleteMapping("/business/{businessSn}")

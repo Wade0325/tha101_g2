@@ -19,20 +19,20 @@ import tw.idv.petpet.web.shelter.shelterAnimal.service.ShelterAnimalService;
 public class AnimalEditController {
 	@Autowired
 	private ShelterAnimalService service;
-//	@PostMapping("animalfindbyid/{animaId}")
-//	@ResponseBody
-//	public void edit(@PathVariable Integer animalId) {
-//		service.findById(animalId);
-//		System.out.println("123");
-//	}
-//	
+	@PostMapping("animalfindbyid/{animalId}")
+	@ResponseBody
+	public ShelterAnimal read(@PathVariable Integer animalId) {
+		ShelterAnimal shelterAnimal = service.findById(animalId).orElse(null);
+
+		service.findById(animalId);
+		System.out.println("findById完成");
+		return shelterAnimal;
+	}
+	
 	@PutMapping("animaledit/{animalId}")
 	@ResponseBody
 	public ShelterAnimal update(@PathVariable Integer animalId,@RequestBody ShelterAnimal shelterAnimal) {
 		shelterAnimal.setAnimalId(animalId);
-		if(shelterAnimal.getAnimalName() != null) {
-		shelterAnimal.setAnimalName(shelterAnimal.getAnimalName());
-		}
 		service.update(shelterAnimal);
 		return shelterAnimal;
 	}
