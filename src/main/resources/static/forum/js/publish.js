@@ -25,7 +25,7 @@
     const postImage = document.querySelector("#postImage");
 
     btn.addEventListener('click', (e) => {
-        e.preventDefault; //組織按鈕的默認點擊行為
+        e.preventDefault(); //組織按鈕的默認點擊行為  ()是否需要添加
 
         //進行表單驗證
         if (postTitle.value.trim() === '') {
@@ -51,7 +51,7 @@
         //發送POST請求
         fetch('publishController/publish', {
             method: 'POST',
-            body: formData,
+            body: formData
         })
             .then(resp => resp.json())
             .then(data => {
