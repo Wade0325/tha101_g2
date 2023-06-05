@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import tw.idv.petpet.web.clinic.businessDate.entity.BusinessDate;
+import tw.idv.petpet.web.clinic.businessDate.repository.BusinessDateRepository;
 import tw.idv.petpet.web.clinic.clinicAppointment.entity.ClinicAppointment;
 import tw.idv.petpet.web.clinic.clinicAppointment.repository.ClinicAppointmentRepository;
 
@@ -16,8 +18,14 @@ public class ClinicAppointmentService {
 
 	@Autowired
 	private ClinicAppointmentRepository clinicAppointmentRepository;
+	
+	@Autowired
+	private BusinessDateRepository businessDateRepository;
 
 	public void save(ClinicAppointment clinicAppointment) {
+		BusinessDate businessDate = businessDateRepository.findByWeekDateAndClinicName(clinicAppointment.getAppointDate(), clinicAppointment.getClinicName());
+		
+		
 		clinicAppointmentRepository.save(clinicAppointment);
 	}
 
