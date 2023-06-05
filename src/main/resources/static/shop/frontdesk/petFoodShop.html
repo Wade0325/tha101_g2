@@ -156,7 +156,8 @@
 
     <!-- 輸入搜尋框 -->
 
-    <div style="
+    <div
+      style="
         display: flex;
         justify-content: center;
         align-items: center;
@@ -164,7 +165,8 @@
         height: 200px;
         /* border: 1px solid green; */
         background:#f8f9fd ;
-      ">
+      "
+    >
       <div style="position: relative">
         <input
           type="text"
@@ -185,493 +187,342 @@
           <div style="position: sticky; top:0;">
           <h4>商品分類</h4>
           <ul class="list-group" style="width: 70%;">
-            <li class="list-group-item" >
-              <a href="./petFoodShop.html">
-              寵物食品
-              </a>
-            </li>
-            <li class="list-group-item">
-              <a href="./petApparel.html">
-                寵物服飾
-              </a>
-            </li>
-            <li class="list-group-item">
-              <a href="./petOutdoor.html">
-              外出用品
-              </a>
-            </li>
-            <li class="list-group-item">
-              <a href="./petToy.html">
-              寵物玩具
-              </a>
-            </li>                        
+            <li class="list-group-item">寵物食品</li>
+            <li class="list-group-item">寵物服飾</li>
+            <li class="list-group-item">外出用品</li>
+            <li class="list-group-item">寵物玩具</li>             
+          </ul>
+          </div>
+        </div>
+<!-- 第一排 -->
+<div class="col-9">
+  <div class="row" id="prorow">
+   
+             
+</div>
+
+<!-- </div> -->
+    
+  </div>
+</div>
+
+<!-- 程式放裡面 -->
+<div class="row mt-5">
+      <div class="col text-center" style="margin:0px">
+        <!-- 頁碼 -->
+        <div class="block-27">
+          <ul>
+            <li><a href="#">&lt;</a></li>
+            <li class="active"><span>1</span></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#">&gt;</a></li>
           </ul>
         </div>
       </div>
-<!-- 第一排 -->
-        <div class="col-9">
-          <div class="row">
-            <div class="col-3"style="background-image: url(foodimages/111.jpg);background-size: cover;
-            background-position: center; height:200px">
-              <div class="card" style="position: absolute; top:200px; right:0.5px; width: 100%;">
-                <!-- <p class="pro_name" style="text-align: center; margin-bottom: 0;">商品名稱1</p> -->
-                <a class="pro_name" href="productDetail.html">狗飼料1</a>
-                <!-- 自訂增減按鈕 jude -->
-                <div class="quantity-container">
-                  <button class="decrement-button q-button">-</button>
-                  <input
-                    type="number"
-                    class="quantity-input q-input"
-                    id="quantity"
-                    name="quantity"
-                    value="1"
-                    min="1"
-                  />
-                  <button class="increment-button q-button">+</button>
-                </div>
-                <!-- 加入購物車按鈕 jude -->
-                <button class="add-to-cart">
-                  Add to Cart
-                </button>
-              </div>
-            </div>
-            <div class="col-3" style="background-image: url(foodimages/555.jpg);background-size: cover;
-            background-position: center; height:200px; margin-left: 50px;" >
-              <div class="card" style="position: absolute; top:200px; right:0.5px; width: 100%;">
-                <!-- <p class="pro_name" style="text-align: center; margin-bottom: 0;">商品名稱2</p> -->
-                <a class="pro_name" href="productDetail.html">狗飼料2</e></a>
-                <!-- 自訂增減按鈕 jude -->
-                <div class="quantity-container">
-                  <button class="decrement-button q-button">-</button>
-                  <input
-                    type="number"
-                    class="quantity-input q-input"
-                    id="quantity"
-                    name="quantity"
-                    value="1"
-                    min="1"
-                  />
-                  <button class="increment-button q-button" >+</button>
-                </div>
-                <!-- 加入購物車按鈕 jude -->
-                <button class="add-to-cart">
-                  Add to Cart
-                </button>
-              </div>
-            </div>
-            
-            <div class="col-3" style="background-image: url(foodimages/cat_002.jpg);background-size: cover;
-            background-position: center; height:200px; margin-left: 50px; position: relative;" >
-              <div class="card" style="position: absolute; top:200px; right:0.5px; width: 100%;">
-                <!-- <p style="text-align: center; margin-bottom: 0;">商品名稱3</p> -->
-                <a class="pro_name" href="productDetail.html">貓飼料</a>
-            <!-- 自訂增減按鈕 jude -->
-            <div class="quantity-container">
-              <button class="decrement-button q-button">-</button>
-              <input
-                type="number"
-                class="quantity-input q-input"
-                id="quantity"
-                name="quantity"
-                value="1"
-                min="1"
-              />
-              <button class="increment-button q-button">+</button>
-            </div>
-            <!-- 加入購物車按鈕 jude -->
-            <button class="add-to-cart">
-              Add to Cart
-            </button>
-          </div>
-        </div>
-
-<!-- 第二排 -->
-        
-        <div class="col-3" style="background-image: url(foodimages/dog_005.jpg);background-size: cover;
-            background-position: center; height:200px; margin-top: 180px;" onclick="redirectToPage()">
-              <div class="card" style="position: absolute; top:200px; right:0.5px; width: 100%;">
-                <!-- <p style="text-align: center; margin-bottom: 0;">商品名稱4</p> -->
-                <a class="pro_name" href="productDetail.html">測試</a>
-                <!-- 自訂增減按鈕 jude -->
-                <div class="quantity-container">
-                  <button class="decrement-button q-button">-</button>
-                  <input
-                    type="number"
-                    class="quantity-input q-input"
-                    id="quantity"
-                    name="quantity"
-                    value="1"
-                    min="1"
-                  />
-                  <button class="increment-button q-button">+</button>
-                </div>
-                <!-- 加入購物車按鈕 jude -->
-                <button class="add-to-cart">
-                  Add to Cart
-                </button>
-              </div>
-            </div>
-            <div class="col-3" style="background-image: url(foodimages/dog_006.jpg);background-size: cover;
-            background-position: center; height:200px; margin-top: 180px; margin-left: 50px;">
-              <div class="card" style="position: absolute; top:200px; right:0.5px; width: 100%;">
-                <!-- <p style="text-align: center; margin-bottom: 0;">商品名稱XXX</p> -->
-                <a class="pro_name" href="productDetail.html">測試</a>
-                <!-- 自訂增減按鈕 jude -->
-                <div class="quantity-container">
-                  <button class="decrement-button q-button">-</button>
-                  <input
-                    type="number"
-                    class="quantity-input q-input"
-                    id="quantity"
-                    name="quantity"
-                    value="1"
-                    min="1"
-                  />
-                  <button class="increment-button q-button">+</button>
-                </div>
-                <!-- 加入購物車按鈕 jude -->
-                <button class="add-to-cart">
-                  Add to Cart
-                </button>
-              </div>
-            </div>
-            <div class="col-3" style="background-image: url(foodimages/cat_004.jpg);background-size: cover;
-            background-position: center; height:200px; margin-top: 180px; margin-left: 50px;" >
-              <div class="card" style="position: absolute; top:200px; right:0.5px; width: 100%;">
-                <!-- <p style="text-align: center; margin-bottom: 0;">商品名稱XXX</p> -->
-                <a class="pro_name" href="productDetail.html">測試</a>
-                <!-- 自訂增減按鈕 jude -->
-                <div class="quantity-container">
-                  <button class="decrement-button q-button">-</button>
-                  <input
-                    type="number"
-                    class="quantity-input q-input"
-                    id="quantity"
-                    name="quantity"
-                    value="1"
-                    min="1"
-                  />
-                  <button class="increment-button q-button">+</button>
-                </div>
-                <!-- 加入購物車按鈕 jude -->
-                <button class="add-to-cart">
-                  Add to Cart
-                </button>
-              </div>
-            </div>
-
-<!-- 第三排 -->
-            <div class="col-3" style="background-image: url(foodimages/cat_005.jpg);background-size: cover;
-            background-position: center; height:200px; margin-top: 180px;" >
-              <div class="card" style="position: absolute; top:200px; right:0.5px; width: 100%;">
-                <!-- <p style="text-align: center; margin-bottom: 0;">商品名稱XXX</p> -->
-                <a class="pro_name" href="productDetail.html">測試</a>
-                <!-- 自訂增減按鈕 jude -->
-                <div class="quantity-container">
-                  <button class="decrement-button q-button">-</button>
-                  <input
-                    type="number"
-                    class="quantity-input q-input"
-                    id="quantity"
-                    name="quantity"
-                    value="1"
-                    min="1"
-                  />
-                  <button class="increment-button q-button">+</button>
-                </div>
-                <!-- 加入購物車按鈕 jude -->
-                <button class="add-to-cart">
-                  Add to Cart
-                </button>
-              </div>
-            </div>
-            <div class="col-3" style="background-image: url(foodimages/cat_006.jpg);background-size: cover;
-            background-position: center; height:200px; margin-top: 180px; margin-left: 50px;" >
-              <div class="card" style="position: absolute; top:200px; right:0.5px; width: 100%;">
-                <!-- <p style="text-align: center; margin-bottom: 0;">商品名稱XXX</p> -->
-                <a class="pro_name" href="productDetail.html">測試</a>
-                <!-- 自訂增減按鈕 jude -->
-                <div class="quantity-container">
-                  <button class="decrement-button q-button">-</button>
-                  <input
-                    type="number"
-                    class="quantity-input q-input"
-                    id="quantity"
-                    name="quantity"
-                    value="1"
-                    min="1"
-                  />
-                  <button class="increment-button q-button">+</button>
-                </div>
-                <!-- 加入購物車按鈕 jude -->
-                <button class="add-to-cart">
-                  Add to Cart
-                </button>
-              </div>
-            </div>
-            <div class="col-3" style="background-image: url(foodimages/dog_010.jpg);background-size: cover;
-            background-position: center; height:200px; margin-top: 180px; margin-left: 50px;" >
-              <div class="card" style="position: absolute; top:200px; right:0.5px; width: 100%;">
-                <!-- <p style="text-align: center; margin-bottom: 0;">商品名稱XXX</p> -->
-                <a class="pro_name" href="productDetail.html">測試</a>
-                <!-- 自訂增減按鈕 jude -->
-                <div class="quantity-container">
-                  <button class="decrement-button q-button">-</button>
-                  <input
-                    type="number"
-                    class="quantity-input q-input"
-                    id="quantity"
-                    name="quantity"
-                    value="1"
-                    min="1"
-                  />
-                  <button class="increment-button q-button">+</button>
-                </div>
-                <!-- 加入購物車按鈕 jude -->
-                <button class="add-to-cart">
-                  Add to Cart
-                </button>
-              </div>
-            </div>
-
-<!-- 第4排 -->
-            <div class="col-3" style="background-image: url(foodimages/222.jpg);background-size: cover;
-            background-position: center; height:200px; margin-top: 180px;" >
-              <div class="card" style="position: absolute; top:200px; right:0.5px; width: 100%;">
-                <!-- <p style="text-align: center; margin-bottom: 0;">商品名稱XXX</p> -->
-                <a class="pro_name" href="productDetail.html">測試</a>
-                <!-- 自訂增減按鈕 jude -->
-                <div class="quantity-container">
-                  <button class="decrement-button q-button">-</button>
-                  <input
-                    type="number"
-                    class="quantity-input q-input"
-                    id="quantity"
-                    name="quantity"
-                    value="1"
-                    min="1"
-                  />
-                  <button class="increment-button q-button">+</button>
-                </div>
-                <!-- 加入購物車按鈕 jude -->
-                <button class="add-to-cart">
-                  Add to Cart
-                </button>
-              </div>
-            </div>
-            <div class="col-3" style="background-image: url(foodimages/333.jpg);background-size: cover;
-            background-position: center; height:200px; margin-top: 180px; margin-left: 50px;" >
-              <div class="card" style="position: absolute; top:200px; right:0.5px; width: 100%;">
-                <!-- <p style="text-align: center; margin-bottom: 0;">商品名稱XXX</p> -->
-                <a class="pro_name" href="productDetail.html">測試</a>
-                <!-- 自訂增減按鈕 jude -->
-                <div class="quantity-container">
-                  <button class="decrement-button q-button">-</button>
-                  <input
-                    type="number"
-                    class="quantity-input q-input"
-                    id="quantity"
-                    name="quantity"
-                    value="1"
-                    min="1"
-                  />
-                  <button class="increment-button q-button">+</button>
-                </div>
-                <!-- 加入購物車按鈕 jude -->
-                <button class="add-to-cart">
-                  Add to Cart
-                </button>
-              </div>
-            </div>
-            <div class="col-3" style="background-image: url(foodimages/444.jpg);background-size: cover;
-            background-position: center; height:200px; margin-top: 180px; margin-left: 50px;" >
-              <div class="card" style="position: absolute; top:200px; right:0.5px; width: 100%;">
-                <!-- <p style="text-align: center; margin-bottom: 0;">商品名稱XXX</p> -->
-                <a class="pro_name" href="productDetail.html">測試</a>
-                <!-- 自訂增減按鈕 jude -->
-                <div class="quantity-container">
-                  <button class="decrement-button q-button">-</button>
-                  <input
-                    type="number"
-                    class="quantity-input q-input"
-                    id="quantity"
-                    name="quantity"
-                    value="1"
-                    min="1"
-                  />
-                  <button class="increment-button q-button">+</button>
-                </div>
-                <!-- 加入購物車按鈕 jude -->
-                <button class="add-to-cart">
-                  Add to Cart
-                </button>
-              </div>
-            </div>
-              </div>
-          </div>            
-      </div>
-      
-    <!-- </div> -->
-
-
-
-
-
-
-            <div class="row mt-5">
-              <div class="col text-center">
-                <!-- 頁碼 -->
-                <div class="block-27">
-                  <ul>
-                    <li><a href="#">&lt;</a></li>
-                    <li class="active"><span>1</span></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">&gt;</a></li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-    </section>
-    <!-- 程式放裡面 -->
-
-    <footer class="footer">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 col-lg-4 mb-4 mb-md-0">
-            <h2 class="footer-heading">PetPet陪陪你</h2>
-            <p>一個能提供購物、醫療、送領養的平台</p>
-            <ul class="ftco-footer-social p-0">
-              <li class="ftco-animate">
-                <a
-                  href="#"
-                  data-toggle="tooltip"
-                  data-placement="top"
-                  title="Twitter"
-                  ><span class="fa fa-twitter"></span
-                ></a>
-              </li>
-              <li class="ftco-animate">
-                <a
-                  href="#"
-                  data-toggle="tooltip"
-                  data-placement="top"
-                  title="Facebook"
-                  ><span class="fa fa-facebook"></span
-                ></a>
-              </li>
-              <li class="ftco-animate">
-                <a
-                  href="#"
-                  data-toggle="tooltip"
-                  data-placement="top"
-                  title="Instagram"
-                  ><span class="fa fa-instagram"></span
-                ></a>
-              </li>
-            </ul>
-          </div>
-          <div class="col-md-6 col-lg-4 mb-4 mb-md-0">
-            <h2 class="footer-heading">寵物討論區</h2>
-            <div class="block-21 mb-4 d-flex">
-              <a
-                class="img mr-4 rounded"
-                style="background-image: url(images/image_1.jpg)"
-              ></a>
-              <div class="text">
-                <h3 class="heading"><a href="#">狗狗討論區</a></h3>
-              </div>
-            </div>
-            <div class="block-21 mb-4 d-flex">
-              <a
-                class="img mr-4 rounded"
-                style="background-image: url(images/image_2.jpg)"
-              ></a>
-              <div class="text">
-                <h3 class="heading"><a href="#">貓咪討論區</a></h3>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-6 col-lg-4 pl-lg-5 mb-4 mb-md-0">
-            <h2 class="footer-heading">快速連結</h2>
-            <ul class="list-unstyled">
-              <li><a href="#" class="py-2 d-block">首頁</a></li>
-              <li><a href="#" class="py-2 d-block">登入/註冊</a></li>
-              <li><a href="#" class="py-2 d-block">寵物診所</a></li>
-              <li><a href="#" class="py-2 d-block">寵物商城</a></li>
-              <li><a href="#" class="py-2 d-block">寵物領養</a></li>
-            </ul>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12 text-center">
-            <p class="copyright">
-              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-              Copyright &copy;
-              <script>
-                document.write(new Date().getFullYear());
-              </script>
-              All rights reserved | This template is made with
-              <i class="fa fa-heart" aria-hidden="true"></i> by
-              <a href="https://colorlib.com" target="_blank">Colorlib.com</a>
-              <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-            </p>
-          </div>
-        </div>
-      </div>
-
-       <!-- 置頂按鈕 -->
-    <div id="scroll-to-top" class="show">
-      <!-- <img src="path/to/scroll-to-top-icon.png" alt="Scroll To Top" /> -->
-      <p >Top</p>
     </div>
 
-    <!-- /置頂按鈕 -->
-    </footer>
+<footer class="footer">
+<div class="container">
+<div class="row">
+  <div class="col-md-6 col-lg-4 mb-4 mb-md-0">
+    <h2 class="footer-heading">PetPet陪陪你</h2>
+    <p>一個能提供購物、醫療、送領養的平台</p>
+    <ul class="ftco-footer-social p-0">
+      <li class="ftco-animate">
+        <a
+          href="#"
+          data-toggle="tooltip"
+          data-placement="top"
+          title="Twitter"
+          ><span class="fa fa-twitter"></span
+        ></a>
+      </li>
+      <li class="ftco-animate">
+        <a
+          href="#"
+          data-toggle="tooltip"
+          data-placement="top"
+          title="Facebook"
+          ><span class="fa fa-facebook"></span
+        ></a>
+      </li>
+      <li class="ftco-animate">
+        <a
+          href="#"
+          data-toggle="tooltip"
+          data-placement="top"
+          title="Instagram"
+          ><span class="fa fa-instagram"></span
+        ></a>
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-6 col-lg-4 mb-4 mb-md-0">
+    <h2 class="footer-heading">寵物討論區</h2>
+    <div class="block-21 mb-4 d-flex">
+      <a
+        class="img mr-4 rounded"
+        style="background-image: url(images/image_1.jpg)"
+      ></a>
+      <div class="text">
+        <h3 class="heading"><a href="#">狗狗討論區</a></h3>
+      </div>
+    </div>
+    <div class="block-21 mb-4 d-flex">
+      <a
+        class="img mr-4 rounded"
+        style="background-image: url(images/image_2.jpg)"
+      ></a>
+      <div class="text">
+        <h3 class="heading"><a href="#">貓咪討論區</a></h3>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 col-lg-4 pl-lg-5 mb-4 mb-md-0">
+    <h2 class="footer-heading">快速連結</h2>
+    <ul class="list-unstyled">
+      <li><a href="#" class="py-2 d-block">首頁</a></li>
+      <li><a href="#" class="py-2 d-block">登入/註冊</a></li>
+      <li><a href="#" class="py-2 d-block">寵物診所</a></li>
+      <li><a href="#" class="py-2 d-block">寵物商城</a></li>
+      <li><a href="#" class="py-2 d-block">寵物領養</a></li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12 text-center">
+    <p class="copyright">
+      <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+      Copyright &copy;
+      <script>
+        document.write(new Date().getFullYear());
+      </script>
+      All rights reserved | This template is made with
+      <i class="fa fa-heart" aria-hidden="true"></i> by
+      <a href="https://colorlib.com" target="_blank">Colorlib.com</a>
+      <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+    </p>
+  </div>
+</div>
+</div>
 
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery-migrate-3.0.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/jquery.easing.1.3.js"></script>
-    <script src="js/jquery.waypoints.min.js"></script>
-    <script src="js/jquery.stellar.min.js"></script>
-    <script src="js/jquery.animateNumber.min.js"></script>
-    <script src="js/bootstrap-datepicker.js"></script>
-    <script src="js/jquery.timepicker.min.js"></script>
-    <script src="js/owl.carousel.min.js"></script>
-    <script src="js/jquery.magnific-popup.min.js"></script>
-    <script src="js/scrollax.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-    <script src="js/google-map.js"></script>
-    <script src="js/main.js"></script>
-    <script>
-      fetch('http://localhost:8080/petpet/shoptestall').then(response => response.json())
-      .then(data => {
-        data.forEach(product => {
-        console.log(product.pro_name);
-          const productInfo = document.getElementsByClassName("card");
-          console.log(productInfo);
-          // 遍历每个 card 元素
-            Array.from(productInfo).forEach((card, index) => {
-              const productName = data[index].pro_name;
-              const productPrice = data[index].pro_price;
-          // 修改 card 元素内的内容
-              card.querySelector('.pro_name').textContent = productName;
-          // card.querySelector('.product-price').textContent = `价格: ${productPrice}`;
-            });
+<!-- 置頂按鈕 -->
+<div id="scroll-to-top" class="show">
+<!-- <img src="path/to/scroll-to-top-icon.png" alt="Scroll To Top" /> -->
+<p >Top</p>
+</div>
 
-        });
-      }).catch(error => {console.error('Error:', error);});
-    </script>
-    <script>
-      function redirectToPage() {
-      window.location.href = "詳細商品頁面.html";}
-    </script>
-  </body>
+<!-- /置頂按鈕 -->
+</footer>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery-migrate-3.0.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.easing.1.3.js"></script>
+<script src="js/jquery.waypoints.min.js"></script>
+<script src="js/jquery.stellar.min.js"></script>
+<script src="js/jquery.animateNumber.min.js"></script>
+<script src="js/bootstrap-datepicker.js"></script>
+<script src="js/jquery.timepicker.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/jquery.magnific-popup.min.js"></script>
+<script src="js/scrollax.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+<script src="js/google-map.js"></script>
+<script src="js/main.js"></script>
+<script>
+function redirectToPage() {
+window.location.href = "詳細商品頁面.html";
+}
+
+
+
+fetch('http://localhost:8080/petpet/shoptestall')
+.then(response => response.json())
+.then(data => {
+const container = document.getElementById("prorow");
+
+let count = 0;
+let procount = 0;
+data.forEach(product => {
+if(count < 12){
+const productDiv = document.createElement('div');
+productDiv.className = 'col-3 test';
+productDiv.style.backgroundImage = `url(data:image/jpeg;base64,${product.pro_pic1})`;
+productDiv.style.backgroundSize = 'cover';
+productDiv.style.backgroundPosition = 'center';
+productDiv.style.height = '200px';
+
+if (count <= 2) {
+productDiv.style.marginTop = '0';
+} else {
+// 設定第二排以後的商品與第一排保持距離
+productDiv.style.marginTop = '180px';
+}
+if (count % 3 !== 0) {
+  productDiv.style.marginLeft = '50px';
+}
+
+
+const cardDiv = document.createElement('div');
+cardDiv.className = 'card';
+cardDiv.style.position = 'absolute';
+cardDiv.style.top = '200px';
+cardDiv.style.right = '0.5px';
+cardDiv.style.width = '100%';
+
+const productNameLink = document.createElement('a');
+productNameLink.className = 'pro_name';
+productNameLink.href = '詳細商品頁面.html';
+productNameLink.textContent = product.pro_name;
+productNameLink.setAttribute('data-proid',product.pro_id);
+
+const productPriceDiv = document.createElement('div');
+productPriceDiv.className = 'pro_price';
+productPriceDiv.style.textAlign = 'center';
+productPriceDiv.textContent = `價格: ${product.pro_price}`;
+
+const quantityContainerDiv = document.createElement('div');
+quantityContainerDiv.className = 'quantity-container';
+
+const decrementButton = document.createElement('button');
+decrementButton.className = 'decrement-button q-button';
+decrementButton.textContent = '-';
+
+const quantityInput = document.createElement('input');
+quantityInput.type = 'number';
+quantityInput.className = 'quantity-input q-input';
+quantityInput.id = 'quantity';
+quantityInput.name = 'quantity';
+quantityInput.value = '1';
+quantityInput.min = '1';
+
+const incrementButton = document.createElement('button');
+incrementButton.className = 'increment-button q-button';
+incrementButton.textContent = '+';
+
+const addToCartButton = document.createElement('button');
+addToCartButton.className = 'add-to-cart';
+addToCartButton.textContent = 'Add to Cart';
+
+
+
+quantityContainerDiv.appendChild(decrementButton);
+quantityContainerDiv.appendChild(quantityInput);
+quantityContainerDiv.appendChild(incrementButton);
+
+cardDiv.appendChild(productNameLink);
+cardDiv.appendChild(productPriceDiv);
+cardDiv.appendChild(quantityContainerDiv);
+cardDiv.appendChild(addToCartButton);
+
+productDiv.appendChild(cardDiv);
+container.appendChild(productDiv);
+count++;
+}
+if(procount >= 12) return;
+});
+})
+.catch(error => {
+console.error('Error:', error);
+});
+
+
+</script>
+
+
+
+<script>
+// 商品詳細頁
+$('.pro_name').on('click', function(event) {
+// event.stopPropagation(); // 防止事件冒泡到父元素
+});
+
+</script>
+
+
+<!-- 詳細商品頁 -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+// 獲取商品列表中的所有商品元素
+const productsname = document.getElementsByClassName("pro_name");
+
+// 為每個商品元素添加點擊事件監聽器
+for (let i = 0; i < productsname.length; i++) {
+const product = productsname[i];
+product.addEventListener("click", function() {
+// 獲取商品的 ID
+const productId = product.getAttribute("data-id");  ///
+
+// 將商品 ID 作為參數添加到商品詳情頁的 URL 中
+const url = "detail.html?id=" + productId;
+
+// 跳轉到商品詳情頁
+window.location.href = url;
+});
+}
+
+// 在商品詳情頁中獲取商品 ID 並顯示詳細信息
+if (window.location.href.includes("detail.html")) {
+const urlParams = new URLSearchParams(window.location.search);
+const productId = urlParams.get("id");
+
+// 假設根據商品 ID 從後端獲取商品詳細信息，這裡只做簡單示範
+const productDetailsElement = document.getElementById("product-details");
+productDetailsElement.innerHTML = "<p>商品 ID：" + productId + "</p>";
+}
+});
+</script>
+
+
+<!-- 跳轉詳細商品頁 -->
+<!-- <script>
+document.addEventListener("DOMContentLoaded", function() {
+// 監聽商品連結的點擊事件
+
+var productLinks = document.getElementsByClassName("pro_name");
+console.log(productLinks);
+console.log("test");
+for (var i = 0; i < productLinks.length; i++) {
+console.log("test");
+productLinks[i].addEventListener("click", function(e) {
+e.preventDefault();
+console.log("test");
+// 獲取商品識別符
+var productId = this.getAttribute("pro-data-id");
+console.log("test");
+console.log(productId);
+// 將商品識別符存儲到瀏覽器的會話存儲中
+sessionStorage.setItem("selectedProductId", productId);
+
+// 跳轉到商品詳細頁面
+window.location.href = this.href;
+});
+}
+});
+</script> -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function() {
+// 監聽商品連結的點擊事件
+document.addEventListener("click", function(event) {
+if (event.target.classList.contains("pro_name")) {
+// 獲取點擊的商品資訊
+const productId = event.target.getAttribute('data-proid');
+
+// 使用 sessionStorage 儲存商品資訊
+sessionStorage.setItem('selectedProductId', productId);
+}
+});
+});
+
+
+
+</script>
+</body>
 </html>

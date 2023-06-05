@@ -59,8 +59,9 @@ public class Product {
 	private String pro_pic3;
 	
 	
-	@Column(insertable = false)  
-	@JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss", timezone = "GMT+8")
+//	@Column(insertable = false)  
+//	@JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss", timezone = "GMT+8")
+	@Column
 	private Timestamp create_time;   //上架時間
 	@Column(insertable = false)
 	private Timestamp pro_lastmodified_time; //最後更新時間
@@ -70,7 +71,7 @@ public class Product {
 	private String cate_name; //商品類別
 	@Column 
 	private String company_id; //廠商會員帳號
-	@Column
+	@Column 
 	private String email;
 	
 }
