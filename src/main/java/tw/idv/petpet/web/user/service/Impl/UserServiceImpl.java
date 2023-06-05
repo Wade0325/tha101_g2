@@ -2,12 +2,14 @@ package tw.idv.petpet.web.user.service.Impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import tw.idv.petpet.web.user.dao.UserRepository;
 import tw.idv.petpet.web.user.entity.User;
 import tw.idv.petpet.web.user.service.UserService;
 
 @Service
+@Transactional
 public class UserServiceImpl implements UserService {
 
 	@Autowired
@@ -29,6 +31,11 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	public User getUser(User userSession) {
+		return userRepository.findByAccount(userSession.getUserAccount());
+	}
+	
+	@Override
 	public User login(User user) {
 		User userLogin = userRepository.findByAccountAndPassword(user.getUserAccount(), user.getUserPassword());
 		if (userLogin != null) {
@@ -40,16 +47,18 @@ public class UserServiceImpl implements UserService {
 			userLogin.setSuccessful(false);
 			userLogin.setMessage("帳號密碼錯誤");
 			System.out.println("登入失敗");
-			return null;
+			return userLogin;
 		}
 	}
 
 	@Override
 	public User update(User user) {
 		User userUpdate = userRepository.findByAccount(user.getUserAccount());
-		userUpdate.getUserName();
-		userUpdate.getUserId();
-		userRepository.updateUserName(userUpdate.getUserName(), userUpdate.getUserId());
+		System.out.println(user.getUserName());
+		System.out.println(userUpdate.getUserId());
+		userRepository.updateUserName(user.getUserName(), userUpdate.getUserId());
 		return user;
 	}
+
+
 }

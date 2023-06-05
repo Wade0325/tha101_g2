@@ -33,21 +33,22 @@ public class UserController {
 		User userSession = (User) session.getAttribute("userAccount");
 		if (userSession.isLogin()) {
 			System.out.println("Controller 執行 getUser 方法成功");
-			return (User) session.getAttribute("userAccount");
+			return userService.getUser(userSession);
 		} else {
 			userSession.setLogin(false);
-			return userSession;
+			return userService.getUser(userSession);
 		}
 	}
 
 	@PostMapping("/login")
-	public void login(@RequestBody User user, HttpSession session) {
+	public User login(@RequestBody User user, HttpSession session) {
 		System.out.println("Controller 開始執行 login 方法");
-		User userSession = userService.login(user); // return
+		User userSession = userService.login(user);
 		if (userSession.isSuccessful()) {
 			session.setAttribute("userAccount", userSession);
 		}
 		System.out.println("Controller 執行 login 方法成功");
+		return userSession;
 	}
 
 	@PutMapping("/update")
@@ -55,7 +56,7 @@ public class UserController {
 		User userSession = (User) session.getAttribute("userAccount");
 		if (userSession.isLogin()) {
 			System.out.println("Controller 開始執行 update 方法");
-			userService.update(user); // (更新值,舊的使用者)
+			userService.update(user);
 			System.out.println("Controller 執行 update 方法成功");
 			return userSession;
 		} else {

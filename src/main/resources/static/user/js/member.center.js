@@ -43,7 +43,8 @@
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
-                        userName: nickName.value
+                        userName: nickName.value,
+                        userAccount: Email.value,
                     }),
                 })
                     .then(resp => resp.json())
