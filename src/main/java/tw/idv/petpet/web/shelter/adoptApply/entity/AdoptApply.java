@@ -28,38 +28,19 @@ public class AdoptApply {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column
     private Integer applyId;
-	@Column
     private Integer userId;
-	@Column
-	private Integer adopterId;
-	@Column
+    private Integer animalId;
+	private String adopterId;
 	private String adopterName;
-	@Column
 	private String adopterEmail;
-	@Column
 	private Date adopterBirth;
-	@Column
 	private String adopterPhone;
-	@Column
 	private String adopterContactTime;
-	@Column
 	private String adopterAddress;
-    @Column
     private String homeType;
-    @Column
-    private Integer homeSize;
-    @Column
+    private String homeSize;
     private String plan;
-    @Column
     private String question;
-    @Column
-    private Blob lifePicture1;
-    @Column
-    private Blob lifePicture2;
-    @Column
-    private Blob lifePicture3;
-    @Column
     private Date adopterApplyDate;
-    @Column
     private boolean adopterChecked;
 }

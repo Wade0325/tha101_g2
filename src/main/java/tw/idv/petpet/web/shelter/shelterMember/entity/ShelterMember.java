@@ -14,7 +14,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import tw.idv.petpet.core.pojo.Core;
 
 @Entity
 @Table
@@ -22,7 +21,7 @@ import tw.idv.petpet.core.pojo.Core;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class ShelterMember extends Core{
+public class ShelterMember {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column

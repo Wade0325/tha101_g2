@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>合併表格</title>
+</head>
+
+<body>
+	<div align="center">
+		<h1>診所會員營業及預約人數清單</h1>
+
+		<table border="1">
+			<thead>
+				<tr>
+					<th>診所編號</th>
+					<th>診所名稱</th>
+					<th>診所電話</th>
+					<th>診所地址</th>
+					<th>早上營業</th>
+					<th>早上剩餘可預約人數</th>
+					<th>下午營業</th>
+					<th>下午剩餘可預約人數</th>
+					<th>晚上營業</th>
+					<th>晚上剩餘可預約人數</th>
+				</tr>
+			</thead>
+			<tbody id="tbody"></tbody>
+		</table>
+		<script src="js/clinicMemberconnBusinessDate.js"></script>
+	</div>
+</body>
+
+</html>

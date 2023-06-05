@@ -133,7 +133,7 @@
 					<!-- <h1 class="mt-4">後台首頁</h1> -->
 					<div class="row">
 						<div class="col-md-12">
-							<!-- 內容放入此處 -->
+							<h4>編輯動物資料</h4>
 							<section>
 								<div class="container-fluid">
 									<div class="row">
@@ -156,7 +156,7 @@
 															<div class="form-group col-6">
 																<label for="name">收容編號 *</label> <input type="text"
 																	class="form-control border-stone" maxlength="20"
-																	name="animalId" id="animalId" value required />
+																	name="animalId" id="animalId" value required readonly/>
 															</div>
 														</div>
 														<div class="row">
@@ -238,10 +238,22 @@
 																		class="btn btn-success text-center">上傳圖片</button>
 
 																</div>
-																<div id="upload_show_div" class="upload_show_div row"></div>
-																<input name="files" id="files" type="hidden" value>
+																<div id="upload_show_div" class="upload_show_div row">
+																<div class="col-md-4 text-center">
+																<img src="data:image/jpeg;base64," class="uploaded-image" id="animalPhoto1">
+																<button class="delete-button btn btn-success" id="delete1">刪除</button>
+																</div>
+																<div class="col-md-4 text-center">
+																<img src="data:image/jpeg;base64," class="uploaded-image" id="animalPhoto2">
+																<button class="delete-button btn btn-success" id="delete2">刪除</button>
+																</div>
+																<div class="col-md-4 text-center">
+																<img src="data:image/jpeg;base64," class="uploaded-image" id="animalPhoto3">
+																<button class="delete-button btn btn-success" id="delete3">刪除</button>
+																</div>
 															</div>
 														</div>
+																</div>
 													</fieldset>
 												</div>
 											</div>
@@ -281,11 +293,39 @@
 			</footer>
 		</div>
 	</div>
-
+	<script>
+	const deleteButton1 = document.querySelector('#delete1');
+	deleteButton1.addEventListener('click', function() {
+		  var parentDiv = this.parentNode;
+		  const confirmDelete = confirm("確定要刪除嗎？");
+		  if (confirmDelete) {
+		    parentDiv.remove();
+		  }
+		  uploadedCount--;
+	});
+	const deleteButton2 = document.querySelector('#delete2');
+	deleteButton2.addEventListener('click', function() {
+		  var parentDiv = this.parentNode;
+		  const confirmDelete = confirm("確定要刪除嗎？");
+		  if (confirmDelete) {
+		    parentDiv.remove();
+		  }
+		  uploadedCount--;
+	});
+	const deleteButton3 = document.querySelector('#delete3');
+	deleteButton3.addEventListener('click', function() {
+		  var parentDiv = this.parentNode;
+		  const confirmDelete = confirm("確定要刪除嗎？");
+		  if (confirmDelete) {
+		    parentDiv.remove();
+		  }
+		  uploadedCount--;
+	});
+	</script>
 	<script>
 		const fileuploadInput = document.getElementById('fileupload');
 		const uploadShowDiv = document.getElementById('upload_show_div');
-		let uploadedCount = 0;
+		let uploadedCount = 3;
 
 		fileuploadInput.addEventListener('change', function() {
 			const files = fileuploadInput.files;

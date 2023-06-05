@@ -2,13 +2,17 @@ package tw.idv.petpet.web.shelter.shelterMember.dao.impl;
 
 import java.util.List;
 
+import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
+import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
 import tw.idv.petpet.web.clinicMember.entity.ClinicMember;
+import tw.idv.petpet.web.shelter.shelterAnimal.dao.ShelterAnimalDao;
+import tw.idv.petpet.web.shelter.shelterAnimal.entity.ShelterAnimal;
 import tw.idv.petpet.web.shelter.shelterMember.dao.ShelterMemberDao;
 import tw.idv.petpet.web.shelter.shelterMember.entity.ShelterMember;
 
@@ -45,6 +49,7 @@ public class ShelterMemberDaoImpl implements ShelterMemberDao{
 		return null;
 	}
 
-
+	
+	
 
 }

@@ -95,7 +95,7 @@ public class MemberServiceImpl implements MemberService {
 		final int resultCount = dao.update(member);
 		member.setSuccessful(resultCount > 0);
 		member.setMessage(resultCount > 0 ? "修改成功" : "修改失敗");
-
+		
 		final String password = member.getPassword();
 		if (password == null || password.isEmpty()) {
 			member.setPassword(oMember.getPassword());

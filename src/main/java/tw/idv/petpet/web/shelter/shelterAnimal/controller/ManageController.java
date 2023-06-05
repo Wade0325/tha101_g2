@@ -1,5 +1,6 @@
 package tw.idv.petpet.web.shelter.shelterAnimal.controller;
 
+import java.util.Base64;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,11 +22,18 @@ public class ManageController {
 	@Autowired
 	private ShelterAnimalService service;
 	
+	@PostMapping("animalmanage")
+	@ResponseBody
+		public List<ShelterAnimal> animalmanage() {
+		  List<ShelterAnimal> animals = service.findAll();
+		    return animals;
+		}
+	
 	@PostMapping("manage")
 	@ResponseBody
 		public List<ShelterAnimal> manage() {
-			List<ShelterAnimal> animal = service.findAll();
-			return animal;
+		  List<ShelterAnimal> animals = service.findAll();		    
+		    return animals;
 		}
 	
 	@DeleteMapping("deleteanimal/{animalId}")
