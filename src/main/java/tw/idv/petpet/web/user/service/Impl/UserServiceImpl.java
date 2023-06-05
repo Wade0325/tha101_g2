@@ -18,11 +18,11 @@ public class UserServiceImpl implements UserService {
 		System.out.println("Service 開始執行 register 方法");
 		User userRegister = userRepository.findByAccount(user.getUserAccount());
 		if (userRegister != null) {
-			user.setSuccessful(false);
-			user.setMessage("帳號已存在");
+			userRegister.setSuccessful(false);
+			userRegister.setMessage("帳號已存在");
 		} else {
-			user.setSuccessful(true);
-			return userRepository.save(user);
+			userRegister.setSuccessful(true);
+			return userRepository.save(userRegister);
 		}
 		System.out.println("Service 執行 findByAccount 方法成功");
 		return null;
@@ -45,15 +45,11 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User update(User user, User userSession) {
-		System.out.println("Service 開始執行 update 方法");
-		int userId = userRepository.findByAccount(userSession.getUserAccount()).getUserId();
-		userSession.setUserName(user.getUserName());
-		
-		if (userSession != null) {
-			userRepository.save(userSession);
-			return user;
-		}
+	public User update(User user) {
+		User userUpdate = userRepository.findByAccount(user.getUserAccount());
+		userUpdate.getUserName();
+		userUpdate.getUserId();
+		userRepository.updateUserName(userUpdate.getUserName(), userUpdate.getUserId());
 		return user;
 	}
 }

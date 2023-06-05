@@ -9,5 +9,5 @@ public interface UserService extends CoreService {
 
     public User login(User user);
 
-    public User update(User user,User userSession);
+    public User update(User user);
 }
