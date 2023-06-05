@@ -257,7 +257,7 @@
                 <input
                   type="text"
                   class="form-control"
-                  id="product-name"
+                  id="productName"
                   placeholder="請輸入商品名稱"
                 />
               </div>
@@ -443,6 +443,7 @@
 
 
     <script>
+    console.log("test");
       const uploadDiv = document.getElementById("uploadDiv");
       const uploadInput = document.getElementById("uploadInput");
       const uploadContainer = document.querySelector(".upload-container");
@@ -464,7 +465,7 @@
       // 監聽圖片選擇事件
       uploadInput.addEventListener("change", handleImageUpload);
     
-
+		console.log("test");
       
       // 處理圖片上傳
       function handleImageUpload(event) {
@@ -792,6 +793,7 @@ fetch('http://localhost:8080/petpet/shoptest123', {
 
 
 document.getElementById('btntest').addEventListener('click', function(event) {
+	console.log("test");
     event.preventDefault();
     var proname = document.getElementById('productName').value;
     var proprice = document.getElementById('product-price').value;
@@ -801,7 +803,7 @@ document.getElementById('btntest').addEventListener('click', function(event) {
     var prostatus = document.getElementById('product-category-n').value;
     
     
-    
+    console.log("test");
     // 构建商品对象
     var product = {
        
