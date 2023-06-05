@@ -51,7 +51,7 @@ public class ClinicAppointmentService {
 		return clinicAppointmentRepository.findAll();
 	}
 	
-	public Optional<ClinicAppointment> findByClinicName(String clinicName) {
+	public List<ClinicAppointment> findByClinicName(String clinicName) {
 		return clinicAppointmentRepository.findByClinicName(clinicName);
 	}
 }

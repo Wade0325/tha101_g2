@@ -3,6 +3,7 @@ package tw.idv.petpet.web.clinic.clinicAppointment.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,7 +20,7 @@ public class ClinicAppointmentController {
 	@Autowired
 	private ClinicAppointmentService service;
 
-	@PostMapping("/clinicAppointment")
+	@PostMapping("/clinicAppointmentInsert")
 	public String insert(@RequestBody ClinicAppointment clinicAppointment) {
 		service.save(clinicAppointment);
 		return "執行create操作";
@@ -37,7 +38,7 @@ public class ClinicAppointmentController {
 		return "執行delete操作";
 	}
 
-	@PostMapping("/clinicAppointment/{reservationNumber}")
+	@PostMapping("/clinicAppointment/findByReservationNumber/{reservationNumber}")
 	public ClinicAppointment findByReservationNumber(@PathVariable Integer reservationNumber) {
 		ClinicAppointment clinicAppointment = service.findByReservationNumber(reservationNumber).orElse(null);
 		return clinicAppointment;
@@ -48,10 +49,10 @@ public class ClinicAppointmentController {
 		List<ClinicAppointment> clinicAppointmentlList = service.listAll();
 		return clinicAppointmentlList;
 	}
-	
+
 	@PostMapping("/clinicAppointment/{ClinicName}")
-	public ClinicAppointment findByClinicName(@PathVariable String ClinicName) {
-		ClinicAppointment clinicAppointment = service.findByClinicName(ClinicName).orElse(null);
+	public List<ClinicAppointment> findByClinicName(@PathVariable String ClinicName) {
+		List<ClinicAppointment> clinicAppointment = service.findByClinicName(ClinicName);
 		return clinicAppointment;
 	}
 }

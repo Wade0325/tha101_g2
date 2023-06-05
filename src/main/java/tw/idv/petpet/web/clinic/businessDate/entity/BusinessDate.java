@@ -27,11 +27,11 @@ public class BusinessDate extends Core {
 	@Column
 	private Integer businessSn;
 	@Column
-	private Integer clinicId;
+	private Integer clinicId; //換診所名稱?
 	@Column
 	private Integer vetSn;
 	@Column
-	private Integer weekDate;
+	private Integer weekDate; //改成日期?
 	@Column
 	private Integer morningBusiness;
 	@Column
