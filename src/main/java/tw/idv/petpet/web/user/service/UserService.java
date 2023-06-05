@@ -7,9 +7,7 @@ public interface UserService extends CoreService {
 	
 	public User register(User user);
 
-    public User findById(Integer userid);
-
     public User login(User user);
-    
-    public User findByAccount(User user);
+
+    public User update(User user,User userSession);
 }
