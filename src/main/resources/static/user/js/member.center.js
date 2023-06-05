@@ -37,16 +37,22 @@
         } else {
             nickName.setAttribute('disabled', 'disabled');
             if ((nickName.value != '')) {
-                console.log(nickName.value);
                 fetch('userController/update', {
                     method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
-                        userName: nickName.value,
+                        userName: nickName.value
                     }),
                 })
+                    .then(resp => resp.json())
+                    .then(body => {
+                        const { successful } = body;
+                        if (successful) {
+                            window.alert("更新成功")
+                        }
+                    })
             } else {
                 window.alert("暱稱不得為空")
                 nickName.value = userphoneV
@@ -61,9 +67,26 @@
         if (phone.hasAttribute('disabled')) {
             phone.removeAttribute('disabled');
         } else {
+            console.log(phone.value)
             phone.setAttribute('disabled', 'disabled');
             if ((phone.value != '')) {
-
+                console.log(phone.value)
+                fetch('userController/update', {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        userTel: phone.value
+                    }),
+                })
+                    .then(resp => resp.json())
+                    .then(body => {
+                        const { successful } = body;
+                        if (successful) {
+                            window.alert("更新成功")
+                        }
+                    })
             } else {
                 window.alert("電話不得為空")
                 phone.value = nickNameV
@@ -79,7 +102,22 @@
         } else {
             address.setAttribute('disabled', 'disabled');
             if ((address.value != '')) {
-
+                fetch('userController/update', {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        userTel: address.value
+                    }),
+                })
+                    .then(resp => resp.json())
+                    .then(body => {
+                        const { successful } = body;
+                        if (successful) {
+                            window.alert("更新成功")
+                        }
+                    })
             } else {
                 window.alert("地址不得為空")
                 address.value = useraddressV
