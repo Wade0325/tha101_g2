@@ -21,9 +21,9 @@ public class ClinicAppointmentController {
 	private ClinicAppointmentService service;
 
 	@PostMapping("/clinicAppointmentInsert")
-	public String insert(@RequestBody ClinicAppointment clinicAppointment) {
+	public ClinicAppointment insert(@RequestBody ClinicAppointment clinicAppointment) {
 		service.save(clinicAppointment);
-		return "執行create操作";
+		return clinicAppointment;
 	}
 
 	@PutMapping("/clinicAppointment/{reservationNumber}")
