@@ -32,6 +32,13 @@
 	background-color: green;
 }
 </style>
+<style>
+  .form-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+</style>
 </head>
 
 <body>
@@ -201,8 +208,8 @@
 											</div>
 										</div>
 										<div class="col-md-12">
-											<div class="form-group">
-												<input type="button" value="送出資料" class="btn btn-primary" id="delaybtn"/>
+											<div class="form-button">
+												<input type="button" value="確認為送養人" class="btn btn-danger" id="delaybtn"/>
 												<div class="submitting"></div>
 											</div>
 										</div>
@@ -301,6 +308,17 @@
 	<script src="js/scrollax.min.js"></script>
 	<script src="js/main.js"></script>
 	<script src="js/applycheck.js"></script>
+	<script>
+	const subbtn = document.querySelector('#delaybtn');
+	subbtn.addEventListener('click',function(){
+		if (!confirm('確定將此userxxx設為animal領養人?')) {
+			return;
+		}
+		else {
+			console.log("aaa")
+		}
+	})
+	</script>
 	
 
 </body>

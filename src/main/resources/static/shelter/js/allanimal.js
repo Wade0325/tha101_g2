@@ -1,6 +1,6 @@
 const tbody = document.querySelector('#tbody');
-fetch('manage', {
-	method: 'POST',
+fetch('findbyifadopted/0', {
+	method: 'Post',
 	headers: {
 		'Content-Type': 'application/json'
 	},

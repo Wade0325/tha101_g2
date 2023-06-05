@@ -8,7 +8,7 @@ const animalNumber = document.querySelector('#animalNumber');
 const animalGender = document.querySelector('#animalGender');
 const animalAge = document.querySelector('#animalAge');
 const animalColor = document.querySelector('#animalColor');
-fetch(`adoptfindbyid/${id}`, {
+fetch(`animalfindbyid/${id}`, {
 	method: 'POST',
 	headers: {
 		'Content-Type': 'application/json'

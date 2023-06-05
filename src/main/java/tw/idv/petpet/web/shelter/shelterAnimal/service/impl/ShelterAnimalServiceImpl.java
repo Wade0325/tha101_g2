@@ -79,6 +79,11 @@ public class ShelterAnimalServiceImpl implements ShelterAnimalService{
 	public List<ShelterAnimal> findAll() {
 	    return repo.findAll();
 	}
+	
+	@Override
+	public List<ShelterAnimal> findByifAdopted(Integer ifAdopted){
+		return repo.findByifAdopted(ifAdopted);	
+	}
 
 	
 	@Transactional
