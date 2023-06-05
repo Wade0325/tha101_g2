@@ -122,14 +122,14 @@
 											<div class="form-group">
 												<label class="label" for="name">領養人姓名</label> <input
 													type="text" class="form-control" name="name" id="name"
-													placeholder="Name" />
+													placeholder="Name" readonly/>
 											</div>
 										</div>
 										<div class="col-md-6">
 											<div class="form-group">
 												<label class="label" for="name">身分證字號</label> <input
 													type="text" class="form-control" name="ID" id="id"
-													placeholder="ID Card Number" />
+													placeholder="ID Card Number" readonly/>
 											</div>
 										</div>
 
@@ -137,14 +137,14 @@
 											<div class="form-group">
 												<label class="label" for="email">出生日期</label> <input
 													type="date" class="form-control"
-													name="birth" id="birth" placeholder="Birthdate" />
+													name="birth" id="birth" placeholder="Birthdate" readonly/>
 											</div>
 										</div>
 										<div class="col-md-6">
 											<div class="form-group">
 												<label class="label" for="email">Email</label> <input
 													type="email" class="form-control" name="email" id="email"
-													placeholder="Email" />
+													placeholder="Email" readonly/>
 											</div>
 										</div>
 
@@ -152,14 +152,14 @@
 											<div class="form-group">
 												<label class="label" for="email">行動電話</label> <input
 													type="text" class="form-control" name="phonenumber"
-													id="phonenumber" placeholder="Phone Number" />
+													id="phonenumber" placeholder="Phone Number" readonly/>
 											</div>
 										</div>
 										<div class="col-md-6">
 											<div class="form-group">
 												<label class="label" for="name">方便電話聯繫的時間(如:平日1700後)</label>
 												<input type="text" class="form-control" name="calltime"
-													id="calltime" placeholder="Best time to call" />
+													id="calltime" placeholder="Best time to call" readonly/>
 											</div>
 										</div>
 
@@ -167,21 +167,21 @@
 											<div class="form-group">
 												<label class="label" for="subject">居住地址</label> <input
 													type="text" class="form-control" name="address"
-													id="address" placeholder="Address" />
+													id="address" placeholder="Address" readonly/>
 											</div>
 										</div>
 										<div class="col-md-6">
 											<div class="form-group">
 												<label class="label" for="name">自宅/租屋</label> <input
 													type="text" class="form-control" name="OwnedRental"
-													id="hometype" placeholder="Owned Home or Rental" />
+													id="hometype" placeholder="Owned Home or Rental" readonly/>
 											</div>
 										</div>
 										<div class="col-md-6">
 											<div class="form-group">
 												<label class="label" for="name">住家坪數</label> <input
 													type="text" class="form-control" name="homesize"
-													id="homesize" placeholder="Size of Your Home" />
+													id="homesize" placeholder="Size of Your Home" readonly/>
 											</div>
 										</div>
 										<div class="col-md-12">
@@ -189,7 +189,7 @@
 												<label class="label" for="subject">目前的動物/種類/年齡。為何還想要再養多一隻動物？</label>
 												<textarea type="text" class="form-control"
 													name="currentpets" id="plan" cols="30" rows="4"
-													placeholder="請在此輸入..."></textarea>
+													placeholder="請在此輸入..." readonly></textarea>
 											</div>
 										</div>
 										<div class="col-md-12">
@@ -197,7 +197,7 @@
 												<label class="label" for="#">有什麼想要告知我們嗎?
 												</label>
 												<textarea name="message" class="form-control" id="question"
-													cols="30" rows="4" placeholder="Message"></textarea>
+													cols="30" rows="4" placeholder="Message" readonly></textarea>
 											</div>
 										</div>
 										<div class="col-md-12">
@@ -300,12 +300,8 @@
 	<script src="js/jquery.magnific-popup.min.js"></script>
 	<script src="js/scrollax.min.js"></script>
 	<script src="js/main.js"></script>
-	<script src="js/adoptapply.js"></script>
-	<script>
-		var currentDate = new Date();
-		var formattedDate = currentDate.toISOString().slice(0, 10);
-		document.querySelector('#applyDate').textContent = formattedDate;
-	</script>
+	<script src="js/applycheck.js"></script>
+	
 
 </body>
 
