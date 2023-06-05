@@ -32,6 +32,7 @@
 			return;
 		}
 
+<<<<<<< HEAD
 		msg.textContent = '';
 		fetch('register', {
 			method: 'POST',
@@ -63,5 +64,38 @@
 				}
 			});
 	});
+=======
+        msg.textContent = '';
+        fetch('userController/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                userAccount: email.value,
+                userPassword: password.value,
+                userTel: phone.value,
+                userName: userName.value
+            }),
+        })
+            .then(resp => resp.json())
+            .then(body => {
+                //解構賦值 const successful = body.successful
+                const { successful, message } = body;
+                if (successful) {
+                    for (let input of inputs) {
+                        input.disabled = true;
+                    }
+                    btn.disabled = true;
+                    msg.className = 'info';
+                    msg.textContent = '註冊成功';
+                } else {
+                    msg.className = 'error';
+                    msg.textContent = '註冊失敗，' + message;
+
+                }
+            });
+    });
+>>>>>>> main
 
 })();

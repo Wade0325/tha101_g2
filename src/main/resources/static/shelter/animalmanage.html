@@ -22,6 +22,12 @@
 .button-td {
   text-align: center;
 }
+.flex-container {
+    display: flex;
+    justify-content: center;
+}
+
+
 
 
 </style>
@@ -122,7 +128,7 @@
 		<div id="layoutSidenav_content">
 			<main>
 				<div class="container-fluid px-4">
-					<!-- <h1 class="mt-4">後台首頁</h1> -->
+					<h1 class="mt-4">動物列表</h1>
 					<div class="row">
 						<div class="col-md-12">
 							<section>
@@ -143,7 +149,7 @@
 																	</form>
 																</td>
 																<td class="text-right">
-																	<div class="float-right">
+																	<div class="flex-container">
 																		<a href="upload.html" class="btn btn-primary">上傳</a>
 																	</div>
 																</td>
@@ -158,20 +164,8 @@
 																	<th class=""></th>
 																</tr>
 															</thead>
-															<tbody>
-																<tr>
-																	<td name="animalName" id="animalName">錢多</td>
-																	<td name="animalNum" id="animalNum">dog123123</td>
-																	<td name="userId" id="userId">null</td>
-																	<td><a href="申請人頁面的URL">查看申請人</a></td>
-																	<td class="button-td">
-																		<button onclick="editItem()">編輯</button>
-																	</td>
-																	<td class="button-td">
-																		<button onclick="deleteItem()">刪除</button>
-																	</td>
-
-																</tr>
+															<tbody id="tbody">
+																
 															</tbody>
 														</table>
 													</div>
@@ -230,9 +224,7 @@
 	src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
 	crossorigin="anonymous"></script>
 <script src="js/datatables-simple-demo.js"></script>
+<script src="js/manage.js"></script>
 
-<script>
-	// document.getElementById('btn_upload').addEventListener('click', )
-</script>
 </body>
 </html>

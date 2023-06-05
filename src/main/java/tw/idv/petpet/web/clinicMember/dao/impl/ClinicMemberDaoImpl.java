@@ -40,9 +40,17 @@ public class ClinicMemberDaoImpl implements ClinicMemberDao{
 		if (password != null && !password.isEmpty()) {
 			hql.append("clinicPassword = :clinicPassword,");
 		}
-		final byte[] clinicPhoto = clinicMember.getClinicPhoto();
-		if (clinicPhoto != null && clinicPhoto.length != 0) {
-			hql.append("clinicPhoto = :clinicPhoto");
+		final byte[] clinicPhoto1 = clinicMember.getClinicPhoto1();
+		if (clinicPhoto1 != null && clinicPhoto1.length != 0) {
+			hql.append("clinicPhoto1 = :clinicPhoto1");
+		}
+		final byte[] clinicPhoto2 = clinicMember.getClinicPhoto2();
+		if (clinicPhoto2 != null && clinicPhoto2.length != 0) {
+			hql.append("clinicPhoto2 = :clinicPhoto2");
+		}
+		final byte[] clinicPhoto3 = clinicMember.getClinicPhoto3();
+		if (clinicPhoto3 != null && clinicPhoto3.length != 0) {
+			hql.append("clinicPhoto3 = :clinicPhoto3");
 		}
 		hql.append("clinicName = :clinicName,")
 		   .append("clinicPrincipal = :clinicPrincipal,")
@@ -56,8 +64,14 @@ public class ClinicMemberDaoImpl implements ClinicMemberDao{
 		if (password != null && !password.isEmpty()) {
 			query.setParameter("clinicPassword", clinicMember.getClinicPassword());
 		}
-		if (clinicPhoto != null && clinicPhoto.length != 0) {
-			query.setParameter("clinicPhoto", clinicPhoto);
+		if (clinicPhoto1 != null && clinicPhoto1.length != 0) {
+			query.setParameter("clinicPhoto1", clinicPhoto1);
+		}
+		if (clinicPhoto2 != null && clinicPhoto2.length != 0) {
+			query.setParameter("clinicPhoto2", clinicPhoto2);
+		}
+		if (clinicPhoto3 != null && clinicPhoto3.length != 0) {
+			query.setParameter("clinicPhoto3", clinicPhoto3);
 		}
 		return query.setParameter("clinicName", clinicMember.getClinicName())
 					.setParameter("clinicPrincipal", clinicMember.getClinicPrincipal())

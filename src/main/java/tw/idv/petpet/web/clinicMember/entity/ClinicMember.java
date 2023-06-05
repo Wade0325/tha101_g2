@@ -43,8 +43,20 @@ public class ClinicMember extends Core {
 	private Timestamp clinicMemberCreateDate;
 	@Column
 	private String clinicAddress;
+<<<<<<< HEAD
 	@Column
 	private byte[] clinicPhoto;
+=======
+	@Lob
+	@Column(columnDefinition = "longblob")
+	private byte[] clinicPhoto1;
+	@Lob
+	@Column(columnDefinition = "longblob")
+	private byte[] clinicPhoto2;
+	@Lob
+	@Column(columnDefinition = "longblob")
+	private byte[] clinicPhoto3;
+>>>>>>> main
 	@Column
 	private String clinicService;
 	@Column

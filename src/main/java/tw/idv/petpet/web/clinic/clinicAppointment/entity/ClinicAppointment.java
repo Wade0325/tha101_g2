@@ -1,5 +1,6 @@
 package tw.idv.petpet.web.clinic.clinicAppointment.entity;
 
+import java.sql.Date;
 import java.sql.Timestamp;
 
 import javax.persistence.Column;
@@ -32,14 +33,14 @@ public class ClinicAppointment extends Core {
 	@Column
 	private Integer reservationNumber;
 	@Column
-	private Integer cardId;
-	@Column
 	private Integer clinicId;
+	@Column
+	private String clinicName;
 	@Column
 	private String vetName;
 	@JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss", timezone = "GMT+8")
 	@Column
-	private Timestamp appointDate;
+	private Date appointDate;
 	@Column
 	private Integer appointTime;
 	@Column
@@ -51,7 +52,7 @@ public class ClinicAppointment extends Core {
 	@Column
 	private Integer serviceItem;
 	@Column
-	private Integer userId;
+	private String ownerName ;
 	@Column
 	private String petSituation;
 }

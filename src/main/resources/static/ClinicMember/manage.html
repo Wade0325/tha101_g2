@@ -1,10 +1,15 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
+<<<<<<< HEAD
 <meta charset="UTF-8">
 <title>FindAll</title>
+=======
+	<meta charset="UTF-8">
+	<title>FindAll</title>
+	<link rel="stylesheet" href="css/clinicMemberManage.css">
+>>>>>>> main
 </head>
 
 <body>
@@ -29,6 +34,7 @@
 					<th>變更</th>
 				</tr>
 			</thead>
+<<<<<<< HEAD
 			<tbody>
 				<tr th:each="clinicMember : ${clinicMemberList}">
 					<td th:text="${clinicMember.clinicId}"></td>
@@ -42,15 +48,56 @@
 					<td th:text="${clinicMember.clinicPhoto}"></td>
 					<td th:text="${clinicMember.clinicService}"></td>
 					<td th:text="${clinicMember.clinicMemberLastUpdateDate}"></td>
+=======
+			<tbody id="tbody"></tbody>
+		</table>
+		<script>
+			const tbody = document.querySelector('#tbody');
+			fetch('manage', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: {
+
+				}
+			})
+				.then(resp => resp.json())
+				.then(ClinicMember => {
+					for (let member of ClinicMember) {
+						console.log(member);
+
+						tbody.innerHTML += `
+				<tr>
+					<td>${member.clinicId}</td>
+					<td contenteditable="true" id="clinicname${member.clinicId}">${member.clinicName}</td>
+					<td contenteditable="true" id="clinicprincipal${member.clinicId}">${member.clinicPrincipal}</td>
+					<td contenteditable="true" id="clinicemail${member.clinicId}">${member.clinicEmail}</td>
+					<td contenteditable="true" id="clinicpassword${member.clinicId}">${member.clinicPassword}</td>
+					<td contenteditable="true" id="clinicphone${member.clinicId}">${member.clinicPhone}</td>
+					<td>${member.clinicMemberCreateDate}</td>
+					<td contenteditable="true" id="clinicaddress${member.clinicId}">${member.clinicAddress}</td>
+					<td contenteditable="true" id="clinicphoto${member.clinicId}">${member.clinicPhoto}</td>
+					<td contenteditable="true" id="clinicservice${member.clinicId}">${member.clinicService}</td>
+					<td>${member.clinicMemberLastUpdateDate}</td>
+>>>>>>> main
 					<td>
 						<a th:href="/@{'/edit/' + ${clinicMember.clinicId}}">編輯</a>
 						&nbsp;&nbsp;&nbsp; 
 						<a th:href="/@{'/delete/' + ${clinicMember.clinicId}}">刪除</a>
 					</td>
+<<<<<<< HEAD
 				</tr>
 			</tbody>
 		</table>
 	</div>
+=======
+				</tr>`
+					}
+				})
+		</script>
+		<script src="js/clinicMemberManage.js"></script>
+>>>>>>> main
 </body>
 </html>
 

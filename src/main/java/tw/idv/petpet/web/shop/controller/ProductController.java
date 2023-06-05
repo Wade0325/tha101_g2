@@ -1,5 +1,11 @@
 package tw.idv.petpet.web.shop.controller;
 
+<<<<<<< HEAD
+=======
+import java.sql.Timestamp;
+import java.util.List;
+
+>>>>>>> main
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -8,10 +14,18 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+<<<<<<< HEAD
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import tw.idv.petpet.web.shop.entity.categories;
+=======
+import org.springframework.web.bind.annotation.RestController;
+
+import tw.idv.petpet.web.shop.dao.CategoriesRepository;
+import tw.idv.petpet.web.shop.dao.ProductRepository;
+import tw.idv.petpet.web.shop.entity.Categories;
+>>>>>>> main
 import tw.idv.petpet.web.shop.entity.Product;
 
 @RestController
@@ -41,6 +55,8 @@ public class ProductController {
 	@PostMapping("/shoptest111")  //新增商品
 	public String insert(@RequestBody Product product) {
 		System.out.println("test");
+		 Timestamp now = new Timestamp(System.currentTimeMillis());
+	        product.setCreate_time(now);
 		productRepository.save(product);
 		return "測試insert";
 	}
