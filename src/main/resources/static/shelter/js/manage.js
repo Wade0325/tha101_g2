@@ -18,12 +18,12 @@ fetch('animalmanage', {
 				<td id="animalName${animal.animalName}">${animal.animalName}</td>
 				<td id="animalNum${animal.animalNameber}">${animal.animalNumber}</td>
 				<td id="userId${animal.userId}">${animal.userId}</td>
-				<td><a href="申請人頁面的URL" onclick="apply(${animal.animalId})">查看申請人</a></td>
+				<td><a href="applylist.html?id=${animal.animalId}" onclick="apply(${animal.animalId})">查看申請人</a></td>
 				<td class="button-td">
-					<button type="button" class="btn-edit" onclick="editItem(${animal.animalId})">編輯</button>
+					<button type="button" class="btn-edit btn btn-success" onclick="editItem(${animal.animalId})">編輯</button>
 				</td>
 				<td class="button-td">
-					<button type="button" class="btn-delete" onclick="deleteClick(${animal.animalId})">刪除</button>
+					<button type="button" class="btn-delete btn btn-danger" onclick="deleteClick(${animal.animalId})">刪除</button>
 				</td>
 				<td id="animalId${animal.animalId}" style="display: none;">${animal.animalId}</td>
 				</tr>`

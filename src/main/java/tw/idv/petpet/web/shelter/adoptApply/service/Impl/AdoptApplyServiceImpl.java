@@ -43,4 +43,9 @@ public class AdoptApplyServiceImpl implements AdoptApplyService{
 		return repo.save(adopt);
 	}
 
+	@Override
+	public List<AdoptApply> findByanimalId(Integer animalId) {
+		return repo.findByanimalId(animalId);
+	}
+
 }

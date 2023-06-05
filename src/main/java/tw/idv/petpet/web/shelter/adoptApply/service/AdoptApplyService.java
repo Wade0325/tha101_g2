@@ -12,6 +12,8 @@ public interface AdoptApplyService extends CoreService{
 	
 	List<AdoptApply> findAll();
 	
+	List<AdoptApply> findByanimalId(Integer animalId);
+	
 	boolean remove(Integer applylId);
 
 	Optional<AdoptApply> findById(Integer applyId);
