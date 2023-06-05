@@ -25,9 +25,18 @@ public class AnimalEditController {
 		ShelterAnimal shelterAnimal = service.findById(animalId).orElse(null);
 
 		service.findById(animalId);
-		System.out.println("findById完成");
+		System.out.println("動物詳細findById完成");
 		return shelterAnimal;
 	}
+//	@PostMapping("adoptfindbyid/{animalId}")
+//	@ResponseBody
+//	public ShelterAnimal adopt(@PathVariable Integer animalId) {
+//		ShelterAnimal shelterAnimal = service.findById(animalId).orElse(null);
+//		
+//		service.findById(animalId);
+//		System.out.println("領養表單findById完成");
+//		return shelterAnimal;
+//	}
 	
 	@PutMapping("animaledit/{animalId}")
 	@ResponseBody
