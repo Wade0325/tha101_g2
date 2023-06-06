@@ -26,7 +26,6 @@
                 userAccount: email.value,
                 userPassword: password.value,
             }),
-
         })
             .then(resp => resp.json())
             .then(body => {
@@ -38,7 +37,6 @@
                 } else {
                     msg.className = 'error';
                     msg.textContent = '登入失敗，' + message;
-
                 }
             })
     })

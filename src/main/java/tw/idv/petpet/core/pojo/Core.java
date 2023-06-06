@@ -12,12 +12,14 @@ public class Core implements Serializable {
 	private static final long serialVersionUID = 1457755989409740329L;
 	private boolean successful;
 	private String message;
+	private boolean login;
 
 	public Core() {
 	}
 
-	public Core(boolean successful, String message) {
+	public Core(boolean successful, String message, boolean login) {
 		this.successful = successful;
 		this.message = message;
+		this.login = login;
 	}
 }
