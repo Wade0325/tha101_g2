@@ -72,15 +72,18 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User updatePwd(User user,User userSession) {
-		User userUpdatePwd = userRepository.findByAccountAndPassword(userSession.getUserAccount(), user.getUserPassword());
+	public User updatePwd(User user, User userSession) {
+		User userUpdatePwd = userRepository.findByAccountAndPassword(userSession.getUserAccount(),
+				user.getUserPassword());
 		System.out.println(userSession.getUserAccount());
 		System.out.println(user.getUserNewPassword());
 		if (userUpdatePwd != null) {
 			userRepository.updateUserPwd(user.getUserNewPassword(), userSession.getUserAccount());
+			user.setSuccessful(true);
+			return user;
+		} else {
+			user.setSuccessful(false);
 			return user;
 		}
-		return user;
 	}
-
 }

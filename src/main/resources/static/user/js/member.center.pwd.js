@@ -2,7 +2,7 @@
     const msg = document.querySelector("#msg")
     const oldPassword = document.querySelector("#oldPassword")
     const newPassword = document.querySelector("#newPassword")
-    const confirmPassword = document.querySelector("#newPassword")
+    const confirmPassword = document.querySelector("#confirmPassword")
 
     // fetch('userController/getUser', {
     //     method: 'GET',
@@ -51,7 +51,12 @@
                         const { successful } = body;
                         if (successful) {
                             window.alert("更新成功")
-                            window.location.href = "/petpet"
+                            // window.location.href = "/petpet"
+                        } else {
+                            window.alert("舊密碼錯誤")
+                            oldPassword.value = ''
+                            newPassword.value = ''
+                            confirmPassword.value = ''
                         }
                     })
 

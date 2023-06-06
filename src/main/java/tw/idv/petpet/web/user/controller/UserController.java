@@ -59,10 +59,10 @@ public class UserController {
 			System.out.println("Controller 開始執行 update 方法");
 			userService.update(user);
 			System.out.println("Controller 執行 update 方法成功");
-			return userSession;
+			return user;
 		} else {
-			user.setLogin(false);
-			return null;
+			userSession.setLogin(false);
+			return userSession;
 		}
 	}
 
@@ -70,13 +70,13 @@ public class UserController {
 	public User updatePwd(@RequestBody User user, HttpSession session) {
 		User userSession = (User) session.getAttribute("userAccount");
 		if (userSession.isLogin()) {
-			System.out.println("Controller 開始執行 update 方法");
+			System.out.println("Controller 開始執行 updatePwd 方法");
 			userService.updatePwd(user,userSession);
-			System.out.println("Controller 執行 update 方法成功");
-			return userSession;
+			System.out.println("Controller 執行 updatePwd 方法成功");
+			return user;
 		} else {
 			user.setLogin(false);
-			return null;
+			return user;
 		}
 	}
 }
