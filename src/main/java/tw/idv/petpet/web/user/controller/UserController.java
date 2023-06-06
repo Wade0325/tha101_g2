@@ -30,6 +30,7 @@ public class UserController {
 
 	@GetMapping("/getUser")
 	public User getUser(User user, HttpSession session) {
+		System.out.println("Controller 開始執行 getUser 方法");
 		User userSession = (User) session.getAttribute("userAccount");
 		if (userSession.isLogin()) {
 			System.out.println("Controller 執行 getUser 方法成功");

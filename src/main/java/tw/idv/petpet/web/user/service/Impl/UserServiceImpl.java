@@ -23,7 +23,6 @@ public class UserServiceImpl implements UserService {
 			userRegister.setSuccessful(false);
 			userRegister.setMessage("帳號已存在");
 		} else {
-			userRegister.setSuccessful(true);
 			return userRepository.save(userRegister);
 		}
 		System.out.println("Service 執行 findByAccount 方法成功");
@@ -34,7 +33,7 @@ public class UserServiceImpl implements UserService {
 	public User getUser(User userSession) {
 		return userRepository.findByAccount(userSession.getUserAccount());
 	}
-	
+
 	@Override
 	public User login(User user) {
 		User userLogin = userRepository.findByAccountAndPassword(user.getUserAccount(), user.getUserPassword());
@@ -54,11 +53,19 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User update(User user) {
 		User userUpdate = userRepository.findByAccount(user.getUserAccount());
-		System.out.println(user.getUserName());
-		System.out.println(userUpdate.getUserId());
-		userRepository.updateUserName(user.getUserName(), userUpdate.getUserId());
+
+		if (user.getUserName() != null) {
+			userRepository.updateUserName(user.getUserName(), userUpdate.getUserId());
+		}
+
+		if(user.getUserTel() != null) {
+			userRepository.updateUserTel(user.getUserTel(), userUpdate.getUserId());
+		}
+		
+		if(user.getUserAddr() != null) {
+			userRepository.updateUserAddr(user.getUserAddr(), userUpdate.getUserId());
+		}
 		return user;
 	}
-
 
 }

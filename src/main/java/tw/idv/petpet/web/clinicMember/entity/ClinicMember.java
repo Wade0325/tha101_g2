@@ -47,7 +47,13 @@ public class ClinicMember extends Core {
 	private String clinicAddress;
 	@Lob
 	@Column(columnDefinition = "longblob")
-	private byte[] clinicPhoto;
+	private byte[] clinicPhoto1;
+	@Lob
+	@Column(columnDefinition = "longblob")
+	private byte[] clinicPhoto2;
+	@Lob
+	@Column(columnDefinition = "longblob")
+	private byte[] clinicPhoto3;
 	@Column
 	private String clinicService;
 	@JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss", timezone = "GMT+8")

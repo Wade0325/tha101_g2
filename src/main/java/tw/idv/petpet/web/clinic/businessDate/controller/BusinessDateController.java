@@ -21,15 +21,15 @@ public class BusinessDateController {
 	private BusinessDateService service;
 
 	@PostMapping("/business")
-	public String insert(@RequestBody BusinessDate businessDate) {
+	public BusinessDate insert(@RequestBody BusinessDate businessDate) {
 		service.save(businessDate);
-		return "執行create操作";
+		return businessDate;
 	}
 
 	@PutMapping("/business/{businessSn}")
-	public String update(@PathVariable Integer businessSn, @RequestBody BusinessDate businessDate) {
+	public BusinessDate update(@PathVariable Integer businessSn, @RequestBody BusinessDate businessDate) {
 		service.update(businessSn, businessDate);
-			return "執行update操作";
+		return businessDate;
 	}
 
 	@DeleteMapping("/business/{businessSn}")

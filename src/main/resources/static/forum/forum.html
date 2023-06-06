@@ -27,8 +27,10 @@
 
     <link rel="stylesheet" href="css/forum.css">
 
+    <script src="js/forumUpdate.js"></script>
+
     <!-- 給發表文章用的 -->
-    <style>  
+    <style>
         .button {
             display: inline-block;
             padding: 10px 20px;
@@ -42,12 +44,12 @@
             border: none;
             cursor: pointer;
         }
-    
+
         .button:hover {
             background-color: #45a049;
         }
     </style>
-    
+
 </head>
 
 <body>
@@ -89,120 +91,125 @@
             <div style="background-color: white;">
                 <div class="cat-discussion">
                     <h5>
-                        <span class="">【貓貓討論區】</span>
+                        <span id="articleGroupId">【貓貓討論區】</span>
                         <!-- <span class="">【閒聊】</span> -->
                         <span><a href="">分享領養心得</a></span>
                     </h5>
                 </div>
                 <div class="cat-discussion">
                     <h5>
-                        <span class="">【貓貓討論區】</span>
+                        <span id="articleGroupId">【貓貓討論區】</span>
                         <!-- <span class="">【閒聊】</span> -->
                         <span><a href="article_cat.html">大家好這是我剛領養的貓貓</a></span>
                     </h5>
                 </div>
                 <div class="dog-discussion">
                     <h5>
-                        <span class="">【狗狗討論區】</span>
+                        <span id="articleGroupId">【狗狗討論區】</span>
                         <!-- <span class="">【閒聊】</span> -->
                         <span><a href="">分享領養心得</a></span>
                     </h5>
                 </div>
                 <div class="dog-discussion">
                     <h5>
-                        <span class="">【狗狗討論區】</span>
+                        <span id="articleGroupId">【狗狗討論區】</span>
                         <!-- <span class="">【閒聊】</span> -->
                         <span><a href="">大家好這是我剛領養的狗狗</a></span>
                     </h5>
                 </div>
             </div>
-            <!-- 加入發表文章的按鈕 -->
-            <div>
-                <a href="publish.html" class="button" style="color: black;">發表文章</a>
+            <!-- 这里是展示文章的位置 -->
+            <div id="articleList" style="background-color: white;">
+                <!-- 文章列表将在这里动态渲染 -->
             </div>
-        </main>
-        <!-- 程式放裡面 -->
+    </div>
+    <!-- 加入發表文章的按鈕 -->
+    <div>
+        <a href="publish.html" class="button" style="color: black;">發表文章</a>
+    </div>
+    </main>
+    <!-- 程式放裡面 -->
 
 
 
-        
 
 
-        <footer class="footer">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 col-lg-4 mb-4 mb-md-0">
-                        <h2 class="footer-heading">PetPet陪陪你</h2>
-                        <p>一個能提供購物、醫療、送領養的平台</p>
-                        <ul class="ftco-footer-social p-0">
-                            <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top"
-                                    title="Twitter"><span class="fa fa-twitter"></span></a></li>
-                            <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top"
-                                    title="Facebook"><span class="fa fa-facebook"></span></a></li>
-                            <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top"
-                                    title="Instagram"><span class="fa fa-instagram"></span></a></li>
-                        </ul>
-                    </div>
-                    <div class="col-md-6 col-lg-4 mb-4 mb-md-0">
-                        <h2 class="footer-heading">寵物討論區</h2>
-                        <div class="block-21 mb-4 d-flex">
-                            <a class="img mr-4 rounded" style="background-image: url(images/image_1.jpg);"></a>
-                            <div class="text">
-                                <h3 class="heading"><a href="#">狗狗討論區</a></h3>
-                            </div>
-                        </div>
-                        <div class="block-21 mb-4 d-flex">
-                            <a class="img mr-4 rounded" style="background-image: url(images/image_2.jpg);"></a>
-                            <div class="text">
-                                <h3 class="heading"><a href="#">貓咪討論區</a></h3>
-                            </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-lg-4 mb-4 mb-md-0">
+                    <h2 class="footer-heading">PetPet陪陪你</h2>
+                    <p>一個能提供購物、醫療、送領養的平台</p>
+                    <ul class="ftco-footer-social p-0">
+                        <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top"
+                                title="Twitter"><span class="fa fa-twitter"></span></a></li>
+                        <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top"
+                                title="Facebook"><span class="fa fa-facebook"></span></a></li>
+                        <li class="ftco-animate"><a href="#" data-toggle="tooltip" data-placement="top"
+                                title="Instagram"><span class="fa fa-instagram"></span></a></li>
+                    </ul>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4 mb-md-0">
+                    <h2 class="footer-heading">寵物討論區</h2>
+                    <div class="block-21 mb-4 d-flex">
+                        <a class="img mr-4 rounded" style="background-image: url(images/image_1.jpg);"></a>
+                        <div class="text">
+                            <h3 class="heading"><a href="#">狗狗討論區</a></h3>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-4 pl-lg-5 mb-4 mb-md-0">
-                        <h2 class="footer-heading">快速連結</h2>
-                        <ul class="list-unstyled">
-                            <li><a href="#" class="py-2 d-block">首頁</a></li>
-                            <li><a href="#" class="py-2 d-block">登入/註冊</a></li>
-                            <li><a href="#" class="py-2 d-block">寵物診所</a></li>
-                            <li><a href="#" class="py-2 d-block">寵物商城</a></li>
-                            <li><a href="#" class="py-2 d-block">寵物領養</a></li>
-                        </ul>
+                    <div class="block-21 mb-4 d-flex">
+                        <a class="img mr-4 rounded" style="background-image: url(images/image_2.jpg);"></a>
+                        <div class="text">
+                            <h3 class="heading"><a href="#">貓咪討論區</a></h3>
+                        </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-12 text-center">
-                        <p class="copyright">
-                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                            Copyright &copy;
-                            <script>document.write(new Date().getFullYear());</script> All rights reserved |
-                            This template
-                            is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a
-                                href="https://colorlib.com" target="_blank">Colorlib.com</a>
-                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        </p>
-                    </div>
+                <div class="col-md-6 col-lg-4 pl-lg-5 mb-4 mb-md-0">
+                    <h2 class="footer-heading">快速連結</h2>
+                    <ul class="list-unstyled">
+                        <li><a href="#" class="py-2 d-block">首頁</a></li>
+                        <li><a href="#" class="py-2 d-block">登入/註冊</a></li>
+                        <li><a href="#" class="py-2 d-block">寵物診所</a></li>
+                        <li><a href="#" class="py-2 d-block">寵物商城</a></li>
+                        <li><a href="#" class="py-2 d-block">寵物領養</a></li>
+                    </ul>
                 </div>
             </div>
-        </footer>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <p class="copyright">
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;
+                        <script>document.write(new Date().getFullYear());</script> All rights reserved |
+                        This template
+                        is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com"
+                            target="_blank">Colorlib.com</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-        <script src="js/jquery.min.js"></script>
-        <script src="js/jquery-migrate-3.0.1.min.js"></script>
-        <script src="js/popper.min.js"></script>
-        <script src="js/bootstrap.min.js"></script>
-        <script src="js/jquery.easing.1.3.js"></script>
-        <script src="js/jquery.waypoints.min.js"></script>
-        <script src="js/jquery.stellar.min.js"></script>
-        <script src="js/jquery.animateNumber.min.js"></script>
-        <script src="js/bootstrap-datepicker.js"></script>
-        <script src="js/jquery.timepicker.min.js"></script>
-        <script src="js/owl.carousel.min.js"></script>
-        <script src="js/jquery.magnific-popup.min.js"></script>
-        <script src="js/scrollax.min.js"></script>
-        <script
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
-        <script src="js/google-map.js"></script>
-        <script src="js/main.js"></script>
-
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-migrate-3.0.1.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="js/jquery.stellar.min.js"></script>
+    <script src="js/jquery.animateNumber.min.js"></script>
+    <script src="js/bootstrap-datepicker.js"></script>
+    <script src="js/jquery.timepicker.min.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/scrollax.min.js"></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+    <script src="js/google-map.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/forumUpdate.js"></script>
 
 </body>
 

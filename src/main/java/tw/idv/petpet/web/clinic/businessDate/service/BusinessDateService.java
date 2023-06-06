@@ -23,8 +23,9 @@ public class BusinessDateService {
 
 	public void update(Integer businessSn, BusinessDate businessDate) {
 		BusinessDate businessDate1 = businessDateRepository.findById(businessSn).orElse(null);
-		// businessSn、clinicId不可修改
+		// businessSn不可修改
 		if (businessDate1 != null) {
+			businessDate1.setClinicName(businessDate.getClinicName());
 			businessDate1.setVetSn(businessDate.getVetSn());
 			businessDate1.setWeekDate(businessDate.getWeekDate());
 			businessDate1.setMorningBusiness(businessDate.getMorningBusiness());

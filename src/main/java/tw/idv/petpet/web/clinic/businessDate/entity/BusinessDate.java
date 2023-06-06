@@ -1,5 +1,8 @@
 package tw.idv.petpet.web.clinic.businessDate.entity;
 
+
+import java.time.LocalDate;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -27,21 +30,21 @@ public class BusinessDate extends Core {
 	@Column
 	private Integer businessSn;
 	@Column
-	private Integer clinicId;
+	private String clinicName; 
 	@Column
 	private Integer vetSn;
 	@Column
-	private Integer weekDate;
+	private LocalDate weekDate;
 	@Column
-	private Integer morningBusiness;
+	private String morningBusiness;
 	@Column
 	private Integer morningAppointMax;
 	@Column
-	private Integer afternoonBusiness;
+	private String afternoonBusiness;
 	@Column
 	private Integer afternoonAppointMax;
 	@Column
-	private Integer nightBusiness;
+	private String nightBusiness;
 	@Column
 	private Integer nightAppointMax;
 }
