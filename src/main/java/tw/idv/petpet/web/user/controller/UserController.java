@@ -62,7 +62,21 @@ public class UserController {
 			return userSession;
 		} else {
 			user.setLogin(false);
+			return null;
+		}
+	}
+
+	@PutMapping("/updatePwd")
+	public User updatePwd(@RequestBody User user, HttpSession session) {
+		User userSession = (User) session.getAttribute("userAccount");
+		if (userSession.isLogin()) {
+			System.out.println("Controller 開始執行 update 方法");
+			userService.updatePwd(user,userSession);
+			System.out.println("Controller 執行 update 方法成功");
 			return userSession;
+		} else {
+			user.setLogin(false);
+			return null;
 		}
 	}
 }

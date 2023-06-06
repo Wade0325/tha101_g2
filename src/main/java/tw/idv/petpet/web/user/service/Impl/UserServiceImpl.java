@@ -43,10 +43,10 @@ public class UserServiceImpl implements UserService {
 			System.out.println("登入成功");
 			return userLogin;
 		} else {
-			userLogin.setSuccessful(false);
-			userLogin.setMessage("帳號密碼錯誤");
+			user.setSuccessful(false);
+			user.setMessage("帳號密碼錯誤");
 			System.out.println("登入失敗");
-			return userLogin;
+			return user;
 		}
 	}
 
@@ -56,14 +56,29 @@ public class UserServiceImpl implements UserService {
 
 		if (user.getUserName() != null) {
 			userRepository.updateUserName(user.getUserName(), userUpdate.getUserId());
+			return user;
 		}
 
-		if(user.getUserTel() != null) {
+		if (user.getUserTel() != null) {
 			userRepository.updateUserTel(user.getUserTel(), userUpdate.getUserId());
+			return user;
 		}
-		
-		if(user.getUserAddr() != null) {
+
+		if (user.getUserAddr() != null) {
 			userRepository.updateUserAddr(user.getUserAddr(), userUpdate.getUserId());
+			return user;
+		}
+		return user;
+	}
+
+	@Override
+	public User updatePwd(User user,User userSession) {
+		User userUpdatePwd = userRepository.findByAccountAndPassword(userSession.getUserAccount(), user.getUserPassword());
+		System.out.println(userSession.getUserAccount());
+		System.out.println(user.getUserNewPassword());
+		if (userUpdatePwd != null) {
+			userRepository.updateUserPwd(user.getUserNewPassword(), userSession.getUserAccount());
+			return user;
 		}
 		return user;
 	}
