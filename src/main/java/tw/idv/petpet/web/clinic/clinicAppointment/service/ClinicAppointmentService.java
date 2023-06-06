@@ -1,5 +1,6 @@
 package tw.idv.petpet.web.clinic.clinicAppointment.service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,15 +19,70 @@ public class ClinicAppointmentService {
 
 	@Autowired
 	private ClinicAppointmentRepository clinicAppointmentRepository;
-	
+
 	@Autowired
 	private BusinessDateRepository businessDateRepository;
 
 	public void save(ClinicAppointment clinicAppointment) {
-		BusinessDate businessDate = businessDateRepository.findByWeekDateAndClinicName(clinicAppointment.getAppointDate(), clinicAppointment.getClinicName());
-		
-		
-		clinicAppointmentRepository.save(clinicAppointment);
+		BusinessDate businessDate = businessDateRepository
+				.findByWeekDateAndClinicName(clinicAppointment.getAppointDate(), clinicAppointment.getClinicName());
+
+		if (businessDate != null && clinicAppointment.getClinicName().equals(businessDate.getClinicName())) {
+			if (businessDate.getWeekDate().equals(clinicAppointment.getAppointDate())) {
+				int morningAppointMax = businessDate.getMorningAppointMax(); // 早上時段
+				if (morningAppointMax > 0) {
+
+					clinicAppointmentRepository.save(clinicAppointment); // 進行預約操作
+
+					businessDate.setMorningAppointMax(morningAppointMax - 1); // 更新可預約人數
+					businessDateRepository.save(businessDate);
+				} else {
+					System.out.println("預約失敗，人數已滿");
+				}
+			} else {
+				System.out.println("預約失敗，預約日期匹配錯誤");
+			}
+		} else {
+			System.out.println("預約失敗，當日未營業或診所名稱錯誤或同時段重複預約");
+		}
+
+		if (businessDate != null && clinicAppointment.getClinicName().equals(businessDate.getClinicName())) {
+			if (businessDate.getWeekDate().equals(clinicAppointment.getAppointDate())) {
+				int afternoonAppointMax = businessDate.getAfternoonAppointMax(); // 下午時段
+				if (afternoonAppointMax > 0) {
+
+					clinicAppointmentRepository.save(clinicAppointment); // 進行預約操作
+
+					businessDate.setAfternoonAppointMax(afternoonAppointMax - 1); // 更新可預約人數
+					businessDateRepository.save(businessDate);
+				} else {
+					System.out.println("預約失敗，人數已滿");
+				}
+			} else {
+				System.out.println("預約失敗，預約日期匹配錯誤");
+			}
+		} else {
+			System.out.println("預約失敗，當日未營業或診所名稱錯誤或同時段重複預約");
+		}
+
+		if (businessDate != null && clinicAppointment.getClinicName().equals(businessDate.getClinicName())) {
+			if (businessDate.getWeekDate().equals(clinicAppointment.getAppointDate())) {
+				int nightAppointMax = businessDate.getNightAppointMax(); // 晚上時段
+				if (nightAppointMax > 0) {
+
+					clinicAppointmentRepository.save(clinicAppointment); // 進行預約操作
+
+					businessDate.setNightAppointMax(nightAppointMax - 1); // 更新可預約人數
+					businessDateRepository.save(businessDate);
+				} else {
+					System.out.println("預約失敗，人數已滿");
+				}
+			} else {
+				System.out.println("預約失敗，預約日期匹配錯誤");
+			}
+		} else {
+			System.out.println("預約失敗，當日未營業或診所名稱錯誤或同時段重複預約");
+		}
 	}
 
 	public void update(Integer reservationNumber, ClinicAppointment clinicAppointment) {
@@ -52,13 +108,32 @@ public class ClinicAppointmentService {
 	}
 
 	public void deleteById(Integer reservationNumber) {
-		clinicAppointmentRepository.deleteById(reservationNumber);
+		Optional<ClinicAppointment> clinicAppointment = clinicAppointmentRepository.findById(reservationNumber);
+		if (clinicAppointment.isPresent()) {
+			ClinicAppointment clinicAppointment1 = clinicAppointment.get();
+			LocalDate appointDate = clinicAppointment1.getAppointDate();
+			String clinicName = clinicAppointment1.getClinicName();
+			String appointTime = clinicAppointment1.getAppointTime();// 1
+
+			BusinessDate businessDate = businessDateRepository.findByWeekDateAndClinicName(appointDate, clinicName);
+
+			if (businessDate != null) {
+				if (businessDate.getMorningBusiness().equals(appointTime)) {
+					int morningAppointMax = businessDate.getMorningAppointMax();
+					businessDate.setMorningAppointMax(morningAppointMax + 1);
+
+					businessDateRepository.save(businessDate);
+
+					clinicAppointmentRepository.deleteById(reservationNumber);
+				}
+			}
+		}
 	}
 
 	public List<ClinicAppointment> listAll() {
 		return clinicAppointmentRepository.findAll();
 	}
-	
+
 	public List<ClinicAppointment> findByClinicName(String clinicName) {
 		return clinicAppointmentRepository.findByClinicName(clinicName);
 	}
