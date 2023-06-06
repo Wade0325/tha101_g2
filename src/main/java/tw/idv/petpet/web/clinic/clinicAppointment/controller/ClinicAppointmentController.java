@@ -3,7 +3,6 @@ package tw.idv.petpet.web.clinic.clinicAppointment.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,9 +20,9 @@ public class ClinicAppointmentController {
 	private ClinicAppointmentService service;
 
 	@PostMapping("/clinicAppointmentInsert")
-	public String insert(@RequestBody ClinicAppointment clinicAppointment) {
+	public ClinicAppointment insert(@RequestBody ClinicAppointment clinicAppointment) {
 		service.save(clinicAppointment);
-		return "執行create操作";
+		return clinicAppointment;
 	}
 
 	@PutMapping("/clinicAppointment/{reservationNumber}")

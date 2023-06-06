@@ -1,3 +1,6 @@
+//有報錯但可正常執行
+
+
 const tbody = document.querySelector('#tbody');
 
 // Fetch ClinicMember Data
@@ -35,7 +38,7 @@ function mergeData(clinicMemberData, businessData) {
 			nightBusiness: '',
 			nightAppointMax: ''
 		};
-		const matchingBusinessData = businessData.find(data => data.clinicId === member.clinicId);
+		const matchingBusinessData = businessData.find(data => data.clinicName === member.clinicName);
 		if (matchingBusinessData) {
 			mergedItem.morningBusiness = matchingBusinessData.morningBusiness;
 			mergedItem.morningAppointMax = matchingBusinessData.morningAppointMax;
@@ -49,7 +52,7 @@ function mergeData(clinicMemberData, businessData) {
 	return mergedData;
 }
 
-// 合併 ClinicMember and BusinessData
+// 合併 ClinicMember and BusinessData表格到變數
 Promise.all([fetchClinicMemberData, fetchBusinessData])
 	.then(([clinicMemberData, businessData]) => {
 		const mergedData = mergeData(clinicMemberData, businessData);
@@ -61,7 +64,6 @@ function displayMergedData(data) {
 	for (let item of data) {
 		tbody.innerHTML += `
 						<tr>
-							<td>${item.clinicId}</td>
 							<td>${item.clinicName}</td>
 							<td>${item.clinicPhone}</td>
 							<td>${item.clinicAddress}</td>
