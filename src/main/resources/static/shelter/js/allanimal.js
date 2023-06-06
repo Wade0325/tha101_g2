@@ -24,7 +24,7 @@ fetch('findbyifadopted/0', {
 						<h3 id="animalName${animal.animalName}">${animal.animalName}</h3>
 						<span class="position mb-2" id="animalCategory${animal.animalCategory}">${animal.animalCategory}</span>
 						<div class="faded">
-							<p>收容地點:花蓮縣狗貓躍動園區</p>
+							<p>所屬收容所：${animal.shelterName}</p>
 							<ul class="ftco-social text-center">
 								<li class="ftco-animate"></li>
 							</ul>

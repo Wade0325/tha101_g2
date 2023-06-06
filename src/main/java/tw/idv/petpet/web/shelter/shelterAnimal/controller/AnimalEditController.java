@@ -36,4 +36,11 @@ public class AnimalEditController {
 		service.update(shelterAnimal);
 		return shelterAnimal;
 	}
+	@PutMapping("ifadopted/{animalId}")
+	@ResponseBody
+	public ShelterAnimal adopted(@PathVariable Integer animalId,@RequestBody ShelterAnimal shelterAnimal) {
+		shelterAnimal.setAnimalId(animalId);
+		service.adopted(shelterAnimal);
+		return shelterAnimal;
+	}
 }

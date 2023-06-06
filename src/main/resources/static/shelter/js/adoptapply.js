@@ -43,8 +43,8 @@ const calltime = document.querySelector('#calltime');
 const address = document.querySelector('#address');	
 const hometype = document.querySelector('#hometype');	
 const homesize = document.querySelector('#homesize');	
-const plan = document.querySelector('#plan');	
-const question = document.querySelector('#question');	
+const plan = document.querySelector('#currentpets');	
+const question = document.querySelector('#message');	
 const date = document.querySelector('#applyDate');	
 const delaybtn = document.querySelector('#delaybtn');
 
@@ -128,19 +128,20 @@ delaybtn.addEventListener('click', () => {
 		})
 			.then((resp) => resp.json())
 			.then((body) => {
-				const { successful} = body;
-				if (successful) {
-					msg.className = 'info';
-					msg.textContent = '送出成功';
+				const {successful, message} = body;
+				if (successful) { 
+					message.textcontent
+					alert('送出成功 (｡◕∀◕｡) 請等候收容所與您聯絡');
 					window.location.href = 'shelter.html';
 				} else {
-					msg.className = 'error';
-					msg.textContent = '送出失敗';
+					alert('送出失敗QQ 請與聯絡');
+				
 				}
 			})
 			.catch((error) => {
-				msg.textContent = '送出失敗';
-				console.log(error.message);
+				 console.error(error);
+
+
 			});
 
 	});
