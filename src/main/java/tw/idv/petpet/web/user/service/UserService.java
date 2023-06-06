@@ -7,6 +7,8 @@ public interface UserService extends CoreService {
 	
 	public User register(User user);
 
+	public User getUser(User user);
+	
     public User login(User user);
 
     public User update(User user);
