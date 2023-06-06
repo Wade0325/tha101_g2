@@ -1,9 +1,10 @@
+
 (() => {
 	const btn = document.querySelector('#btn2');
-	const clinicId = document.querySelector('#clinicId');
+	const clinicName = document.querySelector('#clinicName');
 	const vetSn = document.querySelector('#vetSn');
 	const weekDate = document.querySelector('#weekDate');
-//	const appointDate = document.querySelector('#appointDate');
+	//	const appointDate = document.querySelector('#appointDate');
 	const morningBusiness = document.querySelector('#morningBusiness');
 	const morningAppointMax = document.querySelector('#morningAppointMax');
 	const afternoonBusiness = document.querySelector('#afternoonBusiness');
@@ -24,8 +25,8 @@
 	morningBusinessSelect.addEventListener('change', () => {
 		const selectedOption = morningBusinessSelect.value;
 
-		if (selectedOption === '2') { // 如果选择了“否”
-			morningAppointMaxSelect.value = '0'; // 设置预约人数为0
+		if (selectedOption === '否') { // 如果选择了“否”
+			morningAppointMaxSelect.value = 0; // 设置预约人数为0
 			morningAppointMaxSelect.disabled = true; // 禁用预约人数下拉菜单
 		} else {
 			morningAppointMaxSelect.disabled = false; // 启用预约人数下拉菜单
@@ -35,8 +36,8 @@
 	afternoonBusinessSelect.addEventListener('change', () => {
 		const selectedOption = nightBusinessSelect.value;
 
-		if (selectedOption === '2') {
-			afternoonAppointMaxSelect.value = '0';
+		if (selectedOption === '否') {
+			afternoonAppointMaxSelect.value = 0;
 			afternoonAppointMaxSelect.disabled = true;
 		} else {
 			afternoonAppointMaxSelect.disabled = false;
@@ -46,8 +47,8 @@
 	nightBusinessSelect.addEventListener('change', () => {
 		const selectedOption = nightBusinessSelect.value;
 
-		if (selectedOption === '2') {
-			nightAppointMaxSelect.value = '0';
+		if (selectedOption === '否') {
+			nightAppointMaxSelect.value = 0;
 			nightAppointMaxSelect.disabled = true;
 		} else {
 			nightAppointMaxSelect.disabled = false;
@@ -66,10 +67,10 @@
 					'Content-Type': 'application/json',
 				},
 				body: JSON.stringify({
-					clinicId: clinicId.value,
+					clinicName: clinicName.value,
 					vetSn: vetSn.value,
 					weekDate: weekDate.value,
-//					appointDate: appointDate.value,
+					//					appointDate: appointDate.value,
 					morningBusiness: morningBusiness.value,
 					morningAppointMax: morningAppointMax.value,
 					afternoonBusiness: afternoonBusiness.value,

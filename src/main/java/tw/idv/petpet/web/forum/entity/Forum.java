@@ -49,6 +49,7 @@ public class Forum {   // 這個forum有publish的功能，兼具publish entity
 	@Column(name = "article_create_time")
 	private Date articleCreateTime;
 
+	
 	@Column(name = "modifier_time")
 	private Date modifierTime;
 

@@ -195,7 +195,7 @@ var currentCount;  //購物車icon商品數量
 // 商品數量增減按鈕
 $(document).ready(function() {
 	// 綁定增加按鈕點擊事件
-	$('.increment-button').click(function() {
+	$(document).on('click', '.increment-button', function() {
 	  // 獲取相對應的 input 元素
 	  var inputElement = $(this).siblings('.quantity-input');
 	  var currentValue = parseInt(inputElement.val());
@@ -206,7 +206,7 @@ $(document).ready(function() {
 	});
   
 	// 綁定減少按鈕點擊事件
-	$('.decrement-button').click(function() {
+	$(document).on('click', '.decrement-button', function() {
 	  // 獲取相對應的 input 元素
 	  var inputElement = $(this).siblings('.quantity-input');
 	  var currentValue = parseInt(inputElement.val());
@@ -249,13 +249,15 @@ $(document).ready(function() {
 	var addToCartBtn = $(".add-to-cart");
 	var cartItemsList = $(".cart-items");
   
-	addToCartBtn.on("click", function() {
-	  var productName = $(this).closest(".card").find("p").text(); // 假設這是你要加入購物車的商品名稱
+	$(document).on("click", ".add-to-cart", function() {
+	  var productName = $(this).closest(".card").find("a").text(); // 假設這是你要加入購物車的商品名稱
 	  var quantity = $(this).siblings("div.quantity-container").find("input").val(); // 假設這是你要加入購物車的商品數量
-  
+	 
+	  
+	//叉叉圖示
 	  var listItem = $("<li>").text(productName + " - " + quantity);
-	  var deleteButton = $('<button>').text('X').addClass('delete-button');
-	  listItem.append(deleteButton);
+	//   var deleteButton = $('<button>').text('X').addClass('delete-button');
+	//   listItem.append(deleteButton);
 	  cartItemsList.append(listItem);
 
 	 // 增加商品數量
@@ -267,6 +269,7 @@ $(document).ready(function() {
 	  checkEmptyCart();
   });
 });
+
 
   // 購物車商品刪除按鈕點擊事件處理程序
   $('.cart-items').on('click', '.delete-button', function(event) {
@@ -282,20 +285,6 @@ $(document).ready(function() {
 
   });
   
-//   pro_amount
-
-
-
-    // // 取得目前的購物車數量
-    // var currentCount = parseInt($('.cart_num').text());
-
-    // // 增加商品數量
-    // var newCount = currentCount + 1;
-
-    // // 更新購物車數字顯示
-    // $('#cartCount').text(newCount);
-	// });
-
 
 	
     document.addEventListener('DOMContentLoaded', function() {

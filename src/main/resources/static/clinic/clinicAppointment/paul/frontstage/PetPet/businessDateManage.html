@@ -14,7 +14,7 @@
 		<table border="1">
 			<thead>
 				<tr>
-					<th>診所編號</th>
+					<th>診所名稱</th>
 					<th>獸醫編號</th>
 					<th>營業日期</th>
 					<th>早上營業</th>
@@ -46,7 +46,7 @@
 
 						tbody.innerHTML += `
 				<tr>
-					<td contenteditable="true" id="clinicName${businessDate.businessSn}">${businessDate.clinicId}</td>
+					<td contenteditable="true" id="clinicName${businessDate.businessSn}">${businessDate.clinicName}</td>
 					<td contenteditable="true" id="vetSn${businessDate.businessSn}">${businessDate.vetSn}</td>
 					<td contenteditable="true" id="weekDate${businessDate.businessSn}">${businessDate.weekDate}</td>
 					<td contenteditable="true" id="morningBusiness${businessDate.businessSn}">${businessDate.morningBusiness}</td>

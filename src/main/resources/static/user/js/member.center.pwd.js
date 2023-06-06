@@ -1,8 +1,10 @@
 (() => {
     const msg = document.querySelector("#msg")
-    const password = document.querySelector("#oldPassword")
+    const oldPassword = document.querySelector("#oldPassword")
+    const newPassword = document.querySelector("#newPassword")
+    const confirmPassword = document.querySelector("#newPassword")
 
-    fetch('userController/findById', {
+    fetch('userController/getUser', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -11,7 +13,7 @@
         .then(resp => resp.json())
         .then(body => {
             const { userPassword } = body;
-            password.value = userPassword;
+            oldPassword.value = userPassword;
         })
 
     $("#btn_update_address").on("click", function () {
@@ -34,17 +36,15 @@
             msg.textContent = '';
             if (newPassword.value == confirmPassword.value) {
                 console.log(newPassword.value)
-                fetch('userController/findById', {
-                    method: 'GET',
+                fetch('userController/update', {
+                    method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',
                     },
+                    body: JSON.stringify({
+                        userPassword: newPassword.value,
+                    }),
                 })
-                    .then(resp => resp.json())
-                    .then(body => {
-                        const { userPassword } = body;
-                        password.value = userPassword;
-                    })
 
             } else {
                 msg.textContent = '';
