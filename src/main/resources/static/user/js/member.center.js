@@ -44,7 +44,7 @@
                     },
                     body: JSON.stringify({
                         userName: nickName.value,
-                        userAccount: Email.value,
+                        userAccount: Email.value
                     }),
                 })
                     .then(resp => resp.json())
@@ -78,7 +78,8 @@
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
-                        userTel: phone.value
+                        userTel: phone.value,
+                        userAccount: Email.value
                     }),
                 })
                     .then(resp => resp.json())
@@ -109,7 +110,8 @@
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
-                        userTel: address.value
+                        userAddr: address.value,
+                        userAccount: Email.value
                     }),
                 })
                     .then(resp => resp.json())
