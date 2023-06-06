@@ -16,6 +16,7 @@ const animalP2 = document.querySelector('#animalPhoto2');
 const animalP3 = document.querySelector('#animalPhoto3');
 const animalP4 = document.querySelector('#animalPhoto4');
 const animalDes = document.querySelector('#animalDes');
+const shelterNumber = document.querySelector('#shelterNumber');
 const adopt = document.getElementById("adopt");
 fetch(`animalfindbyid/${id}`, {
 	method: 'POST',
@@ -28,9 +29,10 @@ fetch(`animalfindbyid/${id}`, {
 })
 	.then(resp => resp.json())
 	.then(ShelterAnimal => {
-		console.log(ShelterAnimal)
 		const animal = ShelterAnimal;
-
+		console.log(animal.shelterName)
+		
+		shelterNumber.textContent = animal.shelterName;
 		animalDate.textContent = animal.animalDate;
 		animalName.textContent = animal.animalName;
 		animalType.textContent = animal.animalType;

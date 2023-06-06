@@ -68,51 +68,56 @@
 		<!-- END nav -->
 
 
-<section class="" style="background-image: url('images/bg_2.jpg');" data-stellar-background-ratio="0.5">
-          <div class="overlay"></div>
-          <div class="container">
-            <div class="row no-gutters slider-text align-items-end">
-              <div class="col-md-12 ftco-animate d-flex justify-content-center">
-                <h1 class="mb-0 bread">領養申請表</h1>
-              </div>
-              
-            </div>
-          </div>
-        </section>
+		<section class="" style="background-image: url('images/bg_2.jpg');"
+			data-stellar-background-ratio="0.5">
+			<div class="overlay"></div>
+			<div class="container">
+				<div class="row no-gutters slider-text align-items-end">
+					<div class="col-md-12 ftco-animate d-flex justify-content-center">
+						<h1 class="mb-0 bread">領養申請表</h1>
+					</div>
+
+				</div>
+			</div>
+		</section>
 		<div class="row no-gutters">
 			<div class="col-md-12">
 				<div class="contact-wrap w-100 p-md-5 p-4" id="applytitle">
 					<section class="ftco-section bg-light">
 						<div class="container">
 							<div class="row justify-content-center">
-								
+
 								<div class="col-md-12">
-								<div class="row mt-2">
-									<div class="col-md-1"></div>
-									<div class="col-md-3">
-										<img src="data:image/jpeg;base64," alt="" style="width: 30%;" id="animalphoto">
+									<div class="row mt-2">
+										<div class="col-md-1"></div>
+										<div class="col-md-3">
+											<img src="data:image/jpeg;base64," alt="" style="width: 30%;"
+												id="animalphoto">
+										</div>
+										<div class="col-md-8">
+											<div class="row">
+												<div class="col-md-3" style="text-align: right;">動物名稱：</div>
+												<div class="col-md-3" style="color: green;" id="animalName"></div>
+												<div class="col-md-3" style="text-align: right;">動物種類：</div>
+												<div class="col-md-3" style="color: green;" id="animalType"></div>
+											</div>
+											<div class="row">
+												<div class="col-md-3" style="text-align: right;">動物品種：</div>
+												<div class="col-md-3" style="color: green;"
+													id="animalCategory"></div>
+												<div class="col-md-3" style="text-align: right;">性別：</div>
+												<div class="col-md-3" style="color: green;"
+													id="animalGender"></div>
+											</div>
+											<div class="row">
+												<div class="col-md-3" style="text-align: right;">收容編號：</div>
+												<div class="col-md-3" style="color: green;"
+													id="animalNumber"></div>
+												<div class="col-md-3" style="text-align: right;">申請日期：</div>
+												<div class="col-md-3" style="color: green;" id="applyDate"></div>
+											</div>
+										</div>
 									</div>
-									<div class="col-md-8">
-									<div class="row">
-									<div class="col-md-3" style="text-align: right;">動物名稱：</div>
-									<div class="col-md-3" style="color: green;" id="animalName"></div>
-									<div class="col-md-3" style="text-align: right;">動物種類：</div>
-									<div class="col-md-3" style="color: green;;" id="animalType"></div>
-									</div>
-									<div class="row">
-									<div class="col-md-3" style="text-align: right;">動物品種：</div>
-									<div class="col-md-3" style="color: green;" id="animalCategory"></div>
-									<div class="col-md-3" style="text-align: right;">性別：</div>
-									<div class="col-md-3" style="color: green;;" id="animalGender"></div>
-									</div>
-									<div class="row">
-									<div class="col-md-3" style="text-align: right;">收容編號：</div>
-									<div class="col-md-3" style="color: green;" id="animalNumber"></div>
-									<div class="col-md-3" style="text-align: right;">申請日期：</div>
-									<div class="col-md-3" style="color: green;;" id="applyDate"></div>
-									</div>
-									</div>
-								</div>
 								</div>
 								<h3 class="mb-4"></h3>
 								<form method="POST" id="contactForm" name="contactForm"
@@ -136,8 +141,8 @@
 										<div class="col-md-6">
 											<div class="form-group">
 												<label class="label" for="email">出生日期</label> <input
-													type="date" class="form-control"
-													name="birth" id="birth" placeholder="Birthdate" />
+													type="date" class="form-control" name="birth" id="birth"
+													placeholder="Birthdate" />
 											</div>
 										</div>
 										<div class="col-md-6">
@@ -165,11 +170,12 @@
 
 										<div class="col-md-12">
 											<div class="form-group">
-												<label class="label" for="subject">居住地址</label> <input
-													type="text" class="form-control" name="address"
+												<label class="label" for="address" id="address-label">居住地址</label>
+												<input type="text" class="form-control" name="address"
 													id="address" placeholder="Address" />
 											</div>
 										</div>
+
 										<div class="col-md-6">
 											<div class="form-group">
 												<label class="label" for="name">自宅/租屋</label> <input
@@ -186,34 +192,37 @@
 										</div>
 										<div class="col-md-12">
 											<div class="form-group">
-												<label class="label" for="subject">目前的動物/種類/年齡。為何還想要再養多一隻動物？</label>
+												<label class="label" for="currentpets" id="plan">目前的動物/種類/年齡。為何還想要再養多一隻動物？</label>
 												<textarea type="text" class="form-control"
-													name="currentpets" id="plan" cols="30" rows="4"
+													name="currentpets" id="currentpets" cols="30" rows="4"
 													placeholder="請在此輸入..."></textarea>
 											</div>
 										</div>
+
 										<div class="col-md-12">
 											<div class="form-group">
-												<label class="label" for="#">有什麼想要告知我們嗎?
-												</label>
-												<textarea name="message" class="form-control" id="question"
+												<label class="label" for="message" id="question">有什麼想要告知我們嗎?</label>
+												<textarea name="message" class="form-control" id="message"
 													cols="30" rows="4" placeholder="Message"></textarea>
 											</div>
 										</div>
-										<div class="col-md-12">
-											<div class="form-group">
-												<input type="button" value="送出資料" class="btn btn-primary" id="delaybtn"/>
-												<div class="submitting"></div>
-											</div>
+
+									</div>
+									<div class="col-md-12">
+										<div class="form-group">
+											<input type="button" value="送出資料" class="btn btn-primary"
+												id="delaybtn" />
+											<div class="submitting"></div>
 										</div>
 									</div>
-								</form>
 							</div>
+							</form>
 						</div>
-						<div class="col-md-5 d-flex align-items-stretch"></div>
 				</div>
+				<div class="col-md-5 d-flex align-items-stretch"></div>
 			</div>
 		</div>
+	</div>
 	</div>
 	</div>
 	</section>
