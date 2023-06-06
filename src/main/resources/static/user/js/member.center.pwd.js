@@ -51,7 +51,7 @@
                         const { successful } = body;
                         if (successful) {
                             window.alert("更新成功")
-                            // window.location.href = "/petpet"
+                            window.location.href = "/petpet"
                         } else {
                             window.alert("舊密碼錯誤")
                             oldPassword.value = ''
