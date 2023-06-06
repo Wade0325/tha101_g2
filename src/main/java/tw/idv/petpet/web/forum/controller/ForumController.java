@@ -1,10 +1,13 @@
 package tw.idv.petpet.web.forum.controller;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,7 +28,8 @@ public class ForumController {
 
 	@PostMapping("/publish") // @ModelAttribute("forum") Forum forum
 	public String createForum(@ModelAttribute("forum") Forum forum) {
-		// 檢查用戶是否已登錄
+		// 檢查用戶是否已登錄 ?? -> 还没用
+		forum.setArticleCreateTime(new Date());
 
 		System.out.println("articleId" + forum.getArticleId());
 		System.out.println("userId" + forum.getUserId());
@@ -42,28 +46,44 @@ public class ForumController {
 		forumService.createForum(forum);
 		System.out.println("我在createdForum下面");
 
+
 		// 其他处理逻辑...
-		return "執行Create操作";
+		return "執行了create操作";
 	}
 
-	// 獲取所有文章的方法
 	@GetMapping("/forum")
-	public List<Forum> getAllArticles() {
-		return forumService.getAllArticles();
+	public List<Forum> findAll() {
+		System.out.println("文章列表查詢成功");
+		return forumService.findAll();
 	}
+	
+	@GetMapping("/forum/{articleId}")
+	public Forum findByArticleId(@PathVariable("articleId") int articleId) {
+		System.out.println("controller層：findByArticleId有被呼叫到");
+		return forumService.findByArticleId(articleId);
+	}
+
+//	// 獲取所有文章的方法
+//	@GetMapping("/forum")
+//	public List<Forum> getAllArticles() {
+//		List<Forum> forum = forumService.getAllArticles();
+//		System.out.println("獲取所有的文章");
+//		return forum;
+//	}
 
 //	@GetMapping("/forum/{id}")
 //	public String viewForum(@PathVariable("id") Integer articleId, Model model) {
 //		Forum forum = forumService.findByArticleId(articleId);
 //		model.addAttribute("forum", forum);
+//		System.out.println("viewForum方法");
 //		return "forum-details";
 //	}
 //
 //	@DeleteMapping("/forum/{id}")
-//	public String deleteForum(@PathVariable("id") Integer articleId) {
-//		forumService.deleteForum(articleId);
+//	public String deleteArticle(@PathVariable("id") Integer articleId) {
+//		forumService.deleteArticle(articleId);
 //		// 其他处理逻辑...
-//		return "redirect:/forums";
+//		return "redirect:/forum.html";
 //	}
 
 }

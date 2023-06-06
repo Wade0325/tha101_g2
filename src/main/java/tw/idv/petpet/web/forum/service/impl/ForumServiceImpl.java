@@ -27,17 +27,27 @@ public class ForumServiceImpl implements ForumService {
 
 	@Override
 	public Forum findByArticleId(Integer articleId) {
+		System.out.println("透過文章ID，找到文章內容");
 		return forumRepository.findById(articleId).orElse(null);
 	}
 
 	@Override
-	    public void deleteForum(Integer articleId) {
+	    public void deleteArticle(Integer articleId) {
 	        forumRepository.deleteById(articleId);
 	    }
 
 	@Override
-	public List<Forum> getAllArticles() {
-		//獲取所有的文章
+	public List<Forum> findAll() {
+		// TODO Auto-generated method stub
 		return forumRepository.findAll();
 	}
+
+//	@Override
+//	public void updateForum(int articleId, Integer articleGroupId, String articleTitle, String articleContent) {
+//		// TODO Auto-generated method stub
+//		forumRepository.updateForum(articleId, articleGroupId, 
+//				articleTitle, articleContent);
+//	}
+
+	
 }

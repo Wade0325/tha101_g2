@@ -11,7 +11,10 @@ public interface ForumService extends CoreService{
 	
 	public Forum findByArticleId(Integer articleId);
 	
-	void deleteForum(Integer articleId);
+	void deleteArticle(Integer articleId);
 	
-	List<Forum> getAllArticles();
+	 List<Forum> findAll();
+	
+//	void updateForum(int articleId, Integer articleGroupId ,
+//			String articleTitle, String articleContent);
 }

@@ -91,6 +91,13 @@
                         <label for="postContent">文章內容:</label>
                         <textarea id="postContent" name="articleContent" required></textarea>
                     </div>
+                    <div class="form-group" style="display: flex; flex-direction: column; margin-bottom: 20px;">
+                        <label for="articleGroupId">文章分組:</label>
+                        <select id="articleGroupId" name="articleGroupId">
+                            <option value="1">貓貓討論區</option>
+                            <option value="2">狗狗討論區</option>
+                        </select>
+                    </div>
                     <div class="form-group">
                         <label for="postImage">圖片:</label>
                         <input type="file" id="postImage" name="articleImage" accept="image/*">
@@ -177,7 +184,30 @@
         <script src="js/google-map.js"></script>
         <script src="js/main.js"></script>
 
+        <!-- 沒有加入的時候可以run，加了看會不會出錯 -->
+        <!-- <script src="js/publish.js"></script> -->
+        <!-- <script type="text/javascript">
+            (() => {
+                fetch('http://localhost:8080/petpet/forum/publish', {
+                    method: 'POST',
+                    body: formData,
+                })
+                    .then(resp => resp.json())
+                    .then(data => {
+                        if (data.successful) {
+                            alert('發表成功');
+                            postForm.reset(); //重置表單
+                            window.location.href = 'http://localhost:8080/petpet/forum/forum.html'; // 重定向到forum.html
+                        } else {
+                            alert('發表失敗');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('發生錯誤', error);
+                    });
 
+            })()
+        </script> -->
 </body>
 
 </html>
