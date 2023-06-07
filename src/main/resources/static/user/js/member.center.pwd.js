@@ -4,18 +4,6 @@
     const newPassword = document.querySelector("#newPassword")
     const confirmPassword = document.querySelector("#confirmPassword")
 
-    // fetch('userController/getUser', {
-    //     method: 'GET',
-    //     headers: {
-    //         'Content-Type': 'application/json',
-    //     },
-    // })
-    //     .then(resp => resp.json())
-    //     .then(body => {
-    //         const { userPassword } = body;
-    //         oldPassword.value = userPassword;
-    //     })
-
     $("#btn_update_address").on("click", function () {
         if (oldPassword.value == '') {
             msg.textContent = '舊密碼不得為空';
@@ -51,7 +39,7 @@
                         const { successful } = body;
                         if (successful) {
                             window.alert("更新成功")
-                            window.location.href = "/petpet"
+                            window.location.href = "/petpet/user/login.html"
                         } else {
                             window.alert("舊密碼錯誤")
                             oldPassword.value = ''
