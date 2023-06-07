@@ -68,7 +68,7 @@
 				<button type="submit">Log in</button>
 			</div>
 			<div class="u-form-group">
-				<a href="Forgot.html" class="forgot-password">Forgot password?</a>
+				<a href="forgot" class="forgot-password">Forgot password?</a>
 			</div>
 		</form>
 
@@ -210,7 +210,7 @@
 
 			// 发送Ajax请求
 			$.ajax({
-				url : "/admin/login",
+				url : "petpet/admin/login",
 				type : "POST",
 				contentType : "application/json",
 				data : JSON.stringify(adminData),

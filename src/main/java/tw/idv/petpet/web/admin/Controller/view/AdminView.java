@@ -30,11 +30,11 @@ public class AdminView {
 //		return "adminlogin";
 //	}
 //	
-////	忘記密碼
-//	@RequestMapping("/admin/forgot")
-//	public String adminForgot() {
-//		return "forgotpss";
-//	}
+//	忘記密碼
+	@RequestMapping("/admin/forgot")
+	public String adminForgot() {
+		return "forgotpss";
+	}
 //	
 //	管理員登入
 	@RequestMapping("/admin/login")
