@@ -109,11 +109,12 @@ public class ClinicAppointmentService {
 
 	public void deleteById(Integer reservationNumber) {
 		Optional<ClinicAppointment> clinicAppointment = clinicAppointmentRepository.findById(reservationNumber);
+
 		if (clinicAppointment.isPresent()) {
 			ClinicAppointment clinicAppointment1 = clinicAppointment.get();
 			LocalDate appointDate = clinicAppointment1.getAppointDate();
 			String clinicName = clinicAppointment1.getClinicName();
-			String appointTime = clinicAppointment1.getAppointTime();// 1
+			String appointTime = clinicAppointment1.getAppointTime();
 
 			BusinessDate businessDate = businessDateRepository.findByWeekDateAndClinicName(appointDate, clinicName);
 
@@ -121,6 +122,46 @@ public class ClinicAppointmentService {
 				if (businessDate.getMorningBusiness().equals(appointTime)) {
 					int morningAppointMax = businessDate.getMorningAppointMax();
 					businessDate.setMorningAppointMax(morningAppointMax + 1);
+
+					businessDateRepository.save(businessDate);
+
+					clinicAppointmentRepository.deleteById(reservationNumber);
+				}
+			}
+		}
+
+		if (clinicAppointment.isPresent()) {
+			ClinicAppointment clinicAppointment1 = clinicAppointment.get();
+			LocalDate appointDate = clinicAppointment1.getAppointDate();
+			String clinicName = clinicAppointment1.getClinicName();
+			String appointTime = clinicAppointment1.getAppointTime();
+
+			BusinessDate businessDate = businessDateRepository.findByWeekDateAndClinicName(appointDate, clinicName);
+
+			if (businessDate != null) {
+				if (businessDate.getAfternoonBusiness().equals(appointTime)) {
+					int afternoonAppointMax = businessDate.getAfternoonAppointMax();
+					businessDate.setAfternoonAppointMax(afternoonAppointMax + 1);
+
+					businessDateRepository.save(businessDate);
+
+					clinicAppointmentRepository.deleteById(reservationNumber);
+				}
+			}
+		}
+
+		if (clinicAppointment.isPresent()) {
+			ClinicAppointment clinicAppointment1 = clinicAppointment.get();
+			LocalDate appointDate = clinicAppointment1.getAppointDate();
+			String clinicName = clinicAppointment1.getClinicName();
+			String appointTime = clinicAppointment1.getAppointTime();
+
+			BusinessDate businessDate = businessDateRepository.findByWeekDateAndClinicName(appointDate, clinicName);
+
+			if (businessDate != null) {
+				if (businessDate.getNightBusiness().equals(appointTime)) {
+					int nightAppointMax = businessDate.getNightAppointMax();
+					businessDate.setNightAppointMax(nightAppointMax + 1);
 
 					businessDateRepository.save(businessDate);
 
