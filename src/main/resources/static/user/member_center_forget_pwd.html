@@ -28,7 +28,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
         <div class="container">
-            <a class="navbar-brand" href="index.html"><img src="images/1.jpg" width="80px" height="80px">PetPet陪陪你</a>
+            <a class="navbar-brand" href="index.html"><img src="/images/1.jpg" width="80px" height="80px">PetPet陪陪你</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
                 aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="fa fa-bars"></span> MENU
@@ -36,13 +36,12 @@
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item"><a href="index.html" class="nav-link" style="color: black">首頁</a></li>
-                    <li class="nav-item"><a href="clinicMember/register.html" class="nav-link"
-                            style="color: black">寵物診所</a></li>
+                    <li class="nav-item"><a href="vet.html" class="nav-link" style="color: black">寵物診所</a></li>
                     <li class="nav-item"><a href="gallery.html" class="nav-link" style="color: black">寵物商城</a></li>
                     <li class="nav-item"><a href="blog.html" class="nav-link" style="color: black">寵物領養</a></li>
                     <li class="nav-item"><a href="contact.html" class="nav-link" style="color: black">寵物討論區</a></li>
-                    <li class="nav-item active"><a href="login.html" class="nav-link" style="color: black">登入/註冊</a>
-                    </li>
+                    <li class="nav-item active"><a href="services_login.html" class="nav-link"
+                            style="color: black">會員中心</a></li>
                 </ul>
             </div>
         </div>
@@ -53,34 +52,60 @@
         <div class="container">
             <div class="row no-gutters slider-text align-items-end">
                 <div class="col-md-12 ftco-animate d-flex justify-content-center">
-                    <h1 class="mb-0 bread">會員登入</h1>
+                    <h1 class="mb-0 bread">忘記密碼</h1>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <section class="ftco-section bg-light">
-        <div class="container">
 
-            <a>
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">電子信箱</label>
-                    <input type="email" class="form-control" id="Email1" aria-describedby="emailHelp"
-                        placeholder="name@example.com">
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">密碼</label>
-                    <input type="password" class="form-control" id="Password">
-                </div>
+    <div class="row">
+        <div class="col-2" style="background-color:rgb(56, 56, 56);text-align: center;">
 
-                <button type="button" id="btn" class="btn btn-primary">登入</button>
-                <a href="register.html"><button type="submit" class="btn btn-primary">註冊</button></a>
-                <a href="member_center_forget_pwd.html">忘記密碼</a>
-                <div id="msg"></div>
+        </div>
+        <div class="col-10">
+            <table class="table table-borderless" style="table-layout:fixed; margin-left: 280px;">
+                <tbody>
+                    <tr>
+                        <td style="width:15%">
+                            電子信箱
+                        </td>
+                        <td>
+                            <input type="text" id="forgetEmail">
+                        </td>
 
-                </form>
-    </section>
+                    </tr>
+                    <tr>
+                        <td>
+
+                        </td>
+                        <td>
+                            <button id="btn_forgetEmail">送出驗證信</button>
+                            <div id="msg_btn" class="error"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            輸入密碼
+                        </td>
+                        <td>
+                            <input type="password" id="randonPassword">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+
+                        </td>
+                        <td>
+                            <button id="btn_submit">送出</button>
+                            <div id="msg_btn_submit" class="error"></div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
 
     <footer class="footer">
         <div class="container">
@@ -100,13 +125,13 @@
                 <div class="col-md-6 col-lg-4 mb-4 mb-md-0">
                     <h2 class="footer-heading">寵物討論區</h2>
                     <div class="block-21 mb-4 d-flex">
-                        <a class="img mr-4 rounded" style="background-image: url(user/images/image_1.jpg);"></a>
+                        <a class="img mr-4 rounded" style="background-image: url(images/image_1.jpg);"></a>
                         <div class="text">
                             <h3 class="heading"><a href="#">狗狗討論區</a></h3>
                         </div>
                     </div>
                     <div class="block-21 mb-4 d-flex">
-                        <a class="img mr-4 rounded" style="background-image: url(user/images/image_2.jpg);"></a>
+                        <a class="img mr-4 rounded" style="background-image: url(images/image_2.jpg);"></a>
                         <div class="text">
                             <h3 class="heading"><a href="#">貓咪討論區</a></h3>
                         </div>
@@ -152,11 +177,11 @@
     <script src="js/owl.carousel.min.js"></script>
     <script src="js/jquery.magnific-popup.min.js"></script>
     <script src="js/scrollax.min.js"></script>
-    <script src="js/login.js"></script>
     <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
     <script src="js/google-map.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/member.center.forget.pwd.js"></script>
 
 
 </body>
