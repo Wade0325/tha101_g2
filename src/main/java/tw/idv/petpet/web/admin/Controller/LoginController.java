@@ -27,7 +27,7 @@ public class LoginController {
 		System.out.println(adminLoginVO);
 		AdminEntity adminEntity = adminRepository
 				.findByAdminAccountAndAdminPassword(adminLoginVO.getAdminAccount(), adminLoginVO.getAdminPassword());
-
+		System.out.println(adminEntity);
 		if (adminEntity != null) {
 			System.out.println("Session儲存會員資料");
 			session.setAttribute("loginAdminEntity", adminEntity);
