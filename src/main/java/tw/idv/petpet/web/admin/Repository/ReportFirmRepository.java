@@ -1,4 +1,4 @@
-package com.web.repository;
+package tw.idv.petpet.web.admin.Repository;
 
 import java.util.List;
 import java.util.Optional;

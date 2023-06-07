@@ -1,4 +1,4 @@
-package com.web.service;
+package tw.idv.petpet.web.admin.service;
 
 import java.util.Properties;
 

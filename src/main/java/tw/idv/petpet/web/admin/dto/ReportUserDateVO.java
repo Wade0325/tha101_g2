@@ -1,5 +1,4 @@
-package dto;
-
+package tw.idv.petpet.web.admin.dto;
 import lombok.Data;
 
 @Data

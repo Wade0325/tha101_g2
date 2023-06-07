@@ -1,4 +1,4 @@
-package com.web.service;
+package tw.idv.petpet.web.admin.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.SimpleMailMessage;
