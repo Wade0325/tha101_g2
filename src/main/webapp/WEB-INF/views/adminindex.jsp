@@ -16,7 +16,7 @@ pageEncoding="UTF-8"%>
       href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css"
       rel="stylesheet"
     />
-    <link href="/static/css/styles.css" rel="stylesheet" />
+    <link href="../static/css/styles.css" rel="stylesheet" />
     <script
       src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
       crossorigin="anonymous"
@@ -25,8 +25,8 @@ pageEncoding="UTF-8"%>
   <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark color">
       <!-- Navbar Brand-->
-      <img src="../../images/petpet.png" width="70px" height="70px" />
-      <img src="../../images/Petword.png" width="40px" height="40px" />
+      <img src="../static/images/petpet.png" width="70px" height="70px" />
+      <img src="../static/images/Petword.png" width="40px" height="40px" />
       <a class="navbar-brand ps-3" href="index">首頁</a>
       <!-- Sidebar Toggle-->
       <button
