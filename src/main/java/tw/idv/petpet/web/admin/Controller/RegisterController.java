@@ -1,4 +1,4 @@
-package com.web.controller;
+package tw.idv.petpet.web.admin.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;

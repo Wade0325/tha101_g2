@@ -1,4 +1,4 @@
-package com.web.controller;
+package tw.idv.petpet.web.admin.Controller;
 
 import java.util.List;
 
@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import tw.idv.petpet.web.admin.Entity.ReportFirmEntity;
 import tw.idv.petpet.web.admin.Repository.ReportFirmRepository;
 import tw.idv.petpet.web.admin.dto.ReportFirmCodeVO;
+
 
 @RestController
 public class SearchByCodeReportFirm {
