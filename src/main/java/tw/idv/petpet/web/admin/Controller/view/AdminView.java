@@ -1,15 +1,17 @@
-//package tw.idv.petpet.web.admin.Controller.view;
+package tw.idv.petpet.web.admin.Controller.view;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
 //
-//import org.springframework.stereotype.Controller;
-//import org.springframework.web.bind.annotation.RequestMapping;
-//
-//@Controller
-//public class AdminView {
-////	首頁
-//	@RequestMapping("/admin/index")
-//	public String adminIndex() {
-//		return "adminindex";
-//	}
+@Controller
+public class AdminView {
+//	首頁
+	@RequestMapping("/admin/index")
+	public String adminIndex() {
+		return "adminindex";
+	}
+
 ////	商家檢舉
 //	@RequestMapping("/admin/reportfirm")
 //	public String adminReportFirm() {
@@ -34,16 +36,17 @@
 //		return "forgotpss";
 //	}
 //	
-////	管理員登入
-//	@RequestMapping("/admin/login")
-//	public String adminLogin() {
-//		return "adminlogin";
-//	}
-////	管理員編輯
-//	@RequestMapping("/admin/edit")
-//	public String adminedit() {
-//		return "adminedit";
-//	}
+//	管理員登入
+	@RequestMapping("/admin/login")
+	public String adminLogin() {
+		return "adminlogin";
+	}
+
+//	管理員編輯
+	@RequestMapping("/admin/edit")
+	public String adminedit() {
+		return "adminedit";
+	}
 //	
 ////	商家檢舉表單
 //	@RequestMapping("/reportfirmform")
@@ -93,4 +96,4 @@
 //		return "adminlist";
 //	}
 //
-//}
+}
