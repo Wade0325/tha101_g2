@@ -15,6 +15,7 @@
       rel="stylesheet"
     />
     <link href="./css/styles.css" rel="stylesheet" />
+    
     <script
       src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
       crossorigin="anonymous"
@@ -34,7 +35,38 @@
     <!-- 換成中文 -->
     <script src="/js/locales-all.global.js"></script>
     
-    
+    <style>
+    th {
+  background-color: #FAAB78;
+  color: black;
+}
+   
+  /* 将表格置中 */
+  #example {
+    margin: 10 auto;
+  }
+
+  /* 添加表格边框 */ 
+  #example th,
+  #example td {
+    border: 1px solid gray;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 14.5px; /* 调整字体大小为14像素，根据需要进行修改 */
+  }
+
+ 
+  /* 加粗表头文字 */
+  #example th {
+    font-weight: bold;
+  }
+  .col-md-12 {
+    display: flex;
+    justify-content: center;
+  }
+
+  
+    </style>
    
   </head>
   <body class="sb-nav-fixed">
@@ -331,7 +363,7 @@
                     <div class="container">
                       <div class="card">
                         <div class="card-body">
-                          <div class="col-md-12">        
+                         
                           <table id="example">
                             <thead>
                               <tr>
@@ -349,7 +381,7 @@
                             </thead>
                             <tbody id="tbody"></tbody>
                           </table>
-                         </div>
+                        
                         </div>
                         <!-- /tab -->
                       </div>
@@ -394,9 +426,13 @@
       crossorigin="anonymous"
     ></script>
     <script src="js/datatables-simple-demo.js"></script>
-	<script>
+
+    <script>
+        // document.getElementById('btn_upload').addEventListener('click', )
+    </script>
+    <script>
 			const tbody = document.querySelector('#tbody');
-			fetch('../../../../../business/all', {
+			fetch('../../../../business/all', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
@@ -421,7 +457,6 @@
 					<td contenteditable="true" id="afternoonAppointMax${businessDate.businessSn}">${businessDate.afternoonAppointMax}</td>
 					<td contenteditable="true" id="nightBusiness${businessDate.businessSn}">${businessDate.nightBusiness}</td>
 					<td contenteditable="true" id="nightAppointMax${businessDate.businessSn}">${businessDate.nightAppointMax}</td>
-					
 					<td>
 						<button type="button" class="btn-edit" onclick="saveClick(${businessDate.businessSn})">儲存</button>
                         <button type="button" class="btn-delete" onclick="deleteClick(${businessDate.businessSn})">刪除</button>
@@ -431,9 +466,8 @@
 					}
 				})
 		</script>
-		<script src="js/clinicBusinessDate.js"></script>
-    
-    
+		<script src="js/clinicBusinssDate.js"></script>
+		
     <!-- datetable -->
 <!-- <script>
       $(document).ready(function() {

@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   var table = $("#price_list").DataTable({
     ajax: function (d, cb) {
-      fetch("../PriceList/init")
+      fetch("../../PriceList/init")
         .then((response) => response.json())
         .then((data) => {
           console.log(data);
@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
         
           if (confirm('確定要刪除嗎？')) {
       // 發送刪除請求到後端 API
-      fetch('../PriceList/delete/' + clinicServiceId, {
+      fetch('../../PriceList/delete/' + clinicServiceId, {
         method: 'DELETE'
       })
       .then(function(response) {
@@ -148,7 +148,7 @@ $("#updateBtn").on("click", function () {
 console.log("資料"+data);
 // 发送Ajax请求
 $.ajax({
-  url: "../PriceList/update/" + clinicServiceId, // 替换为实际的后端接口URL
+  url: "../../PriceList/update/" + clinicServiceId, // 替换为实际的后端接口URL
   type: "PUT",
   contentType: "application/json",
   data: JSON.stringify(data),
