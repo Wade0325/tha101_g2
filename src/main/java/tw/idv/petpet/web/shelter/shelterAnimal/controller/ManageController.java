@@ -2,11 +2,13 @@ package tw.idv.petpet.web.shelter.shelterAnimal.controller;
 
 import java.util.Base64;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,21 +24,25 @@ public class ManageController {
 	@Autowired
 	private ShelterAnimalService service;
 	
+	@PostMapping("animalmanage")
+	@ResponseBody
+		public List<ShelterAnimal> animalmanage() {
+		  List<ShelterAnimal> animals = service.findAll();
+		    return animals;
+		}
+	
 	@PostMapping("manage")
 	@ResponseBody
 		public List<ShelterAnimal> manage() {
-		  List<ShelterAnimal> animals = service.findAll();
-		    
-//		    for (ShelterAnimal animal : animals) {
-
-//System.out.println(animal.getAnimalPhoto1());		        
-//		        byte[] decodedImage = Base64.getDecoder().decode(base64Image);
-		        
-//		        animal.setAnimalPhoto1(decodedImage);
-//		    }
-		    
+		  List<ShelterAnimal> animals = service.findAll();		    
 		    return animals;
 		}
+	@PostMapping("findbyifadopted/{ifAdopted}")
+	@ResponseBody
+	public List<ShelterAnimal> ifadopted(@PathVariable Integer ifAdopted){
+		List<ShelterAnimal> animals = service.findByifAdopted(ifAdopted);;
+		return animals;
+	}
 	
 	@DeleteMapping("deleteanimal/{animalId}")
 	@ResponseBody

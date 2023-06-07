@@ -5,22 +5,24 @@
     <title>PetPet陪陪你</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- 套版 連結 -->
+
     <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800&display=swap"
         rel="stylesheet">
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
     <link rel="stylesheet" href="css/animate.css">
+
     <link rel="stylesheet" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/owl.theme.default.min.css">
     <link rel="stylesheet" href="css/magnific-popup.css">
+
+
     <link rel="stylesheet" href="css/bootstrap-datepicker.css">
     <link rel="stylesheet" href="css/jquery.timepicker.css">
+
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/style.css">
-
-    <!-- DataTable 連結 -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
-    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
 </head>
 
 <body>
@@ -38,8 +40,8 @@
                     <li class="nav-item"><a href="gallery.html" class="nav-link" style="color: black">寵物商城</a></li>
                     <li class="nav-item"><a href="blog.html" class="nav-link" style="color: black">寵物領養</a></li>
                     <li class="nav-item"><a href="contact.html" class="nav-link" style="color: black">寵物討論區</a></li>
-                    <li class="nav-item active"><a href="login.html" class="nav-link" style="color: black">登入/註冊</a>
-                    </li>
+                    <li class="nav-item active"><a href="services_login.html" class="nav-link"
+                            style="color: black">會員中心</a></li>
                 </ul>
             </div>
         </div>
@@ -50,31 +52,60 @@
         <div class="container">
             <div class="row no-gutters slider-text align-items-end">
                 <div class="col-md-12 ftco-animate d-flex justify-content-center">
-                    <h1 class="mb-0 bread">會員登入</h1>
+                    <h1 class="mb-0 bread">忘記密碼</h1>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <section class="ftco-section bg-light">
-        <div class="container">
-            <a>
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">電子信箱</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                        placeholder="name@example.com">
-                </div>
-                <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">密碼</label>
-                    <input type="password" class="form-control" id="exampleInputPassword1">
-                </div>
 
-                <button type="submit" class="btn btn-primary">登入</button>
-                <a href="register.html"><button type="submit" class="btn btn-primary">註冊</button></a>
+    <div class="row">
+        <div class="col-2" style="background-color:rgb(56, 56, 56);text-align: center;">
 
-                </form>
-    </section>
+        </div>
+        <div class="col-10">
+            <table class="table table-borderless" style="table-layout:fixed; margin-left: 280px;">
+                <tbody>
+                    <tr>
+                        <td style="width:15%">
+                            電子信箱
+                        </td>
+                        <td>
+                            <input type="text" id="forgetEmail">
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td>
+
+                        </td>
+                        <td>
+                            <button id="btn_forgetEmail">送出驗證信</button>
+                            <div id="msg_btn" class="error"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            輸入密碼
+                        </td>
+                        <td>
+                            <input type="password" id="randonPassword">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+
+                        </td>
+                        <td>
+                            <button id="btn_submit">送出</button>
+                            <div id="msg_btn_submit" class="error"></div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
 
     <footer class="footer">
         <div class="container">
@@ -150,6 +181,7 @@
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
     <script src="js/google-map.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/member.center.forget.pwd.js"></script>
 
 
 </body>

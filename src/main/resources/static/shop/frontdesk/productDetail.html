@@ -70,6 +70,10 @@
       .product-buttons {
         margin-top: 10px;
       }
+      img.product-image{
+        background-size: cover; 
+  /* background-position: center; */
+      }
 
     </style>
   </head>
@@ -183,10 +187,11 @@
             src="product-image.jpg"
             alt="Product Image"
             class="product-image"
+            style="width:100%; height: 100%;"
           />
         </div>
         <div class="col-md-8">
-          <h1 class="product-title">商品標題</h1>
+          <h1 class="product-title">商品名稱</h1>
           <h2 class="product-price">$99.99</h2>
           <p class="product-description">
             商品描述Lorem ipsum dolor sit amet, consectetur adipiscing elit.
@@ -357,6 +362,38 @@
       $('.pro_amount').text(newCount);
 	  checkEmptyCart();
   });
+});
+
+
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+  // 從瀏覽器的會話存儲中獲取商品識別符
+  var selectedProductId = sessionStorage.getItem("selectedProductId");
+  console.log(selectedProductId);
+  // 發送Fetch請求以獲取商品詳細資訊
+  fetch("http://localhost:8080/petpet/shoptest/" + selectedProductId)
+    .then(function(response) {
+      if (response.ok) {
+        return response.json();
+      }
+      throw new Error("Network response was not ok.");
+    })
+    .then(function(product) {
+      // 將商品詳細資訊填充到詳細頁面的對應元素中
+      document.getElementsByClassName("product-title")[0].textContent = product.pro_name;
+      document.getElementsByClassName("product-price")[0].textContent = "$" + product.pro_price;      
+      document.getElementsByClassName("product-image")[0].src = "data:image/jpeg;base64," + product.pro_pic1;
+      document.getElementsByClassName("product-description")[0].textContent = product.pro_det;
+      
+      
+      // 其他商品詳細資訊的填充
+      
+    })
+    .catch(function(error) {
+      console.error("Error:", error);
+    });
 });
 
 

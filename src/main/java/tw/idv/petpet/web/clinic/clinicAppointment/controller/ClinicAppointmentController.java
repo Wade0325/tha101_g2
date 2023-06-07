@@ -34,7 +34,6 @@ public class ClinicAppointmentController {
 	@DeleteMapping("/clinicAppointment/{reservationNumber}")
 	public void deleteById(@PathVariable Integer reservationNumber) {
 		service.deleteById(reservationNumber);
-//		System.out.println(reservationNumber);
 	}
 
 	@PostMapping("/clinicAppointment/findByReservationNumber/{reservationNumber}")

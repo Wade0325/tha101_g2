@@ -45,6 +45,7 @@ public class ShelterAnimal extends Core{
     private byte[] animalPhoto2;
     private byte[] animalPhoto3;
     private String animalDescribe;
+    @Column(insertable = false)
     private Integer ifAdopted;
     private String animalNumber;
     private String shelterName;
