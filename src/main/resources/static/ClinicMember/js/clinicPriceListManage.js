@@ -93,8 +93,14 @@ document.addEventListener("DOMContentLoaded", function () {
   var serviceItem2 = data.serviceItem2;
   var serviceItem3 = data.serviceItem3;
   var serviceItem4 = data.serviceItem4;
-  var serviceImg = data.imgElement;
   
+
+ 
+ 
+ 
+ 
+ 
+ 
       // 更新模态框中的表单字段值
       $("#clinicServiceId").val(clinicServiceId);
       $("#clinicServiceName").val(clinicServiceName);
@@ -104,13 +110,9 @@ document.addEventListener("DOMContentLoaded", function () {
       $("#serviceItem2").val(serviceItem2);
     $("#serviceItem3").val(serviceItem3);
   $("#serviceItem4").val(serviceItem4);
-  $("#serviceImg").attr("src", "data:image/png;base64," + serviceImg);
-  const file = document.querySelector('#file');
-  file.addEventListener('change', () => {
-    const service_img = document.querySelector('#service_img');
-    debugger;
-    service_img.src = URL.createObjectURL(file.files[0]);
-  });
+
+ 
+  
 
       // 显示模态框
       $("#updateModal").modal("show");
@@ -126,7 +128,7 @@ $("#updateBtn").on("click", function () {
   var serviceItem2 = $("#serviceItem2").val();
   var serviceItem3 = $("#serviceItem3").val();
   var serviceItem4 = $("#serviceItem4").val();
-  var serviceImg= $("#serviceImg").attr("src", "data:image/png;base64," + serviceImg);
+  
   
   
   // 在这里可以执行更新操作或发送更新请求到后端
@@ -140,14 +142,11 @@ $("#updateBtn").on("click", function () {
     serviceItem2: serviceItem2,
     serviceItem3: serviceItem3,
     serviceItem4: serviceItem4,
-    serviceImg: serviceImg,
   
     // 添加其他字段
   };
 console.log("資料"+data);
 // 发送Ajax请求
-		debugger;
-
 $.ajax({
   url: "../PriceList/update/" + clinicServiceId, // 替换为实际的后端接口URL
   type: "PUT",

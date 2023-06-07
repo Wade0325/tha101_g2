@@ -51,6 +51,14 @@ public class PriceList {
     public PriceList() {
         // 空的构造函数
     }
+    
+    public byte[] getServiceImg() {
+        return serviceImg;
+    }
+
+    public void setServiceImg(byte[] base64Image) {
+        this.serviceImg = base64Image;
+    }
 	
 
     // getters and setters

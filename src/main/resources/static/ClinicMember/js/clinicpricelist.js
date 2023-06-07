@@ -11,7 +11,7 @@ document.querySelector('#submitbtn').addEventListener('click', (event) => {
 
   const clinic_service_name = document.querySelector('#clinic_service_name').value;
   const service_price = document.querySelector('#service_price').value;
-  const service_discount_price = document.querySelector('#service_discount_price').value;s
+  const service_discount_price = document.querySelector('#service_discount_price').value;
   const service_item1 = document.querySelector('#service_item1').value;
   const service_item2 = document.querySelector('#service_item2').value;
   const service_item3 = document.querySelector('#service_item3').value;

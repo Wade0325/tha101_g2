@@ -1,6 +1,7 @@
 package tw.idv.petpet.web.clinicMember.controller;
 
 import java.io.IOException;
+import java.util.Base64;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,9 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
 
 import tw.idv.petpet.web.clinicMember.Repository.PriceListRespository;
 import tw.idv.petpet.web.clinicMember.entity.PriceList;
@@ -28,7 +27,6 @@ public class PriceListController {
 
 	@PutMapping("update/{clinicServiceId}")
 	public String update(@PathVariable Integer clinicServiceId,
-						
 						@RequestBody PriceList priceList) throws IOException { 
 		PriceList p  = priceListRespository.findById(clinicServiceId).orElse(null);
 		
@@ -40,18 +38,26 @@ public class PriceListController {
 			p.setServiceItem2(priceList.getServiceItem2());
 			p.setServiceItem3(priceList.getServiceItem3());
 			p.setServiceItem4(priceList.getServiceItem4());
-			
-			
-		p.setServiceImg(priceList.getServiceImg());
-			
-			
-			
+			p.setServiceImg(priceList.getServiceImg());
 			priceListRespository.save(p);
 			return "執行資料庫update操作";
 		}	else {
 			return "update失敗，數據不存在";
 		}
 	}
+//			byte imgview[] = Base64.getEncoder().encode(priceList.getServiceImg());
+//			System.out.println(imgview);
+//			byte[] serviceImgBytes = priceList.getServiceImg();
+//			p.setServiceImg(imgview);
+//			System.out.println("img" + priceList.getServiceImg());
+
+			// 将字节数组编码为 Base64 字符串
+//			String base64Img = Base64.getEncoder().encodeToString(serviceImgBytes);
+
+			// 将转换后的 Base64 字符串设置给 p 的 serviceImg 字段
+//			p.setServiceImg(base64Img);
+			
+			
 	
 	@DeleteMapping("/delete/{clinicServiceId}")
 	public String delete(@PathVariable Integer clinicServiceId) {
