@@ -18,7 +18,7 @@
       <!-- Navbar Brand-->
       <img src="../static/images/petpet.png" width="70px" height="70px" />
       <img src="../static/images/Petword.png" width="40px" height="40px" />
-      <a class="navbar-brand ps-3" href="#">首頁</a>
+      <a class="navbar-brand ps-3" href="login">首頁</a>
       <!-- Sidebar Toggle功能下拉選單-->
       <!-- <button
         class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0"
@@ -81,13 +81,13 @@
 		console.log(emailData)
 		alert("email: " + txtForgot.val());
 		$.ajax({
-			url : "/sendEmail2",
+			url : "/petpet/sendEmail2",
 			data : JSON.stringify(emailData),
 			type : "post",
 			contentType: "application/json",
 			success:function(res){
 				console.log(res);
-				window.location.href = "/admin/login";
+				window.location.href = "login";
 			}
 		});
 	});

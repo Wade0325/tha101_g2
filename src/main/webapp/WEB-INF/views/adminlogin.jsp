@@ -10,17 +10,9 @@
 <script src="../static/js/jquery-3.4.1.min.js"></script>
 <link href="../static/css/style2.css" rel="stylesheet" />
 <link href="../static/css/styles.css" rel="stylesheet" />
-<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
-	crossorigin="anonymous"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-	crossorigin="anonymous"></script>
-<style>
-.errortext {
-	color: red;
-	font-weight: bold;
-}
-</style>
+<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"	crossorigin="anonymous"></script>
+<script	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"	crossorigin="anonymous"></script>
+
 </head>
 <body>
 	<nav class="sb-topnav navbar navbar-expand navbar-dark color">
@@ -63,7 +55,12 @@
 			<div class="u-form-group">
 				<input type="password" placeholder="Password" id="adminLoginPassword" />
 			</div>
-
+			
+      		<span id="captchaText"></span>
+  			<div class="u-form-group">
+     		 	<input type="text" id="captchaInput" placeholder="驗證碼">
+   			</div>
+			
 			<div class="u-form-group" id="login-btn">
 				<button type="submit">Log in</button>
 			</div>
@@ -147,7 +144,7 @@
 			// 			$("#errorMsg").removeClass("errortext");
 			console.log(acclength + "\n" + passlength);
 			
-			alert();
+// 			alert();
 			$('#adminRegisterForm').submit();
 		});
 	</script>
@@ -171,20 +168,25 @@
 
 			// 发送Ajax请求
 			$.ajax({
-				url : "/admin/register",
+				url : "register",
 				type : "POST",
 				contentType : "application/json",
 				data : JSON.stringify(adminData),
 				success : function(response) {
 					// 处理成功响应
-					console.log("新增成功");
-					alert("新增成功")
-					window.location.href = "register";
+					if(response == 1){
+						console.log("新增成功");
+						alert("新增成功")
+						window.location.href = "login";
+					}else
+						console.log("新增失败，請重新申辦帳號");
+						alert("新增失败，請重新申辦帳號")
+						window.location.href = "login";
 				},
 				error : function(error) {
 					// 处理错误响应
 					console.log("新增失败");
-					alert("新增成功")
+					alert("新增失败")
 					// 显示错误消息或执行其他错误处理逻辑
 				},
 			});
@@ -210,7 +212,7 @@
 
 			// 发送Ajax请求
 			$.ajax({
-				url : "petpet/admin/login",
+				url : "login",
 				type : "POST",
 				contentType : "application/json",
 				data : JSON.stringify(adminData),
@@ -223,7 +225,7 @@
 						alert(response.msg);
 					}
 					
-// 					window.location.href = "";
+					window.location.href = "index";
 				},
 				error : function(error) {			
 					console.log("error" , error);
@@ -231,7 +233,7 @@
 			});
 		});
 	</script>
-
 	<!--     登入結束 -->
+	<script src="../static/js/authcode.js"></script>
 </body>
 </html>
