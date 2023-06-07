@@ -130,7 +130,8 @@
 		<div id="layoutSidenav_content">
 			<main>
 				<div class="container-fluid px-4">
-					<!-- <h1 class="mt-4">後台首頁</h1> -->
+					<h1 class="mt-4" style="text-align: center;">上傳動物資料</h1>
+
 					<div class="row">
 						<div class="col-md-12">
 							<!-- 內容放入此處 -->
@@ -319,7 +320,7 @@
 						imageElement.parentNode.removeChild(imageElement);
 						uploadedCount--;
 					});
-
+					console.log(imageSrc);
 					imageElement.appendChild(deleteButton);
 					uploadShowDiv.appendChild(imageElement);
 					if(uploadedCount==1){

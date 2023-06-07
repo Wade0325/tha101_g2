@@ -1,11 +1,10 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 
 <head>
-<meta charset="UTF-8">
-<title>FindAll</title>
-<link rel="stylesheet" href="css/clinicMemberManage.css">
+	<meta charset="UTF-8">
+	<title>FindAll</title>
+	<link rel="stylesheet" href="css/clinicMemberManage.css">
 </head>
 
 <body>
@@ -32,24 +31,24 @@
 			<tbody id="tbody"></tbody>
 		</table>
 		<script>
-	const tbody = document.querySelector('#tbody');
-	fetch('manage', {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json'
-		},
-		body: {
+			const tbody = document.querySelector('#tbody');
+			fetch('manage', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: {
 
-		}
-	})
-		.then(resp => resp.json())
-		.then(ClinicMember => {
-			for (let member of ClinicMember) {
-				console.log(member);
+				}
+			})
+				.then(resp => resp.json())
+				.then(ClinicMember => {
+					for (let member of ClinicMember) {
+						console.log(member);
 
-				tbody.innerHTML += `
+						tbody.innerHTML += `
 				<tr>
-						<td>${member.clinicId}</td>
+					<td>${member.clinicId}</td>
 					<td contenteditable="true" id="clinicname${member.clinicId}">${member.clinicName}</td>
 					<td contenteditable="true" id="clinicprincipal${member.clinicId}">${member.clinicPrincipal}</td>
 					<td contenteditable="true" id="clinicemail${member.clinicId}">${member.clinicEmail}</td>
@@ -65,9 +64,9 @@
 						<button type="button" class="btn-delete" onclick="deleteClick(${member.clinicId})">刪除</button>
 					</td>
 				</tr>`
-			}
-		})
-</script>
+					}
+				})
+		</script>
 		<script src="js/clinicMemberManage.js"></script>
 </body>
 

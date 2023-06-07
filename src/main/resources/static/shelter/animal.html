@@ -159,30 +159,29 @@
 				</div>
 			</div>
 		</nav>
-		<!-- END nav -->
+	
+		<section class="ftco-section bg-light" id="tbody">	
 
-		<!-- 程式放裡面 -->
-		<section class="ftco-section bg-light">
-			<div class="container">
+				<div class="container">
 				<div class="row">
 					<div class="col-md-7">
 
 						<div class="row">
 							<div class="col-md-3">
 								<div class="thumbnail">
-									<img src="images/about-1.jpg" alt="" data-id="1">
+									<img src="data:image/jpeg;base64,"  alt="" data-id="1" id="animalPhoto1">
 									<div class="overlay">
 										<p>Image 1</p>
 									</div>
 								</div>
 								<div class="thumbnail">
-									<img src="images/about-2.jpg" alt="" data-id="2">
+									<img src="data:image/jpeg;base64," alt="" data-id="2" id="animalPhoto2">
 									<div class="overlay">
 										<p>Image 2</p>
 									</div>
 								</div>
 								<div class="thumbnail">
-									<img src="images/about-3.jpg" alt="" data-id="3">
+									<img src="data:image/jpeg;base64," alt="" data-id="3" id="animalPhoto3">
 									<div class="overlay">
 										<p>Image 3</p>
 									</div>
@@ -190,9 +189,9 @@
 							</div>
 							<div class="col-lg-8">
 								<div id="display-area">
-									<img src="images/about-1.jpg" alt=""
+									<img src="data:image/jpeg;base64," alt=""
 										style="width: 100%; height: auto; margin-bottom: 10px;"
-										data-id="1">
+										data-id="1" id="animalPhoto4">
 								</div>
 							</div>
 						</div>
@@ -221,7 +220,19 @@
 											</div>
 											<div class="col-md-8">
 												<div class="form-group">
-													<div class="form-content" name="animalDate" id="animalDate">2023/05/19</div>
+													<div class="form-content" name="animalDate" id="animalDate"></div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-4">
+												<div class="form-group">
+													<div class="form-lable">動物名稱</div>
+												</div>
+											</div>
+											<div class="col-md-8">
+												<div class="form-group">
+													<div class="form-content" name="animalName" id="animalName"></div>
 												</div>
 											</div>
 										</div>
@@ -233,7 +244,7 @@
 											</div>
 											<div class="col-md-8">
 												<div class="form-group">
-													<div class="form-content" name="animalType" id="animalType">狗</div>
+													<div class="form-content" name="animalType" id="animalType"></div>
 												</div>
 											</div>
 										</div>
@@ -245,7 +256,7 @@
 											</div>
 											<div class="col-md-8">
 												<div class="form-group">
-													<div class="form-content" name="animalCategory" id="animalCategory">八哥</div>
+													<div class="form-content" name="animalCategory" id="animalCategory"></div>
 												</div>
 											</div>
 										</div>
@@ -258,7 +269,7 @@
 											<div class="col-md-8">
 												<div class="form-group">
 													<div class="form-content" name="animalAge"
-																	id="animalAge">幼犬</div>
+																	id="animalAge"></div>
 												</div>
 											</div>
 										</div>
@@ -270,7 +281,7 @@
 											</div>
 											<div class="col-md-8">
 												<div class="form-group">
-													<div class="form-content" name="animalColor" id="animalColor">虎斑</div>
+													<div class="form-content" name="animalColor" id="animalColor"></div>
 												</div>
 											</div>
 										</div>
@@ -283,7 +294,7 @@
 											<div class="col-md-8">
 												<div class="form-group">
 													<div class="form-content" name="animalGender"
-														id="animalGender">公</div>
+														id="animalGender"></div>
 												</div>
 											</div>
 										</div>
@@ -293,9 +304,9 @@
 													<div class="form-lable">所在收容所</div>
 												</div>
 											</div>
-											<div class="col-md-8">
+												<div class="col-md-8">
 												<div class="form-group">
-													<div class="form-content">花蓮收容所</div>
+													<div class="form-content" name="shelterNumber" id="shelterNumber"></div>
 												</div>
 											</div>
 										</div>
@@ -307,7 +318,19 @@
 											</div>
 											<div class="col-md-8">
 												<div class="form-group">
-													<div class="form-content" name="animalId" id="animalId">dog123</div>
+													<div class="form-content" name="animalNumber" id="animalNumber"></div>
+												</div>
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-4">
+												<div class="form-group">
+													<div class="form-lable">相關敘述</div>
+												</div>
+											</div>
+											<div class="col-md-8">
+												<div class="form-group">
+													<div class="form-content" name="animalDes" id="animalDes"></div>
 												</div>
 											</div>
 										</div>
@@ -319,8 +342,7 @@
 						</div>
 
 						<div class="text-center">
-							<a href="adoptapply.html"
-								class="btn btn-info btn-xs text-white mt-3 ">我要領養</a>
+							<a class="btn btn-info btn-xs text-white mt-3 " id="adopt">我要領養</a>
 						</div>
 					</div>
 				</div>
@@ -328,10 +350,7 @@
 	</div>
 	</div>
 
-	</section>
-	<!-- 程式放裡面 -->
-
-
+		</section>
 	<footer class="footer">
 		<div class="container">
 			<div class="row">
@@ -409,13 +428,16 @@
             });
             
         </script>
-	<script>
+		<script>
             var heart = document.getElementById("heart");
           
             heart.addEventListener("click", function() {
               heart.classList.toggle("clicked");
             });
           </script>
+
+	
+	
 	<script src="js/jquery.min.js"></script>
 	<script src="js/jquery-migrate-3.0.1.min.js"></script>
 	<script src="js/popper.min.js"></script>
@@ -430,6 +452,7 @@
 	<script src="js/jquery.magnific-popup.min.js"></script>
 	<script src="js/scrollax.min.js"></script>
 	<script src="js/main.js"></script>
+	<script src="js/animal.js"></script>
 
 
 </body>
