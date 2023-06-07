@@ -1,6 +1,6 @@
 const tbody = document.querySelector('#tbody');
-fetch('manage', {
-	method: 'POST',
+fetch('findbyifadopted/0', {
+	method: 'Post',
 	headers: {
 		'Content-Type': 'application/json'
 	},
@@ -24,7 +24,7 @@ fetch('manage', {
 						<h3 id="animalName${animal.animalName}">${animal.animalName}</h3>
 						<span class="position mb-2" id="animalCategory${animal.animalCategory}">${animal.animalCategory}</span>
 						<div class="faded">
-							<p>收容地點:花蓮縣狗貓躍動園區</p>
+							<p>所屬收容所：${animal.shelterName}</p>
 							<ul class="ftco-social text-center">
 								<li class="ftco-animate"></li>
 							</ul>

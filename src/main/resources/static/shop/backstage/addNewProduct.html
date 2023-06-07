@@ -9,13 +9,12 @@
     />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>PET PET陪陪你後台-新增商品</title>
+    <title>PET PET陪陪你後台</title>
     <link
       href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css"
       rel="stylesheet"
     />
     <link href="./css/styles.css" rel="stylesheet" />
-    <script src="/js/jquery-3.6.4.min.js"></script>
     <style>
       body {
         padding: 20px;
@@ -188,15 +187,8 @@
                 aria-labelledby="headingOne"
                 data-bs-parent="#sidenavAccordion"
               >
-              
               <nav class="sb-sidenav-menu-nested nav">
-                <a class="nav-link" href="report_firm.html">新增商品</a>
-              </nav>
-              <nav class="sb-sidenav-menu-nested nav">
-                <a class="nav-link" href="report_firm.html">商品管理</a>
-              </nav>
-              <nav class="sb-sidenav-menu-nested nav">
-                <a class="nav-link" href="report_firm.html">訂單管理</a>
+                <a class="nav-link" href="#">新增商品</a>
               </nav>
                 <nav class="sb-sidenav-menu-nested nav">
                   <a class="nav-link" href="report_firm.html">商家檢舉</a>
@@ -247,13 +239,13 @@
         </nav>
       </div>
       <div id="layoutSidenav_content">
-        <!-- html start新增商品頁 -->
+        <!-- 新增商品頁 -->
         <main>
           <div class="container">
             <h1>新增商品</h1>
             <form>
               <div class="form-group">
-                <label for="product-name">商品名稱</label>
+                <label for="productName">商品名稱</label>
                 <input
                   type="text"
                   class="form-control"
@@ -261,7 +253,6 @@
                   placeholder="請輸入商品名稱"
                 />
               </div>
-
               <div class="form-group">
                 <label for="product-description">商品描述</label>
                 <textarea
@@ -271,7 +262,6 @@
                   placeholder="請輸入商品描述"
                 ></textarea>
               </div>
-
               <div class="form-group" style="width: 150px">
                 <label for="product-price">價格</label>
                 <input
@@ -281,7 +271,6 @@
                   placeholder="請輸入價格"
                 />
               </div>
-
               <div class="form-group">
                 <label for="product-quantity">數量</label>
                 <input
@@ -291,7 +280,6 @@
                   placeholder="請輸入數量"
                 />
               </div>
-
               <div class="form-group">
                 <label for="product-category">商品類別</label>
                 <select class="form-control" id="product-category">
@@ -546,6 +534,7 @@
         if (imageCount == 2) {
           animalphoto2 = imgSrc;
           base64Data2 =animalphoto2;
+          console.log(base64Data2);
          
           parts2 = base64Data2.split(",");
           base64Data2 = parts2[1];
@@ -573,221 +562,10 @@
       function updateImageCount() {
         imageCountElement.textContent = `(${imageCount}/3)`;
 
-           // 參考
-  // var parts1 = base64Data1.split(",");
-  // if (parts1.length > 1) {
-  //   base64Data1 = parts1[1]; // 去除前缀，保留编码数据部分
-  //   // console.log(base64Data1);
-  // }
-  // var parts2 = base64Data2.split(",");
-  // if (parts2.length > 1) {
-  //   base64Data2 = parts2[1]; // 去除前缀，保留编码数据部分
-  //   console.log(base64Data2);
-  // }
-  // var parts3 = base64Data3.split(",");
-  // if (parts3.length > 1) {
-  //   base64Data3 = parts3[1]; // 去除前缀，保留编码数据部分
-  //   console.log(base64Data3);
-  // }
-
   
       }
     </script>
-    
-
-
-
-
-
-
-
-<!-- 新增商品 主要-->
-
-
-<!-- <script>
-  document.getElementById('btntest').addEventListener('click', function() {
-  
- 
- 
-    var proname = document.getElementById('productName').value;
-    var proprice = document.getElementById('product-price').value;
-    var proquantity = document.getElementById('product-quantity').value;
-    var productdescription = document.getElementById('product-description').value;  //商品描述
-    var catename = document.getElementById('product-category').value;
-//商品類別
-
-
-  var product = {
-    "pro_name" : proname,
-    "pro_price": proprice,
-    "pro_amount": proquantity,
-    "pro_det" : productdescription, 
-    "cate_name": catename,
-    "company_id": "test",
-    "email":"test"
-  };
-
-  fetch("http://localhost:8080/petpet/shoptest111", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json"
-  },
-    body: JSON.stringify(product)
-  })
-  .then(function(response) {
-    if (response.ok) {
-      // 处理请求成功的情况
-      alert('Product added successfully');
-      // 刷新页面或执行其他操作
-    } else {
-      // 处理请求失败的情况
-      alert('Failed to add product');
-    }
-  })
-  .catch(function(error) {
-    // 处理请求异常的情况
-    console.error('Error:', error);
-  });
-});
-
-</script> -->
-
-<!-- /新增商品 主要-->
-    
-
-
-
-<!-- 測試上傳圖片 -->
-
-
-<!-- <script>
-  document.getElementById('btntest').addEventListener('click', function() {
-  
- 
- 
-    var proname = document.getElementById('productName').value;
-    var proprice = document.getElementById('product-price').value;
-    var proquantity = document.getElementById('product-quantity').value;
-    var productdescription = document.getElementById('product-description').value;  //商品描述
-    var catename = document.getElementById('product-category').value;
-//商品類別
-
-
-  var product = {
-    "pro_name" : proname,
-    "pro_price": proprice,
-    "pro_amount": proquantity,
-    "pro_det" : productdescription, 
-    "cate_name": catename,
-    "company_id": "test",
-    "email":"test"
-  };
-
-const fileInput = document.getElementById('uploadInput'); // 替換為你的<input type="file">元素的ID
-const files = fileInput.files;
-
-const formData = new FormData();
-
-for (let i = 0; i < files.length; i++) {
-  formData.append('images[]', files[i]);
-}
-
-formData.append('product', JSON.stringify(product));
-
-fetch("http://localhost:8080/petpet/shoptest111", {
-  method: "POST",
-  body: formData
-})
-.then(function(response) {
-  if (response.ok) {
-    // 處理請求成功的情況
-    alert('Product added successfully');
-    // 刷新頁面或執行其他操作
-  } else {
-    // 處理請求失敗的情況
-    alert('Failed to add product');
-  }
-})
-.catch(function(error) {
-  // 處理請求異常的情況
-  console.error('Error:', error);
-});
-});
-</script> -->
-
-
-<!-- 測試上傳圖片 結束 -->
-
-
-
-<!-- 測試base64 -->
-<!-- <script>
-  var proname = document.getElementById("productName").value;
-  var proprice = document.getElementById("product-price").value;
-  var proquantity = document.getElementById("product-quantity").value;
-  var productdescription = document.getElementById(
-    "product-description"
-  ).value; //商品描述
-  var catename = document.getElementById("product-category").value;
-
-  var file = document.getElementById("uploadInput");
-  var service_img = document.getElementsByClassName("preview-image")[0];
-  var btn = document.getElementById("btntest");
-
-  file.addEventListener("change", () => {
-    service_img.src = URL.createObjectURL(file.files[0]);
-  });
-  btn.addEventListener("click", (event) => {
-    const fr = new FileReader();
-    fr.addEventListener("load", (e) => {
-      fetch("http://localhost:8080/petpet/shoptest111", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          pro_name: proname,
-          pro_price: proprice,
-          pro_amount: proquantity,
-          pro_det: productdescription,
-          cate_name: catename,
-          company_id: "test",
-          email: "test",
-          serviceImg: btoa(e.target.result),
-        }),
-      });
-    });
-    fr.readAsBinaryString(file.files[0]);
-  });
-</script> -->
-
-<!-- 測試Base64結束 -->
-
-
-<!-- <script>
-
-const addButton = document.getElementById('btntest');
-
-addButton.addEventListener('click', () => {
-fetch('http://localhost:8080/petpet/shoptest123', {
-    method: 'GET'
-  })
-    .then(response => response.json())
-    .then(data => {
-      // 在这里处理返回的数据
-      console.log(data);
-    })
-    .catch(error => {
-      // 处理请求错误
-      console.error('Error:', error);
-    });
-
-  });
-</script> -->
-
-
-
-
+   
 
 <script>
 
@@ -820,26 +598,9 @@ document.getElementById('btntest').addEventListener('click', function(event) {
     "pro_pic3": parts3[1]
     };
 
-    // // 获取选择的图片文件
-    // var imageFiles = document.getElementById('uploadInput').files;
-    
-    // // 创建FormData对象，用于上传文件
-    // var formData = new FormData();
-    
-    // // 添加商品数据到FormData
-    // formData.append('product', JSON.stringify(product));
-    
-    // // 添加图片文件到FormData
-    // for (var i = 0; i < imageFiles.length; i++) {
-    //     formData.append('images', imageFiles[i]);
-    //     console.log(imageFiles.length);
-        
-        
-        // console.log(i);
-    // }
     
     // 发送POST请求至后端
-    fetch('http://localhost:8080/petpet/shoptest111', {
+    fetch('http://localhost:8080/petpet/shoptestinsert', {
         method: 'POST',
         headers: {
     "Content-Type": "application/json"

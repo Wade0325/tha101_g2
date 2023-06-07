@@ -12,7 +12,7 @@ fetch('animalmanage', {
 	.then(ShelterAnimal => {
 		for (let animal of ShelterAnimal) {
 			console.log(animal);
-
+			  const adoptionStatus = animal.ifAdopted === 1 ? '已領養' : '未領養';
 			tbody.innerHTML += `
 				<tr>
 				<td id="animalName${animal.animalName}">${animal.animalName}</td>
@@ -26,6 +26,7 @@ fetch('animalmanage', {
 					<button type="button" class="btn-delete btn btn-danger" onclick="deleteClick(${animal.animalId})">刪除</button>
 				</td>
 				<td id="animalId${animal.animalId}" style="display: none;">${animal.animalId}</td>
+				<td id="animalId${animal.ifAdopted}" >${adoptionStatus}</td>
 				</tr>`
 		}
 	})

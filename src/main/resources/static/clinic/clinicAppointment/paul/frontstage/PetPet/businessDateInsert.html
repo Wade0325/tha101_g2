@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 
 <head>
-	<meta charset="UTF-8">
-	<title>FindAll</title>
+<meta charset="UTF-8">
+<title>FindAll</title>
 </head>
 
 <body>
@@ -17,30 +18,35 @@
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">
-										<label class="label" for="clinicId">診所Id</label> <input type="text"
-											class="form-control" name="clinicId" id="clinicId" placeholder="自動帶入">
+										<label class="label" for="clinicName">診所名稱</label> <input
+											type="text" class="form-control" name="clinicName"
+											id="clinicName" placeholder="自動帶入">
 									</div>
 								</div>
 								<div class="col-md-6">
 									<div class="form-group">
-										<label class="label" for="vetSn">獸醫編號</label> <input type="text"
-											class="form-control" name="vetSn" id="vetSn" placeholder="自動帶入">
+										<label class="label" for="vetSn">獸醫編號</label> <input
+											type="text" class="form-control" name="vetSn" id="vetSn"
+											placeholder="自動帶入">
 									</div>
 								</div>
+
 								<div class="col-md-6">
 									<div class="form-group" id="clinic_appointment">
-										<label class="label" for="weekDate">營業日期</label> <input type="text"
-											class="form-control" name="weekDate" id="weekDate" placeholder="自動帶入">
+										<label class="label" for="weekDate">營業日期</label> <input
+											type="date" class="form-control" name="weekDate"
+											id="weekDate">
 									</div>
 								</div>
+
 
 								<div class="col-md-6">
 									<div class="form-group">
 										<label class="label" for="morningBusiness">早上營業</label> <select
 											class="form-control search-clinic" id="morningBusiness"
 											name="morningBusiness">
-											<option value="1">是</option>
-											<option value="2">否</option>
+											<option value="是">是</option>
+											<option value="否">否</option>
 										</select>
 									</div>
 								</div>
@@ -48,8 +54,9 @@
 								<div class="col-md-6">
 									<div class="form-group">
 										<label class="label" for="morningAppointMax">早上最大預約人數</label>
-										<select class="form-control search-clinic" id="morningAppointMax"
-											name="morningAppointMax">
+										<select class="form-control search-clinic"
+											id="morningAppointMax" name="morningAppointMax">
+											<option value="0">0</option>
 											<option value="1">1</option>
 											<option value="2">2</option>
 											<option value="3">3</option>
@@ -69,8 +76,8 @@
 										<label class="label" for="afternoonBusiness">下午營業</label> <select
 											class="form-control search-clinic" id="afternoonBusiness"
 											name="afternoonBusiness">
-											<option value="1">是</option>
-											<option value="2">否</option>
+											<option value="是">是</option>
+											<option value="否">否</option>
 										</select>
 									</div>
 								</div>
@@ -78,8 +85,9 @@
 								<div class="col-md-6">
 									<div class="form-group">
 										<label class="label" for="afternoonAppointMax">下午最大預約人數</label>
-										<select class="form-control search-clinic" id="afternoonAppointMax"
-											name="afternoonAppointMax">
+										<select class="form-control search-clinic"
+											id="afternoonAppointMax" name="afternoonAppointMax">
+											<option value="0">0</option>
 											<option value="1">1</option>
 											<option value="2">2</option>
 											<option value="3">3</option>
@@ -97,18 +105,20 @@
 								<div class="col-md-6">
 									<div class="form-group">
 										<label class="label" for="nightBusiness">晚上營業</label> <select
-											class="form-control search-clinic" id="nightBusiness" name="nightBusiness">
-											<option value="1">是</option>
-											<option value="2">否</option>
+											class="form-control search-clinic" id="nightBusiness"
+											name="nightBusiness">
+											<option value="是">是</option>
+											<option value="否">否</option>
 										</select>
 									</div>
 								</div>
 
 								<div class="col-md-6">
 									<div class="form-group">
-										<label class="label" for="nightAppointMax">晚上最大預約人數</label>
-										<select class="form-control search-clinic" id="nightAppointMax"
+										<label class="label" for="nightAppointMax">晚上最大預約人數</label> <select
+											class="form-control search-clinic" id="nightAppointMax"
 											name="nightAppointMax">
+											<option value="0">0</option>
 											<option value="1">1</option>
 											<option value="2">2</option>
 											<option value="3">3</option>

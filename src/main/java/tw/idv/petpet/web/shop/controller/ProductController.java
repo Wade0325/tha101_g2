@@ -43,7 +43,7 @@ public class ProductController {
 		return "測試insert";
 	}
 
-	@PostMapping("/shoptest111") // 新增商品
+	@PostMapping("/shoptestinsert") // 新增商品
 	public String insert(@RequestBody Product product) {
 		System.out.println("test");
 		 Timestamp now = new Timestamp(System.currentTimeMillis());

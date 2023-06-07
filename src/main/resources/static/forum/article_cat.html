@@ -65,22 +65,26 @@
                 </ul>
             </nav>
             <div class="article-container">
-                <h2 class="article-title">[閒聊] 大家好這是我剛領養的貓貓</h2>
+                <!-- <h2 class="article-title">大家好這是我剛領養的貓貓</h2>
                 <div class="article-info">
                     <span class="article-author">作者：胖子翁</span> |
                     <span class="article-time">發表時間：2023-05-29</span>
                 </div>
                 <div class="article-content">
                     大家好這是我家的小貓咪。
-                </div>
+                </div> -->
                 <div class="article-reaction">
-                    <button class="reaction-btn" id="like-btn" onclick="likeArticle()">讚</button>
-                    <button class="reaction-btn" id="dislike-btn" onclick="dislikeArticle()">踩</button>
+                    <!-- <button class="reaction-btn" id="like-btn" onclick='likeArticle()'>讚</button>
+                    <button class="reaction-btn" id="dislike-btn" onclick="">踩</button>
                     <span id="like-count">0</span> 人讚 |
                     <span id="dislike-count">0</span> 人踩
-                    <button class="reaction-btn" id="bookmark-btn" onclick="bookmarkArticle()">收藏</button>
-                    <button class="reaction-btn" id="report-btn" onclick="reportArticle()">檢舉</button>
+                    <button class="reaction-btn" id="bookmark-btn" onclick="">收藏</button> -->
+                    <button class="reaction-btn" id="report-btn" onclick="">檢舉</button>
                 </div>
+            </div>
+
+            <div id="articleContainer">
+                <!-- 動態頁面，從資料庫抓id -->
             </div>
 
             <div id="reply-section">
@@ -88,7 +92,7 @@
             </div>
 
             <form id="reply-form">
-                <input type="text" id="reply-name" placeholder="你的姓名" required>
+                <!-- <input type="text" id="reply-name" placeholder="你的姓名" required> -->
                 <textarea id="reply-message" placeholder="在這裡輸入你的回覆..." required></textarea>
                 <button type="submit">送出回覆</button>
             </form>
@@ -176,6 +180,50 @@
         <script src="js/main.js"></script>
 
         <script src="js\article_cat.js"></script>
+        <!-- <script src="js/article_like.js"></script> -->
+        <script src="js/article_list_for_chat.js"></script>
+
+        <script type="text/javascript">
+            const articleContainer = document.querySelector('#articleContainer');
+
+            fetch('/forum/article_cat/' + articleId)
+                .then(resp => resp.json())
+                .then(articleData => {
+                    const articleDiv = document.createElement('div');
+                    articleDiv.classList.add('article-container');
+
+                    const articleTitle = document.createElement('h2');
+                    articleTitle.classList.add('article-title');
+                    articleTitle.textContent = articleData.article_title;
+                    articleDiv.appendChild(articleTitle);
+
+                    const articleInfo = document.createElement('div');
+                    articleInfo.classList.add('article-info');
+
+                    const articleAuthor = document.createElement('span');
+                    articleAuthor.classList.add('article-author');
+                    articleAuthor.textContent = '作者：' + articleData.user_id;
+                    articleInfo.appendChild(articleAuthor);
+
+                    const articleTime = document.createElement('span');
+                    articleTime.classList.add('article-time');
+                    articleTime.textContent = '發表時間：' + articleData.article_create_time;
+                    articleInfo.appendChild(articleTime);
+
+                    articleDiv.appendChild(articleInfo);
+
+                    const articleContent = document.createElement('div');
+                    articleContent.classList.add('article-content');
+                    articleContent.textContent = articleData.article_content;
+                    articleDiv.appendChild(articleContent);
+
+                    articleContainer.appendChild(articleDiv);
+                })
+                .catch(error => {
+                    console.error('获取文章数据出错：', error);
+                    // 处理错误情况
+                });
+        </script>
 </body>
 
 </html>
