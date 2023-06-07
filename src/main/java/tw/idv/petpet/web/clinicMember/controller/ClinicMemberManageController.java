@@ -15,7 +15,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import lombok.experimental.PackagePrivate;
 import tw.idv.petpet.core.pojo.Core;
+import tw.idv.petpet.web.clinic.clinicAppointment.repository.ClinicAppointmentRepository;
 import tw.idv.petpet.web.clinicMember.entity.ClinicMember;
 import tw.idv.petpet.web.clinicMember.service.ClinicMemberService;
 
@@ -25,6 +27,9 @@ public class ClinicMemberManageController {
 
 	@Autowired
 	private ClinicMemberService service;
+	
+	@Autowired
+	private ClinicAppointmentRepository clinicAppointmentRepository;
 
 	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
