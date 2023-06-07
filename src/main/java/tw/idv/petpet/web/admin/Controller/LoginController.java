@@ -1,4 +1,8 @@
-package tw.idv.petpet.web.admin.Controller;
+package com.web.controller;
+
+import java.net.http.HttpRequest;
+import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -8,11 +12,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import tw.idv.petpet.web.admin.BaseResponse;
-import tw.idv.petpet.web.admin.ReturnCodeEnum;
-import tw.idv.petpet.web.admin.Entity.AdminEntity;
-import tw.idv.petpet.web.admin.Repository.AdminRepository;
-import tw.idv.petpet.web.admin.dto.AdminLoginVO;
+import com.base.BaseResponse;
+import com.core.ReturnCodeEnum;
+import com.web.entity.AdminEntity;
+import com.web.repository.AdminRepository;
+
+import dto.AdminLoginVO;
 
 @RestController
 public class LoginController {
@@ -27,7 +32,7 @@ public class LoginController {
 		System.out.println(adminLoginVO);
 		AdminEntity adminEntity = adminRepository
 				.findByAdminAccountAndAdminPassword(adminLoginVO.getAdminAccount(), adminLoginVO.getAdminPassword());
-
+		System.out.println(adminEntity);
 		if (adminEntity != null) {
 			System.out.println("Session儲存會員資料");
 			session.setAttribute("loginAdminEntity", adminEntity);

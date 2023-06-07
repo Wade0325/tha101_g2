@@ -15,8 +15,10 @@ import tw.idv.petpet.web.admin.Entity.AdminEntity;
 import tw.idv.petpet.web.admin.Repository.AdminRepository;
 
 
+
 @RestController
 public class AdminController {
+
 	@Autowired
 	private AdminRepository adminRepository;
 
