@@ -1,47 +1,52 @@
 (() => {
 
-    // // 获取文章元素
-    // const articleContainer = document.querySelector('#articleContainer');
+    const articleContainer = document.querySelector('#articleContainer');
+    const article_container = document.querySelector('.article-container');
+    const articleId = 30;
+    const articleTitle = '';
+    const userId = '';
+    const articleCreateTime = '';
+    const articleContent = '';
+    const articleGroupId = '';
+    const articleImage = '';
 
-    // //獲取文章資料並動態渲染
-    // fetch(`forum`, {
-    //     method: `GET`,
-    //     headers: {
-    //         'Content-Type': 'application/json'
-    //     },
-    //     body: JSON.stringify({
+    fetch('article_cat', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            articleId: articleId,
+            userId: 0,
+            articleGroupId: articleGroupId,
+            articleTitle: articleTitle,
+            articleContent: articleContent,
+            articleImage: articleImage,
+            articleCreateTime: articleCreateTime,
+            // modifierTime: null,
+            // articleStatus: null
+        }),
 
-    //     })
-    // })
-    //     .then(resp => resp.json())
-    //     .then()
-   
+    })
+        .then(resp => resp.json())
+        .then(articleData => {
+            // articleTitle.textContent = articleData.articleTitle;
+            // articleAuthor.textContent = '作者：' + articleData.userId;
+            // articleTime.textContent = '发表时间：' + articleData.articleCreateTime;
+            // articleContent.textContent = articleData.articleContent;
+            articleContainer.innerHTML = `
+             <h2 class="article-title">${articleData.articleTitle}</h2>
+             <div class="article-info">
+                <span class="article-author">作者:${articleData.userId}</span> |
+                 <span class="article-time">發表時間：${articleData.articleCreateTime}</span>
+             </div>
+             <div class="article-content">
+                 ${articleData.articleContent}
+             </div>
+             `
+        });
 
 })()
 
 
 
- // const userId = document.querySelector('#userId');
-    // var articleId = '';
-
-    // fetch('/forum/article_cat/' + articleId)    
-    //     .then(resp => resp.json())
-    //     .then(data => {
-    //         renderArticle(data);
-    //     })
-    //     .catch(error => {
-    //         console.error('发生错误', error);
-    //         alert("article_list_for_chat.js發生錯誤");
-    //     });
-
-    // function renderArticle(article) {
-    //     const articleTitle = document.querySelector('.article-title');
-    //     const articleAuthor = document.querySelector('.article-author');
-    //     const articleTime = document.querySelector('.article-time');
-    //     const articleContent = document.querySelector('.article-content');
-
-    //     articleTitle.textContent = article.articleTitle;
-    //     articleAuthor.textContent = `作者：` + article.userId;
-    //     articleTime.textContent = `发表时间：` + article.articleCreateTime;
-    //     articleContent.textContent = article.articleContent;
-    // }

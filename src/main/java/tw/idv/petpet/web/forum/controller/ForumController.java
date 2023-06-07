@@ -11,10 +11,12 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import tw.idv.petpet.web.forum.entity.Forum;
 import tw.idv.petpet.web.forum.service.ForumService;
+import tw.idv.petpet.web.user.entity.User;
 
 @RestController
 @RequestMapping("/forum")
@@ -56,22 +58,32 @@ public class ForumController {
 		System.out.println("文章列表查詢成功");
 		return forumService.findAll();
 	}
+	
+	
+	@PostMapping("/article_cat")
+	@ResponseBody
+	public Forum findArticleById(@RequestBody int articleId) {
+		System.out.println("執行 findByArticleId 方法成功");
+		return forumService.findByArticleId(articleId);
+	}
+
+//	@GetMapping("/article_cat/{articleId}")
+//	public ResponseEntity<Forum> getForumById(@PathVariable int articleId) {
+//		Forum forum = forumService.findByArticleId(articleId);
+//		if (forum == null) {
+//			return ResponseEntity.notFound().build();
+//		}
+//		System.out.println("getmapping:??? ok?");
+//		return ResponseEntity.ok(forum);
+//	}
+	
+	
 
 //	@GetMapping("/article_cat/{articleId}")
 //	public Forum findByArticleId(@PathVariable("articleId") int articleId, @RequestBody Forum forum) {
 //		System.out.println("controller層：findByArticleId有被呼叫到");
 //		return forumService.findByArticleId(articleId);
 //	}
-
-	@GetMapping("/article_cat/{articleId}")
-	public ResponseEntity<Forum> getArticleById(@PathVariable("articleId") int articleId) {
-		Forum forum = forumService.findByArticleId(articleId);
-		if (forum != null) {
-			return ResponseEntity.ok(forum);
-		} else {
-			return ResponseEntity.notFound().build();
-		}
-	}
 
 //	// 獲取所有文章的方法
 //	@GetMapping("/forum")
