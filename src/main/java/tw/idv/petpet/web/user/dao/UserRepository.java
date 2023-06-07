@@ -21,8 +21,12 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 	@Modifying
 	@Query(value = "UPDATE user SET user_tel = ?1 WHERE user_id = ?2", nativeQuery = true)
 	Integer updateUserTel(String userTel, Integer userId);
-	
+
 	@Modifying
 	@Query(value = "UPDATE user SET user_addr = ?1 WHERE user_id = ?2", nativeQuery = true)
 	Integer updateUserAddr(String userAddr, Integer userId);
+
+	@Modifying
+	@Query(value = "UPDATE user SET user_password = ?1 WHERE user_account = ?2", nativeQuery = true)
+	Integer updateUserPwd(String userPassword, String userAccount);
 }

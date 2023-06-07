@@ -7,18 +7,19 @@ import tw.idv.petpet.core.service.CoreService;
 import tw.idv.petpet.web.member.entity.Member;
 import tw.idv.petpet.web.shelter.shelterAnimal.entity.ShelterAnimal;
 
-
 public interface ShelterAnimalService extends CoreService {
 	ShelterAnimal upload(ShelterAnimal ShelterAnimal);
-	
+
 	List<ShelterAnimal> findAll();
-	
+
 	boolean remove(Integer animalId);
 
 	Optional<ShelterAnimal> findById(Integer animalId);
 
+	List<ShelterAnimal> findByifAdopted(Integer ifAdopted);
+
 	ShelterAnimal update(ShelterAnimal ShelterAnimal);
 	
+	ShelterAnimal adopted(ShelterAnimal ShelterAnimal);
 
-	
 }

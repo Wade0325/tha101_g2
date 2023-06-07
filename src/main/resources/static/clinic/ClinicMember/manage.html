@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>FindAll</title>
+	<link rel="stylesheet" href="css/clinicMemberManage.css">
+</head>
+
+<body>
+	<div align="center">
+		<h1>診所會員清單</h1>
+
+		<table border="1">
+			<thead>
+				<tr>
+					<th>診所編號</th>
+					<th>診所名稱</th>
+					<th>診所負責人</th>
+					<th>診所信箱</th>
+					<th>診所密碼</th>
+					<th>診所電話</th>
+					<th>診所會員創建日期</th>
+					<th>診所地址</th>
+					<th>診所照片</th>
+					<th>診所服務</th>
+					<th>診所會員最後更新日期</th>
+					<th>變更</th>
+				</tr>
+			</thead>
+			<tbody id="tbody"></tbody>
+		</table>
+		<script>
+			const tbody = document.querySelector('#tbody');
+			fetch('../manage', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: {
+
+				}
+			})
+				.then(resp => resp.json())
+				.then(ClinicMember => {
+					for (let member of ClinicMember) {
+						console.log(member);
+
+						tbody.innerHTML += `
+				<tr>
+					<td>${member.clinicId}</td>
+					<td contenteditable="true" id="clinicname${member.clinicId}">${member.clinicName}</td>
+					<td contenteditable="true" id="clinicprincipal${member.clinicId}">${member.clinicPrincipal}</td>
+					<td contenteditable="true" id="clinicemail${member.clinicId}">${member.clinicEmail}</td>
+					<td contenteditable="true" id="clinicpassword${member.clinicId}">${member.clinicPassword}</td>
+					<td contenteditable="true" id="clinicphone${member.clinicId}">${member.clinicPhone}</td>
+					<td>${member.clinicMemberCreateDate}</td>
+					<td contenteditable="true" id="clinicaddress${member.clinicId}">${member.clinicAddress}</td>
+					<td contenteditable="true" id="clinicphoto${member.clinicId}">${member.clinicPhoto}</td>
+					<td contenteditable="true" id="clinicservice${member.clinicId}">${member.clinicService}</td>
+					<td>${member.clinicMemberLastUpdateDate}</td>
+					<td>
+						<button type="button" class="btn-edit" onclick="saveClick(${member.clinicId})">儲存</button>
+						<button type="button" class="btn-delete" onclick="deleteClick(${member.clinicId})">刪除</button>
+					</td>
+				</tr>`
+					}
+				})
+		</script>
+		<script src="js/clinicMemberManage.js"></script>
+</body>
+
+</html>
+
+
+
+
+<!-- <tr th:each="clinicMember : ${clinicMemberList}"> -->
+<!-- 	<td th:text="${clinicMember.clinicId}"></td> -->
+<!-- 	<td th:text="${clinicMember.clinicName}"></td> -->
+<!-- 	<td th:text="${clinicMember.clinicPrincipal}"></td> -->
+<!-- 	<td th:text="${clinicMember.clinicEmail}"></td> -->
+<!-- 	<td th:text="${clinicMember.clinicPassword}"></td> -->
+<!-- 	<td th:text="${clinicMember.clinicPhone}"></td> -->
+<!-- 	<td th:text="${clinicMember.clinicMemberCreateDate}"></td> -->
+<!-- 	<td th:text="${clinicMember.clinicAddress}"></td> -->
+<!-- 	<td th:text="${clinicMember.clinicPhoto}"></td> -->
+<!-- 	<td th:text="${clinicMember.clinicService}"></td> -->
+<!-- 	<td th:text="${clinicMember.clinicMemberLastUpdateDate}"></td> -->
+<!-- 	<td><a th:href="/@{'/edit/' + ${clinicMember.clinicId}}">編輯</a> -->
+<!-- 		&nbsp;&nbsp;&nbsp; <a -->
+<!-- 		th:href="/@{'/delete/' + ${clinicMember.clinicId}}">刪除</a></td> -->
+<!-- </tr> -->

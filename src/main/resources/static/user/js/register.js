@@ -55,12 +55,9 @@
                         input.disabled = true;
                     }
                     btn.disabled = true;
-                    msg.className = 'info';
                     msg.textContent = '註冊成功';
                 } else {
-                    msg.className = 'error';
                     msg.textContent = '註冊失敗，' + message;
-
                 }
             });
     });

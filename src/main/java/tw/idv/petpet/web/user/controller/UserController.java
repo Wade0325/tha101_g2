@@ -21,7 +21,7 @@ public class UserController {
 	UserService userService;
 
 	@PostMapping("/register")
-	public User register(@RequestBody User user, HttpSession session) {
+	public User register(@RequestBody User user) {
 		System.out.println("Controller 開始執行 register 方法");
 		userService.register(user);
 		System.out.println("Controller 執行 register 方法成功");
@@ -32,6 +32,7 @@ public class UserController {
 	public User getUser(User user, HttpSession session) {
 		System.out.println("Controller 開始執行 getUser 方法");
 		User userSession = (User) session.getAttribute("userAccount");
+		
 		if (userSession.isLogin()) {
 			System.out.println("Controller 執行 getUser 方法成功");
 			return userService.getUser(userSession);
@@ -59,11 +60,37 @@ public class UserController {
 			System.out.println("Controller 開始執行 update 方法");
 			userService.update(user);
 			System.out.println("Controller 執行 update 方法成功");
-			return userSession;
+			return user;
 		} else {
-			user.setLogin(false);
+			userSession.setLogin(false);
 			return userSession;
 		}
+	}
+
+	@PutMapping("/updatePwd")
+	public User updatePwd(@RequestBody User user, HttpSession session) {
+		User userSession = (User) session.getAttribute("userAccount");
+		if (userSession.isLogin()) {
+			System.out.println("Controller 開始執行 updatePwd 方法");
+			userService.updatePwd(user,userSession);
+			System.out.println("Controller 執行 updatePwd 方法成功");
+			return user;
+		} else {
+			user.setLogin(false);
+			return user;
+		}
+	}
+	
+	@PostMapping("/newLogin")
+	public User newLogin(@RequestBody User user, HttpSession session) {
+		System.out.println("Controller 開始執行 newLogin 方法");
+		User userSession = userService.login(user);
+		if (userSession.isSuccessful()) {
+			session.setAttribute("userAccount", userSession);
+		}
+		System.out.println("Controller 執行 newLogin 方法成功");
+		System.out.println(userSession.isSuccessful());
+		return userSession;
 	}
 }
 
