@@ -377,14 +377,24 @@ cardDiv.style.width = '100%';
 
 const productNameLink = document.createElement('a');
 productNameLink.className = 'pro_name';
-productNameLink.href = '詳細商品頁面.html';
+productNameLink.href = 'productDetail.html';
 productNameLink.textContent = product.pro_name;
 productNameLink.setAttribute('data-proid',product.pro_id);
 
 const productPriceDiv = document.createElement('div');
-productPriceDiv.className = 'pro_price';
-productPriceDiv.style.textAlign = 'center';
-productPriceDiv.textContent = `價格: ${product.pro_price}`;
+      productPriceDiv.className = 'pro_price';
+      productPriceDiv.style.textAlign = 'center';
+
+      const priceLabel = document.createElement('span');
+      priceLabel.className = 'price-label';
+      priceLabel.textContent = '價格: ';
+
+      const priceValue = document.createElement('span');
+      priceValue.className = 'price-value';
+      priceValue.textContent = product.pro_price;
+
+      productPriceDiv.appendChild(priceLabel);
+      productPriceDiv.appendChild(priceValue);
 
 const quantityContainerDiv = document.createElement('div');
 quantityContainerDiv.className = 'quantity-container';
@@ -524,5 +534,54 @@ sessionStorage.setItem('selectedProductId', productId);
 
 
 </script>
+
+<script>
+  // 將加入購物車商品寫進料庫
+  // 假設資料庫寫入的 API 端點為 '/api/add-to-cart'
+  document.addEventListener('click', function(event) {
+    if (event.target.classList.contains('add-to-cart')) {
+      const addToCartButton = event.target;
+      const productElement = addToCartButton.closest('.test'); // 修改為動態生成元素的父級元素的類別
+      const productName = productElement.querySelector('.pro_name').textContent;
+      const productId = productElement.querySelector('.pro_name').getAttribute('data-proid');
+      const quantity = productElement.querySelector('.q-input').value;
+      const priceValue = productElement.querySelector('.price-value').textContent;
+      const pic = productElement.style.backgroundImage;
+      
+      
+      const price = parseInt(priceValue, 10);
+  
+  
+      // 發送商品資訊到伺服器以寫入資料庫
+      fetch('http://localhost:8080/petpet/cartproinsert', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          "pro_name": productName,
+          "pro_id": productId,
+          "pro_amount": quantity,
+          "pro_price":price,
+          "cart_id":1,
+          "pro_pic1":pic
+        })
+      })
+      .then(response => {
+        if (response.ok) {
+          // 資料庫寫入成功
+          console.log('商品已成功加入購物車');
+        } else {
+          // 資料庫寫入失敗
+          console.error('商品加入購物車失敗');
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+    }
+  });
+  
+  </script>
 </body>
 </html>

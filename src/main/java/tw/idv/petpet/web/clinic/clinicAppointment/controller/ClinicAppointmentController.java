@@ -32,9 +32,8 @@ public class ClinicAppointmentController {
 	}
 
 	@DeleteMapping("/clinicAppointment/{reservationNumber}")
-	public String deleteById(@PathVariable Integer reservationNumber) {
+	public void deleteById(@PathVariable Integer reservationNumber) {
 		service.deleteById(reservationNumber);
-		return "執行delete操作";
 	}
 
 	@PostMapping("/clinicAppointment/findByReservationNumber/{reservationNumber}")

@@ -2,7 +2,7 @@
 <html lang="zh-Hant">
 
 <head>
-    <title>貓貓討論區</title>
+    <title>貓貓討論區文章</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -24,7 +24,10 @@
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/style.css">
 
-    <link rel="stylesheet" href="css\css\cat.css">
+
+    <link rel="stylesheet" href="css/forum.css">
+    <link rel="stylesheet" href="css/css/article_cat.css">
+
 </head>
 
 <body>
@@ -43,7 +46,7 @@
                         <li class="nav-item"><a href="vet.html" class="nav-link" style="color: black">寵物診所</a></li>
                         <li class="nav-item"><a href="gallery.html" class="nav-link" style="color: black">寵物商城</a></li>
                         <li class="nav-item"><a href="blog.html" class="nav-link" style="color: black">寵物領養</a></li>
-                        <li class="nav-item"><a href="contact.html" class="nav-link" style="color: black">寵物討論區</a></li>
+                        <li class="nav-item"><a href="forum.html" class="nav-link" style="color: black">寵物討論區</a></li>
                         <li class="nav-item active"><a href="services_login.html" class="nav-link"
                                 style="color: black">登入/註冊</a></li>
                     </ul>
@@ -52,35 +55,44 @@
         </nav>
         <!-- END nav -->
 
-        <main>
+        <!-- 程式放裡面 -->
+        <main style="background-color: white;">
             <nav>
                 <ul>
                     <li><a href="index.html">首頁</a></li>|
-                    <li><a href="forum.html">寵物討論區</a></li>|
-                    <li><a href="cat_chat.html">貓貓討論區</a></li>
+                    <li><a href="cat_chat.html">貓貓討論區</a></li>|
+                    <li><a href="dog_chat.html">狗狗討論區</a></li>
                 </ul>
             </nav>
-            <div style="background-color: white;">
-                <div class="cat-discussion">
-                    <h5>
-                        <span class="">【貓貓討論區】</span>
-                        <!-- <span class="">【閒聊】</span> -->
-                        <span><a href="">分享領養心得</a></span>
-                    </h5>
+            <div class="article-container">
+                <h2 class="article-title">大家好這是我剛領養的貓貓</h2>
+                <div class="article-info">
+                    <span class="article-author" id="userId">作者：胖子翁</span> |
+                    <span class="article-time">發表時間：2023-05-29</span>
                 </div>
-                <div class="cat-discussion">
-                    <h5>
-                        <span class="">【貓貓討論區】</span>
-                        <!-- <span class="">【閒聊】</span> -->
-                        <span><a href="article_cat.html">大家好這是我剛領養的貓貓</a></span>
-                    </h5>
+                <div class="article-content">
+                    大家好這是我家的小貓咪。
+                </div>
+                <div class="article-reaction">
+                    <!-- <button class="reaction-btn" id="like-btn" onclick='likeArticle()'>讚</button>
+                    <button class="reaction-btn" id="dislike-btn" onclick="">踩</button>
+                    <span id="like-count">0</span> 人讚 |
+                    <span id="dislike-count">0</span> 人踩
+                    <button class="reaction-btn" id="bookmark-btn" onclick="">收藏</button> -->
+                    <button class="reaction-btn" id="report-btn" onclick="">檢舉</button>
                 </div>
             </div>
+
+            <div id="reply-section">
+                <!-- 回覆內容將動態插入這裡 -->
+            </div>
         </main>
-        
+
         <!-- 程式放裡面 -->
-        
-        <!-- 程式放裡面 -->
+
+
+
+
 
 
         <footer class="footer">
@@ -154,11 +166,12 @@
         <script src="js/jquery.magnific-popup.min.js"></script>
         <script src="js/scrollax.min.js"></script>
         <script
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+            src="https://maps.googleapis#00bd56.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
         <script src="js/google-map.js"></script>
         <script src="js/main.js"></script>
 
-
+        <script src="js\article_cat.js"></script>
+        <script src="js/article_like.js"></script>
 </body>
 
 </html>
