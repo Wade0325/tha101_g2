@@ -4,11 +4,12 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.ui.Model;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -46,7 +47,6 @@ public class ForumController {
 		forumService.createForum(forum);
 		System.out.println("我在createdForum下面");
 
-
 		// 其他处理逻辑...
 		return "執行了create操作";
 	}
@@ -56,11 +56,21 @@ public class ForumController {
 		System.out.println("文章列表查詢成功");
 		return forumService.findAll();
 	}
-	
-	@GetMapping("/forum/{articleId}")
-	public Forum findByArticleId(@PathVariable("articleId") int articleId) {
-		System.out.println("controller層：findByArticleId有被呼叫到");
-		return forumService.findByArticleId(articleId);
+
+//	@GetMapping("/article_cat/{articleId}")
+//	public Forum findByArticleId(@PathVariable("articleId") int articleId, @RequestBody Forum forum) {
+//		System.out.println("controller層：findByArticleId有被呼叫到");
+//		return forumService.findByArticleId(articleId);
+//	}
+
+	@GetMapping("/article_cat/{articleId}")
+	public ResponseEntity<Forum> getArticleById(@PathVariable("articleId") int articleId) {
+		Forum forum = forumService.findByArticleId(articleId);
+		if (forum != null) {
+			return ResponseEntity.ok(forum);
+		} else {
+			return ResponseEntity.notFound().build();
+		}
 	}
 
 //	// 獲取所有文章的方法
