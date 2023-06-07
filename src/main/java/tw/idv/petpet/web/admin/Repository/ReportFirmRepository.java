@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.web.entity.ReportFirmEntity;
+import tw.idv.petpet.web.admin.Entity.ReportFirmEntity;
 
 @Repository
 public interface ReportFirmRepository extends JpaRepository<ReportFirmEntity, Integer> {

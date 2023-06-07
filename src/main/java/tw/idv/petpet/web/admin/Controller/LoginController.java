@@ -1,9 +1,5 @@
 package com.web.controller;
 
-import java.net.http.HttpRequest;
-import java.util.List;
-import java.util.Optional;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -12,12 +8,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.base.BaseResponse;
-import com.core.ReturnCodeEnum;
-import com.web.entity.AdminEntity;
-import com.web.repository.AdminRepository;
-
-import dto.AdminLoginVO;
+import tw.idv.petpet.web.admin.BaseResponse;
+import tw.idv.petpet.web.admin.ReturnCodeEnum;
+import tw.idv.petpet.web.admin.Entity.AdminEntity;
+import tw.idv.petpet.web.admin.Repository.AdminRepository;
+import tw.idv.petpet.web.admin.dto.AdminLoginVO;
 
 @RestController
 public class LoginController {

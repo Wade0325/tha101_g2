@@ -7,10 +7,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.web.entity.ReportFirmEntity;
-import com.web.repository.ReportFirmRepository;
-
-import dto.ReportFirmCodeVO;
+import tw.idv.petpet.web.admin.Entity.ReportFirmEntity;
+import tw.idv.petpet.web.admin.Repository.ReportFirmRepository;
+import tw.idv.petpet.web.admin.dto.ReportFirmCodeVO;
 
 @RestController
 public class SearchByCodeReportFirm {

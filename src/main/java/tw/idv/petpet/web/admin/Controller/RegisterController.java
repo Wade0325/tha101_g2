@@ -1,19 +1,13 @@
 package com.web.controller;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.web.entity.AdminEntity;
-import com.web.repository.AdminRepository;
-
-import dto.AdminRegisterVO;
+import tw.idv.petpet.web.admin.Entity.AdminEntity;
+import tw.idv.petpet.web.admin.Repository.AdminRepository;
+import tw.idv.petpet.web.admin.dto.AdminRegisterVO;
 
 @RestController
 public class RegisterController {

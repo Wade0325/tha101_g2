@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.web.repository.ReportFirmRepository;
+import tw.idv.petpet.web.admin.Repository.ReportFirmRepository;
 
 @RestController
 public class ReportFirmDelete {

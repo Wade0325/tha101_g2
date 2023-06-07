@@ -5,18 +5,16 @@ import java.util.Random;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.web.entity.AdminEntity;
-import com.web.repository.AdminRepository;
 import com.web.service.MailService;
 import com.web.service.MailService2;
 
-import dto.EmailVO;
+import tw.idv.petpet.web.admin.Entity.AdminEntity;
+import tw.idv.petpet.web.admin.Repository.AdminRepository;
+import tw.idv.petpet.web.admin.dto.EmailVO;
 
 @RestController
 public class EmailController {
