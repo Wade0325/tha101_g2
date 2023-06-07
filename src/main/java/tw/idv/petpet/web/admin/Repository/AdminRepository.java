@@ -5,11 +5,6 @@ import org.springframework.stereotype.Repository;
 
 import tw.idv.petpet.web.admin.Entity.AdminEntity;
 
-<<<<<<< HEAD
-=======
-
-
->>>>>>> jerry
 @Repository
 public interface AdminRepository extends JpaRepository<AdminEntity, Integer> {
 
