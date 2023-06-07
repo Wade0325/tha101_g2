@@ -1,11 +1,8 @@
-//有報錯但可正常執行
-
-
 const tbody = document.querySelector('#tbody');
 
 // Fetch ClinicMember Data
 const fetchClinicMemberData =
-	fetch('../../../../../clinicMember/manage', {
+	fetch('../../../../clinicMember/manage', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json'
@@ -16,7 +13,7 @@ const fetchClinicMemberData =
 
 // Fetch BusinessData
 const fetchBusinessData =
-	fetch('../../../../../business/all', {
+	fetch('../../../../business/all', {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json'

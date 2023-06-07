@@ -21,7 +21,7 @@ document.querySelector('#submitbtn').addEventListener('click', (event) => {
   const fr = new FileReader();
   fr.addEventListener('load', (e) => {
     const base64Img = e.target.result.split(',')[1]; // 获取 base64 字符串部分
-    fetch('../PriceList', {
+    fetch('../../PriceList', {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'

@@ -50,7 +50,7 @@
 		if (confirm('確認預約嗎?')) {
 
 			msg.textContent = '';
-			fetch('../../../../../clinicAppointmentInsert', {
+			fetch('../../../../clinicAppointmentInsert', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
@@ -80,7 +80,7 @@
 						btn.disabled = true;
 						msg.className = 'info';
 						msg.textContent = '預約成功';
-						window.location.reload(); // 重新整理頁面
+//						window.location.reload(); // 重新整理頁面
 					} else {
 						msg.className = 'error';
 						msg.textContent = '預約失敗，' + message;

@@ -65,6 +65,22 @@
                 </ul>
             </nav>
             <div class="article-container">
+                <div id="articleContainer">
+                <!-- 動態頁面，從資料庫抓id -->
+                </div>
+                <!-- <h2 class="article-title" id="articleTitle"></h2>
+                <div class="article-info">
+                    <span class="article-author" id="userId"></span> |
+                    <span class="article-time" id="articleCreateTime"></span>
+                </div>
+                <div class="article-content" id="articleContent"></div> -->
+
+
+
+
+
+
+
                 <!-- <h2 class="article-title">大家好這是我剛領養的貓貓</h2>
                 <div class="article-info">
                     <span class="article-author">作者：胖子翁</span> |
@@ -83,9 +99,7 @@
                 </div>
             </div>
 
-            <div id="articleContainer">
-                <!-- 動態頁面，從資料庫抓id -->
-            </div>
+
 
             <div id="reply-section">
                 <!-- 回覆內容將動態插入這裡 -->
@@ -184,46 +198,151 @@
         <script src="js/article_list_for_chat.js"></script>
 
         <script type="text/javascript">
-            const articleContainer = document.querySelector('#articleContainer');
+            // const articleContainer = document.querySelector('#articleContainer');
+            // const articleId = 35;
 
-            fetch('/forum/article_cat/' + articleId)
-                .then(resp => resp.json())
-                .then(articleData => {
-                    const articleDiv = document.createElement('div');
-                    articleDiv.classList.add('article-container');
+            // fetch('article_cat', {
+            //     method: 'POST',
+            //     headers: {
+            //         'Content-Type': 'application/json',
+            //     },
+            //     body: JSON.stringify({
+            //         articleId: articleId,
+            //         userId: 0,
+            //         articleGroupId: 1,
+            //         articleTitle: 測試,
+            //         articleContent: 測試發表文章內建的js是否有用,
+            //         articleImage: Y2F0MS5qcGc,
+            //         articleCreateTime: 2023 - 06 - 05,
+            //         // modifierTime: null,
+            //         articleStatus: null
+            //     }),
 
-                    const articleTitle = document.createElement('h2');
-                    articleTitle.classList.add('article-title');
-                    articleTitle.textContent = articleData.article_title;
-                    articleDiv.appendChild(articleTitle);
+            // })
+            //     .then(resp => resp.json())
+            //     .then(articleData => {
+            //         articleContainer.innerHTML = `
+            //          <h2 class="article-title">${articleData.articleTitle}</h2>
+            //          <div class="article-info">
+            //             <span class="article-author">作者:${articleData.userId}</span> |
+            //              <span class="article-time">發表時間：${articleData.articleCreateTime}</span>
+            //          </div>
+            //          <div class="article-content">
+            //              ${articleData.articleContent}
+            //          </div>
+            //          `
+            //     });
+            //     .catch(error => {
+            //         console.error('获取文章数据出错：', error);
+            //         // 处理错误情况
+            //     });
 
-                    const articleInfo = document.createElement('div');
-                    articleInfo.classList.add('article-info');
+            // $.ajax({
+            //     url: `/forum/article_cat.html/${articleId}`,
+            //     type: 'GET',
+            //     dataType: 'json',
+            //     success: function (articleData) {
+            //         // 使用返回的文章数据进行页面渲染
+            //         // ...
 
-                    const articleAuthor = document.createElement('span');
-                    articleAuthor.classList.add('article-author');
-                    articleAuthor.textContent = '作者：' + articleData.user_id;
-                    articleInfo.appendChild(articleAuthor);
+            //         const articleTitle = document.createElement('h2');
+            //         articleTitle.classList.add('article-title');
+            //         articleTitle.textContent = articleData.articleTitle;
+            //         articleContainer.appendChild(articleTitle);
 
-                    const articleTime = document.createElement('span');
-                    articleTime.classList.add('article-time');
-                    articleTime.textContent = '發表時間：' + articleData.article_create_time;
-                    articleInfo.appendChild(articleTime);
+            //         const articleAuthor = document.createElement('span');
+            //         articleAuthor.classList.add('article-author');
+            //         articleAuthor.textContent = `作者：${articleData.userId}`;
+            //         articleContainer.appendChild(articleAuthor);
 
-                    articleDiv.appendChild(articleInfo);
+            //         const articleTime = document.createElement('span');
+            //         articleTime.classList.add('article-time');
+            //         articleTime.textContent = `發表時間：${articleData.articleCreateTime}`;
+            //         articleContainer.appendChild(articleTime);
 
-                    const articleContent = document.createElement('div');
-                    articleContent.classList.add('article-content');
-                    articleContent.textContent = articleData.article_content;
-                    articleDiv.appendChild(articleContent);
+            //         const articleContent = document.createElement('div');
+            //         articleContent.classList.add('article-content');
+            //         articleContent.textContent = articleData.articleContent;
+            //         articleContainer.appendChild(articleContent);
+            //     },
+            //     error: function (xhr, textStatus, error) {
+            //         console.error('获取文章数据出错：', error);
+            //         // 处理错误情况
+            //     }
+            // fetch('/forum/findArticleById/${articleId}')
+            //     .then(resp => {
+            //         return resp.json();
+            //     })
+            //     .then(articleData => {
+            //         // 使用返回的文章数据进行页面渲染
+            //         // ...
+            //         articleContainer.innerHTML = `
+            //         <h2 class="article-title">${articleData.articleTitle}</h2>
+            //         <div class="article-info">
+            //             <span class="article-author">作者:${articleData.userId}</span> |
+            //             <span class="article-time">發表時間：${articleData.articleCreateTime}</span>
+            //         </div>
+            //         <div class="article-content">
+            //             ${articleData.articleContent}
+            //         </div>
+            //         `
+            //     })
+            //     .catch(error => {
+            //         console.error('获取文章数据出错：', error);
+            //         // 处理错误情况
+            //     });
 
-                    articleContainer.appendChild(articleDiv);
-                })
-                .catch(error => {
-                    console.error('获取文章数据出错：', error);
-                    // 处理错误情况
-                });
+
+            // fetch('/forum/article_cat/${articleId}')
+            //     .then(resp => resp.json())
+            //     .then(articleData => {
+
+            //         articleContainer.innerHTML = `
+            //         <h2 class="article-title">${articleData.articleTitle}</h2>
+            //         <div class="article-info">
+            //             <span class="article-author">作者:${articleData.userId}</span> |
+            //             <span class="article-time">發表時間：${articleData.articleCreateTime}</span>
+            //         </div>
+            //         <div class="article-content">
+            //             ${articleData.articleContent}
+            //         </div>
+            //         `
+            //     })
+            //     .catch(error => {
+            //         console.error('获取文章数据出错：', error);
+            //         // 处理错误情况
+            //     });
         </script>
 </body>
 
 </html>
+
+<!-- const articleDiv = document.createElement('div');
+articleDiv.classList.add('article-container');
+
+const articleTitle = document.createElement('h2');
+articleTitle.classList.add('article-title');
+articleTitle.textContent = articleData.article_title;
+articleDiv.appendChild(articleTitle);
+
+const articleInfo = document.createElement('div');
+articleInfo.classList.add('article-info');
+
+const articleAuthor = document.createElement('span');
+articleAuthor.classList.add('article-author');
+articleAuthor.textContent = '作者：' + articleData.user_id;
+articleInfo.appendChild(articleAuthor);
+
+const articleTime = document.createElement('span');
+articleTime.classList.add('article-time');
+articleTime.textContent = '發表時間：' + articleData.article_create_time;
+articleInfo.appendChild(articleTime);
+
+articleDiv.appendChild(articleInfo);
+
+const articleContent = document.createElement('div');
+articleContent.classList.add('article-content');
+articleContent.textContent = articleData.article_content;
+articleDiv.appendChild(articleContent);
+
+articleContainer.appendChild(articleDiv); -->
