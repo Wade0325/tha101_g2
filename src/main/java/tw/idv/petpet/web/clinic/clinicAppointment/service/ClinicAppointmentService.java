@@ -33,8 +33,10 @@ public class ClinicAppointmentService {
 				if (morningAppointMax > 0) {
 
 					clinicAppointmentRepository.save(clinicAppointment); // 進行預約操作
-
+					System.out.println("早上時段預約成功");
 					businessDate.setMorningAppointMax(morningAppointMax - 1); // 更新可預約人數
+
+					System.out.println("早上時段預約人數更新成功");
 					businessDateRepository.save(businessDate);
 				} else {
 					System.out.println("預約失敗，人數已滿");
@@ -52,8 +54,10 @@ public class ClinicAppointmentService {
 				if (afternoonAppointMax > 0) {
 
 					clinicAppointmentRepository.save(clinicAppointment); // 進行預約操作
+					System.out.println("下午時段預約成功");
 
 					businessDate.setAfternoonAppointMax(afternoonAppointMax - 1); // 更新可預約人數
+					System.out.println("下午時段預約人數更新成功");
 					businessDateRepository.save(businessDate);
 				} else {
 					System.out.println("預約失敗，人數已滿");
@@ -71,8 +75,10 @@ public class ClinicAppointmentService {
 				if (nightAppointMax > 0) {
 
 					clinicAppointmentRepository.save(clinicAppointment); // 進行預約操作
+					System.out.println("晚上時段預約成功");
 
 					businessDate.setNightAppointMax(nightAppointMax - 1); // 更新可預約人數
+					System.out.println("晚上時段預約人數更新成功");
 					businessDateRepository.save(businessDate);
 				} else {
 					System.out.println("預約失敗，人數已滿");
