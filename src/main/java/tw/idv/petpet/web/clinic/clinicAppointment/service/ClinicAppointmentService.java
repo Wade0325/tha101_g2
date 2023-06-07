@@ -58,9 +58,12 @@ public class ClinicAppointmentService {
 
 					businessDate.setMorningAppointMax(morningAppointMax - 1); // 更新可預約人數
 					businessDateRepository.save(businessDate);
-					System.out.println(clinicAppointment.getClinicName() + "診所上午時段預約人數更新成功");
+					
+					clinicAppointment.setMessage("預約成功");
+					clinicAppointment.setSuccessful(true);
+					System.out.println(clinicAppointment.getClinicName() + "診所上午時段可預約人數更新成功");
 				} else {
-					System.out.println(clinicAppointment.getClinicName() + "診所上午時段預約人數已滿預約失敗");
+					System.out.println(clinicAppointment.getClinicName() + "診所上午時段預約人數已滿預約失敗或未營業");
 				}
 			} else if (appointTime.equals("下午")) {
 				int afternoonAppointMax = businessDate.getAfternoonAppointMax(); // 抓取下午預約人數
@@ -70,9 +73,12 @@ public class ClinicAppointmentService {
 
 					businessDate.setAfternoonAppointMax(afternoonAppointMax - 1); // 更新可預約人數
 					businessDateRepository.save(businessDate);
-					System.out.println(clinicAppointment.getClinicName() + "診所下午時段預約人數更新成功");
+					
+					clinicAppointment.setMessage("預約成功");
+					clinicAppointment.setSuccessful(true);
+					System.out.println(clinicAppointment.getClinicName() + "診所下午時段可預約人數更新成功");
 				} else {
-					System.out.println(clinicAppointment.getClinicName() + "診所下午時段預約人數已滿預約失敗");
+					System.out.println(clinicAppointment.getClinicName() + "診所下午時段預約人數已滿預約失敗或未營業");
 				}
 			} else if (appointTime.equals("晚上")) {
 				int nightAppointMax = businessDate.getNightAppointMax(); // 抓取晚上預約人數
@@ -82,9 +88,12 @@ public class ClinicAppointmentService {
 
 					businessDate.setNightAppointMax(nightAppointMax - 1);// 更新可預約人數
 					businessDateRepository.save(businessDate);
-					System.out.println(clinicAppointment.getClinicName() + "診所晚上時段預約人數更新成功");
+					
+					clinicAppointment.setMessage("預約成功");
+					clinicAppointment.setSuccessful(true);
+					System.out.println(clinicAppointment.getClinicName() + "診所晚上時段可預約人數更新成功");
 				} else {
-					System.out.println(clinicAppointment.getClinicName() + "診所晚上時段預約人數已滿預約失敗");
+					System.out.println(clinicAppointment.getClinicName() + "診所晚上時段預約人數已滿預約失敗或未營業");
 				}
 			}
 		} else {
@@ -127,57 +136,41 @@ public class ClinicAppointmentService {
 
 			if (businessDate != null && clinicAppointment1.getClinicName().equals(businessDate.getClinicName())) {
 				if (appointTime.equals("上午")) {
-					int morningAppointMax = businessDate.getMorningAppointMax(); // 抓取早上预约人数
-					businessDate.setMorningAppointMax(morningAppointMax + 1); // 将预约人数加回来
-					businessDateRepository.save(businessDate); // 更新可预约人数
+					int morningAppointMax = businessDate.getMorningAppointMax(); // 抓取早上預約人数
 
-					clinicAppointmentRepository.deleteById(reservationNumber); // 删除预约记录
-					System.out.println("删除成功，预约号：" + reservationNumber);
+					clinicAppointmentRepository.deleteById(reservationNumber); // 刪除早上預約紀錄
+					System.out.println(clinicAppointment1.getOwnerName() + "在" + clinicName + "早上預約取消");
+
+					businessDate.setMorningAppointMax(morningAppointMax + 1); // 將可預約人數加回
+					businessDateRepository.save(businessDate); // 更新可預約人數
+					System.out.println(businessDate.getClinicName() + "診所早上可預約人數更新成功");
+
 				} else if (appointTime.equals("下午")) {
-					int afternoonAppointMax = businessDate.getAfternoonAppointMax(); // 抓取下午预约人数
-					businessDate.setAfternoonAppointMax(afternoonAppointMax + 1); // 将预约人数加回来
-					businessDateRepository.save(businessDate); // 更新可预约人数
+					int afternoonAppointMax = businessDate.getAfternoonAppointMax(); // 抓取下午預約人数
 
-					clinicAppointmentRepository.deleteById(reservationNumber); // 删除预约记录
-					System.out.println("删除成功，预约号：" + reservationNumber);
+					clinicAppointmentRepository.deleteById(reservationNumber); // 刪除下午預約紀錄
+					System.out.println(clinicAppointment1.getOwnerName() + "在" + clinicName + "下午預約取消");
+
+					businessDate.setAfternoonAppointMax(afternoonAppointMax + 1); // 將可預約人數加回
+					businessDateRepository.save(businessDate); // 更新可預約人數
+					System.out.println(businessDate.getClinicName() + "診所下午可預約人數更新成功");
+
 				} else if (appointTime.equals("晚上")) {
-					int nightAppointMax = businessDate.getNightAppointMax(); // 抓取晚上预约人数
-					businessDate.setNightAppointMax(nightAppointMax + 1); // 将预约人数加回来
-					businessDateRepository.save(businessDate); // 更新可预约人数
+					int nightAppointMax = businessDate.getNightAppointMax(); // 抓取晚上預約人数
 
-					clinicAppointmentRepository.deleteById(reservationNumber); // 删除预约记录
-					System.out.println("删除成功，预约号：" + reservationNumber);
+					clinicAppointmentRepository.deleteById(reservationNumber); // 刪除晚上預約紀錄
+					System.out.println(clinicAppointment1.getOwnerName() + "在" + clinicName + "晚上預約取消");
+
+					businessDate.setNightAppointMax(nightAppointMax + 1); // 將可預約人數加回
+					businessDateRepository.save(businessDate); // 更新可預約人數
+					System.out.println(businessDate.getClinicName() + "診所晚上可預約人數更新成功");
 				}
 			} else {
-				System.out.println("预约失败，当日未营业或诊所名称错误");
+				clinicAppointmentRepository.deleteById(reservationNumber);
+				System.out.println("預約錯誤直接刪除");
 			}
 		}
 	}
-	
-//	Optional<ClinicAppointment> clinicAppointment = clinicAppointmentRepository.findById(reservationNumber);
-//
-//	if (clinicAppointment.isPresent()) {
-//		ClinicAppointment clinicAppointment1 = clinicAppointment.get();
-//		LocalDate appointDate = clinicAppointment1.getAppointDate();
-//		String clinicName = clinicAppointment1.getClinicName();
-//		String appointTime = clinicAppointment1.getAppointTime();
-//		BusinessDate businessDate = businessDateRepository.findByWeekDateAndClinicName(appointDate, clinicName);
-//		System.out.println("1");
-//		if (businessDate != null) {
-//			System.out.println("2");
-//			if (businessDate.getMorningBusiness().equals(appointTime)) {
-//				int morningAppointMax = businessDate.getMorningAppointMax();
-//				System.out.println("3");
-//				businessDate.setMorningAppointMax(morningAppointMax + 1);
-//				System.out.println("4");
-//				businessDateRepository.save(businessDate);
-//				System.out.println("5");
-//				clinicAppointmentRepository.deleteById(reservationNumber);
-//				System.out.println("6");
-//			}
-//		}
-//	}
-
 
 	public List<ClinicAppointment> listAll() {
 		return clinicAppointmentRepository.findAll();
