@@ -18,7 +18,7 @@ import tw.idv.petpet.web.admin.service.MailService2;
 
 
 @RestController
-public class EmailController {
+public class AdminEmailController {
 
 	@Autowired
 	private AdminRepository adminRepository;
