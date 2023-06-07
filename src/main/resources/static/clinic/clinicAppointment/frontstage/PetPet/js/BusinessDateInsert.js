@@ -61,7 +61,7 @@
 		if (confirm('確認營業時間?')) {
 
 			msg.textContent = '';
-			fetch('../../../../../business', {
+			fetch('../../../../business', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',

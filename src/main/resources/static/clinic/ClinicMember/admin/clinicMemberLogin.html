@@ -82,6 +82,22 @@
           <img src="images/petpet.png" style="width: 120px" />
         </div>
         
+        <div class="u-form-group">
+          <input type="text" placeholder="診所名稱" name="clinicName" id="clinicName"/>
+        </div>
+        
+         <div class="u-form-group">
+          <input type="email" placeholder="診所帳號name@example.com" name="clinicEmail" id="clinicEmail"/>
+        </div>
+
+        <div class="u-form-group">
+          <input type="password" placeholder="密碼" name="clinicPassword" id="clinicPassword"/>
+        </div>
+        
+        <div class="u-form-group">
+          <input type="password" placeholder="確認密碼" name="checkPassword" id="checkPassword"/>
+        </div>
+        
         <div id="errorMsg"></div>
         <div class="u-form-group">
           <button type="submit" id="btn">Sign Up</button>
@@ -118,5 +134,6 @@
         $("#signup-box-link").removeClass("active");
       });
     </script>
+    <script src="js/clinicMemberLogin.js"></script>
   </body>
 </html>
