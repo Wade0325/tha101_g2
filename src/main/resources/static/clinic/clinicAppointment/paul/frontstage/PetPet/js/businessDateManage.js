@@ -9,6 +9,7 @@ function deleteClick(businessSn) {
 }
 
 function saveClick(businessSn) {
+	const clinicName = document.querySelector(`#clinicName${businessSn}`).textContent;
 	const vetSn = document.querySelector(`#vetSn${businessSn}`).textContent;
 	const weekDate = document.querySelector(`#weekDate${businessSn}`).textContent;
 	const morningBusiness = document.querySelector(`#morningBusiness${businessSn}`).textContent;
@@ -22,6 +23,7 @@ function saveClick(businessSn) {
 		method: 'PUT',
 		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify({
+			clinicName,
 			vetSn,
 			weekDate,
 			morningBusiness,
