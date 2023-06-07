@@ -1,6 +1,7 @@
 const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get('applyid');
 const animalid = urlParams.get('animalid');
+const subbtn = document.querySelector('#delaybtn');
 
 //window.location.href = `applycheck.html?animalid=${animalid}&applyid=${applyid}`;
 const animalType = document.querySelector('#animalType');
@@ -35,9 +36,14 @@ fetch(`animalfindbyid/${animalid}`, {
 })
 	.then(resp => resp.json())
 	.then(ShelterAnimal => {
+		
 		console.log(ShelterAnimal)
 		const animal = ShelterAnimal;
-
+		
+		if (animal.ifAdopted === 1){
+			subbtn.setAttribute('disabled', 'true');
+		}
+	
 		animalType.textContent = animal.animalType;
 		animalName.textContent = animal.animalName;
 		animalP1.src = animalP1.src + animal.animalPhoto1;
@@ -73,3 +79,41 @@ fetch(`animalfindbyid/${animalid}`, {
         date.textContent = adopt.adopterApplyDate        
 
 	})
+	
+
+subbtn.addEventListener('click', function() {
+  if (!confirm('確定將此userxxx設為animal領養人?')) {
+    return;
+  } else {
+    var shelteranimal = {  
+      "ifAdopted": "1",
+      "userId": "1"
+    };
+  
+    fetch(`ifadopted/${animalid}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(shelteranimal),
+    })
+      .then((resp) => resp.json())
+      .then((body) => {
+        // 確認領養成功後進行頁面跳轉
+        if (body.successful) {
+          window.location.href = 'manageanimal.html';
+        } else {
+			window.location.href = 'animalmanage.html';
+          // 可以根據需要顯示相應的失敗訊息
+          // msg.className = 'error';
+          // msg.textContent = '送出失敗';
+        }
+      })
+      .catch((error) => {
+		  window.location.href = 'manageanimal.html';
+        // 處理錯誤並顯示相應的訊息
+        // msg.className = 'error';
+        // console.log(error.message);
+      });
+  }
+});
