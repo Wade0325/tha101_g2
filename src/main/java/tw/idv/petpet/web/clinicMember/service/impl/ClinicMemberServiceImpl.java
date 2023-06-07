@@ -116,7 +116,7 @@ public class ClinicMemberServiceImpl implements ClinicMemberService {
 
 	@Override
 	public ClinicMember login(ClinicMember clinicMember) {
-		ClinicMember clinicMemberLogin = clinicMemberRepository.findByAccountAndPassword(clinicMember.getClinicEmail(),
+		ClinicMember clinicMemberLogin = clinicMemberRepository.findByEmailAndPassword(clinicMember.getClinicEmail(),
 				clinicMember.getClinicPassword());
 		if (clinicMemberLogin != null) {
 			clinicMemberLogin.setSuccessful(true);
