@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var table = $("#vet").DataTable({
 		
       ajax: function (d, cb) {
-        fetch("../../../../vet/init")
+        fetch("../../../vet/init")
           .then((response) => response.json())
           .then((data) => {
             console.log(data);
@@ -43,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
           
             if (confirm('確定要刪除嗎？')) {
         // 發送刪除請求到後端 API
-        fetch('../../../../vet/delete/' + vetSn, {
+        fetch('../../../vet/delete/' + vetSn, {
           method: 'DELETE'
         })
         .then(function(response) {
@@ -119,7 +119,7 @@ document.addEventListener("DOMContentLoaded", function () {
   console.log("資料"+data);
   // 发送Ajax请求
   $.ajax({
-    url: "../../../../vet/update/" + vetSn, // 替换为实际的后端接口URL
+    url: "../../../vet/update/" + vetSn, // 替换为实际的后端接口URL
     type: "PUT",
     contentType: "application/json",
     data: JSON.stringify(data),
