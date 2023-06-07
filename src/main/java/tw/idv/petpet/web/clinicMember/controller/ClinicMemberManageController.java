@@ -2,10 +2,10 @@ package tw.idv.petpet.web.clinicMember.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.http.MediaType;
-import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,13 +25,6 @@ public class ClinicMemberManageController {
 
 	@Autowired
 	private ClinicMemberService service;
-
-//	@GetMapping
-//	public String manage(Model model) {
-//		List<ClinicMember> clinicMemberList = service.findAll();
-//		model.addAttribute("clinicMemberList", clinicMemberList);
-//		return "../WEB-INF/clinicMember/manage.jsp";
-//	}
 
 	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
@@ -55,9 +48,10 @@ public class ClinicMemberManageController {
 
 	@PutMapping
 	@ResponseBody
-	public Core save(@RequestBody ClinicMember clinicMember) {
+	public Core save(@RequestBody ClinicMember clinicMember, HttpSession session) {
 		final Core core = new Core();
-		if (clinicMember == null) {
+		ClinicMember clinicMemberSession = (ClinicMember) session.getAttribute("clinicEmail");
+		if (clinicMemberSession == null) {
 			core.setMessage("無此會員");
 			core.setSuccessful(false);
 		} else {
