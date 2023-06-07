@@ -32,7 +32,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.0/fullcalendar.min.js"></script>
 
     <!-- 換成中文 -->
-    <script src="/js/locales-all.global.js"></script>
+<!--     <script src="/js/locales-all.global.js"></script> -->
     
     <style>
     th {
@@ -281,9 +281,9 @@
                          <div class="row">
                           <div class="col-md-3">
                             <div class="form-group">
-                              <label class="label" for="morningBusiness">中午營業</label> <select
-                                class="form-control search-clinic" id="morningBusiness"
-                                name="morningBusiness">
+                              <label class="label" for="afternoonBusiness">中午營業</label> <select
+                                class="form-control search-clinic" id="afternoonBusiness"
+                                name="afternoonBusiness">
                                 <option value="是">是</option>
                                 <option value="否">否</option>
                               </select>
@@ -291,9 +291,9 @@
                           </div>
                           <div class="col-md-3">
                             <div class="form-group">
-                              <label class="label" for="morningAppointMax">中午最大預約人數</label>
+                              <label class="label" for="afternoonAppointMax">中午最大預約人數</label>
                               <select class="form-control search-clinic"
-                                id="morningAppointMax" name="morningAppointMax">
+                                id="afternoonAppointMax" name="afternoonAppointMax">
                                 <option value="0">0</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -313,9 +313,9 @@
                          <div class="row">
                           <div class="col-md-3">
                             <div class="form-group">
-                              <label class="label" for="morningBusiness">晚上營業</label> <select
-                                class="form-control search-clinic" id="morningBusiness"
-                                name="morningBusiness">
+                              <label class="label" for="nightBusiness">晚上營業</label> <select
+                                class="form-control search-clinic" id="nightBusiness"
+                                name="nightBusiness">
                                 <option value="是">是</option>
                                 <option value="否">否</option>
                               </select>
@@ -323,9 +323,9 @@
                           </div>
                           <div class="col-md-3">
                             <div class="form-group">
-                              <label class="label" for="morningAppointMax">晚上最大預約人數</label>
+                              <label class="label" for="nightAppointMax">晚上最大預約人數</label>
                               <select class="form-control search-clinic"
-                                id="morningAppointMax" name="morningAppointMax">
+                                id="nightAppointMax" name="nightAppointMax">
                                 <option value="0">0</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -343,7 +343,7 @@
      
                                 <div class="col-md-3">
                                   <br>
-                                  <button id="btn2" type="button" class="btn btn-primary">送出
+                                  <button id="submitbtn2" type="button" class="btn btn-primary">送出
                                   </button>
                                   <div id="msg" class="error"></div>
                                 </div>      
@@ -420,8 +420,8 @@
       src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
       crossorigin="anonymous"
     ></script>
-    <script src="assets/demo/chart-area-demo.js"></script>
-    <script src="assets/demo/chart-bar-demo.js"></script>
+<!--     <script src="assets/demo/chart-area-demo.js"></script> -->
+<!--     <script src="assets/demo/chart-bar-demo.js"></script> -->
     <script
       src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
       crossorigin="anonymous"
@@ -449,7 +449,7 @@
 
 						tbody.innerHTML += `
 				<tr>
-					<td contenteditable="true" id="clinicName${businessDate.businessSn}">${businessDate.clinicName}</td>
+					<td id="clinicName${businessDate.businessSn}">${businessDate.clinicName}</td>
 					<td contenteditable="true" id="vetSn${businessDate.businessSn}">${businessDate.vetSn}</td>
 					<td contenteditable="true" id="weekDate${businessDate.businessSn}">${businessDate.weekDate}</td>
 					<td contenteditable="true" id="morningBusiness${businessDate.businessSn}">${businessDate.morningBusiness}</td>

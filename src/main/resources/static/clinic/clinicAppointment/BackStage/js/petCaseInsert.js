@@ -27,7 +27,7 @@
       result: result.value,
     };
 
-    fetch('http://localhost:8080/petpet/petcases', {
+    fetch('../../../petcases', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
