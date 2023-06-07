@@ -36,11 +36,9 @@
         })
             .then(resp => resp.json())
             .then(body => {
-
                 const { successful } = body;
                 console.log(successful)
-                if (true) {
-                    console.log(successful)
+                if (successful) {
                     window.alert("登入成功")
                     window.location.href = "/petpet/user/member_center.html"
                 } else {
