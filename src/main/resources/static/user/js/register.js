@@ -58,7 +58,6 @@
                     msg.textContent = '註冊成功';
                 } else {
                     msg.textContent = '註冊失敗，' + message;
-
                 }
             });
     });

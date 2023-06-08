@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import tw.idv.petpet.web.admin.Entity.ReportFirmEntity;
@@ -14,6 +15,7 @@ import tw.idv.petpet.web.admin.dto.ReportFirmEditVO;
 import tw.idv.petpet.web.admin.dto.ReportFirmSearchVO;
 
 @RestController
+//@RequestMapping("/admin")
 public class ReportFirmController {
 	@Autowired
 	private ReportFirmRepository reportFirmRepository;

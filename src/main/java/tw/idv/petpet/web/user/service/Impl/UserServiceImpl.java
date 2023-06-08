@@ -18,12 +18,12 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User register(User user) {
 		System.out.println("Service 開始執行 register 方法");
-		User userRegister = userRepository.findByAccount(user.getUserAccount());
-		if (userRegister != null) {
-			userRegister.setSuccessful(false);
-			userRegister.setMessage("帳號已存在");
+		if (userRepository.findByAccount(user.getUserAccount()) != null) {
+			user.setSuccessful(false);
+			user.setMessage("帳號已存在");
 		} else {
-			return userRepository.save(userRegister);
+			user.setSuccessful(true);
+			return userRepository.save(user);
 		}
 		System.out.println("Service 執行 findByAccount 方法成功");
 		return null;
@@ -32,6 +32,11 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public User getUser(User userSession) {
 		return userRepository.findByAccount(userSession.getUserAccount());
+	}
+
+	@Override
+	public User getUser(String userAccount) {
+		return userRepository.findByAccount(userAccount);
 	}
 
 	@Override
@@ -46,7 +51,7 @@ public class UserServiceImpl implements UserService {
 			user.setSuccessful(false);
 			user.setMessage("帳號密碼錯誤");
 			System.out.println("登入失敗");
-			return user;
+			return userLogin;
 		}
 	}
 
@@ -86,4 +91,11 @@ public class UserServiceImpl implements UserService {
 			return user;
 		}
 	}
+
+	@Override
+	public User update(String userAccount, String randonNewPassword) {
+		userRepository.updateUserPwd(randonNewPassword, userAccount);
+		return null;
+	}
+
 }
