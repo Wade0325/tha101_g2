@@ -74,7 +74,7 @@ nav ul li {
     cursor: pointer;
 }
 
-#reply-form button {
+#reply-button {
     padding: 10px 20px;
     background-color: gray;
     border: none;
