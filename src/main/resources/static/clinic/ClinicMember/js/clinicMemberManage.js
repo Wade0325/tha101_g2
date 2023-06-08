@@ -23,7 +23,7 @@ function saveClick(clinicId) {
 	// const clinicEmail = sessionStorage.getItem('clinicemail');
 	const clinicEmail = document.querySelector(`#clinicemail${clinicId}`).textContent;
 	console.log(clinicEmail)
-	fetch('manage', {
+	fetch('../../clinicMember/manage', {
 		method: 'PUT',
 		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify({
