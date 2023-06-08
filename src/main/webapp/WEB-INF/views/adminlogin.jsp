@@ -219,13 +219,12 @@
 				success : function(response) {
 					// 处理成功响应
 					console.log("response" , response);
-					if(response.code===0000){
+					if(response.code == 0000){
 						alert(response.msg);
+						window.location.href = "index";
 					}else{
 						alert(response.msg);
 					}
-					
-					window.location.href = "index";
 				},
 				error : function(error) {			
 					console.log("error" , error);
@@ -234,6 +233,6 @@
 		});
 	</script>
 	<!--     登入結束 -->
-	<script src="../static/js/authcode.js"></script>
+<!-- 	<script src="../static/js/authcode.js"></script> -->
 </body>
 </html>

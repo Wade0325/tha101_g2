@@ -67,11 +67,6 @@
 								<i class="fas fa-tachometer-alt"></i>
 							</div> 檢舉表單
 						</a>
-						<a class="nav-link" href="#">
-							<div class="sb-nav-link-icon">
-								<i class="fas fa-tachometer-alt"></i>
-							</div> 訂單管理
-						</a> 
 						<!-- 會員管理 -->
 						<div class="sb-sidenav-menu-heading">會員管理</div>
 						<a class="nav-link" href="reportuser">
@@ -79,7 +74,7 @@
 								<i class="fas fa-tachometer-alt"></i>
 							</div> 檢舉清單
 						</a> 
-						<a class="nav-link" href="reportuserform">
+						<a class="nav-link" href="../reportuserform">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-tachometer-alt"></i>
 							</div> 檢舉表單
