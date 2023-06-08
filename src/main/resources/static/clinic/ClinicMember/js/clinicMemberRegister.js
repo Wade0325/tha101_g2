@@ -76,7 +76,7 @@
 		const fileReader = new FileReader();
 		fileReader.addEventListener('load', e => {
 			const clinicPhotoBase64 = btoa(e.target.result);
-			fetch('register', {
+			fetch('../../clinicMember/register', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',

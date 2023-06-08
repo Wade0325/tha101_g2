@@ -179,4 +179,8 @@ public class ClinicAppointmentService {
 	public List<ClinicAppointment> findByClinicName(String clinicName) {
 		return clinicAppointmentRepository.findByClinicName(clinicName);
 	}
+	
+	public List<ClinicAppointment> findByOwnerName(String ownerName) {
+		return clinicAppointmentRepository.findByOwnerName(ownerName);
+	}
 }
