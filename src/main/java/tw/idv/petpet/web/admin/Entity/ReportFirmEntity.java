@@ -2,6 +2,7 @@ package tw.idv.petpet.web.admin.Entity;
 
 import java.sql.Timestamp;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,6 +20,8 @@ public class ReportFirmEntity {
 	private String userId;
 	private String companyId;
 	private String firmContent;
+	@Column(insertable = false)
 	private Timestamp firmDate;
+	@Column(insertable = false)
 	private String confirmCode;
 }

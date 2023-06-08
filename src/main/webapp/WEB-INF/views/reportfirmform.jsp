@@ -13,10 +13,10 @@
             />
           </style>
           <!-- css -->
-          <link href="../../static/css/product.css" rel="stylesheet" type="text/css" />
+          <link href="../static/css/product.css" rel="stylesheet" type="text/css" />
         
           <!-- boostarpstyle -->
-          <link href="../../static/css/styles.css" rel="stylesheet" />
+          <link href="../static/css/styles.css" rel="stylesheet" />
         
           <script
             src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
@@ -31,14 +31,14 @@
             href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@500&display=swap"
             rel="stylesheet"
           />
-          <script src="../../static/js/jquery-3.4.1.min.js"></script>
+          <script src="../static/js/jquery-3.4.1.min.js"></script>
           </head>
           <body>
             <!-- start Header -->
             <nav class="sb-topnav navbar navbar-expand navbar-dark color">
               <!-- Navbar Brand-->
-              <img src="../../static/images/petpet.png" width="70px" height="70px" />
-              <img src="../../static/images/Petword.png" width="40px" height="40px" />
+              <img src="../static/images/petpet.png" width="70px" height="70px" />
+              <img src="../static/images/Petword.png" width="40px" height="40px" />
               <a class="navbar-brand ps-3" href="index">首頁</a>
               <!-- Navbar Search-->
               <form
@@ -101,35 +101,50 @@
             <footer class="footer">            
                 <p>&copy; 2023 Your Company. All rights reserved.</p>
             </footer>
+<!--             取的當前使用者資訊         -->
             <script>
-            var currentContent = $('#currentContent');
-            var currentTime = new Date();
-            currentContent.append(currentTime.getFullYear()+ " 年 " + (currentTime.getMonth()+ 1) + " 月 " + currentTime.getDate() + " 日");
+//             	var userId = $('#userId')val();
+//             	console.log(userId);
+//             	$.ajax({
+//     				url : '/getUser',
+//     				type : 'Get',
+//     				contentType : "application/json",
+//     				success: function(data){
+//     					userId.text(data.)
+//     					alert("取得當前使用者資訊!!");
+//     					console.log(data);
+//      					window.location.href = "/reportfirm/form"
+//     				},
+//     			});
             </script>
             <script>
-	        var btn = $('#btn');
-            btn.on('click', function(e){
-	            var companyId = $('#companyId').val();
-	            var userId = $('#userId').val();
-	            var firmContent = $('#firmContent').val();
-	            var reportFirmData = {
-	            		companyId : companyId,
-	            		userId : userId,
-	            		firmContent : firmContent
-	            };
-            	console.log(companyId, userId, companyContent);
-            	$.ajax({
-    				url : 'reportfirm/form',
-    				type : 'POST',
-    				contentType : "application/json",
-    				data : JSON.stringify(reportFirmData),
-    				success: function(data){
-    					alert("你的檢舉單已經送出，感謝你寶貴的意見!!");
-    					console.log(data);
-//     					window.location.href = "/reportfirm/form"
-    				},
-    			});
-            });
+	            var currentContent = $('#currentContent');
+	            var currentTime = new Date();
+	            currentContent.append(currentTime.getFullYear()+ " 年 " + (currentTime.getMonth()+ 1) + " 月 " + currentTime.getDate() + " 日");
+            </script>
+            <script>
+		        var btn = $('#btn');
+	            btn.on('click', function(e){
+		            var companyId = $('#companyId').val();
+		            var userId = $('#userId').val();
+		            var firmContent = $('#firmContent').val();
+		            var reportFirmData = {
+		            		companyId : companyId,
+		            		userId : userId,
+		            		firmContent : firmContent
+		            };
+	            	$.ajax({
+	    				url : '../reportfirm/form',
+	    				type : 'POST',
+	    				contentType : "application/json",
+	    				data : JSON.stringify(reportFirmData),
+	    				success: function(data){
+	    					alert("你的檢舉單已經送出，感謝你寶貴的意見!!");
+	    					console.log(data);
+	    					window.location.href = "reportfirmform"
+	    				},
+	    			});
+	            });
             </script>
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
           </body>

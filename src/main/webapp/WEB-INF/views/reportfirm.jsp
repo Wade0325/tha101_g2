@@ -150,7 +150,7 @@ $('#btnFirmsn').on('click',function(e){
 	var reportfirmsn = document.getElementById('reportfirmsn');
 	if(reportfirmsn.value.length === 0) {
 		$.ajax({
-			url:"../reportfirm/all",
+			url:"reportfirm/all",
 			dataType:"JSON",
 			type:"GET",
 			data:"",
@@ -188,7 +188,7 @@ $('#btnFirmsn').on('click',function(e){
 		alert("檢舉單號為: " + reportfirmsn);
 		console.log(reportFirmData);
 		$.ajax({
-			url :"/reportfirm/getone",
+			url :"reportfirm/getone",
 			contentType :"application/json",
 			type :"post",
 			data :JSON.stringify(reportFirmData),
@@ -259,7 +259,7 @@ $('#btnFirmsn').on('click',function(e){
 		};
 		console.log(dateData);
 		$.ajax({
-			url : "/getreportfirmbydate",
+			url : "getreportfirmbydate",
 			type : "post",
 			contentType : "application/json",
 			data : JSON.stringify(dateData),
@@ -349,7 +349,7 @@ $(document).ready(function() {
 	      confirmCode: $('#inptSelect').val()
 	    };
 	    $.ajax({
-	      url: '/reportfirm/edit',
+	      url: 'edit',
 	      type: 'POST',
 	      contentType: 'application/json',
 	      data: JSON.stringify(formData),
@@ -386,7 +386,7 @@ btnFirmCode.on('click', function(){
 			confirmCode : reportConfirmCode
 	}
 	$.ajax({
-		url : "/getreportfirmbycode",
+		url : "getreportfirmbycode",
 		contentType : "application/json",
 		type : "POST",
 		data : JSON.stringify(codeData),
