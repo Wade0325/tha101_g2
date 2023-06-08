@@ -11,6 +11,8 @@ public interface EmailService {
 	String sendMailWithAttachment(EmailDetails details);
 	
 	String sendForgotMail(EmailDetails details);
+
+	String checkVerifyText(String verifyText, String userAccount);
 }
 
 
