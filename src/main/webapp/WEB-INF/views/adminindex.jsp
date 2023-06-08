@@ -62,7 +62,7 @@
 								<i class="fas fa-tachometer-alt"></i>
 							</div> 檢舉清單
 						</a> 
-						<a class="nav-link" href="../reportfirmform">
+						<a class="nav-link" href="reportfirmform">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-tachometer-alt"></i>
 							</div> 檢舉表單
@@ -74,7 +74,7 @@
 								<i class="fas fa-tachometer-alt"></i>
 							</div> 檢舉清單
 						</a> 
-						<a class="nav-link" href="../reportuserform">
+						<a class="nav-link" href="reportuserform">
 							<div class="sb-nav-link-icon">
 								<i class="fas fa-tachometer-alt"></i>
 							</div> 檢舉表單

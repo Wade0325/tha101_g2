@@ -49,13 +49,13 @@ public class AdminView {
 	}
 	
 //	商家檢舉表單
-	@RequestMapping("/reportfirmform")
+	@RequestMapping("/admin/reportfirmform")
 	public String reportfirmform() {
 		return "reportfirmform";
 	}
 	
 //	會員檢舉表單
-	@RequestMapping("/reportuserform")
+	@RequestMapping("/admin/reportuserform")
 	public String reportuserform() {
 		return "reportuserform";
 	}
