@@ -1,8 +1,6 @@
 $(document).ready(function () {
     $('#example').DataTable({
 
-
-
         // 表格翻譯
         "language":
         {
@@ -247,3 +245,7 @@ $(document).ready(function () {
         },
     });
 });
+(() => {
+
+
+})
