@@ -9,7 +9,7 @@ public interface ForumService extends CoreService{
 
 	public Forum createForum(Forum forum);
 	
-	public Forum findByArticleId(Integer articleId);
+	public Forum findByArticleId(int articleId);
 	
 	void deleteArticle(Integer articleId);
 	
