@@ -21,6 +21,10 @@ document.addEventListener("DOMContentLoaded", function() {
       document.getElementById("morningBusiness").textContent = morningBusiness;
       document.getElementById("afternoonBusiness").textContent = afternoonBusiness;
       document.getElementById("nightBusiness").textContent = nightBusiness;
+      
+      
+      
+      
     })
 //    .catch((error) => {
 //      console.error("Error:", error);
