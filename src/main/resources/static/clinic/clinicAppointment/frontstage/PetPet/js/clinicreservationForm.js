@@ -15,38 +15,38 @@
 	const inputs = document.querySelectorAll('input');
 
 	btn.addEventListener('click', () => {
-		
+
 		const ownerNameLength = ownerName.value.length;
-		if (ownerNameLength === 0){
+		if (ownerNameLength === 0) {
 			msg.textContent = '請輸入飼主姓名';
 			return;
 		}
-	
+
 		const ownerMobileLength = ownerMobile.value.length;
-		if (ownerMobileLength === 0){
+		if (ownerMobileLength === 0) {
 			msg.textContent = '請輸入連絡電話';
 			return;
 		}
-	
+
 		const petNameLength = petName.value.length;
-		if (petNameLength === 0){
+		if (petNameLength === 0) {
 			msg.textContent = '請輸入寵物名稱';
 			return;
 		}
-		
+
 		const petTypeLength = petType.value.length;
-		if (petTypeLength === 0){
+		if (petTypeLength === 0) {
 			msg.textContent = '請輸入寵物類別';
 			return;
 		}
-		
+
 		const petSituationLength = petSituation.value.length;
-		if (petSituationLength === 0){
+		if (petSituationLength === 0) {
 			msg.textContent = '請簡述寵物概況';
 			return;
 		}
-		
-	
+
+
 		if (confirm('確認預約嗎?')) {
 
 			msg.textContent = '';
@@ -80,14 +80,15 @@
 						btn.disabled = true;
 						msg.className = 'info';
 						msg.textContent = '預約成功';
-//						window.location.reload(); // 重新整理頁面
 					} else {
 						msg.className = 'error';
-						msg.textContent = '預約失敗，' + message;
+						msg.textContent = '預約失敗，時段未營業或人數已滿';
+
 					}
 				});
 		}
 	});
+	//	window.location.reload(); // 重新整理頁面
 
 })();
 
