@@ -87,7 +87,7 @@
 			contentType: "application/json",
 			success:function(res){
 				console.log(res);
-				window.location.href = "login";
+				window.location.href = "/login";
 			}
 		});
 	});

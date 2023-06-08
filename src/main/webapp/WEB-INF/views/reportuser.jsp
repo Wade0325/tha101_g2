@@ -194,7 +194,7 @@
     
         $(document).ready(function() {
             $.ajax({
-                url: "/reportuser/all",
+                url: "reportuser/all",
                 success: function(data) {
                     $('#reportUserTable').DataTable({
                         data: data,
