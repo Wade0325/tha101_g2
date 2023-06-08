@@ -2,7 +2,7 @@ function deleteClick(businessSn) {
 	if (!confirm('是否刪除?')) {
 		return;
 	}
-	fetch(`../../../../../business/${businessSn}`, {
+	fetch(`../../../business/${businessSn}`, {
 		method: `DELETE`,
 	})
 	location.reload();
@@ -19,7 +19,7 @@ function saveClick(businessSn) {
 	const nightBusiness = document.querySelector(`#nightBusiness${businessSn}`).textContent;
 	const nightAppointMax = document.querySelector(`#nightAppointMax${businessSn}`).textContent;
 
-	fetch(`../../../../../business/${businessSn}`, {
+	fetch(`../../../business/${businessSn}`, {
 		method: 'PUT',
 		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify({
@@ -43,6 +43,7 @@ function saveClick(businessSn) {
 			}
 		})
 }
+
 
 
 

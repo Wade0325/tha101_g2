@@ -12,7 +12,7 @@
 			return;
 		}
 
-		fetch('../../../../../vet', {
+		fetch('../../../vet', {
 			method: "POST",
 			headers: {
 				'Content-Type': 'application/json'

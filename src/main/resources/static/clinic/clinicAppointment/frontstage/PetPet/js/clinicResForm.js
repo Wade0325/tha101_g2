@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
     window.location.href = "http://www.yahoo.com.tw";
   });
 
-  var businessSn = 12; // 替换为实际的businessSn值
+  var businessSn = 17; // 替换为实际的businessSn值
 
   fetch(`http://localhost:8080/petpet/business/${businessSn}`)
     .then((response) => response.json())
@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", function() {
       document.getElementById("afternoonBusiness").textContent = afternoonBusiness;
       document.getElementById("nightBusiness").textContent = nightBusiness;
     })
-    .catch((error) => {
-      console.error("Error:", error);
-    });
+//    .catch((error) => {
+//      console.error("Error:", error);
+//    });
 });

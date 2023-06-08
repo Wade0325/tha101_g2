@@ -41,8 +41,8 @@
                 <div class="dog-discussion" id="${article.articleId}">
                     <h5>
                         <span>${articleGroupIdText}</span>
-                        <span><a href="#" class="article-link" data-articleid="${articleId}">${article.articleTitle}</a></span>
-                        <span><a href="">${article.articleContent}</a></span>
+                        <span><a href="http://localhost:8080/petpet/forum/article_cat.html/${article.articleId}" class="article-link" data-articleid="${articleId}">${article.articleTitle}</a></span>
+                        <span><a href="http://localhost:8080/petpet/forum/article_cat.html/${article.articleId}" class="article-link" data-articleid="${articleId}">${article.articleContent}</a></span>
                     </h5>
                 </div>
             `;

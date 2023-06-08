@@ -1,12 +1,5 @@
 $(document).ready(function () {
     $('#example').DataTable({
-        columnDefs: [
-            {
-                target: 3,
-                visible: false,
-                searchable: false,
-            },
-        ],
 
 
 

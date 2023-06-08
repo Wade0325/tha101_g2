@@ -57,7 +57,7 @@
 
 
 	btn.addEventListener('click', () => {
-
+					console.log("有沒有按到");
 		if (confirm('確認營業時間?')) {
 
 
