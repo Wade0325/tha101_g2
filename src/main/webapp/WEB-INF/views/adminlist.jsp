@@ -66,6 +66,11 @@
 				  </div>
 				  檢舉表單
 				</a>
+				<a class="nav-link" href="#">
+				  <div class="sb-nav-link-icon">
+					<i class="fas fa-tachometer-alt"></i>
+				  </div> 訂單管理
+				</a> 
 				<!-- 會員管理 -->
 				<div class="sb-sidenav-menu-heading">會員管理</div>
 				<a class="nav-link" href="reportuser">
@@ -145,12 +150,13 @@ $('#btnFirmsn').on('click',function(e){
 	var reportfirmsn = document.getElementById('reportfirmsn');
 	if(reportfirmsn.value.length === 0) {
 		$.ajax({
-			url:"reportfirm/all",
+			url:"all",
 			dataType:"JSON",
 			type:"GET",
 			data:"",
 			success: function(list){
 				tbody.empty();
+				console.log(list);
 				for(var index = 0; index < list.length; index++){
 					const id = list[index].firmSn;
 					var select = '<select class="form-control" id="confirmCode" disabled>'
@@ -159,8 +165,8 @@ $('#btnFirmsn').on('click',function(e){
 // 									+'<option value="審核中">'+ list[index].confirmCode + '</option>'
 							    +'</select>';
 							    
-				    var button = '<button class="btn btn-primary" type="submit">修改</button>';
-// 				    var button2 = '<button>刪除</button>';
+				    var button = '<button type="submit">修改</button>';
+				    var button2 = '<button>刪除</button>';
 					tbody.append('<tr>'
 							+'<td data-id=' + list[index].firmSn + '>' + list[index].firmSn + '</td>'
 							+'<td>' + list[index].userId + '</td>'
@@ -169,7 +175,7 @@ $('#btnFirmsn').on('click',function(e){
 							+'<td>' + list[index].firmDate + '</td>'
 							+'<td>' + select + '</td>'
 							+'<td>' + button + '</td>'
-// 							+'<td>' + button2 + '</td>'
+							+'<td>' + button2 + '</td>'
 					+'</tr>');		
 				}
 			}
@@ -245,7 +251,7 @@ $('#btnFirmsn').on('click',function(e){
 	$('#btnFirmdate').on('click', function(){
 		var startDate = $('#startDate').val();
 		var endDate = $('#endDate').val();
-		var button = '<button class="btn btn-primary" type="submit">修改</button>';
+		var button = '<button type="submit">編輯</button>'
 		console.log("val" , startDate);
 		console.log("val" , endDate);
 		var dateData = {
@@ -263,9 +269,9 @@ $('#btnFirmsn').on('click',function(e){
 				tbody.empty();
 				for(var i = 0; i < res.length ; i++){
 				var select = '<select class="form-control" id="confirmCode" disabled>'
-								+'<option value="' + res[i].confirmCode + '">' + res[i].confirmCode + '</option>'
-// 								+'<option value="審核失敗">'+ res[i].confirmCode + '</option>'
-// 								+'<option value="審核中">'+ res[i].confirmCode + '</option>'
+								+'<option value="審核成功">' + res[i].confirmCode + '</option>'
+								+'<option value="審核失敗">'+ res[i].confirmCode + '</option>'
+								+'<option value="審核中" selected>'+ res[i].confirmCode + '</option>'
 	    					+'</select>';
 					tbody.append('<tr>'
 							+ '<td>' + res[i].firmSn + '</td>' 
@@ -343,9 +349,8 @@ $(document).ready(function() {
 	      firmDate: $('#inptFirmDate').val(),
 	      confirmCode: $('#inptSelect').val()
 	    };
-	    console.log(formData.confirmCode);
 	    $.ajax({
-	      url: 'reportfirm/edit',
+	      url: 'edit',
 	      type: 'POST',
 	      contentType: 'application/json',
 	      data: JSON.stringify(formData),
@@ -354,11 +359,11 @@ $(document).ready(function() {
 	    	$('#confirmCode').val("111");
 	    	tbody.empty();
 	        console.log("編輯成功");
-	       		$('#modal').modal('toggle');
-				window.location.href = 'reportfirm';
+
+//				window.location.href = '/admin/reportfirm';
 	      },
 	      error: function(error) {
-	        console.log("編輯失敗");
+	        console.log("編輯失败");
 	      }
 	    });
 	  });
@@ -369,7 +374,7 @@ $(document).ready(function() {
 var btnFirmCode = $('#btnFirmCode');
 var reportConfirmCode = $('#reportConfirmCode').val();
 var tbody = $('tbody');
-
+var button = '<button type="submit">編輯</button>'
 $(document).ready(function() {
 	  $('#reportConfirmCode').change(function() {
 	    var selectedValue = $(this).val();
@@ -391,11 +396,10 @@ btnFirmCode.on('click', function(){
 			console.log(res);
 			for(var i = 0; i < res.length ; i++){
 				var select = '<select class="form-control" id="confirmCode" disabled>'
-								+'<option value="' + res[i].confirmCode + '">' + res[i].confirmCode + '</option>'
-// 								+'<option value="審核失敗">'+ res[i].confirmCode + '</option>'
-// 								+'<option value="審核中">'+ res[i].confirmCode + '</option>'
+								+'<option value="審核成功">' + res[i].confirmCode + '</option>'
+								+'<option value="審核失敗">'+ res[i].confirmCode + '</option>'
+								+'<option value="審核中" selected>'+ res[i].confirmCode + '</option>'
 							+'</select>';
-				var button = '<button class="btn btn-primary" type="submit">修改</button>';
 				tbody.append(
 						'<tr>'
 							+ '<td>' + res[i].firmSn + '</td>'
