@@ -15,7 +15,7 @@ import tw.idv.petpet.web.admin.dto.ReportFirmEditVO;
 import tw.idv.petpet.web.admin.dto.ReportFirmSearchVO;
 
 @RestController
-//@RequestMapping("/admin")
+@RequestMapping("/admin")
 public class ReportFirmController {
 	@Autowired
 	private ReportFirmRepository reportFirmRepository;
