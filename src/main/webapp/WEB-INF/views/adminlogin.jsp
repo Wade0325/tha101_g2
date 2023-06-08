@@ -140,12 +140,10 @@
 			} else if (acclength < 6 || passlength < 6) {
 				errorMsg.classList.add("errortext");
 				errorMsg.innerText = "帳號密碼不能少於6位數";
+			}else{
+				$("#errorMsg").removeClass("errortext");
+				$('#adminRegisterForm').submit();
 			}
-			// 			$("#errorMsg").removeClass("errortext");
-			console.log(acclength + "\n" + passlength);
-			
-// 			alert();
-			$('#adminRegisterForm').submit();
 		});
 	</script>
 	<!--   註冊動作  -->
@@ -174,14 +172,16 @@
 				data : JSON.stringify(adminData),
 				success : function(response) {
 					// 处理成功响应
+					alert(response);
 					if(response == 1){
 						console.log("新增成功");
 						alert("新增成功")
 						window.location.href = "login";
-					}else
+					}else{
 						console.log("新增失败，請重新申辦帳號");
-						alert("新增失败，請重新申辦帳號")
-						window.location.href = "login";
+						alert("新增失败，請重新申辦帳號");
+						window.location.href = "register";
+					}
 				},
 				error : function(error) {
 					// 处理错误响应
@@ -224,6 +224,7 @@
 						window.location.href = "index";
 					}else{
 						alert(response.msg);
+						window.location.href = "login";
 					}
 				},
 				error : function(error) {			
