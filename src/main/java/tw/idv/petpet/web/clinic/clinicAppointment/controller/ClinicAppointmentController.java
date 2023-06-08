@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import tw.idv.petpet.web.clinic.clinicAppointment.entity.ClinicAppointment;
 import tw.idv.petpet.web.clinic.clinicAppointment.service.ClinicAppointmentService;
+import tw.idv.petpet.web.user.entity.User;
 
 @RestController
 public class ClinicAppointmentController {
@@ -61,7 +61,7 @@ public class ClinicAppointmentController {
 	@GetMapping("/clinicAppointment")
 	public List<ClinicAppointment> findByOwnerName(ClinicAppointment clinicAppointment, HttpSession session) {
 		User user = (User) session.getAttribute("userAccount");
-		clinicAppointment.setOwnerName(user.getUsername());
+		clinicAppointment.setOwnerName(user.getUserName());
 		List<ClinicAppointment> list = service.findByOwnerName(clinicAppointment.getOwnerName());
 		return list;
 	}
