@@ -101,35 +101,51 @@
             <footer class="footer">            
                 <p>&copy; 2023 Your Company. All rights reserved.</p>
             </footer>
+    <!--         取的當前使用者資訊         -->
             <script>
-            var currentContent = $('#currentContent');
-            var currentTime = new Date();
-            currentContent.append(currentTime.getFullYear()+ " 年 " + (currentTime.getMonth()+ 1) + " 月 " + currentTime.getDate() + " 日");
-            </script>
-            <script>
-	        var btn = $('#btn');
-            btn.on('click', function(e){
-	            var companyId = $('#companyId').val();
-	            var userId = $('#userId').val();
-	            var firmContent = $('#firmContent').val();
-	            var reportFirmData = {
-	            		companyId : companyId,
-	            		userId : userId,
-	            		firmContent : firmContent
-	            };
-            	console.log(companyId, userId, companyContent);
+            	var userId = $('#userId')val();
+            	console.log(userId);
             	$.ajax({
-    				url : 'reportfirm/form',
-    				type : 'POST',
+    				url : '/getUser',
+    				type : 'Get',
     				contentType : "application/json",
-    				data : JSON.stringify(reportFirmData),
     				success: function(data){
-    					alert("你的檢舉單已經送出，感謝你寶貴的意見!!");
+    					userId.text(data.user_id)
+    					alert("取得當前使用者資訊!!");
     					console.log(data);
 //     					window.location.href = "/reportfirm/form"
     				},
     			});
-            });
+            </script>
+            <script>
+	            var currentContent = $('#currentContent');
+	            var currentTime = new Date();
+	            currentContent.append(currentTime.getFullYear()+ " 年 " + (currentTime.getMonth()+ 1) + " 月 " + currentTime.getDate() + " 日");
+            </script>
+            <script>
+		        var btn = $('#btn');
+	            btn.on('click', function(e){
+		            var companyId = $('#companyId').val();
+		            var userId = $('#userId').val();
+		            var firmContent = $('#firmContent').val();
+		            var reportFirmData = {
+		            		companyId : companyId,
+		            		userId : userId,
+		            		firmContent : firmContent
+		            };
+	            	console.log(companyId, userId, companyContent);
+	            	$.ajax({
+	    				url : 'reportfirm/form',
+	    				type : 'POST',
+	    				contentType : "application/json",
+	    				data : JSON.stringify(reportFirmData),
+	    				success: function(data){
+	    					alert("你的檢舉單已經送出，感謝你寶貴的意見!!");
+	    					console.log(data);
+	//     					window.location.href = "/reportfirm/form"
+	    				},
+	    			});
+	            });
             </script>
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
           </body>
