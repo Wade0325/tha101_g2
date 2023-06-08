@@ -635,10 +635,17 @@ progress {
   --bs-gutter-x: 1.5rem;
   --bs-gutter-y: 0;
   width: 100%;
-  padding-right: calc(var(--bs-gutter-x) * 0.5);
+  /* padding-right: calc(var(--bs-gutter-x) * 0.5);
   padding-left: calc(var(--bs-gutter-x) * 0.5);
   margin-right: auto;
-  margin-left: auto;
+  margin-left: auto; */
+   /* Add custom CSS styles here */
+
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 @media (min-width: 576px) {
@@ -11248,4 +11255,56 @@ body {
 #e3d5ca
 .color2{
   background-color: #e9c46a !important;
+}
+/* Add custom CSS styles here */
+.container {
+  width: 350px;
+  margin-top: 50px;
+}
+
+.profile{
+  /* display:inline-flex; */
+  width: 700px;
+  margin-bottom: 1rem;
+  padding: 2rem;
+  border-bottom: 0;
+  padding: 1rem 2rem;
+  border: 0;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  margin:0 ,auto;
+  padding: 100px; 
+  margin-bottom:30px;
+  box-shadow: 0 0 15px rgba(81, 81, 81, 0.2);
+}
+.form-group {
+  margin-bottom: 20px;
+}
+
+.report-image {
+  max-width: 200px;
+  margin-bottom: 20px;
+}
+
+.footer {
+  position: sticky;
+  background-color: #f8f9fa;
+  text-align: center;
+  padding: 1px;
+}
+
+aside{
+  position:absolute;
+  padding: 10px;
+  margin: 10px;
+  left: 0;
+  right: 0;
+}
+ aside a{
+  top: 100px;
+}
+p {
+  font-family: "M PLUS Rounded 1c", "Heiti TC", sans-serif;
+  font-size: 30px;
+  text-align: center;
 }
