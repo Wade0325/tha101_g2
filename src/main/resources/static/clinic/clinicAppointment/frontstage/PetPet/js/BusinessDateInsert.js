@@ -62,7 +62,7 @@
 
 
 			msg.textContent = '';
-			fetch('../../../business', {
+			fetch('../../../../business', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
