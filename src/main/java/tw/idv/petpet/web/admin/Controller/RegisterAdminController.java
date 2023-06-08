@@ -21,28 +21,20 @@ public class RegisterAdminController {
 		System.out.println("test1: " + adminRegisterVO.getAdminAccount());
 		System.out.println("test1: " + adminRegisterVO.getAdminPassword());
 		if (adminCheckEntity == null) {
-			if(!(adminRegisterVO.getAdminAccount()==null) || !(adminRegisterVO.getAdminAccount().equals(""))) {
-				if(!(adminRegisterVO.getAdminPassword()==null) || !(adminRegisterVO.getAdminPassword().equals(""))) {
-					System.out.println("test2: " + adminEntity);
-					adminEntity.setAdminName(adminRegisterVO.getAdminName());
-					System.out.println("test2: " + adminEntity.getAdminName());
-					adminEntity.setAdminAccount(adminRegisterVO.getAdminAccount());
-					System.out.println("test2: " + adminEntity.getAdminAccount());
-					adminEntity.setAdminPassword(adminRegisterVO.getAdminPassword());
-					System.out.println("test2: " + adminEntity.getAdminPassword());
-					adminRepository.save(adminEntity);
-					System.out.println("新增會員成功");
-					return 1;
-				} else {
-					System.out.println("新增會員失敗");
-					return 0;
-				}
-			}
-			System.err.println("新增失敗");
-			return 0;
+				System.out.println("test2: " + adminEntity);
+				adminEntity.setAdminName(adminRegisterVO.getAdminName());
+				System.out.println("test2: " + adminEntity.getAdminName());
+				adminEntity.setAdminAccount(adminRegisterVO.getAdminAccount());
+				System.out.println("test2: " + adminEntity.getAdminAccount());
+				adminEntity.setAdminPassword(adminRegisterVO.getAdminPassword());
+				System.out.println("test2: " + adminEntity.getAdminPassword());
+				adminRepository.save(adminEntity);
+				System.out.println("新增會員成功");
+				return 1;
 		}else {
-			System.out.println("新增會員失敗");
-			return 0;
+				System.out.println("新增會員失敗");
+				return 0;
+			}
 		}
 	}
-}
+
