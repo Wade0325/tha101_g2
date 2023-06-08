@@ -32,13 +32,13 @@
 		<ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
 			<div class="navbar-brand ps-3" id="adminName">123</div>
 			<li class="nav-item dropdown"><a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
-				<ul class="dropdown-menu dropdown-menu-end"
-					aria-labelledby="navbarDropdown">
+				<ul class="dropdown-menu dropdown-menu-end"	aria-labelledby="navbarDropdown">
 					<li><a class="dropdown-item" href="login">註冊</a></li>
 					<li><a class="dropdown-item" href="login">登入</a></li>
 					<li><hr class="dropdown-divider" /></li>
 					<li><a class="dropdown-item" href="login">登出</a></li>
-				</ul></li>
+				</ul>
+			</li>
 		</ul>
 	</nav>
 	<!-- end NAVBAR -->
@@ -134,7 +134,7 @@
 			contentType : "applicaion/json",
 			data : "",
 			success : function(adminData) {
-				alert("執行成功");
+// 				alert("執行成功");
 				alert(adminData.adminName)
 				adminName.text("歡迎 " + adminData.adminName);
 				indexName.text(adminData.adminName);
@@ -145,9 +145,9 @@
 	<script	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 	<script src="../static/js/scripts.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-<!-- 	<script src="../static/assets/demo/chart-area-demo.js"></script> -->
-<!-- 	<script src="../static/assets/demo/chart-bar-demo.js"></script> -->
+<!--<script src="../static/assets/demo/chart-area-demo.js"></script> -->
+<!--<script src="../static/assets/demo/chart-bar-demo.js"></script> -->
 	<script	src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
-	<!--     <script src="js/datatables-simple-demo.js"></script> -->
+<!--<script src="js/datatables-simple-demo.js"></script> -->
 </body>
 </html>
