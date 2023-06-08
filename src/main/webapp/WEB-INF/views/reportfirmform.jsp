@@ -128,6 +128,9 @@
 		            var companyId = $('#companyId').val();
 		            var userId = $('#userId').val();
 		            var firmContent = $('#firmContent').val();
+		            var emailReporFirmtData ={
+    		            email: $('#userId').val()
+	            	};
 		            var reportFirmData = {
 		            		companyId : companyId,
 		            		userId : userId,
@@ -141,7 +144,16 @@
 	    				success: function(data){
 	    					alert("你的檢舉單已經送出，感謝你寶貴的意見!!");
 	    					console.log(data);
-	    					window.location.href = "reportfirmform"
+	    					$.ajax({
+	    	    				url : '/petpet/sendEmailReport',
+	    	    				type : 'POST',
+	    	    				contentType : "application/json",
+	    	    				data : JSON.stringify(emailReporFirmtData),
+	    	    				success: function(data){
+									alert("發送成功");
+			    					window.location.href = "reportfirmform"
+	    						},
+	    					});
 	    				},
 	    			});
 	            });
