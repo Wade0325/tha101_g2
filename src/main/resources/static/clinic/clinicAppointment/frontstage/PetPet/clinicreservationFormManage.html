@@ -31,7 +31,7 @@
 		</table>
 		<script>
 	const tbody = document.querySelector('#tbody');
-	fetch('../../../../../clinicAppointment/all', 
+	fetch('../../../../clinicAppointment/all', 
 			{
 		method: 'POST',
 		headers: {
@@ -61,7 +61,7 @@
 					<td id="petSituation${appointment.reservationNumber}">${appointment.petSituation}</td>
 					
 					<td>
-						<button type="button" class="btn-edit" onclick="saveClick(${appointment.reservationNumber})">儲存</button>
+<!--						<button type="button" class="btn-edit" onclick="saveClick(${appointment.reservationNumber})">儲存</button> -->
 						<button type="button" class="btn-delete" onclick="deleteClick(${appointment.reservationNumber})">刪除</button>
 					</td>
 				</tr>`

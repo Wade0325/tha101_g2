@@ -27,7 +27,15 @@ public class EmailController {
 	@PostMapping("/sendMailWithAttachment")
 	public String sendMailWithAttachment(@RequestBody EmailDetails details) {
 		String status = emailService.sendMailWithAttachment(details);
-
+		return status;
+	}
+	
+	@PostMapping("/user/forgotMail")
+	public String sendForgotMail(@RequestBody EmailDetails details) {
+		System.out.println("Controller 開始執行 sendForgotMail 方法");
+		String status = emailService.sendForgotMail(details);
+		System.out.println("Controller 執行 sendForgotMail 方法成功");
+		
 		return status;
 	}
 }

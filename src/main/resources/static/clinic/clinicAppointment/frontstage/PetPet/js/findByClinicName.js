@@ -5,7 +5,7 @@ function searchClinicAppointment() {
 	// 清空表格內容
 	tbody.innerHTML = '';
 
-	fetch('../../../../../clinicAppointment/' + clinicName,
+	fetch('../../../../clinicAppointment/' + clinicName,
 		{
 			method: 'POST',
 			headers: {

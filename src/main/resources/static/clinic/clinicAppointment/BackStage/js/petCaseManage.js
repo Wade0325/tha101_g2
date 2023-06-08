@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
           
             if (confirm('確定要刪除嗎？')) {
         // 發送刪除請求到後端 API
-        fetch('http://localhost:8080/petpet/petcases/delete/' + casesSn, {
+        fetch('../../../petcases/delete/' + casesSn, {
           method: 'DELETE'
         })
         .then(function(response) {
@@ -145,13 +145,14 @@ document.addEventListener("DOMContentLoaded", function () {
   console.log("資料"+data);
   // 发送Ajax请求
   $.ajax({
-    url: "http://localhost:8080/petpet/petcases/update/" + casesSn, // 替换为实际的后端接口URL
+    url: "../../../petcases/update/" + casesSn, // 替换为实际的后端接口URL
     type: "PUT",
     contentType: "application/json",
     data: JSON.stringify(data),
     success: function (response) {
       // 更新成功的处理逻辑
       console.log('更新成功');
+    
       table.ajax.reload()
     },
     error: function (xhr, status, error) {
