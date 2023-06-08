@@ -12,13 +12,13 @@ import tw.idv.petpet.web.clinicMember.entity.ClinicMember;
 import tw.idv.petpet.web.clinicMember.service.ClinicMemberService;
 
 @RestController
-@RequestMapping("clinicMember/register")
+@RequestMapping("clinicMember")
 public class ClinicMemberRegisterController {
 	
 	@Autowired
 	private ClinicMemberService service;
 	
-	@PostMapping
+	@PostMapping("/register")
 	public ClinicMember register(@RequestBody ClinicMember clinicMember, HttpSession session) {
 		if (clinicMember == null) {
 			clinicMember = new ClinicMember();

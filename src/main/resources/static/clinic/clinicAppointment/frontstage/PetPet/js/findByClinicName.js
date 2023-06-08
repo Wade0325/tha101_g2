@@ -22,13 +22,13 @@ function searchClinicAppointment() {
                     <tr>
                         <td>${appointment.clinicName}</td>
                         <td id="vetName${appointment.clinicName}">${appointment.vetName}</td>
-                        <td>${appointment.clinicName}</td>
+                        <td id="appointDate${appointment.clinicName}">${appointment.appointDate}</td>
                         <td id="appointTime${appointment.clinicName}">${appointment.appointTime}</td>
+                        <td id="ownerName${appointment.clinicName}">${appointment.ownerName}</td>
                         <td id="ownerMobile${appointment.clinicName}">${appointment.ownerMobile}</td>
                         <td id="petType${appointment.clinicName}">${appointment.petType}</td>
                         <td id="petName${appointment.clinicName}">${appointment.petName}</td>
                         <td id="serviceItem${appointment.clinicName}">${appointment.serviceItem}</td>
-                        <td id="ownerName${appointment.clinicName}">${appointment.ownerName}</td>
                         <td id="petSituation${appointment.clinicName}">${appointment.petSituation}</td>
                         
                         <td>
