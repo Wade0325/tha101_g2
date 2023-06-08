@@ -88,12 +88,12 @@ public class ClinicMemberServiceImpl implements ClinicMemberService {
 //
 //		return clinicMember;
 
-		ClinicMember clinicMemberRegister = clinicMemberRepository.findByClinicEmail(clinicMember.getClinicEmail());
-		if (clinicMemberRegister != null) {
-			clinicMemberRegister.setSuccessful(false);
-			clinicMemberRegister.setMessage("帳號已存在");
+		if (clinicMemberRepository.findByClinicEmail(clinicMember.getClinicEmail()) != null) {
+			clinicMember.setSuccessful(false);
+			clinicMember.setMessage("帳號已存在");
 		} else {
-			return clinicMemberRepository.save(clinicMemberRegister);
+			clinicMember.setSuccessful(true);
+			return clinicMemberRepository.save(clinicMember);
 		}
 		return clinicMember;
 	}
@@ -118,7 +118,6 @@ public class ClinicMemberServiceImpl implements ClinicMemberService {
 		}
 	}
 
-	
 	public void update(Integer clinicId, ClinicMember clinicMember) {
 		ClinicMember clinicMember1 = clinicMemberRepository.findById(clinicId).orElse(null);
 		if (clinicMember1 != null) {
@@ -137,16 +136,7 @@ public class ClinicMemberServiceImpl implements ClinicMemberService {
 			clinicMemberRepository.save(clinicMember1);
 		}
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	@Override
 	public List<ClinicMember> findAll() {
 		return clinicMemberDao.selectAll();
