@@ -43,8 +43,7 @@
                 userAccount: email.value,
                 userPassword: password.value,
                 userTel: phone.value,
-                userName: userName.value,
-                userAddr: address.value
+                userName: userName.value
             }),
         })
             .then(resp => resp.json())
@@ -56,12 +55,9 @@
                         input.disabled = true;
                     }
                     btn.disabled = true;
-                    msg.className = 'info';
                     msg.textContent = '註冊成功';
                 } else {
-                    msg.className = 'error';
                     msg.textContent = '註冊失敗，' + message;
-
                 }
             });
     });

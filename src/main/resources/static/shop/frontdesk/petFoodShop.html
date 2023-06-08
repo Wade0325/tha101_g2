@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+  <head>
+    <title>PetPet陪陪你(飼料)</title>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
+    <link rel="stylesheet" href="css/animate.css" />
+
+    <link rel="stylesheet" href="css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="css/owl.theme.default.min.css" />
+    <link rel="stylesheet" href="css/magnific-popup.css" />
+
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css" />
+    <link rel="stylesheet" href="css/jquery.timepicker.css" />
+
+    <link rel="stylesheet" href="css/flaticon.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+      #scroll-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      background-color: #8a8787;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s, visibility 0.3s;
+      z-index: 9999;
+      cursor: pointer;
+      /* font-size: 16px; */
+      font-family: Arial;
+      /* font-weight: bold; */
+    }
+    #scroll-to-top.show {
+      opacity: 1;
+      visibility: visible;
+    }
+    a.pro_name{
+      text-align: center;
+      color:black
+    }
+
+
+    </style>
+  </head>
+
+  <body>
+    <!-- 購物車圖示 -->
+    <div
+    class="cart-icon";
+        style="
+          /* border: 1px solid red; */
+          /* position: sticky; */
+          position: fixed;
+          /* float: right; */
+          top : 20px;
+          left: 1200px;
+          margin-right: 20px;
+          cursor: pointer;
+          z-index: 100;
+        "
+      >
+        <img src="foodimages/cart.jpg" style="width:50px ;height:50px;position: relative;" />
+        <div style="position: absolute; left:30px; bottom:40px;width:20px;height:20px;border: 1px solid red; background-color: red; border-radius: 10px;font-size: 1px;text-align: center; color: #f8f9fd;">
+          <span class="pro_amount">0</span>
+        </div>
+  
+  <div class="cart-dropdown">
+    <button class="in_cart">進入購物車</button>
+    <ul class="cart-items">
+
+    </ul>
+  </div>
+</div>
+  <!-- 購物車圖示 結束-->
+    <div class="wrap" style="z-index: 1;"></div>
+    <nav
+      class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
+      id="ftco-navbar"
+    >
+      </div>
+      <div class="container">
+        <a class="navbar-brand" href="index.html"
+          ><img src="images/1.jpg" width="80px" height="80px" />PetPet陪陪你</a
+        >
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#ftco-nav"
+          aria-controls="ftco-nav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="fa fa-bars"></span> MENU
+        </button>
+        <div class="collapse navbar-collapse" id="ftco-nav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a href="index.html" class="nav-link" style="color: black"
+                >首頁</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="vet.html" class="nav-link" style="color: black"
+                >寵物診所</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="gallery.html" class="nav-link" style="color: black"
+                >寵物商城</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="blog.html" class="nav-link" style="color: black"
+                >寵物領養</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="contact.html" class="nav-link" style="color: black"
+                >寵物討論區</a
+              >
+            </li>
+            <li class="nav-item active">
+              <a
+                href="services_login.html"
+                class="nav-link"
+                style="color: black"
+                >登入/註冊</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- END nav -->
+
+    <!-- 輸入搜尋框 -->
+
+    <div
+      style="
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 200px;
+        /* border: 1px solid green; */
+        background:#f8f9fd ;
+      "
+    >
+      <div style="position: relative">
+        <input
+          type="text"
+          style="width: 500px; height: 50px; font-size: 24px"
+          placeholder="輸入產品名稱"
+        />
+        <div style="position: absolute; left: 455px; bottom: 4px">
+          <img src="foodimages/dd.jpg" style="width: 40px" />
+        </div>
+      </div>
+    </div>
+    <!-- 商品區 開始 -->
+
+    <!-- 程式放裡面 -->
+    <div class="container-fluid" style="background:#f8f9fd ;">
+      <div class="row">
+        <div class="col-3 category-column" style="padding-left:0; height: 1500px;">
+          <div style="position: sticky; top:0;">
+          <h4>商品分類</h4>
+          <ul class="list-group" style="width: 70%;">
+            <li class="list-group-item">寵物食品</li>
+            <li class="list-group-item">寵物服飾</li>
+            <li class="list-group-item">外出用品</li>
+            <li class="list-group-item">寵物玩具</li>             
+          </ul>
+          </div>
+        </div>
+<!-- 第一排 -->
+<div class="col-9">
+  <div class="row" id="prorow">
+   
+             
+</div>
+
+<!-- </div> -->
+    
+  </div>
+</div>
+
+<!-- 程式放裡面 -->
+<div class="row mt-5">
+      <div class="col text-center" style="margin:0px">
+        <!-- 頁碼 -->
+        <div class="block-27">
+          <ul>
+            <li><a href="#">&lt;</a></li>
+            <li class="active"><span>1</span></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#">&gt;</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+<footer class="footer">
+<div class="container">
+<div class="row">
+  <div class="col-md-6 col-lg-4 mb-4 mb-md-0">
+    <h2 class="footer-heading">PetPet陪陪你</h2>
+    <p>一個能提供購物、醫療、送領養的平台</p>
+    <ul class="ftco-footer-social p-0">
+      <li class="ftco-animate">
+        <a
+          href="#"
+          data-toggle="tooltip"
+          data-placement="top"
+          title="Twitter"
+          ><span class="fa fa-twitter"></span
+        ></a>
+      </li>
+      <li class="ftco-animate">
+        <a
+          href="#"
+          data-toggle="tooltip"
+          data-placement="top"
+          title="Facebook"
+          ><span class="fa fa-facebook"></span
+        ></a>
+      </li>
+      <li class="ftco-animate">
+        <a
+          href="#"
+          data-toggle="tooltip"
+          data-placement="top"
+          title="Instagram"
+          ><span class="fa fa-instagram"></span
+        ></a>
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-6 col-lg-4 mb-4 mb-md-0">
+    <h2 class="footer-heading">寵物討論區</h2>
+    <div class="block-21 mb-4 d-flex">
+      <a
+        class="img mr-4 rounded"
+        style="background-image: url(images/image_1.jpg)"
+      ></a>
+      <div class="text">
+        <h3 class="heading"><a href="#">狗狗討論區</a></h3>
+      </div>
+    </div>
+    <div class="block-21 mb-4 d-flex">
+      <a
+        class="img mr-4 rounded"
+        style="background-image: url(images/image_2.jpg)"
+      ></a>
+      <div class="text">
+        <h3 class="heading"><a href="#">貓咪討論區</a></h3>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 col-lg-4 pl-lg-5 mb-4 mb-md-0">
+    <h2 class="footer-heading">快速連結</h2>
+    <ul class="list-unstyled">
+      <li><a href="#" class="py-2 d-block">首頁</a></li>
+      <li><a href="#" class="py-2 d-block">登入/註冊</a></li>
+      <li><a href="#" class="py-2 d-block">寵物診所</a></li>
+      <li><a href="#" class="py-2 d-block">寵物商城</a></li>
+      <li><a href="#" class="py-2 d-block">寵物領養</a></li>
+    </ul>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12 text-center">
+    <p class="copyright">
+      <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+      Copyright &copy;
+      <script>
+        document.write(new Date().getFullYear());
+      </script>
+      All rights reserved | This template is made with
+      <i class="fa fa-heart" aria-hidden="true"></i> by
+      <a href="https://colorlib.com" target="_blank">Colorlib.com</a>
+      <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+    </p>
+  </div>
+</div>
+</div>
+
+<!-- 置頂按鈕 -->
+<div id="scroll-to-top" class="show">
+<!-- <img src="path/to/scroll-to-top-icon.png" alt="Scroll To Top" /> -->
+<p >Top</p>
+</div>
+
+<!-- /置頂按鈕 -->
+</footer>
+
+<script src="js/jquery.min.js"></script>
+<script src="js/jquery-migrate-3.0.1.min.js"></script>
+<script src="js/popper.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/jquery.easing.1.3.js"></script>
+<script src="js/jquery.waypoints.min.js"></script>
+<script src="js/jquery.stellar.min.js"></script>
+<script src="js/jquery.animateNumber.min.js"></script>
+<script src="js/bootstrap-datepicker.js"></script>
+<script src="js/jquery.timepicker.min.js"></script>
+<script src="js/owl.carousel.min.js"></script>
+<script src="js/jquery.magnific-popup.min.js"></script>
+<script src="js/scrollax.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+<script src="js/google-map.js"></script>
+<script src="js/main.js"></script>
+<script>
+function redirectToPage() {
+window.location.href = "詳細商品頁面.html";
+}
+
+
+
+fetch('http://localhost:8080/petpet/shoptestall')
+.then(response => response.json())
+.then(data => {
+const container = document.getElementById("prorow");
+
+let count = 0;
+let procount = 0;
+data.forEach(product => {
+if(count < 12){
+const productDiv = document.createElement('div');
+productDiv.className = 'col-3 test';
+productDiv.style.backgroundImage = `url(data:image/jpeg;base64,${product.pro_pic1})`;
+productDiv.style.backgroundSize = 'cover';
+productDiv.style.backgroundPosition = 'center';
+productDiv.style.height = '200px';
+
+if (count <= 2) {
+productDiv.style.marginTop = '0';
+} else {
+// 設定第二排以後的商品與第一排保持距離
+productDiv.style.marginTop = '180px';
+}
+if (count % 3 !== 0) {
+  productDiv.style.marginLeft = '50px';
+}
+
+
+const cardDiv = document.createElement('div');
+cardDiv.className = 'card';
+cardDiv.style.position = 'absolute';
+cardDiv.style.top = '200px';
+cardDiv.style.right = '0.5px';
+cardDiv.style.width = '100%';
+
+const productNameLink = document.createElement('a');
+productNameLink.className = 'pro_name';
+productNameLink.href = 'productDetail.html';
+productNameLink.textContent = product.pro_name;
+productNameLink.setAttribute('data-proid',product.pro_id);
+
+const productPriceDiv = document.createElement('div');
+      productPriceDiv.className = 'pro_price';
+      productPriceDiv.style.textAlign = 'center';
+
+      const priceLabel = document.createElement('span');
+      priceLabel.className = 'price-label';
+      priceLabel.textContent = '價格: ';
+
+      const priceValue = document.createElement('span');
+      priceValue.className = 'price-value';
+      priceValue.textContent = product.pro_price;
+
+      productPriceDiv.appendChild(priceLabel);
+      productPriceDiv.appendChild(priceValue);
+
+const quantityContainerDiv = document.createElement('div');
+quantityContainerDiv.className = 'quantity-container';
+
+const decrementButton = document.createElement('button');
+decrementButton.className = 'decrement-button q-button';
+decrementButton.textContent = '-';
+
+const quantityInput = document.createElement('input');
+quantityInput.type = 'number';
+quantityInput.className = 'quantity-input q-input';
+quantityInput.id = 'quantity';
+quantityInput.name = 'quantity';
+quantityInput.value = '1';
+quantityInput.min = '1';
+
+const incrementButton = document.createElement('button');
+incrementButton.className = 'increment-button q-button';
+incrementButton.textContent = '+';
+
+const addToCartButton = document.createElement('button');
+addToCartButton.className = 'add-to-cart';
+addToCartButton.textContent = 'Add to Cart';
+
+
+
+quantityContainerDiv.appendChild(decrementButton);
+quantityContainerDiv.appendChild(quantityInput);
+quantityContainerDiv.appendChild(incrementButton);
+
+cardDiv.appendChild(productNameLink);
+cardDiv.appendChild(productPriceDiv);
+cardDiv.appendChild(quantityContainerDiv);
+cardDiv.appendChild(addToCartButton);
+
+productDiv.appendChild(cardDiv);
+container.appendChild(productDiv);
+count++;
+}
+if(procount >= 12) return;
+});
+})
+.catch(error => {
+console.error('Error:', error);
+});
+
+
+</script>
+
+
+
+<script>
+// 商品詳細頁
+$('.pro_name').on('click', function(event) {
+// event.stopPropagation(); // 防止事件冒泡到父元素
+});
+
+</script>
+
+
+<!-- 詳細商品頁 -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+// 獲取商品列表中的所有商品元素
+const productsname = document.getElementsByClassName("pro_name");
+
+// 為每個商品元素添加點擊事件監聽器
+for (let i = 0; i < productsname.length; i++) {
+const product = productsname[i];
+product.addEventListener("click", function() {
+// 獲取商品的 ID
+const productId = product.getAttribute("data-id");  ///
+
+// 將商品 ID 作為參數添加到商品詳情頁的 URL 中
+const url = "detail.html?id=" + productId;
+
+// 跳轉到商品詳情頁
+window.location.href = url;
+});
+}
+
+// 在商品詳情頁中獲取商品 ID 並顯示詳細信息
+if (window.location.href.includes("detail.html")) {
+const urlParams = new URLSearchParams(window.location.search);
+const productId = urlParams.get("id");
+
+// 假設根據商品 ID 從後端獲取商品詳細信息，這裡只做簡單示範
+const productDetailsElement = document.getElementById("product-details");
+productDetailsElement.innerHTML = "<p>商品 ID：" + productId + "</p>";
+}
+});
+</script>
+
+
+<!-- 跳轉詳細商品頁 -->
+<!-- <script>
+document.addEventListener("DOMContentLoaded", function() {
+// 監聽商品連結的點擊事件
+
+var productLinks = document.getElementsByClassName("pro_name");
+console.log(productLinks);
+console.log("test");
+for (var i = 0; i < productLinks.length; i++) {
+console.log("test");
+productLinks[i].addEventListener("click", function(e) {
+e.preventDefault();
+console.log("test");
+// 獲取商品識別符
+var productId = this.getAttribute("pro-data-id");
+console.log("test");
+console.log(productId);
+// 將商品識別符存儲到瀏覽器的會話存儲中
+sessionStorage.setItem("selectedProductId", productId);
+
+// 跳轉到商品詳細頁面
+window.location.href = this.href;
+});
+}
+});
+</script> -->
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function() {
+// 監聽商品連結的點擊事件
+document.addEventListener("click", function(event) {
+if (event.target.classList.contains("pro_name")) {
+// 獲取點擊的商品資訊
+const productId = event.target.getAttribute('data-proid');
+
+// 使用 sessionStorage 儲存商品資訊
+sessionStorage.setItem('selectedProductId', productId);
+}
+});
+});
+
+
+
+</script>
+
+<script>
+  // 將加入購物車商品寫進料庫
+  // 假設資料庫寫入的 API 端點為 '/api/add-to-cart'
+  document.addEventListener('click', function(event) {
+    if (event.target.classList.contains('add-to-cart')) {
+      const addToCartButton = event.target;
+      const productElement = addToCartButton.closest('.test'); // 修改為動態生成元素的父級元素的類別
+      const productName = productElement.querySelector('.pro_name').textContent;
+      const productId = productElement.querySelector('.pro_name').getAttribute('data-proid');
+      const quantity = productElement.querySelector('.q-input').value;
+      const priceValue = productElement.querySelector('.price-value').textContent;
+      const pic = productElement.style.backgroundImage;
+      
+      
+      const price = parseInt(priceValue, 10);
+  
+  
+      // 發送商品資訊到伺服器以寫入資料庫
+      fetch('http://localhost:8080/petpet/cartproinsert', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          "pro_name": productName,
+          "pro_id": productId,
+          "pro_amount": quantity,
+          "pro_price":price,
+          "cart_id":1,
+          "pro_pic1":pic
+        })
+      })
+      .then(response => {
+        if (response.ok) {
+          // 資料庫寫入成功
+          console.log('商品已成功加入購物車');
+        } else {
+          // 資料庫寫入失敗
+          console.error('商品加入購物車失敗');
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+    }
+  });
+  
+  </script>
+</body>
+</html>

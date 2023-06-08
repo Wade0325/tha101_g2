@@ -1,14 +1,5 @@
 $(document).ready(function () {
     $('#example').DataTable({
-        columnDefs: [
-            {
-                target: 3,
-                visible: false,
-                searchable: false,
-            },
-        ],
-
-
 
         // 表格翻譯
         "language":
@@ -254,3 +245,7 @@ $(document).ready(function () {
         },
     });
 });
+(() => {
+
+
+})

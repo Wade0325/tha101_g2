@@ -17,7 +17,7 @@
         }
         msg.textContent = '';
 
-        fetch('user/userController/login', {
+        fetch('userController/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -26,19 +26,15 @@
                 userAccount: email.value,
                 userPassword: password.value,
             }),
-
         })
             .then(resp => resp.json())
             .then(body => {
                 const { successful, message } = body;
                 if (successful) {
-                    msg.className = 'info';
                     msg.textContent = '登入成功';
                     window.location.href = "/petpet/user/member_center.html";
                 } else {
-                    msg.className = 'error';
                     msg.textContent = '登入失敗，' + message;
-
                 }
             })
     })

@@ -4,8 +4,11 @@
     const address = document.querySelector("#address")
     const Email = document.querySelector("#Email")
     var nickNameV;
+    var userphoneV;
+    var useraddressV;
 
-    fetch('userController/findById/5', {
+
+    fetch('userController/getUser', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -13,12 +16,16 @@
     })
         .then(resp => resp.json())
         .then(body => {
-            const { userEmail, userName, userTel, userAddr } = body;
-            Email.value = userEmail
+            const { userAccount, userName, userTel, userAddr } = body;
+            Email.value = userAccount
             nickName.value = userName
             nickNameV = nickName.value
+
             phone.value = userTel
+            userphoneV = phone.value
+
             address.value = userAddr
+            useraddressV = address.value
         })
 
 
@@ -30,11 +37,26 @@
         } else {
             nickName.setAttribute('disabled', 'disabled');
             if ((nickName.value != '')) {
-
-
+                fetch('userController/update', {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        userName: nickName.value,
+                        userAccount: Email.value
+                    }),
+                })
+                    .then(resp => resp.json())
+                    .then(body => {
+                        const { successful } = body;
+                        if (successful) {
+                            window.alert("更新成功")
+                        }
+                    })
             } else {
                 window.alert("暱稱不得為空")
-                nickName.value = nickNameV
+                nickName.value = userphoneV
             }
         }
 
@@ -46,16 +68,30 @@
         if (phone.hasAttribute('disabled')) {
             phone.removeAttribute('disabled');
         } else {
+            console.log(phone.value)
             phone.setAttribute('disabled', 'disabled');
             if ((phone.value != '')) {
-                fetch('findById', {
-                    method: 'GET',
+                console.log(phone.value)
+                fetch('userController/update', {
+                    method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',
                     },
+                    body: JSON.stringify({
+                        userTel: phone.value,
+                        userAccount: Email.value
+                    }),
                 })
+                    .then(resp => resp.json())
+                    .then(body => {
+                        const { successful } = body;
+                        if (successful) {
+                            window.alert("更新成功")
+                        }
+                    })
             } else {
                 window.alert("電話不得為空")
+                phone.value = nickNameV
             }
         }
     })
@@ -68,14 +104,26 @@
         } else {
             address.setAttribute('disabled', 'disabled');
             if ((address.value != '')) {
-                fetch('findById', {
-                    method: 'GET',
+                fetch('userController/update', {
+                    method: 'PUT',
                     headers: {
                         'Content-Type': 'application/json',
                     },
+                    body: JSON.stringify({
+                        userAddr: address.value,
+                        userAccount: Email.value
+                    }),
                 })
+                    .then(resp => resp.json())
+                    .then(body => {
+                        const { successful } = body;
+                        if (successful) {
+                            window.alert("更新成功")
+                        }
+                    })
             } else {
                 window.alert("地址不得為空")
+                address.value = useraddressV
             }
         }
     })

@@ -1,3 +1,4 @@
+
 package tw.idv.petpet.web.shelter.shelterAnimal.service.impl;
 
 import java.util.List;
@@ -16,7 +17,7 @@ import tw.idv.petpet.web.shelter.shelterAnimal.service.ShelterAnimalService;
 import tw.idv.petpet.web.shelter.shelterMember.entity.ShelterMember;
 
 @Service
-public class ShelterAnimalServiceImpl implements ShelterAnimalService{
+public class ShelterAnimalServiceImpl implements ShelterAnimalService {
 	@Autowired
 	private ShelterAnimalDao dao;
 	@Autowired
@@ -68,37 +69,64 @@ public class ShelterAnimalServiceImpl implements ShelterAnimalService{
 			return shelteranimal;
 		}
 
-		
 		shelteranimal.setMessage("上傳成功");
-		shelteranimal.setSuccessful(true);	
+		shelteranimal.setSuccessful(true);
 		return shelteranimal;
 	}
 
 	@Override
 	public List<ShelterAnimal> findAll() {
-	    return repo.findAll();
+		return repo.findAll();
 	}
 
-	
+	@Override
+	public List<ShelterAnimal> findByifAdopted(Integer ifAdopted) {
+		return repo.findByifAdopted(ifAdopted);
+	}
+
 	@Transactional
 	@Override
 	public boolean remove(Integer animalId) {
-		repo.deleteById(animalId);		return true;
+		repo.deleteById(animalId);
+		return true;
 	}
-	
+
 	@Override
-    public Optional<ShelterAnimal> findById(Integer animalId) {
-        return repo.findById(animalId);
-    }
-	
+	public Optional<ShelterAnimal> findById(Integer animalId) {
+		return repo.findById(animalId);
+	}
+
 	@Transactional
 	@Override
 	public ShelterAnimal update(ShelterAnimal ShelterAnimal) {
-		 repo.save(ShelterAnimal);
-		 return ShelterAnimal;
-		 
+		ShelterAnimal existAnimal = repo.findById(ShelterAnimal.getAnimalId()).orElse(null);
+		if (existAnimal != null) {
+			existAnimal.setAnimalName(ShelterAnimal.getAnimalName());
+			existAnimal.setAnimalGender(ShelterAnimal.getAnimalGender());
+			existAnimal.setAnimalType(ShelterAnimal.getAnimalType());
+			existAnimal.setAnimalCategory(ShelterAnimal.getAnimalCategory());
+			existAnimal.setAnimalDescribe(ShelterAnimal.getAnimalDescribe());
+			existAnimal.setAnimalAge(ShelterAnimal.getAnimalAge());
+			existAnimal.setAnimalColor(ShelterAnimal.getAnimalColor());
+			existAnimal.setAnimalPhoto1(ShelterAnimal.getAnimalPhoto1());
+			existAnimal.setAnimalPhoto2(ShelterAnimal.getAnimalPhoto2());
+			existAnimal.setAnimalPhoto3(ShelterAnimal.getAnimalPhoto3());
+			return repo.save(existAnimal);
+		} else {
+			return null;
+		}
+
 	}
 
-
+	public ShelterAnimal adopted(ShelterAnimal ShelterAnimal) {
+		ShelterAnimal existAnimal = repo.findById(ShelterAnimal.getAnimalId()).orElse(null);
+		if (existAnimal != null) {
+			existAnimal.setIfAdopted(ShelterAnimal.getIfAdopted());
+			existAnimal.setUserId(ShelterAnimal.getUserId());
+			return repo.save(existAnimal);
+		} else {
+			return null;
+		}
+	}
 
 }

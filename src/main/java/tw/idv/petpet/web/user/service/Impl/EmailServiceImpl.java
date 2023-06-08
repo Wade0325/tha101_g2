@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 import tw.idv.petpet.web.user.entity.EmailDetails;
 import tw.idv.petpet.web.user.entity.User;
 import tw.idv.petpet.web.user.service.EmailService;
+import tw.idv.petpet.web.user.service.UserService;
 
 @Service
 public class EmailServiceImpl implements EmailService {
@@ -26,6 +27,9 @@ public class EmailServiceImpl implements EmailService {
 	@Autowired
 	private JavaMailSender javaMailSender;
 	
+	@Autowired
+	private UserService userService;
+
 	@Value("${spring.mail.username}")
 	private String sender;
 
@@ -43,7 +47,6 @@ public class EmailServiceImpl implements EmailService {
 			mailMessage.setTo(details.getRecipient());
 			
 			String verifiCode = getAuthCode(); // 取得驗證信密碼
-		
 			mailMessage.setText(verifiCode);
 			details.setVerifiCode(verifiCode);
 			
@@ -60,6 +63,34 @@ public class EmailServiceImpl implements EmailService {
 		}
 	}
 
+	public String sendForgotMail(EmailDetails details) {
+
+		// Try block to check for exceptions
+		try {
+			// Creating a simple mail message
+			SimpleMailMessage mailMessage = new SimpleMailMessage();
+
+			// Setting up necessary details
+			mailMessage.setFrom(sender);
+			mailMessage.setTo(details.getRecipient()); //目的地信箱
+			
+			String randonNewPassword = getAuthCode(); // 取得隨機新密碼
+			mailMessage.setText(randonNewPassword);
+			mailMessage.setSubject("新密碼");
+			
+			userService.update(details.getRecipient(), randonNewPassword);
+
+			// Sending the mail
+			javaMailSender.send(mailMessage);
+			return "Mail send successful...";
+		}
+
+		// Catch block to handle the exceptions
+		catch (Exception e) {
+			return "Error while Sending Mail";
+		}
+	}
+	
 	// Method 2
 	// To send an email with attachment
 	public String sendMailWithAttachment(EmailDetails details) {
@@ -121,4 +152,5 @@ public class EmailServiceImpl implements EmailService {
 		}
 		return verifiCode;
 	}
+
 }

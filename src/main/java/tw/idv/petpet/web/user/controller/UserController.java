@@ -1,10 +1,11 @@
 package tw.idv.petpet.web.user.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.data.redis.RedisProperties.Jedis;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,40 +18,89 @@ import tw.idv.petpet.web.user.service.UserService;
 public class UserController {
 
 	@Autowired
-	private UserService userService;
-
-	String userAccount;
+	UserService userService;
 
 	@PostMapping("/register")
 	public User register(@RequestBody User user) {
-		System.out.println("進入Controller 執行 register 方法成功");
+		System.out.println("Controller 開始執行 register 方法");
 		userService.register(user);
+		System.out.println("Controller 執行 register 方法成功");
 		return user;
 	}
 
-//	@GetMapping("/findUser")
-//	public String findUser() {
-//		List<User> user = new ArrayList<User>();
-//		user = userRepository.findAll();
-//		
-//		for (int i = 0; i < user.size(); i++) {
-//			System.out.println(user.get(i).getUserTel());
-//			userAccount = user.get(i).getUserTel();
-//		}
-//		return userAccount;
-//	}
-
-	@GetMapping("/findById/{userId}")
-	public User findEmailById(@PathVariable Integer userId) {
-		System.out.println("執行 findEmailById 方法成功");
-		return userService.findById(userId);
+	@GetMapping("/getUser")
+	public User getUser(User user, HttpSession session) {
+		System.out.println("Controller 開始執行 getUser 方法");
+		User userSession = (User) session.getAttribute("userAccount");
+		
+		if (userSession.isLogin()) {
+			System.out.println("Controller 執行 getUser 方法成功");
+			return userService.getUser(userSession);
+		} else {
+			userSession.setLogin(false);
+			return userService.getUser(userSession);
+		}
 	}
 
 	@PostMapping("/login")
-	public User login(@RequestBody User user) {
-		System.out.println("執行 login 方法成功");
-		userService.login(user);
-		return user;
+	public User login(@RequestBody User user, HttpSession session) {
+		System.out.println("Controller 開始執行 login 方法");
+		User userSession = userService.login(user);
+		if (userSession.isSuccessful()) {
+			session.setAttribute("userAccount", userSession);
+		}
+		System.out.println("Controller 執行 login 方法成功");
+		return userSession;
 	}
 
+	@PutMapping("/update")
+	public User update(@RequestBody User user, HttpSession session) {
+		User userSession = (User) session.getAttribute("userAccount");
+		if (userSession.isLogin()) {
+			System.out.println("Controller 開始執行 update 方法");
+			userService.update(user);
+			System.out.println("Controller 執行 update 方法成功");
+			return user;
+		} else {
+			userSession.setLogin(false);
+			return userSession;
+		}
+	}
+
+	@PutMapping("/updatePwd")
+	public User updatePwd(@RequestBody User user, HttpSession session) {
+		User userSession = (User) session.getAttribute("userAccount");
+		if (userSession.isLogin()) {
+			System.out.println("Controller 開始執行 updatePwd 方法");
+			userService.updatePwd(user,userSession);
+			System.out.println("Controller 執行 updatePwd 方法成功");
+			return user;
+		} else {
+			user.setLogin(false);
+			return user;
+		}
+	}
+	
+	@PostMapping("/newLogin")
+	public User newLogin(@RequestBody User user, HttpSession session) {
+		System.out.println("Controller 開始執行 newLogin 方法");
+		User userSession = userService.login(user);
+		if (userSession.isSuccessful()) {
+			session.setAttribute("userAccount", userSession);
+		}
+		System.out.println("Controller 執行 newLogin 方法成功");
+		System.out.println(userSession.isSuccessful());
+		return userSession;
+	}
 }
+
+//		@GetMapping("/findUser")
+//		public String findUser() {
+//			List<User> user = new ArrayList<User>();
+//			user = userRepository.findAll();
+//			for (int i = 0; i < user.size(); i++) {
+//				System.out.println(user.get(i).getUserTel());
+//				userAccount = user.get(i).getUserTel();
+//			}
+//			return userAccount;
+//		}

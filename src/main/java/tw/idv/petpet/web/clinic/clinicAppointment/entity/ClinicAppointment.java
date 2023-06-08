@@ -1,6 +1,6 @@
 package tw.idv.petpet.web.clinic.clinicAppointment.entity;
 
-import java.sql.Timestamp;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,8 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonFormat;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -32,16 +30,15 @@ public class ClinicAppointment extends Core {
 	@Column
 	private Integer reservationNumber;
 	@Column
-	private Integer cardId;
-	@Column
 	private Integer clinicId;
 	@Column
+	private String clinicName;
+	@Column
 	private String vetName;
-	@JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss", timezone = "GMT+8")
 	@Column
-	private Timestamp appointDate;
+	private LocalDate appointDate;
 	@Column
-	private Integer appointTime;
+	private String appointTime;
 	@Column
 	private String ownerMobile;
 	@Column
@@ -49,9 +46,9 @@ public class ClinicAppointment extends Core {
 	@Column
 	private String petName;
 	@Column
-	private Integer serviceItem;
+	private String serviceItem;
 	@Column
-	private Integer userId;
+	private String ownerName;
 	@Column
 	private String petSituation;
 }
