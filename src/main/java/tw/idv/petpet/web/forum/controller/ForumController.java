@@ -61,11 +61,12 @@ public class ForumController {
 	
 	
 	@PostMapping("/article_cat")
-	@ResponseBody
-	public Forum findArticleById(@RequestBody int articleId) {
+	public Forum findArticleById(@RequestBody Integer articleId) {
 		System.out.println("執行 findByArticleId 方法成功");
 		return forumService.findByArticleId(articleId);
 	}
+	
+	
 
 //	@GetMapping("/article_cat/{articleId}")
 //	public ResponseEntity<Forum> getForumById(@PathVariable int articleId) {

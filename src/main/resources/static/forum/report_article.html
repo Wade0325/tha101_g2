@@ -27,6 +27,8 @@
 
     <link rel="stylesheet" href="css/report_article.css">
 
+   
+
 </head>
 
 <body>
@@ -54,42 +56,16 @@
         </nav>
         <!-- END nav -->
 
-        
+
         <main style="background-color: white;">
             <h1>檢舉文章</h1>
-            <form class="center-form">
+            <form class="center-form" id="report-article-form">
                 <div class="form-group">
-                    <label for="reportId">檢舉編號:</label>
-                    <input type="text" id="reportId" name="reportId" required>
-                </div>
-                <div class="form-group">
-                    <label for="reporterId">檢舉人ID:</label>
-                    <input type="text" id="reporterId" name="reporterId" required>
-                </div>
-                <div class="form-group">
-                    <label for="postId">被檢舉文章編號:</label>
-                    <input type="text" id="postId" name="postId" required>
-                </div>
-                <div class="form-group">
-                    <label for="reportTime">檢舉時間:</label>
-                    <input type="text" id="reportTime" name="reportTime" required>
-                </div>
-                <div class="form-group">
-                    <label for="reportReason">檢舉原因:</label>
+                    <label for="reportReason">檢舉原因</label>
                     <textarea id="reportReason" name="reportReason" required></textarea>
                 </div>
-                <!-- <div class="form-group">
-                    <label for="reviewCode">審核代碼:</label>
-                    <select id="reviewCode" name="reviewCode" required>
-                        <option value="0">審核失敗</option>
-                        <option value="1">審核成功</option>
-                        <option value="2">尚未審核</option>
-                    </select>
-                </div> -->
                 <button type="submit">提交檢舉</button>
             </form>
-
-
         </main>
         <!-- 程式放裡面 -->
 
@@ -178,3 +154,29 @@
 </body>
 
 </html>
+
+<!-- 
+<h1>檢舉文章</h1>
+            <form class="center-form" id="report-article-form"> -->
+<!-- <div class="form-group">
+                    <label for="reportId">檢舉編號:</label>
+                    <input type="text" id="reportId" name="reportId" required>
+                </div> -->
+<!-- <div class="form-group">
+                    <label for="reporterId">檢舉人ID:</label>
+                    <input type="text" id="userId" name="userId" required>
+                </div> -->
+<!-- <div class="form-group">
+                    <label for="postId">被檢舉文章編號:</label>
+                    <input type="text" id="articleId" name="articleId" required>
+                </div> -->
+<!-- <div class="form-group">
+                    <label for="reportTime">檢舉時間:</label>
+                    <input type="hidden" id="reportTime" name="reportTime" value="">
+                </div> -->
+<!-- <div class="form-group">
+                    <label for="reportReason">檢舉原因:</label>
+                    <textarea id="reportReason" name="reportReason" required></textarea>
+                </div>
+                <button type="submit">提交檢舉</button>
+            </form> -->

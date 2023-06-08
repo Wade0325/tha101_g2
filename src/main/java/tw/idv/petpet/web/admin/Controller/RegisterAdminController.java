@@ -3,6 +3,7 @@ package tw.idv.petpet.web.admin.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import tw.idv.petpet.web.admin.Entity.AdminEntity;
@@ -10,12 +11,13 @@ import tw.idv.petpet.web.admin.Repository.AdminRepository;
 import tw.idv.petpet.web.admin.dto.AdminRegisterVO;
 
 @RestController
+@RequestMapping("/admin")
 public class RegisterAdminController {
 
 	@Autowired
 	private AdminRepository adminRepository;
 
-	@PostMapping("/admin/register")
+	@PostMapping("/register")
 	public Integer Register(@RequestBody AdminRegisterVO adminRegisterVO, AdminEntity adminEntity) {
 		AdminEntity adminCheckEntity = adminRepository.findByAdminAccount(adminRegisterVO.getAdminAccount());
 		System.out.println("test1: " + adminRegisterVO.getAdminAccount());

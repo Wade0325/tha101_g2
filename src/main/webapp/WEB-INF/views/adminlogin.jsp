@@ -56,10 +56,10 @@
 				<input type="password" placeholder="Password" id="adminLoginPassword" />
 			</div>
 			
-      		<span id="captchaText"></span>
-  			<div class="u-form-group">
-     		 	<input type="text" id="captchaInput" placeholder="驗證碼">
-   			</div>
+<!--       		<span id="captchaText"></span> -->
+<!--   			<div class="u-form-group"> -->
+<!--      		 	<input type="text" id="captchaInput" placeholder="驗證碼"> -->
+<!--    			</div> -->
 			
 			<div class="u-form-group" id="login-btn">
 				<button type="submit">Log in</button>
@@ -134,7 +134,6 @@
 			var passlength = pass.value.length;
 			console.log("取值和長度完成");
 			if (acclength === 0 || passlength === 0) {
-				// 				$("#errorMsg").addClass("errortext");
 				errorMsg.classList.add("errortext");
 				errorMsg.innerText = "帳號密碼不能為空";
 			} else if (acclength < 6 || passlength < 6) {
@@ -142,6 +141,7 @@
 				errorMsg.innerText = "帳號密碼不能少於6位數";
 			}else{
 				$("#errorMsg").removeClass("errortext");
+				console.log("清除完畢");
 				$('#adminRegisterForm').submit();
 			}
 		});
@@ -179,7 +179,7 @@
 						window.location.href = "login";
 					}else{
 						console.log("新增失败，請重新申辦帳號");
-						alert("新增失败，請重新申辦帳號");
+						alert("帳號重複，新增失敗");
 						window.location.href = "register";
 					}
 				},
