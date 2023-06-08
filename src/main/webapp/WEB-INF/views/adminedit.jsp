@@ -9,7 +9,7 @@
               href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
             />
           </style>
-          <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet" />
+          <link href="../static/assets/dist/css/bootstrap.min.css" rel="stylesheet" />
           <!-- css -->
           <link href="../static/css/product.css" rel="stylesheet" type="text/css" />
         
