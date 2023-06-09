@@ -106,29 +106,16 @@
 				
 				<div class="container-fluid px-4">
 					<h1 class="mt-4">後台首頁</h1>
-					檢舉單號: <input tpye="text" id="reportfirmsn"> 
-					<input type="button" id="btnFirmsn" value="查詢">
-					開始日期: <input type="date" id="startDate">結束時間:<input type="date" id="endDate">
-					<input type="button" id="btnFirmdate" value="查詢">
-					狀態: <select id="reportConfirmCode">
-							<option value="審核成功">審核成功</option>
-							<option value="審核失敗">審核失敗</option>
-							<option value="審核中">審核中</option>
-						</select>
-					<input type="button" id="btnFirmCode" value="查詢">
 					<div class="row">
 						<div class="col-xl-12 col-md-6">
 							<!-- ===============內容放入此處=============== -->
 							<table class="table table-striped table-hover table align-middle">
 								<thead>
 									<tr>
-										<th scope="col">檢舉流水號</th>
-										<th scope="col">(檢舉人)商家ID</th>
-										<th scope="col">被檢舉會員ID</th>
-										<th scope="col">檢舉內容</th>
-										<th scope="col">檢舉時間</th>
-										<th scope="col">審核代碼</th>
-										<th scope="col">編輯</th>
+										<th scope="col">會員編號</th>
+										<th scope="col">名稱</th>
+										<th scope="col">帳號</th>
+										<th scope="col">密碼</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -137,284 +124,37 @@
 						</div>
 					</div>
 			</main>
-			<footer class="footer">
-				<p>&copy; by | PETPET陪陪你</p>
-			</footer>
+<!-- 			<footer class="footer"> -->
+<!-- 				<p>&copy; by | PETPET陪陪你</p> -->
+<!-- 			</footer> -->
 		</div>
-
 <!--   ====================搜尋資料=================== -->
 <script>
-$('#btnFirmsn').on('click',function(e){
-	e.preventDefault(); //防止表單提交
 	var tbody = $('tbody');
 	var reportfirmsn = document.getElementById('reportfirmsn');
-	if(reportfirmsn.value.length === 0) {
+
 		$.ajax({
 			url:"all",
 			dataType:"JSON",
 			type:"GET",
-			data:"",
 			success: function(list){
 				tbody.empty();
 				console.log(list);
 				for(var index = 0; index < list.length; index++){
-					const id = list[index].firmSn;
-					var select = '<select class="form-control" id="confirmCode" disabled>'
-									+'<option value="'+  list[index].confirmCode +'">' + list[index].confirmCode + '</option>'
-// 									+'<option value="審核失敗">'+ list[index].confirmCode + '</option>'
-// 									+'<option value="審核中">'+ list[index].confirmCode + '</option>'
-							    +'</select>';
 							    
-				    var button = '<button type="submit">修改</button>';
-				    var button2 = '<button>刪除</button>';
+// 				    var button = '<button class="btn btn-primary" type="submit">修改</button>';
 					tbody.append('<tr>'
-							+'<td data-id=' + list[index].firmSn + '>' + list[index].firmSn + '</td>'
-							+'<td>' + list[index].userId + '</td>'
-							+'<td>' + list[index].companyId + '</td>'
-							+'<td>' + list[index].firmContent + '</td>'
-							+'<td>' + list[index].firmDate + '</td>'
-							+'<td>' + select + '</td>'
-							+'<td>' + button + '</td>'
-							+'<td>' + button2 + '</td>'
+							+'<td>' + list[index].adminId + '</td>'
+							+'<td>' + list[index].adminName + '</td>'
+							+'<td>' + list[index].adminAccount + '</td>'
+							+'<td>*******</td>'
+// 							+'<td>' + list[index].userDate + '</td>'
+// 							+'<td>' + button + '</td>'
 					+'</tr>');		
 				}
 			}
 		});
-	} else{
-	$('tbody').empty();
-		var reportfirmsn = $('#reportfirmsn').val();
-		var reportFirmData ={
-			firmSn :reportfirmsn,
-		};
-		alert("檢舉單號為: " + reportfirmsn);
-		console.log(reportFirmData);
-		$.ajax({
-			url :"reportfirm/getone",
-			contentType :"application/json",
-			type :"post",
-			data :JSON.stringify(reportFirmData),
-			success :function(data){
-				console.log(data);
-				var button = '<button type="submit">修改</button>';
-				var select = '<select class="form-control" id="confirmCode">'
-								+'<option value="' + data.confirmCode + '" >' + data.confirmCode + '</option>'
-// 								+'<option value="1">' + data.confirmCode + '</option>'
-// 								+'<option value="2" selected>' + data.confirmCode + '</option>'
-			    			 +'</select>';
-				tbody.append('<tr>'
-					+'<td>'+ data.firmSn +'</td>'
-					+'<td>'+ data.userId +'</td>'
-					+'<td>'+ data.companyId +'</td>'
-					+'<td>'+ data.firmContent +'</td>'
-					+'<td>'+ data.firmDate +'</td>'
-					+'<td>'+ select +'</td>'
-					+'<td>'+ button +'</td>'
-					+'</tr>'
-				);
-			}
-		});
-	};
-});
 </script>
-    
-<!--     ====================編輯修改取值=================== -->
-<script>
-   	$(document).on('click','tbody button',function(){
-   		var firmSn = $(this).parent().parent().children().eq(0).text();
-   		var userId = $(this).parent().parent().children().eq(1).text();
-   		var companyId = $(this).parent().parent().children().eq(2).text();
-   		var firmContent = $(this).parent().parent().children().eq(3).text();
-   		var firmDate = $(this).parent().parent().children().eq(4).text();
-   		var select = $(this).parent().parent().children().eq(5).children().val();
-		console.log("test2" , $(this).parent().parent().children().eq(5).children().val());
-   		console.log(firmSn);
-   		console.log(userId);
-   		console.log(companyId);
-   		console.log(firmContent);
-   		console.log(firmDate);
-   		console.log(select);
-   		$('#inptFirmSn').val(firmSn);
-   		$('#inptUserId').val(userId);
-   		$('#inptCompanyId').val(companyId);
-   		$('#inptFirmContent').val(firmContent);
-   		$('#inptFirmDate').val(firmDate);
-   		$('#inptSelect').val(select);
-   		console.log("test", $(this).parent().parent().children().eq(0).text());
-   		//
-   		$('#myModal').modal("show")
-   	})
-</script>
-    
-<!-- ====================搜尋日期 ==================== -->
-	<script>
-	var tbody = $('tbody');
-	$('#btnFirmdate').on('click', function(){
-		var startDate = $('#startDate').val();
-		var endDate = $('#endDate').val();
-		var button = '<button type="submit">編輯</button>'
-		console.log("val" , startDate);
-		console.log("val" , endDate);
-		var dateData = {
-			startdate : startDate,
-			enddate : endDate
-		};
-		console.log(dateData);
-		$.ajax({
-			url : "getreportfirmbydate",
-			type : "post",
-			contentType : "application/json",
-			data : JSON.stringify(dateData),
-			success : function(res){
-				console.log(res);
-				tbody.empty();
-				for(var i = 0; i < res.length ; i++){
-				var select = '<select class="form-control" id="confirmCode" disabled>'
-								+'<option value="審核成功">' + res[i].confirmCode + '</option>'
-								+'<option value="審核失敗">'+ res[i].confirmCode + '</option>'
-								+'<option value="審核中" selected>'+ res[i].confirmCode + '</option>'
-	    					+'</select>';
-					tbody.append('<tr>'
-							+ '<td>' + res[i].firmSn + '</td>' 
-							+ '<td>' + res[i].companyId + '</td>' 
-							+ '<td>' + res[i].userId + '</td>' 
-							+ '<td>' + res[i].firmContent + '</td>' 
-							+ '<td>' + res[i].firmDate + '</td>' 
-							+ '<td>' + select + '</td>' 
-							+ '<td>' + button+ '</td>' 
-							+'</tr>');
-				}
-			}
-		});
-	})
 
-	</script>
-<!-- 	彈窗Modal  -->
-<script	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-<script src="../static/js/scripts.js"></script>
-<div id ="myModal" class="modal" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">舉檢審核</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div>
-        	<label>檢舉流水號</label>
-        	<input type="text" id="inptFirmSn" disabled />
-        </div>
-        <div>
-        	<label>(檢舉人)商家ID</label>
-        	<input type="text" id="inptUserId" disabled />
-        </div>
-        <div>
-        	<label>被檢舉會員ID	</label>
-        	<input type="text" id="inptCompanyId" disabled />
-        </div>
-        <div>
-        	<label>檢舉內容</label>
-        	<input type="text" id="inptFirmContent" disabled />
-        </div>
-        <div>
-        	<label>檢舉時間</label>
-        	<input type="text" id="inptFirmDate" disabled />
-        </div>
-        <div>
-        	<label>審核</label>
-        	<select class="form-control" id="inptSelect">
-				<option value="審核成功">審核成功</option>
-				<option value="審核失敗">審核失敗</option>
-				<option value="審核中">審核中</option>
-			</select>
-        </div>
-        
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
-        <button type="button" class="btnReportForm">提交</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!--=============== 舉檢表單審核=============== -->
-<script>
-$(document).ready(function() {
-	  $('.btnReportForm').click(function() {
-	    // 獲取表單的值
-	    var formData = {
-	      firmSn: $('#inptFirmSn').val(),
-	      userId: $('#inptUserId').val(),
-	      companyId: $('#inptCompanyId').val(),
-	      firmContent: $('#inptFirmContent').val(),
-	      firmDate: $('#inptFirmDate').val(),
-	      confirmCode: $('#inptSelect').val()
-	    };
-	    $.ajax({
-	      url: 'edit',
-	      type: 'POST',
-	      contentType: 'application/json',
-	      data: JSON.stringify(formData),
-	      success: function(data) {
-	    	console.log(data);
-	    	$('#confirmCode').val("111");
-	    	tbody.empty();
-	        console.log("編輯成功");
-
-//				window.location.href = '/admin/reportfirm';
-	      },
-	      error: function(error) {
-	        console.log("編輯失败");
-	      }
-	    });
-	  });
-	});
-</script>
-<!-- 查詢審核狀態 -->
-<script>
-var btnFirmCode = $('#btnFirmCode');
-var reportConfirmCode = $('#reportConfirmCode').val();
-var tbody = $('tbody');
-var button = '<button type="submit">編輯</button>'
-$(document).ready(function() {
-	  $('#reportConfirmCode').change(function() {
-	    var selectedValue = $(this).val();
-	    reportConfirmCode = selectedValue;
-	  });
-	});
-btnFirmCode.on('click', function(){
-	console.log(reportConfirmCode);
-	codeData = {
-			confirmCode : reportConfirmCode
-	}
-	$.ajax({
-		url : "getreportfirmbycode",
-		contentType : "application/json",
-		type : "POST",
-		data : JSON.stringify(codeData),
-		success : function(res){
-			tbody.empty();
-			console.log(res);
-			for(var i = 0; i < res.length ; i++){
-				var select = '<select class="form-control" id="confirmCode" disabled>'
-								+'<option value="審核成功">' + res[i].confirmCode + '</option>'
-								+'<option value="審核失敗">'+ res[i].confirmCode + '</option>'
-								+'<option value="審核中" selected>'+ res[i].confirmCode + '</option>'
-							+'</select>';
-				tbody.append(
-						'<tr>'
-							+ '<td>' + res[i].firmSn + '</td>'
-							+ '<td>' + res[i].companyId + '</td>'
-							+ '<td>' + res[i].userId + '</td>'
-							+ '<td>' + res[i].firmContent + '</td>'
-							+ '<td>' + res[i].firmDate + '</td>'
-							+ '<td>' + select + '</td>'
-							+ '<td>' + button + '</td>'
-						+'</tr>'
-				);
-			}
-		}
-	});
-});
-</script>
 </body>
 </html>
