@@ -76,7 +76,7 @@ public class AdminEmailController {
 	public ResponseEntity<String> sendEmailReport(@RequestBody EmailVO emailVO, AdminEntity adminEntity) {
 		String mail = emailVO.getEmail() + "@gmail.com" ;
 		System.out.println("被檢舉的信箱" + mail);
-		mailService2.sendEmail(mail, "後台管理員", "Hello!親愛的" + mail + "會員你好，近日收到您檢舉的表單，如果累犯會將您的帳號做停權");
+		mailService2.sendEmail(mail, "後台管理員", "Hello!親愛的" + mail + "會員你好，近日收到您檢舉的表單，請注意一下");
 		System.out.println("發送成功!!!");
 		return ResponseEntity.ok("Email sent successfully!");
 	}
