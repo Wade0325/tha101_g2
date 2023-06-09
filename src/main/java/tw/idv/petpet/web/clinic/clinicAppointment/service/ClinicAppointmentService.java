@@ -115,6 +115,7 @@ public class ClinicAppointmentService {
 			clinicAppointment1.setServiceItem(clinicAppointment.getServiceItem());
 			clinicAppointment1.setOwnerName(clinicAppointment.getOwnerName());
 			clinicAppointment1.setPetSituation(clinicAppointment.getPetSituation());
+			clinicAppointment1.setPayInfo(clinicAppointment.getPayInfo());
 			clinicAppointmentRepository.save(clinicAppointment1);
 		}
 	}
