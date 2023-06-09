@@ -30,6 +30,7 @@ public class AdoptUploadController {
 		public Core upload(@RequestBody AdoptApply AdoptApply, HttpSession session) {
 			User userSession =	(User) session.getAttribute("userAccount");
 			AdoptApply.setUserId(userSession.getUserId());
+			AdoptApply.setUserAccount(userSession.getUserAccount());
 			final Core core = new Core();
 			if (AdoptApply == null) {
 				core.setMessage("無此Id");

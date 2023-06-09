@@ -11,8 +11,7 @@
 	const animalAge = document.querySelector('#animalAge');
 	const animalDescribe = document.querySelector('#animalDescribe');
 	const ifAdopted = document.querySelector('#ifAdopted');
-	const fileInputs = document.querySelectorAll('.fileupload');
-
+	
 
 
 	delaybtn.addEventListener('click', async () => {
@@ -23,7 +22,6 @@
 		const colorLength = animalColor.value.trim().length;
 		const genderLength = animalGender.value.trim().length;
 		const ageLength = animalAge.value.trim().length;
-		const inputs = [animalId, userId, animalName, animalType, animalCategory, animalColor, animalGender, animalDate, animalAge, animalDescribe, ifAdopted];
 	
 		if (nameLength === 0) {
 			alert('名稱不可為空');
@@ -45,6 +43,9 @@
 			return;
 		} else if (ageLength === 0) {
 			alert('請選擇年齡');
+			return;
+		} else if (shelterAreaLength === 0) {
+			alert('請選擇區域');
 			return;
 		} else if (uploadedCount < 3) {
 			alert('請上傳三張圖片');

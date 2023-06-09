@@ -3,8 +3,10 @@ const id = urlParams.get('applyid');
 const animalid = urlParams.get('animalid');
 const subbtn = document.querySelector('#delaybtn');
 document.getElementById('userid').style.display = 'none';
+document.getElementById('useraccount').style.display = 'none';
 
 
+const useraccount = document.querySelector('#useraccount');
 const userid = document.querySelector('#userid');
 const animalType = document.querySelector('#animalType');
 const animalName = document.querySelector('#animalName');
@@ -80,17 +82,29 @@ fetch(`animalfindbyid/${animalid}`, {
         question.value = adopt.question,
         date.textContent = adopt.adopterApplyDate 
         userid.value = adopt.userId;       
+        useraccount.value = adopt.userAccount;       
 		
 	})
 	
+
+
+var shelteranimal = {  
+  "ifAdopted": ifAdoptedValue,
+  "userId": userIdValue
+};
+
 
 subbtn.addEventListener('click', function() {
   if (!confirm('確定將此設為animal領養人?')) {
     return;
   } else {
+	  
+if (userIdValue === "") {
+  userIdValue = "未被領養";
+}
     var shelteranimal = {  
       "ifAdopted": "1",
-      "userId": userid.value
+      "userId": useraccount.value
     };
   
     fetch(`ifadopted/${animalid}`, {

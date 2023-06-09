@@ -1,0 +1,173 @@
+body {
+background-color: #eddbc7;
+}
+
+.login-box {
+position:static;
+margin: 10px auto;
+width: 500px;
+height: 480px;
+background-color: #fff;
+padding: 10px;
+border-radius: 3px;
+-webkit-box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.33);
+-moz-box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.33);
+box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.33);
+top: 80px;
+bottom: 80px;
+}
+
+.lb-header {
+position: relative;
+color: #00415d;
+margin: 5px 5px 10px 5px;
+padding-bottom: 10px;
+border-bottom: 1px solid #eee;
+text-align: center;
+height: 28px;
+}
+
+.lb-header a {
+margin: 0 25px;
+padding: 0 20px;
+text-decoration: none;
+color: #666;
+font-weight: bold;
+font-size: 15px;
+-webkit-transition: all 0.1s linear;
+-moz-transition: all 0.1s linear;
+transition: all 0.1s linear;
+}
+
+.lb-header .active {
+color: #029f5b;
+font-size: 18px;
+}
+
+.social-login {
+position: relative;
+float: left;
+width: 100%;
+height: auto;
+padding: 10px 0 15px 0;
+border-bottom: 1px solid #eee;
+}
+
+.social-login a {
+position: relative;
+float: left;
+width: calc(40% - 8px);
+text-decoration: none;
+color: #fff;
+border: 1px solid rgba(0, 0, 0, 0.05);
+padding: 12px;
+border-radius: 2px;
+font-size: 12px;
+text-transform: uppercase;
+margin: 0 3%;
+text-align: center;
+}
+
+.social-login a i {
+position: relative;
+float: left;
+width: 20px;
+top: 2px;
+}
+
+.social-login a:first-child {
+background-color: #49639f;
+}
+
+.social-login a:last-child {
+background-color: #df4a32;
+}
+
+.email-login, .email-signup, .shelter-signup, .shop-signup, .clinic-signup, .shelter-login, .shop-login, .clinic-login {
+position: relative;
+float: left;
+width: 100%;
+height: auto;
+margin-top: 20px;
+text-align: center;
+}
+
+.u-form-group {
+margin-bottom: 10px;
+}
+
+
+/* .u-form-group input[type="email"], .u-form-group input[type="password"], .u-form-group input[type="text"] */
+.email-login .u-form-group input[type="email"],
+.email-login .u-form-group input[type="password"],
+.email-login .u-form-group input[type="text"] ,
+.email-signup .u-form-group input[type="email"],
+.email-signup .u-form-group input[type="password"],
+.email-signup .u-form-group input[type="text"],
+.shop-login .u-form-group input[type="email"],
+.shop-login .u-form-group input[type="password"], 
+.shelter-login .u-form-group input[type="email"],
+.shelter-login .u-form-group input[type="password"],
+.clinic-login .u-form-group input[type="email"],
+.clinic-login .u-form-group input[type="password"]
+{
+width: calc(50% - 22px);
+height: 45px;
+outline: none;
+border: 1px solid #ddd;
+padding: 0 10px;
+border-radius: 2px;
+color: #333;
+font-size: 0.8rem;
+-webkit-transition: all 0.1s linear;
+-moz-transition: all 0.1s linear;
+transition: all 0.1s linear;
+}
+.shelter-signup .u-form-group input[type="email"],
+.shelter-signup .u-form-group input[type="password"],
+.shelter-signup .u-form-group input[type="text"] ,
+.clinic-signup .u-form-group input[type="email"],
+.clinic-signup .u-form-group input[type="password"],
+.clinic-signup .u-form-group input[type="text"] ,
+.shop-signup .u-form-group input[type="email"],
+.shop-signup .u-form-group input[type="password"],
+.shop-signup .u-form-group input[type="text"] 
+{
+width: 100%;
+height: 45px;
+outline: none;
+border: 1px solid #ddd;
+padding: 0 10px;
+border-radius: 2px;
+color: #333;
+font-size: 0.8rem;
+-webkit-transition: all 0.1s linear;
+-moz-transition: all 0.1s linear;
+transition: all 0.1s linear;
+}
+
+
+.u-form-group button {
+width: 50%;
+background-color: #eddbc7;
+border: none;
+outline: none;
+color: #fff;
+font-size: 14px;
+font-weight: normal;
+padding: 14px 0;
+border-radius: 2px;
+text-transform: uppercase;
+}
+
+.forgot-password {
+width: 50%;
+text-align: left;
+text-decoration: underline;
+color: #888;
+font-size: 0.75rem;
+}
+
+input[type="text"] {
+width: 250px;
+}
