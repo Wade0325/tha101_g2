@@ -67,11 +67,8 @@
     <!-- 購物車圖示 -->
     <div
     class="cart-icon";
-        style="
-          /* border: 1px solid red; */
-          /* position: sticky; */
-          position: fixed;
-          /* float: right; */
+        style="          
+          position: fixed;    
           top : 20px;
           left: 1200px;
           margin-right: 20px;
@@ -358,6 +355,8 @@ productDiv.style.backgroundImage = `url(data:image/jpeg;base64,${product.pro_pic
 productDiv.style.backgroundSize = 'cover';
 productDiv.style.backgroundPosition = 'center';
 productDiv.style.height = '200px';
+productDiv.setAttribute('data-comp-attribute', product.company_id)
+
 
 if (count <= 2) {
 productDiv.style.marginTop = '0';
@@ -487,9 +486,11 @@ sessionStorage.setItem('selectedProductId', productId);
       const productId = productElement.querySelector('.pro_name').getAttribute('data-proid');
       const quantity = productElement.querySelector('.q-input').value;
       const priceValue = productElement.querySelector('.price-value').textContent;
+      const comp = productElement.getAttribute('data-comp-attribute');
       const pictest = productElement.style.backgroundImage;
+       
       const testpic = pictest.split(/[,)"]/);
-      console.log(testpic[2]);
+      
 
       const price = parseInt(priceValue, 10);
   
@@ -506,7 +507,9 @@ sessionStorage.setItem('selectedProductId', productId);
           "pro_amount": quantity,
           "pro_price":price,
           "cart_id":1,
-          "pro_pic1":testpic[2]
+          "pro_pic1":testpic[2],
+          "company_id":comp
+          
         })
       })
       .then(response => {

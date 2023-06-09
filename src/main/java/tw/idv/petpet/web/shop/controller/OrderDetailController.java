@@ -21,14 +21,14 @@ public class OrderDetailController {
 	private OrderDetailRepository orderDetailRepository;
 	
 	
-//	@PostMapping("/OrderDetailinsert") // 新增訂單
-//	public String insertDetail(@RequestBody OrderDetail orderDetail) {
-//
-//		Timestamp now = new Timestamp(System.currentTimeMillis());
-//		orderDetail.setOrder_date(now);
-//		System.out.println(orderDetail.getOrder_date());
-//		
-//		orderDetailRepository.save(orderDetail);
-//		return "測試OrderDetailinsert";
-//	}
+	@PostMapping("/OrderDetailinsert") // 新增訂單
+	public String insertDetail(@RequestBody OrderDetail orderDetail) {
+
+		Timestamp now = new Timestamp(System.currentTimeMillis());
+		orderDetail.setOrder_date(now);
+		System.out.println(orderDetail.getOrder_date());
+		
+		orderDetailRepository.save(orderDetail);
+		return "測試OrderDetailinsert";
+	}
 }

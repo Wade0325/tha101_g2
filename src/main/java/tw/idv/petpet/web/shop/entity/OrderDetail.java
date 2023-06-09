@@ -41,8 +41,8 @@ public class OrderDetail {
 	
 	@Column(name = "order_amount")
 	private Integer orderAmount;
-	@Column
-	private String card_num;
+//	@Column
+//	private String card_num;
 	@Column
 	private String addr_name;
 	@Column

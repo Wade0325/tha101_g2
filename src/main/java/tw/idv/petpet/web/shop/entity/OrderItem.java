@@ -29,8 +29,8 @@ public class OrderItem {
 	private Integer user_id;
 	@Column
 	private Integer amount;
-	@Column
-	private Integer quantity;
+//	@Column
+//	private Integer quantity;
 //	@Column
 //	private Integer totalQuantity;
 	
