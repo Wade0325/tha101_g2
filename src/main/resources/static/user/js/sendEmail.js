@@ -8,6 +8,8 @@
     btn.addEventListener("click", () => {
         // console.log(email.value);
         if (email.value !== '' && emailRegxp.test(email.value) == true) {
+            btn.disabled = true;
+            btn.setAttribute('disabled', 'disabled');
             fetch('sendMail', {
                 method: 'POST',
                 headers: {
@@ -21,13 +23,15 @@
                 .then(resp => {
                     console.log(resp);
                 })
-
+            updateCountdown();
         } else if (email.value == '') {
             window.alert("電子信箱為必填")
         } else if (!(emailRegxp.test(email.value))) {
             window.alert('電子信箱格式錯誤');
         }
         window.alert("驗證信已送出")
+
+
     })
 
     // 忘記密碼
@@ -47,8 +51,33 @@
                 .then(resp => {
                     console.log(resp);
                 })
+            updateCountdown();
         } else if (!(emailRegxp.test(email.value))) {
             window.alert('電子信箱格式錯誤');
         }
     })
+
+    //啟動倒數
+    function updateCountdown() {
+        var countdownTime = 5;
+        var countdownElement = document.getElementById("buttonSendEmail");
+
+        function formatTime(time) {
+            return ("0" + Math.floor(time / 60)).slice(-2) + ":" + ("0" + (time % 60)).slice(-2);
+        }
+
+        //倒數
+        function countdown() {
+            countdownElement.textContent = formatTime(countdownTime);
+            countdownTime--;
+
+            if (countdownTime >= 0) {
+                setTimeout(countdown, 1000);
+            } else {
+                countdownElement.textContent = "發送驗證信";
+                btn.disabled = false;
+            }
+        }
+        countdown();
+    }
 })();
