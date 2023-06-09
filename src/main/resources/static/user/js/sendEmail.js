@@ -27,6 +27,7 @@
         } else if (!(emailRegxp.test(email.value))) {
             window.alert('電子信箱格式錯誤');
         }
+        window.alert("驗證信已送出")
     })
 
     // 忘記密碼

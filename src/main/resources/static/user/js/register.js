@@ -57,7 +57,8 @@
                             input.disabled = true;
                         }
                         btn.disabled = true;
-                        msg.textContent = '註冊成功';
+                        window.alert('註冊成功')
+                        window.location.href = "login.html"
                     } else {
                         msg.textContent = '註冊失敗，' + message;
                     }
@@ -95,5 +96,6 @@
                     verifyText.value = ''
                 }
             });
+
     })
 })();
