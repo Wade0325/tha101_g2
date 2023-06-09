@@ -13,8 +13,27 @@
 <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
 <link href="../static/css/styles.css" rel="stylesheet" />
 <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"	crossorigin="anonymous"></script>
+<link href="../static/css/chat.css" rel="stylesheet" />
 </head>
-<body class="sb-nav-fixed">
+<body class="sb-nav-fixed" onload="connect();" onunload="disconnect();">
+	
+	<!-- chat modal -->
+<div id="chatIcon" class="chat-icon" onclick="toggleChatModal()">
+    <span>&#x1F4AC;</span>
+  </div>
+
+  <div id="chatModal" class="chat-modal">
+    <h2>Chat Room</h2>
+    <h3 id="statusOutput" class=""></h3>
+    <textarea id="messagesArea" readonly></textarea>
+    <input id="userName" type="text" placeholder="User name" />
+    <input id="message" type="text" placeholder="Message" onkeydown="if (event.keyCode == 13) sendMessage();" />
+    <button id="sendMessage" onclick="sendMessage()">Send</button>
+  	<input type="button" id="connect" class="button" value="Connect" onclick="connect();" /> 
+		<input type="button" id="disconnect" class="button" value="Disconnect" onclick="disconnect();" />
+  </div>
+<!-- chat modal -->
+	
 	<nav class="sb-topnav navbar navbar-expand navbar-dark color">
 		<!-- Navbar Brand-->
 		<img src="../static/images/petpet.png" width="70px" height="70px" />
@@ -93,7 +112,7 @@
 				</div>
 			</nav>
 		</div>
-<!-- 		<Side Bar>     -->
+<!-- 		Side Bar    -->
 		<div id="layoutSidenav_content">
 			<main>
 				<div class="container-fluid px-4">
@@ -108,17 +127,17 @@
 					</div>
 				</div>
 			</main>
-			<footer class="py-4 bg-light mt-auto">
-				<div class="container-fluid px-4">
-					<div
-						class="d-flex align-items-center justify-content-between small">
-						<div class="text-muted">Copyright &copy; Your Website 2023</div>
-						<div>
-							<a href="#">TOP</a> &middot; <a href="#">置頂</a>
-						</div>
-					</div>
-				</div>
-			</footer>
+<!-- 			<footer class="py-4 bg-light mt-auto"> -->
+<!-- 				<div class="container-fluid px-4"> -->
+<!-- 					<div -->
+<!-- 						class="d-flex align-items-center justify-content-between small"> -->
+<!-- 						<div class="text-muted">Copyright &copy; Your Website 2023</div> -->
+<!-- 						<div> -->
+<!-- 							<a href="#">TOP</a> &middot; <a href="#">置頂</a> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</footer> -->
 		</div>
 	</div>
 	<script src="../static/js/jquery-3.4.1.min.js"></script>
@@ -142,6 +161,7 @@
 			},
 		});
 	</script>
+	<script type="text/javascript" src="../static/js/chat.js"></script>
 	<script	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 	<script src="../static/js/scripts.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
