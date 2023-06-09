@@ -7,7 +7,7 @@
     const tbody = document.querySelector("#tbody")
     console.log("aaa")
     //後台取得商品
-    fetch('../../getProduct', {
+    fetch('http://localhost:8080/petpet/shoptestall', {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -61,7 +61,7 @@
             const proName = document.querySelector("#pro_name").textContent
             console.log(proName);
 
-            fetch(`../../delProduct/${proName}`, {
+            fetch(`http://localhost:8080/petpet/shoptest/${proName}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'text/plain', // 將 Content-Type 設置為 'text/plain'

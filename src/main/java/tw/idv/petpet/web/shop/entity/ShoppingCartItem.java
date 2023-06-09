@@ -40,4 +40,6 @@ public class ShoppingCartItem {
 	private Timestamp create_time; 
 	@Column
 	private String pro_pic1; 
+	@Column
+	private Integer company_id;
 }

@@ -51,4 +51,6 @@ public class ClinicAppointment extends Core {
 	private String ownerName;
 	@Column
 	private String petSituation;
+	@Column
+	private String payInfo;
 }
