@@ -51,7 +51,7 @@ public class UserServiceImpl implements UserService {
 			user.setSuccessful(false);
 			user.setMessage("帳號密碼錯誤");
 			System.out.println("登入失敗");
-			return userLogin;
+			return user;
 		}
 	}
 
