@@ -44,12 +44,11 @@ public class ProductController {
 	}
 
 	@PostMapping("/shoptestinsert") // 新增商品
-	public String insert(@RequestBody Product product) {
-		System.out.println("test");
+	public Product insert(@RequestBody Product product) {
 		 Timestamp now = new Timestamp(System.currentTimeMillis());
-	        product.setCreate_time(now);
+	     product.setCreate_time(now);
 		productRepository.save(product);
-		return "測試insert";
+		return product;
 	}
 
 
@@ -63,7 +62,7 @@ public class ProductController {
 
 	@GetMapping("/shoptest/{shopId}")
 	public Product read(@PathVariable Integer shopId) {
-
+		System.out.println("test1243");
 		Product product = productRepository.findById(shopId).orElse(null);
 		return product;
 	}

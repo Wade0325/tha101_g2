@@ -85,7 +85,9 @@
         </div>
   
   <div class="cart-dropdown">
+    <a href="購物車頁面.html">
     <button class="in_cart">進入購物車</button>
+  </a>
     <ul class="cart-items">
 
     </ul>
@@ -185,7 +187,7 @@
       <div class="row">
         <div class="col-3 category-column" style="padding-left:0; height: 1500px;">
           <div style="position: sticky; top:0;">
-          <h4>商品分類</h4>
+          <h4 style="position:relative; left:20px">商品分類</h4>
           <ul class="list-group" style="width: 70%;">
             <li class="list-group-item">寵物食品</li>
             <li class="list-group-item">寵物服飾</li>
@@ -377,7 +379,7 @@ cardDiv.style.width = '100%';
 
 const productNameLink = document.createElement('a');
 productNameLink.className = 'pro_name';
-productNameLink.href = 'productDetail.html';
+productNameLink.href = '詳細商品頁面.html';
 productNameLink.textContent = product.pro_name;
 productNameLink.setAttribute('data-proid',product.pro_id);
 
@@ -455,67 +457,6 @@ $('.pro_name').on('click', function(event) {
 </script>
 
 
-<!-- 詳細商品頁 -->
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-// 獲取商品列表中的所有商品元素
-const productsname = document.getElementsByClassName("pro_name");
-
-// 為每個商品元素添加點擊事件監聽器
-for (let i = 0; i < productsname.length; i++) {
-const product = productsname[i];
-product.addEventListener("click", function() {
-// 獲取商品的 ID
-const productId = product.getAttribute("data-id");  ///
-
-// 將商品 ID 作為參數添加到商品詳情頁的 URL 中
-const url = "detail.html?id=" + productId;
-
-// 跳轉到商品詳情頁
-window.location.href = url;
-});
-}
-
-// 在商品詳情頁中獲取商品 ID 並顯示詳細信息
-if (window.location.href.includes("detail.html")) {
-const urlParams = new URLSearchParams(window.location.search);
-const productId = urlParams.get("id");
-
-// 假設根據商品 ID 從後端獲取商品詳細信息，這裡只做簡單示範
-const productDetailsElement = document.getElementById("product-details");
-productDetailsElement.innerHTML = "<p>商品 ID：" + productId + "</p>";
-}
-});
-</script>
-
-
-<!-- 跳轉詳細商品頁 -->
-<!-- <script>
-document.addEventListener("DOMContentLoaded", function() {
-// 監聽商品連結的點擊事件
-
-var productLinks = document.getElementsByClassName("pro_name");
-console.log(productLinks);
-console.log("test");
-for (var i = 0; i < productLinks.length; i++) {
-console.log("test");
-productLinks[i].addEventListener("click", function(e) {
-e.preventDefault();
-console.log("test");
-// 獲取商品識別符
-var productId = this.getAttribute("pro-data-id");
-console.log("test");
-console.log(productId);
-// 將商品識別符存儲到瀏覽器的會話存儲中
-sessionStorage.setItem("selectedProductId", productId);
-
-// 跳轉到商品詳細頁面
-window.location.href = this.href;
-});
-}
-});
-</script> -->
-
 <script>
 
 document.addEventListener("DOMContentLoaded", function() {
@@ -546,9 +487,10 @@ sessionStorage.setItem('selectedProductId', productId);
       const productId = productElement.querySelector('.pro_name').getAttribute('data-proid');
       const quantity = productElement.querySelector('.q-input').value;
       const priceValue = productElement.querySelector('.price-value').textContent;
-      const pic = productElement.style.backgroundImage;
-      
-      
+      const pictest = productElement.style.backgroundImage;
+      const testpic = pictest.split(/[,)"]/);
+      console.log(testpic[2]);
+
       const price = parseInt(priceValue, 10);
   
   
@@ -564,7 +506,7 @@ sessionStorage.setItem('selectedProductId', productId);
           "pro_amount": quantity,
           "pro_price":price,
           "cart_id":1,
-          "pro_pic1":pic
+          "pro_pic1":testpic[2]
         })
       })
       .then(response => {
