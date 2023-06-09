@@ -31,7 +31,7 @@ public class EcpayService {
 		String reservation = (latestAppointment != null && latestAppointment.getReservationNumber() != null)
 				? latestAppointment.getReservationNumber().toString()
 				: "";
-		StringBuilder stringBuilder = new StringBuilder(reservation);
+		StringBuilder stringBuilder = new StringBuilder("No" + reservation + "order");
 		if (stringBuilder.length() < 20) {
 			String characters = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 			int remainingLength = 20 - stringBuilder.length();
