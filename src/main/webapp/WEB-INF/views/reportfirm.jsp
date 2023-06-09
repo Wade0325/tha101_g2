@@ -132,9 +132,9 @@
 						</div>
 					</div>
 			</main>
-			<footer class="footer">
-				<p>&copy; by | PETPET陪陪你</p>
-			</footer>
+<!-- 			<footer class="footer"> -->
+<!-- 				<p>&copy; by | PETPET陪陪你</p> -->
+<!-- 			</footer> -->
 		</div>
 
 <!--   ====================搜尋資料=================== -->
