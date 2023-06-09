@@ -60,7 +60,7 @@
 				  </div>
 				  檢舉清單
 				</a>
-				<a class="nav-link" href="../reportfirmform">
+				<a class="nav-link" href="reportfirmform">
 				  <div class="sb-nav-link-icon">
 					<i class="fas fa-tachometer-alt"></i>
 				  </div>
@@ -74,7 +74,7 @@
 				  </div>
 				  檢舉清單
 				</a>
-				<a class="nav-link" href="../reportuserform">
+				<a class="nav-link" href="reportuserform">
 				  <div class="sb-nav-link-icon">
 					<i class="fas fa-tachometer-alt"></i>
 				  </div>
@@ -117,13 +117,13 @@
 							<table class="table table-striped table-hover table align-middle">
 								<thead>
 									<tr>
-										<th scope="col">檢舉流水號</th>
-										<th scope="col">(檢舉人)商家ID</th>
-										<th scope="col">被檢舉會員ID</th>
+										<th scope="col">檢舉單號</th>
+										<th scope="col">(檢舉人)商家帳號</th>
+										<th scope="col">被檢舉會員帳號</th>
 										<th scope="col">檢舉內容</th>
 										<th scope="col">檢舉時間</th>
-										<th scope="col">審核代碼</th>
-										<th scope="col">編輯</th>
+										<th scope="col">檢舉狀態</th>
+										<th scope="col">功能</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -132,9 +132,9 @@
 						</div>
 					</div>
 			</main>
-			<footer class="footer">
-				<p>&copy; by | PETPET陪陪你</p>
-			</footer>
+<!-- 			<footer class="footer"> -->
+<!-- 				<p>&copy; by | PETPET陪陪你</p> -->
+<!-- 			</footer> -->
 		</div>
 
 <!--   ====================搜尋資料=================== -->
@@ -324,7 +324,7 @@ $('#btnFirmsn').on('click',function(e){
         
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+        <button type="button" data-bs-dismiss="modal">取消</button>
         <button type="button" class="btnReportForm">提交</button>
       </div>
     </div>
