@@ -29,7 +29,7 @@ public class Company {
 	@Column
 	private String company_name;
 	@Column
-	private String company_account;
+	private String company_email;
 	@Column(name = "company_pw")
 	private String company_password;
 	@Column

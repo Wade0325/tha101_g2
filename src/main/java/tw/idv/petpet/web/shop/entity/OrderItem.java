@@ -22,17 +22,17 @@ public class OrderItem {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column
-    private Integer detailId;
+    private Integer details_id;
 	@Column
-	private String orderNumber;
+	private Integer company_id;
 	@Column
-	private Integer productId;
+	private Integer user_id;
 	@Column
-	private String totalAmount;
+	private Integer amount;
 	@Column
-	private Integer producQuantity;
-	@Column
-	private Integer totalQuantity;
+	private Integer quantity;
+//	@Column
+//	private Integer totalQuantity;
 	
 	
 }

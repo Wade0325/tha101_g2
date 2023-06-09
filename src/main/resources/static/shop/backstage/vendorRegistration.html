@@ -153,47 +153,68 @@
     <!-- end NAVBAR -->
 
     <div id="layoutSidenav">
-      <div id="layoutSidenav_nav">
-        <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
-          <div class="sb-sidenav-menu">
-            <div class="nav">
-              <div class="sb-sidenav-menu-heading">Core</div>
-              <a class="nav-link" href="index.html">
+        <div id="layoutSidenav_nav">
+          <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+            <div class="sb-sidenav-menu">
+              <div class="nav">
+                <div class="sb-sidenav-menu-heading">Core</div>
+                <a class="nav-link" href="index.html">
+                  <div class="sb-nav-link-icon">
+                    <i class="fas fa-tachometer-alt"></i>
+                  </div>
+                  首頁
+                </a>
+                <div class="sb-sidenav-menu-heading">操作介面</div>
+                <a
+                  class="nav-link collapsed"
+                  href="#"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#collapseLayouts"
+                  aria-expanded="false"
+                  aria-controls="collapseLayouts"
+                >
                 <div class="sb-nav-link-icon">
-                  <i class="fas fa-tachometer-alt"></i>
+                    <i class="fas fa-columns"></i>
                 </div>
-                首頁
-              </a>
-              <div class="sb-sidenav-menu-heading">操作介面</div>
-              <a
-                class="nav-link collapsed"
-                href="#"
-                data-bs-toggle="collapse"
-                data-bs-target="#collapseLayouts"
-                aria-expanded="false"
-                aria-controls="collapseLayouts"
-              >
-                <div class="sb-nav-link-icon">
-                  <i class="fas fa-columns"></i>
-                </div>
-                商家管理
+                  商家管理
                 <div class="sb-sidenav-collapse-arrow">
-                  <i class="fas fa-angle-down"></i>
+                    <i class="fas fa-angle-down"></i>
                 </div>
-              </a>
-              <div
-                class="collapse"
-                id="collapseLayouts"
-                aria-labelledby="headingOne"
-                data-bs-parent="#sidenavAccordion"
-              >
-              <nav class="sb-sidenav-menu-nested nav">
-                <a class="nav-link" href="#">新增商品</a>
-              </nav>
+                </a>
+                <div
+                  class="collapse"
+                  id="collapseLayouts"
+                  aria-labelledby="headingOne"
+                  data-bs-parent="#sidenavAccordion"
+                >
+                
                 <nav class="sb-sidenav-menu-nested nav">
-                  <a class="nav-link" href="report_firm.html">商家檢舉</a>
+                  <a class="nav-link" href="./addNewProduct.html">新增商品</a>
                 </nav>
-              </div>
+                
+                <nav class="sb-sidenav-menu-nested nav">
+                  <a class="nav-link" href="./productManagement.html">商品管理</a>
+                </nav>
+  
+                <nav class="sb-sidenav-menu-nested nav">
+                  <a class="nav-link" href="./vendorManagementShipping.html">訂單管理</a>
+                    <div
+                    class="collapse"
+                    id="collapseLayouts"
+                    aria-labelledby="headingOne"
+                    data-bs-parent="#sidenavAccordion"
+                    >
+                <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link" href="./orderDetail.html">訂單明細</a>
+                </nav> 
+                </nav>
+  
+                <!-- <nav class="sb-sidenav-menu-nested nav">
+                  <a class="nav-link" href="report_firm.html">商家檢舉</a>
+                </nav> -->
+  
+                </div>
+
               <a
                 class="nav-link collapsed"
                 href="#"
@@ -221,20 +242,20 @@
                   id="sidenavAccordionPages"
                 >
                   <nav class="sb-sidenav-menu-nested nav">
-                    <a class="nav-link" href="report_user.html">會員檢舉</a>
+                    <!-- <a class="nav-link" href="report_user.html">會員檢舉</a> -->
                     <a class="nav-link" href="Login2.html">註冊會員</a>
                     <a class="nav-link" href="Forgot.html">忘記密碼</a>
                   </nav>
                 </nav>
               </div>
-              <div class="sb-sidenav-menu-heading">Addons</div>
+            <!-- <div class="sb-sidenav-menu-heading">Addons</div>
               <a class="nav-link" href="report_from.html">
                 <div class="sb-nav-link-icon">
                   <i class="fas fa-chart-area"></i>
                 </div>
                 檢舉表單
               </a>
-            </div>
+            </div> -->
           </div>
         </nav>
       </div>
@@ -244,6 +265,16 @@
           <div class="container">
             <h1>廠商註冊</h1>
             <form>
+                <div class="form-group">
+                    <label for="company_account">廠商註冊帳號(信箱)</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="company_account"
+                      placeholder="abc@mail.com"
+                    />
+                  </div>
+                
               <div class="form-group">
                 <label for="company_name">廠商名稱</label>
                 <input
@@ -253,24 +284,29 @@
                   placeholder="請輸入廠商名稱"
                 />
               </div>
-              <div class="form-group">
-                <label for="company_account">廠商註冊帳號(信箱)</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  id="company_account"
-                  placeholder="abc@mail.com"
-                />
-              </div>
+
               <div class="form-group">
                 <label for="company_password">密碼</label>
                 <input
-                  type="text"
+                  type="password"
                   class="form-control"
                   id="company_password"
                   placeholder="請輸入密碼"
+                  oninput="checkPasswordMatch()"
                 />
               </div>
+              
+              <div class="form-group">
+                <label for="confirm_password">確認密碼</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="confirm_password"
+                  placeholder="請輸入密碼"
+                  oninput="checkPasswordMatch()"
+                />
+              </div>
+              
               <div class="form-group">
                 <label for="company_man">負責人</label>
                 <input
@@ -278,15 +314,18 @@
                   class="form-control"
                   id="company_man"
                   placeholder="請輸入負責人"
+                  disabled
                 />
-              </div>
+              </div>           
+
               <div class="form-group">
                 <label for="company_phone">公司連絡電話</label>
                 <input
-                  type="number"
+                  type="text"
                   class="form-control"
                   id="company_phone"
                   placeholder="請輸入公司連絡電話"
+                  disabled
                 />
               </div>
               <div class="form-group">
@@ -296,6 +335,7 @@
                   class="form-control"
                   id="company_addr"
                   placeholder="請輸入公司地址"
+                  disabled
                 />
               </div>
              
@@ -303,8 +343,8 @@
 
               
               <!-- 商品狀態/ -->
-              <button type="button" id="btntest" class="btn btn-primary btn-submit">
-                新增
+              <button type="button" id="btntest" class="btn btn-primary btn-submit" disabled>
+                註冊
               </button>
             </form>
           </div>
@@ -344,6 +384,46 @@
     ></script>
     <script src="js/datatables-simple-demo.js"></script>
 
+    
+
+    <script>
+        function checkPasswordMatch() {
+            var passwordInput = document.getElementById("company_password");
+            var confirmPasswordInput = document.getElementById("confirm_password");
+            var companyManInput = document.getElementById("company_man");
+            var companyPhoneInput = document.getElementById("company_phone");
+            var companyAddrInput = document.getElementById("company_addr");
+            var button = document.getElementById("btntest");
+
+
+
+                if (
+                    passwordInput.value !== "" &&
+                    confirmPasswordInput.value !== "" &&
+                    passwordInput.value === confirmPasswordInput.value
+                ) {
+                    companyManInput.disabled = false;
+                    companyPhoneInput.disabled = false;
+                    companyAddrInput.disabled = false;
+                    button.disabled = false;
+                } else {
+                    companyManInput.disabled = true;
+                    companyPhoneInput.disabled = true;
+                    companyAddrInput.disabled = true;
+                    button.disabled = true;
+                }
+        }
+
+
+        // function togglePasswordVisibility() {
+        //   var passwordInput = document.getElementById("company_password");
+        //   if (passwordInput.type === "password") {
+        //     passwordInput.type = "text";
+        //   } else {
+        //     passwordInput.type = "password";
+        //   }
+        // }
+    </script>  
 
 
     <script>
@@ -370,7 +450,7 @@ document.getElementById('btntest').addEventListener('click', function(event) {
     var company = {
        
     "company_name" : companyName,
-    "company_account": companyAccount,
+    "company_email": companyAccount,
     "company_password": companyPassword,
     "company_man" : companyMan, 
     "company_phone": companyPhone,
