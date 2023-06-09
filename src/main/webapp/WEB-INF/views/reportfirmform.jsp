@@ -78,11 +78,11 @@
                   />
                 </div> -->
                 <div class="form-group">
-                  <label for="userId">(檢舉人)商家ID</label>
+                  <label for="userId">(檢舉人)商家帳號</label>
                   <input type="text" class="form-control" id="companyId" placeholder="Enter user ID"/>
                 </div>
                 <div class="form-group">
-                  <label for="companyId">被檢舉會員ID</label>
+                  <label for="companyId">被檢舉會員帳號</label>
                   <input type="text" class="form-control" id="userId" placeholder="Enter merchant ID"/>
                 </div>
                 <div class="form-group">
