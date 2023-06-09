@@ -90,10 +90,10 @@ public class AdminView {
 //		return "testpage";
 //	}
 //	
-////	測試會員清單
-//	@RequestMapping("/list")
-//	public String adminList() {
-//		return "adminlist";
-//	}
+//	測試會員清單
+	@RequestMapping("/admin/list")
+	public String adminList() {
+		return "adminlist";
+	}
 //
 }

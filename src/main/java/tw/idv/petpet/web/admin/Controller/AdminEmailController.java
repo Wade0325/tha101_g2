@@ -65,11 +65,19 @@ public class AdminEmailController {
 			adminRepository.save(adminEntity);
 			System.out.println(adminCheck.getAdminAccount() + "更改密碼完成");
 			mailService2.sendEmail(emailVO.getEmail(), "後台管理員", "Hello!親愛【PETPET陪陪你】" + adminCheck.getAdminName()
-					+ "用戶你好~	請使用此密碼【" + updatePass + "】登入，提醒你登入後請更改密碼，保障帳號密碼的權益");
+					+ "用戶你好~	請使用此密碼【" + updatePass + "】登入，提醒你登入後請更改密碼，保障帳號密碼的權益" + "登入網頁:http://localhost:8080/petpet/admin/login");
 			System.out.println("發送成功!!!");
 			return ResponseEntity.ok("Email sent successfully!");
 		} else {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("查無此資料");
 		}
+	}
+	@PostMapping("/sendEmailReport")
+	public ResponseEntity<String> sendEmailReport(@RequestBody EmailVO emailVO, AdminEntity adminEntity) {
+		String mail = emailVO.getEmail() + "@gmail.com" ;
+		System.out.println("被檢舉的信箱" + mail);
+		mailService2.sendEmail(mail, "後台管理員", "Hello!親愛的" + mail + "會員你好，近日收到您檢舉的表單，如果累犯會將您的帳號做停權");
+		System.out.println("發送成功!!!");
+		return ResponseEntity.ok("Email sent successfully!");
 	}
 }
