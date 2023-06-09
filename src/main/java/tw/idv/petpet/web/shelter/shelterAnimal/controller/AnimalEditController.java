@@ -1,8 +1,11 @@
 package tw.idv.petpet.web.shelter.shelterAnimal.controller;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -31,10 +34,14 @@ public class AnimalEditController {
 	
 	@PutMapping("animaledit/{animalId}")
 	@ResponseBody
-	public ShelterAnimal update(@PathVariable Integer animalId,@RequestBody ShelterAnimal shelterAnimal) {
-		shelterAnimal.setAnimalId(animalId);
-		service.update(shelterAnimal);
-		return shelterAnimal;
+	public ResponseEntity<Map<String, Object>> update(@PathVariable Integer animalId, @RequestBody ShelterAnimal shelterAnimal) {
+	    shelterAnimal.setAnimalId(animalId);
+
+	    boolean successful = service.update(shelterAnimal) != null;  // 假設 service.update 方法返回一個布林值表示更新是否成功
+
+	    Map<String, Object> responseBody = new HashMap<>();
+	    responseBody.put("successful", successful);
+	    return new ResponseEntity<>(responseBody, HttpStatus.OK);
 	}
 	@PutMapping("ifadopted/{animalId}")
 	@ResponseBody

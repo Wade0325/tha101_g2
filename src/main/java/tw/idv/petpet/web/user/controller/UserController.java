@@ -4,12 +4,14 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import tw.idv.petpet.web.clinic.clinicAppointment.entity.ClinicAppointment;
 import tw.idv.petpet.web.user.entity.User;
 import tw.idv.petpet.web.user.service.UserService;
 
@@ -21,7 +23,7 @@ public class UserController {
 	UserService userService;
 
 	@PostMapping("/register")
-	public User register(@RequestBody User user, HttpSession session) {
+	public User register(@RequestBody User user) {
 		System.out.println("Controller 開始執行 register 方法");
 		userService.register(user);
 		System.out.println("Controller 執行 register 方法成功");
@@ -32,6 +34,7 @@ public class UserController {
 	public User getUser(User user, HttpSession session) {
 		System.out.println("Controller 開始執行 getUser 方法");
 		User userSession = (User) session.getAttribute("userAccount");
+		
 		if (userSession.isLogin()) {
 			System.out.println("Controller 執行 getUser 方法成功");
 			return userService.getUser(userSession);
@@ -79,6 +82,19 @@ public class UserController {
 			return user;
 		}
 	}
+	
+	@PostMapping("/newLogin")
+	public User newLogin(@RequestBody User user, HttpSession session) {
+		System.out.println("Controller 開始執行 newLogin 方法");
+		User userSession = userService.login(user);
+		if (userSession.isSuccessful()) {
+			session.setAttribute("userAccount", userSession);
+		}
+		System.out.println("Controller 執行 newLogin 方法成功");
+		System.out.println(userSession.isSuccessful());
+		return userSession;
+	}
+	
 }
 
 //		@GetMapping("/findUser")

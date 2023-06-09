@@ -17,7 +17,7 @@
         }
         msg.textContent = '';
 
-        fetch('user/userController/login', {
+        fetch('userController/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

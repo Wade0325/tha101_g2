@@ -10,17 +10,9 @@
 <script src="../static/js/jquery-3.4.1.min.js"></script>
 <link href="../static/css/style2.css" rel="stylesheet" />
 <link href="../static/css/styles.css" rel="stylesheet" />
-<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
-	crossorigin="anonymous"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-	crossorigin="anonymous"></script>
-<style>
-.errortext {
-	color: red;
-	font-weight: bold;
-}
-</style>
+<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"	crossorigin="anonymous"></script>
+<script	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"	crossorigin="anonymous"></script>
+
 </head>
 <body>
 	<nav class="sb-topnav navbar navbar-expand navbar-dark color">
@@ -63,12 +55,17 @@
 			<div class="u-form-group">
 				<input type="password" placeholder="Password" id="adminLoginPassword" />
 			</div>
-
+			
+<!--       		<span id="captchaText"></span> -->
+<!--   			<div class="u-form-group"> -->
+<!--      		 	<input type="text" id="captchaInput" placeholder="驗證碼"> -->
+<!--    			</div> -->
+			
 			<div class="u-form-group" id="login-btn">
 				<button type="submit">Log in</button>
 			</div>
 			<div class="u-form-group">
-				<a href="Forgot.html" class="forgot-password">Forgot password?</a>
+				<a href="forgot" class="forgot-password">Forgot password?</a>
 			</div>
 		</form>
 
@@ -137,18 +134,16 @@
 			var passlength = pass.value.length;
 			console.log("取值和長度完成");
 			if (acclength === 0 || passlength === 0) {
-				// 				$("#errorMsg").addClass("errortext");
 				errorMsg.classList.add("errortext");
 				errorMsg.innerText = "帳號密碼不能為空";
 			} else if (acclength < 6 || passlength < 6) {
 				errorMsg.classList.add("errortext");
 				errorMsg.innerText = "帳號密碼不能少於6位數";
+			}else{
+				$("#errorMsg").removeClass("errortext");
+				console.log("清除完畢");
+				$('#adminRegisterForm').submit();
 			}
-			// 			$("#errorMsg").removeClass("errortext");
-			console.log(acclength + "\n" + passlength);
-			
-			alert();
-			$('#adminRegisterForm').submit();
 		});
 	</script>
 	<!--   註冊動作  -->
@@ -171,20 +166,27 @@
 
 			// 发送Ajax请求
 			$.ajax({
-				url : "/admin/register",
+				url : "register",
 				type : "POST",
 				contentType : "application/json",
 				data : JSON.stringify(adminData),
 				success : function(response) {
 					// 处理成功响应
-					console.log("新增成功");
-					alert("新增成功")
-					window.location.href = "register";
+					alert(response);
+					if(response == 1){
+						console.log("新增成功");
+						alert("新增成功")
+						window.location.href = "login";
+					}else{
+						console.log("新增失败，請重新申辦帳號");
+						alert("帳號重複，新增失敗");
+						window.location.href = "register";
+					}
 				},
 				error : function(error) {
 					// 处理错误响应
 					console.log("新增失败");
-					alert("新增成功")
+					alert("新增失败")
 					// 显示错误消息或执行其他错误处理逻辑
 				},
 			});
@@ -210,20 +212,20 @@
 
 			// 发送Ajax请求
 			$.ajax({
-				url : "/admin/login",
+				url : "login",
 				type : "POST",
 				contentType : "application/json",
 				data : JSON.stringify(adminData),
 				success : function(response) {
 					// 处理成功响应
 					console.log("response" , response);
-					if(response.code===0000){
+					if(response.code == 0000){
 						alert(response.msg);
+						window.location.href = "index";
 					}else{
 						alert(response.msg);
+						window.location.href = "login";
 					}
-					
-// 					window.location.href = "";
 				},
 				error : function(error) {			
 					console.log("error" , error);
@@ -231,7 +233,7 @@
 			});
 		});
 	</script>
-
 	<!--     登入結束 -->
+<!-- 	<script src="../static/js/authcode.js"></script> -->
 </body>
 </html>
