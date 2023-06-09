@@ -1,13 +1,15 @@
 (() => {
     const btn = document.querySelector('#btn');
     const msg = document.querySelector('#msg');
-    const email = document.querySelector('#email');
+    var email = document.querySelector('#email');
     const password = document.querySelector('#password');
     const checkPassword = document.querySelector('#checkPassword');
     const phone = document.querySelector('#phone');
     const address = document.querySelector('#address');
     const inputs = document.querySelectorAll('input');
     const userName = document.querySelector('#userName')
+    var check = false;
+
     btn.addEventListener('click', () => {
         const accLength = email.value.length;
         console.log(accLength);
@@ -34,33 +36,64 @@
         }
 
         msg.textContent = '';
-        fetch('userController/register', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                userAccount: email.value,
-                userPassword: password.value,
-                userTel: phone.value,
-                userName: userName.value
-            }),
-        })
-            .then(resp => resp.json())
-            .then(body => {
-                //解構賦值 const successful = body.successful
-                const { successful, message } = body;
-                if (successful) {
-                    for (let input of inputs) {
-                        input.disabled = true;
+        if (check) {
+            fetch('userController/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    userAccount: email.value,
+                    userPassword: password.value,
+                    userTel: phone.value,
+                    userName: userName.value
+                }),
+            })
+                .then(resp => resp.json())
+                .then(body => {
+                    const { successful, message } = body;
+                    if (successful) {
+                        for (let input of inputs) {
+                            input.disabled = true;
+                        }
+                        btn.disabled = true;
+                        msg.textContent = '註冊成功';
+                    } else {
+                        msg.textContent = '註冊失敗，' + message;
                     }
-                    btn.disabled = true;
-                    msg.textContent = '註冊成功';
-                } else {
-                    msg.textContent = '註冊失敗，' + message;
-
-                }
-            });
+                });
+        } else {
+            msg.textContent = '註冊失敗'
+        }
     });
 
+
+    var verifyText = document.querySelector("#verifyText");
+    var buttonVerify = document.querySelector("#buttonVerify");
+
+    buttonVerify.addEventListener("click", () => {
+        verifyCode = verifyText.value
+        userAccount = email.value
+
+        fetch(`checkVerify/${verifyCode}/${userAccount}`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'text/plain', // 將 Content-Type 設置為 'text/plain'
+            },
+            body: {
+
+            }
+        })
+            .then(response => response.text()) // 解析回傳的文字資料
+            .then(body => {
+                console.log(body)
+                if (body == "true") {
+                    window.alert("驗證成功")
+                    check = true
+                } else {
+                    window.alert("驗證失敗")
+                    verifyText.value = ''
+                }
+            });
+    })
 })();

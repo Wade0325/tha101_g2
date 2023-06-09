@@ -4,7 +4,8 @@ public enum ReturnCodeEnum {
 	
 	LOGIN_SUCCESS("0000", "登入成功"),
 	LOGIN_FAIL("E001", "登入失敗"),
-	SERVER_ERROR("9999", "登入失敗");
+	SERVER_ERROR("9999", "登入失敗"),
+	LOGOUT_SUCCESS("1111","登出成功");
 	
 	String code;
 	String msg;

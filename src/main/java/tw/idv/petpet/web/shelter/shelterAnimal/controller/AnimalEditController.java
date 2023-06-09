@@ -41,10 +41,6 @@ public class AnimalEditController {
 
 	    Map<String, Object> responseBody = new HashMap<>();
 	    responseBody.put("successful", successful);
-	    // 其他可能的回應屬性
-	    // responseBody.put("message", successful ? "更新成功" : "更新失敗");
-	    // responseBody.put("data", shelterAnimal);
-
 	    return new ResponseEntity<>(responseBody, HttpStatus.OK);
 	}
 	@PutMapping("ifadopted/{animalId}")

@@ -3,6 +3,7 @@
 package tw.idv.petpet.web.user.service.Impl;
 
 import java.io.File;
+import java.util.List;
 
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
@@ -15,9 +16,12 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
+import redis.clients.jedis.Jedis;
 // Importing required classes
 import tw.idv.petpet.web.user.entity.EmailDetails;
+import tw.idv.petpet.web.user.entity.User;
 import tw.idv.petpet.web.user.service.EmailService;
+import tw.idv.petpet.web.user.service.UserService;
 
 @Service
 public class EmailServiceImpl implements EmailService {
@@ -25,12 +29,53 @@ public class EmailServiceImpl implements EmailService {
 	@Autowired
 	private JavaMailSender javaMailSender;
 
+	@Autowired
+	private UserService userService;
+
 	@Value("${spring.mail.username}")
 	private String sender;
 
+	private static void redisVerifiCode(String userAccount,String verifiCode) {
+		Jedis jedis = new Jedis("localhost", 6379);
+		jedis.lpush(userAccount, verifiCode); // 左側插入
+		jedis.expire("test", 10);
+		jedis.close();
+	}
+	
 	// Method 1
 	// To send a simple email
 	public String sendSimpleMail(EmailDetails details) {
+
+		// Try block to check for exceptions
+		try{
+			 // Creating a simple mail message
+			SimpleMailMessage mailMessage = new SimpleMailMessage();
+
+			String userAccount = details.getRecipient();
+			String verifiCode = getAuthCode(); // 取得驗證信密碼
+			redisVerifiCode(userAccount,verifiCode);
+			
+			// Setting up necessary details
+			mailMessage.setFrom(sender);
+			mailMessage.setTo(details.getRecipient());
+
+			mailMessage.setText(verifiCode);
+			mailMessage.setSubject("註冊驗證信");
+
+			System.out.println(details.getRecipient());
+			
+			// Sending the mail
+			javaMailSender.send(mailMessage);
+			return "Mail send successful...";
+		}
+
+		// Catch block to handle the exceptions
+		catch (Exception e) {
+			return "Error while Sending Mail";
+		}
+	}
+
+	public String sendForgotMail(EmailDetails details) {
 
 		// Try block to check for exceptions
 		try {
@@ -39,13 +84,13 @@ public class EmailServiceImpl implements EmailService {
 
 			// Setting up necessary details
 			mailMessage.setFrom(sender);
-			mailMessage.setTo(details.getRecipient());
-			
-			String verifiCode = getAuthCode(); // 取得驗證信密碼
-			mailMessage.setText(verifiCode);
-			details.setVerifiCode(verifiCode);
-			
-			mailMessage.setSubject("註冊驗證信");
+			mailMessage.setTo(details.getRecipient()); // 目的地信箱
+
+			String randonNewPassword = getAuthCode(); // 取得隨機新密碼
+			mailMessage.setText(randonNewPassword);
+			mailMessage.setSubject("新密碼");
+
+			userService.update(details.getRecipient(), randonNewPassword);
 
 			// Sending the mail
 			javaMailSender.send(mailMessage);
@@ -93,6 +138,23 @@ public class EmailServiceImpl implements EmailService {
 		}
 	}
 
+	@Override
+	public String checkVerifyText(String verifyText, String userAccount) {
+		Jedis jedis = new Jedis("localhost", 6379);
+		System.out.println(userAccount);
+		List<String> list = jedis.lrange(userAccount, 0, 0); // key:使用者信箱
+		jedis.close();
+		System.out.println(verifyText);
+		System.out.println(list.get(0));
+		if(verifyText.equals(list.get(0))) {
+			String status = "true"; 
+			return status;
+		}else {
+			String status = "false"; 
+			return status;
+		}
+	}
+
 	public static String getAuthCode() {
 		String verifiCode = "";
 		// 用亂數決定第i個位置產生英文大寫還是小寫還是數字
@@ -119,4 +181,5 @@ public class EmailServiceImpl implements EmailService {
 		}
 		return verifiCode;
 	}
+
 }

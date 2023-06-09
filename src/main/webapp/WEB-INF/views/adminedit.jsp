@@ -9,7 +9,7 @@
               href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
             />
           </style>
-          <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet" />
+          <link href="../static/assets/dist/css/bootstrap.min.css" rel="stylesheet" />
           <!-- css -->
           <link href="../static/css/product.css" rel="stylesheet" type="text/css" />
         
@@ -155,19 +155,23 @@
      	</div>
 	</div>
 </main>
-            <footer class="py-4 bg-light mt-auto">
-        		<div class="container-fluid px-4">
-          			<div class="d-flex align-items-center justify-content-between small">
-            			<div class="text-muted">Copyright &copy;by | PETPET陪陪你 2023</div>
-            				<div>
-             	 			<a href="#">TOP</a>&middot;
-              	 			<a href="#">置頂</a>
-            			</div>
-          			</div>
-        		</div>
-      </footer>
+<!--             <footer class="py-4 bg-light mt-auto"> -->
+<!--         		<div class="container-fluid px-4"> -->
+<!--           			<div class="d-flex align-items-center justify-content-between small"> -->
+<!--             			<div class="text-muted">Copyright &copy;by | PETPET陪陪你 2023</div> -->
+<!--             				<div> -->
+<!--              	 			<a href="#">TOP</a>&middot; -->
+<!--               	 			<a href="#">置頂</a> -->
+<!--             			</div> -->
+<!--           			</div> -->
+<!--         		</div> -->
+<!--      		 </footer> -->
             <script src="../static/js/jquery-3.4.1.min.js"></script>
             <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+            <script	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+			<script src="../static/js/scripts.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>		
+			<script	src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
           </body>
         </html>
         
@@ -187,7 +191,7 @@
         	adminAccount.val("test");
         	adminPassword.val("test");
         		$.ajax({
-        			url : "/admin/edit",
+        			url : "edit",
         			type : "post",
         			contentType : "application/json",
         			success : function(adminData){
@@ -207,7 +211,7 @@
                  			};
         					console.log(updatedAdminData);
                  			$.ajax({
-                 				url :"/admin/update",
+                 				url :"update",
                  				type :"POST",
                  				contentType :"application/json",
                  				data :JSON.stringify(updatedAdminData),
