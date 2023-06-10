@@ -2,8 +2,12 @@ const urlParams = new URLSearchParams(window.location.search);
 const id = urlParams.get('applyid');
 const animalid = urlParams.get('animalid');
 const subbtn = document.querySelector('#delaybtn');
+document.getElementById('userid').style.display = 'none';
+document.getElementById('useraccount').style.display = 'none';
 
-//window.location.href = `applycheck.html?animalid=${animalid}&applyid=${applyid}`;
+
+const useraccount = document.querySelector('#useraccount');
+const userid = document.querySelector('#userid');
 const animalType = document.querySelector('#animalType');
 const animalName = document.querySelector('#animalName');
 const animalP1 = document.querySelector('#animalphoto');
@@ -76,18 +80,31 @@ fetch(`animalfindbyid/${animalid}`, {
         homesize.value = adopt.homeSize,
         plan.value = adopt.plan,
         question.value = adopt.question,
-        date.textContent = adopt.adopterApplyDate        
-
+        date.textContent = adopt.adopterApplyDate 
+        userid.value = adopt.userId;       
+        useraccount.value = adopt.userAccount;       
+		
 	})
 	
 
+
+var shelteranimal = {  
+  "ifAdopted": ifAdoptedValue,
+  "userId": userIdValue
+};
+
+
 subbtn.addEventListener('click', function() {
-  if (!confirm('確定將此userxxx設為animal領養人?')) {
+  if (!confirm('確定將此設為animal領養人?')) {
     return;
   } else {
+	  
+if (userIdValue === "") {
+  userIdValue = "未被領養";
+}
     var shelteranimal = {  
       "ifAdopted": "1",
-      "userId": "1"
+      "userId": useraccount.value
     };
   
     fetch(`ifadopted/${animalid}`, {
