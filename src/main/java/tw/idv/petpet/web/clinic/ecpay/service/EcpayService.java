@@ -58,10 +58,16 @@ public class EcpayService {
 		aio.setNeedExtraPaidInfo("N");
 
 		aio.setClientBackURL("");// 付款完成頁面上顯示[返回商店]的按鈕，放petpet網站首頁網址
-		aio.setReturnURL("https://www.youtube.com/"); // 必是https，以ngrok填入
+		aio.setReturnURL("https://www.google.com.tw/?hl=zh_TW"); // 必是https，以ngrok填入
 
 		String form = all.aioCheckOut(aio, null);
-
+		
 		return form;
 	}
+	
+	public void updatePayIfo(Integer reservationNumber) {
+		clinicAppointmentService.updatePayInfo(reservationNumber);
+	}
+	
+	
 }
