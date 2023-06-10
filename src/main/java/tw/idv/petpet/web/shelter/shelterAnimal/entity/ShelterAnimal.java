@@ -50,5 +50,6 @@ public class ShelterAnimal extends Core{
     private Integer shelterId;
     private String animalNumber;
     private String shelterName;
+    private String animalArea;
     
 }
