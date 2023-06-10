@@ -26,8 +26,97 @@
 
 
     <link rel="stylesheet" href="css/forum.css">
-    <link rel="stylesheet" href="css/css/article_cat.css">
+    <!-- <link rel="stylesheet" href="css/css/article_cat.css"> -->
 
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f1f1f1;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        nav ul li {
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .article-container {
+            background-color: white;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .article-title {
+            margin-left: 50px;
+        }
+
+        .article-info {
+            color: #888;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
+        .article-content {
+            margin-top: 20px;
+            font-size: 30px;
+            color: black;
+        }
+
+        .article-reaction {
+            margin-top: 20px;
+        }
+
+        .reaction-btn {
+            padding: 10px 20px;
+            background-color: #ccc;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+
+        #reply-form {
+            margin-top: 20px;
+        }
+
+        #reply-form textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        /* #reply-form button {
+    padding: 10px 20px;
+    background-color: #ccc;
+    border: none;
+    color: white;
+    cursor: pointer;
+  } */
+
+        .reaction-btn {
+            padding: 10px 20px;
+            background-color: gray;
+            border: none;
+            color: white;
+            cursor: pointer;
+            margin: 20px;
+        }
+
+        #reply-button {
+            padding: 10px 20px;
+            background-color: gray;
+            border: none;
+            color: white;
+            cursor: pointer;
+            margin: 20px;
+        }
+    </style>
 </head>
 
 <body>
@@ -64,44 +153,33 @@
                     <li><a href="dog_chat.html">狗狗討論區</a></li>
                 </ul>
             </nav>
-            <div class="article-container">
-                <div id="articleContainer">
-                    <!-- 動態頁面，從資料庫抓id -->
+            <section class="art-con" , id="tbody">
+                <div class="article-container" id="article-container">
+                    <div class="article-info" id="articleId">
+                        <h2 class="article-title" id="articleTitle"></h2>
+                        <div>
+                            <span class="article-author" id="userId"></span>
+                        </div>
+                        <div>
+                            <span class="article-time" id="articleCreateTime"></span>
+                        </div>
+                        <div>
+                            <span class="article-content" id="articleContent"></span>
+                        </div>
+                    </div>
                 </div>
-                <!-- <h2 class="article-title" id="articleTitle"></h2>
-                <div class="article-info">
-                    <span class="article-author" id="userId"></span> |
-                    <span class="article-time" id="articleCreateTime"></span>
-                </div>
-                <div class="article-content" id="articleContent"></div> -->
+            </section>
+            <!-- <div id="articleContainer">
+                     動態頁面，從資料庫抓id -->
+            <!-- </div>  -->
 
-
-
-
-
-
-
-                <!-- <h2 class="article-title">大家好這是我剛領養的貓貓</h2>
-                <div class="article-info">
-                    <span class="article-author">作者：胖子翁</span> |
-                    <span class="article-time">發表時間：2023-05-29</span>
-                </div>
-                <div class="article-content">
-                    大家好這是我家的小貓咪。
-                </div> -->
-                <div class="article-reaction">
-                    <!-- <button class="reaction-btn" id="like-btn" onclick='likeArticle()'>讚</button>
-                    <button class="reaction-btn" id="dislike-btn" onclick="">踩</button>
-                    <span id="like-count">0</span> 人讚 |
-                    <span id="dislike-count">0</span> 人踩
-                    <button class="reaction-btn" id="bookmark-btn" onclick="">收藏</button> -->
-                    <button class="reaction-btn" id="report-btn" onclick="">檢舉</button>
-                </div>
+            <div class="article-reaction">
+                <button class="reaction-btn" id="report-btn" onclick="">檢舉</button>
             </div>
+            
+            <hr>
 
-
-
-            <div id="reply-section">
+            <div id="rect " class="reply-container">
                 <!-- 回覆內容將動態插入這裡 -->
             </div>
 
@@ -110,7 +188,7 @@
             <!-- <textarea id="reply-message" placeholder="在這裡輸入你的回覆..." required></textarea>
                 <button type="submit">送出回覆</button>
             </form> -->
-            <button type="submit" id="reply-button">回覆</button>
+            <button type="button" id="reply-button" onclick="">回覆</button>
         </main>
         <!-- 程式放裡面 -->
 
@@ -200,158 +278,23 @@
 
         <!-- <script src="js/test_article_cat.js"></script> -->
         <script type="text/javascript">
-            document.getElementById("reply-button").addEventListener("click", function () {
-                window.location.href = "reply.html";
+            //  document.getElementById("reply-button").addEventListener("click", function () { 
+            //     window.location.href = "reply.html";
+            // }); 
+            // document.getElementById("report-btn").addEventListener("click", function () {
+            //     window.location.href = "report_article.html";
+            // });
+
+
+            // 點擊檢舉按鈕的監聽事件
+            const reportBtn = document.querySelector('#report-btn');
+            reportBtn.addEventListener('click', () => {
+                window.location.href = `report_article.html?articleId=${articleId}`;
             });
-            document.getElementById("report-btn").addEventListener("click", function () {
-                window.location.href = "report_article.html";
-            });
-
-            // const articleContainer = document.querySelector('#articleContainer');
-            // const articleId = 35;
-
-            // fetch('article_cat', {
-            //     method: 'POST',
-            //     headers: {
-            //         'Content-Type': 'application/json',
-            //     },
-            //     body: JSON.stringify({
-            //         articleId: articleId,
-            //         userId: 0,
-            //         articleGroupId: 1,
-            //         articleTitle: 測試,
-            //         articleContent: 測試發表文章內建的js是否有用,
-            //         articleImage: Y2F0MS5qcGc,
-            //         articleCreateTime: 2023 - 06 - 05,
-            //         // modifierTime: null,
-            //         articleStatus: null
-            //     }),
-
-            // })
-            //     .then(resp => resp.json())
-            //     .then(articleData => {
-            //         articleContainer.innerHTML = `
-            //          <h2 class="article-title">${articleData.articleTitle}</h2>
-            //          <div class="article-info">
-            //             <span class="article-author">作者:${articleData.userId}</span> |
-            //              <span class="article-time">發表時間：${articleData.articleCreateTime}</span>
-            //          </div>
-            //          <div class="article-content">
-            //              ${articleData.articleContent}
-            //          </div>
-            //          `
-            //     });
-            //     .catch(error => {
-            //         console.error('获取文章数据出错：', error);
-            //         // 处理错误情况
-            //     });
-
-            // $.ajax({
-            //     url: `/forum/article_cat.html/${articleId}`,
-            //     type: 'GET',
-            //     dataType: 'json',
-            //     success: function (articleData) {
-            //         // 使用返回的文章数据进行页面渲染
-            //         // ...
-
-            //         const articleTitle = document.createElement('h2');
-            //         articleTitle.classList.add('article-title');
-            //         articleTitle.textContent = articleData.articleTitle;
-            //         articleContainer.appendChild(articleTitle);
-
-            //         const articleAuthor = document.createElement('span');
-            //         articleAuthor.classList.add('article-author');
-            //         articleAuthor.textContent = `作者：${articleData.userId}`;
-            //         articleContainer.appendChild(articleAuthor);
-
-            //         const articleTime = document.createElement('span');
-            //         articleTime.classList.add('article-time');
-            //         articleTime.textContent = `發表時間：${articleData.articleCreateTime}`;
-            //         articleContainer.appendChild(articleTime);
-
-            //         const articleContent = document.createElement('div');
-            //         articleContent.classList.add('article-content');
-            //         articleContent.textContent = articleData.articleContent;
-            //         articleContainer.appendChild(articleContent);
-            //     },
-            //     error: function (xhr, textStatus, error) {
-            //         console.error('获取文章数据出错：', error);
-            //         // 处理错误情况
-            //     }
-            // fetch('/forum/findArticleById/${articleId}')
-            //     .then(resp => {
-            //         return resp.json();
-            //     })
-            //     .then(articleData => {
-            //         // 使用返回的文章数据进行页面渲染
-            //         // ...
-            //         articleContainer.innerHTML = `
-            //         <h2 class="article-title">${articleData.articleTitle}</h2>
-            //         <div class="article-info">
-            //             <span class="article-author">作者:${articleData.userId}</span> |
-            //             <span class="article-time">發表時間：${articleData.articleCreateTime}</span>
-            //         </div>
-            //         <div class="article-content">
-            //             ${articleData.articleContent}
-            //         </div>
-            //         `
-            //     })
-            //     .catch(error => {
-            //         console.error('获取文章数据出错：', error);
-            //         // 处理错误情况
-            //     });
 
 
-            // fetch('/forum/article_cat/${articleId}')
-            //     .then(resp => resp.json())
-            //     .then(articleData => {
 
-            //         articleContainer.innerHTML = `
-            //         <h2 class="article-title">${articleData.articleTitle}</h2>
-            //         <div class="article-info">
-            //             <span class="article-author">作者:${articleData.userId}</span> |
-            //             <span class="article-time">發表時間：${articleData.articleCreateTime}</span>
-            //         </div>
-            //         <div class="article-content">
-            //             ${articleData.articleContent}
-            //         </div>
-            //         `
-            //     })
-            //     .catch(error => {
-            //         console.error('获取文章数据出错：', error);
-            //         // 处理错误情况
-            //     });
         </script>
 </body>
 
 </html>
-
-<!-- const articleDiv = document.createElement('div');
-articleDiv.classList.add('article-container');
-
-const articleTitle = document.createElement('h2');
-articleTitle.classList.add('article-title');
-articleTitle.textContent = articleData.article_title;
-articleDiv.appendChild(articleTitle);
-
-const articleInfo = document.createElement('div');
-articleInfo.classList.add('article-info');
-
-const articleAuthor = document.createElement('span');
-articleAuthor.classList.add('article-author');
-articleAuthor.textContent = '作者：' + articleData.user_id;
-articleInfo.appendChild(articleAuthor);
-
-const articleTime = document.createElement('span');
-articleTime.classList.add('article-time');
-articleTime.textContent = '發表時間：' + articleData.article_create_time;
-articleInfo.appendChild(articleTime);
-
-articleDiv.appendChild(articleInfo);
-
-const articleContent = document.createElement('div');
-articleContent.classList.add('article-content');
-articleContent.textContent = articleData.article_content;
-articleDiv.appendChild(articleContent);
-
-articleContainer.appendChild(articleDiv); -->

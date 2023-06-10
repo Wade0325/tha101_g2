@@ -38,13 +38,13 @@ nav ul li {
     margin-top: 20px;
 }
 
-/* .reaction-btn {
+.reaction-btn {
     padding: 10px 20px;
     background-color: #ccc;
     border: none;
     color: white;
     cursor: pointer;
-  } */
+  }
 
 #reply-form {
     margin-top: 20px;
@@ -72,6 +72,7 @@ nav ul li {
     border: none;
     color: white;
     cursor: pointer;
+    margin: 20px;
 }
 
 #reply-button {
