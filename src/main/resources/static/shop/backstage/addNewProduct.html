@@ -142,8 +142,8 @@
             class="dropdown-menu dropdown-menu-end"
             aria-labelledby="navbarDropdown"
           >
-            <li><a class="dropdown-item" href="Login2.html">註冊</a></li>
-            <li><a class="dropdown-item" href="Login2.html">登入</a></li>
+            <li><a class="dropdown-item" href="./vendorRegistration.html">註冊</a></li>
+            <li><a class="dropdown-item" href="./backstagelogin/admin_login.html">登入</a></li>
             <li><hr class="dropdown-divider" /></li>
             <li><a class="dropdown-item" href="#!">登出</a></li>
           </ul>
@@ -187,12 +187,31 @@
                 aria-labelledby="headingOne"
                 data-bs-parent="#sidenavAccordion"
               >
-              <nav class="sb-sidenav-menu-nested nav">
-                <a class="nav-link" href="#">新增商品</a>
+               <nav class="sb-sidenav-menu-nested nav">
+                <a class="nav-link" href="./addNewProduct.html">新增商品</a>
               </nav>
-                <nav class="sb-sidenav-menu-nested nav">
-                  <a class="nav-link" href="report_firm.html">商家檢舉</a>
-                </nav>
+              
+              <nav class="sb-sidenav-menu-nested nav">
+                <a class="nav-link" href="./productManagement.html">商品管理</a>
+              </nav>
+
+              <nav class="sb-sidenav-menu-nested nav">
+                <a class="nav-link" href="./vendorManagementShipping.html">訂單管理</a>
+                  <div
+                  class="collapse"
+                  id="collapseLayouts"
+                  aria-labelledby="headingOne"
+                  data-bs-parent="#sidenavAccordion"
+                  >
+                  <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link" href="./orderDetail.html">訂單明細</a>
+                  </nav> 
+              </nav>
+
+              <!-- <nav class="sb-sidenav-menu-nested nav">
+                <a class="nav-link" href="report_firm.html">商家檢舉</a>
+              </nav> -->
+
               </div>
               <a
                 class="nav-link collapsed"
@@ -221,25 +240,24 @@
                   id="sidenavAccordionPages"
                 >
                   <nav class="sb-sidenav-menu-nested nav">
-                    <a class="nav-link" href="report_user.html">會員檢舉</a>
-                    <a class="nav-link" href="Login2.html">註冊會員</a>
-                    <a class="nav-link" href="Forgot.html">忘記密碼</a>
+                    <!-- <a class="nav-link" href="report_user.html">會員檢舉</a> -->
+                    <a class="nav-link" href="./vendorRegistration.html">註冊會員</a>
+                    <a class="nav-link" href="./forgetThePassword.html">忘記密碼</a>
                   </nav>
                 </nav>
               </div>
-              <div class="sb-sidenav-menu-heading">Addons</div>
+              <!-- <div class="sb-sidenav-menu-heading">Addons</div>
               <a class="nav-link" href="report_from.html">
                 <div class="sb-nav-link-icon">
                   <i class="fas fa-chart-area"></i>
                 </div>
                 檢舉表單
-              </a>
+              </a> -->
             </div>
           </div>
         </nav>
       </div>
       <div id="layoutSidenav_content">
-        <!-- 新增商品頁 -->
         <main>
           <div class="container">
             <h1>新增商品</h1>
@@ -284,10 +302,10 @@
                 <label for="product-category">商品類別</label>
                 <select class="form-control" id="product-category">
                   <option>選擇類別</option>
-                  <option>電子產品</option>
-                  <option>家具</option>
-                  <option>服飾</option>
-                  <option>食品</option>
+                  <option>寵物食品</option>
+                  <option>寵物服飾</option>
+                  <option>外出用品</option>
+                  <option>寵物玩具</option>                  
                 </select>
               </div>
         
@@ -334,50 +352,7 @@
               </div>
 
               <!-- 新增圖片/ -->
-              <!-- <div class="form-group">
-                <label for="product-featured">特色商品</label>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    id="product-featured"
-                  />
-                  <label class="form-check-label" for="product-featured">
-                    是
-                  </label>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="product-colors">可選顏色</label>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    id="color-red"
-                  />
-                  <label class="form-check-label" for="color-red"> 紅色 </label>
-                </div>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    id="color-blue"
-                  />
-                  <label class="form-check-label" for="color-blue">
-                    藍色
-                  </label>
-                </div>
-                <div class="form-check">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    id="color-green"
-                  />
-                  <label class="form-check-label" for="color-green">
-                    綠色
-                  </label>
-                </div>
-              </div> -->
+              
               <!-- 商品狀態 -->
               <div class="form-group">
                 <label for="product-category">商品狀態</label>
@@ -387,8 +362,8 @@
                 </select>
               </div>
               <!-- 商品狀態/ -->
-              <button type="button" id="btntest" class="btn btn-primary btn-submit">
-                新增
+              <button id="btntest"  class ="btn btn-primary btn-submit" ">
+              	新增
               </button>
             </form>
           </div>
@@ -431,6 +406,7 @@
 
 
     <script>
+    
       const uploadDiv = document.getElementById("uploadDiv");
       const uploadInput = document.getElementById("uploadInput");
       const uploadContainer = document.querySelector(".upload-container");
@@ -452,7 +428,7 @@
       // 監聽圖片選擇事件
       uploadInput.addEventListener("change", handleImageUpload);
     
-
+		
       
       // 處理圖片上傳
       function handleImageUpload(event) {
@@ -478,6 +454,7 @@
     
               imgimg = document.createElement("img");
               imgSrc = e.target.result;
+              console.log(imgSrc);
               // const img = document.createElement("img");
               // img.src = e.target.result;
               const deleteButton = document.createElement("button");
@@ -528,12 +505,14 @@
         
           parts1 = base64Data1.split(",");
           base64Data1 = parts1[1];
+          // console.log(base64Data1);
+          
 
         }
         if (imageCount == 2) {
           animalphoto2 = imgSrc;
-          base64Data2 =animalphoto2;
-          console.log(base64Data2);
+          base64Data2 = animalphoto2;
+         
          
           parts2 = base64Data2.split(",");
           base64Data2 = parts2[1];
@@ -570,6 +549,8 @@
 
 
 document.getElementById('btntest').addEventListener('click', function(event) {
+	
+	console.log("test");
     event.preventDefault();
     var proname = document.getElementById('productName').value;
     var proprice = document.getElementById('product-price').value;
@@ -577,7 +558,6 @@ document.getElementById('btntest').addEventListener('click', function(event) {
     var productdescription = document.getElementById('product-description').value;  //商品描述
     var catename = document.getElementById('product-category').value;
     var prostatus = document.getElementById('product-category-n').value;
-    
     
     
     // 构建商品对象
@@ -588,7 +568,7 @@ document.getElementById('btntest').addEventListener('click', function(event) {
     "pro_amount": proquantity,
     "pro_det" : productdescription, 
     "cate_name": catename,
-    "company_id": "test",
+    "company_id": 2,
     "email":"test",
     "pro_status":prostatus,
     "pro_pic1": parts1[1],
@@ -608,10 +588,12 @@ document.getElementById('btntest').addEventListener('click', function(event) {
     .then(response => response.json())
     .then(data => {
         console.log(data);
+        window.location.href = 'addNewProductSuccessfully.html?productId=' + data.pro_id;
         
     })
     .catch(error => {
         console.error('Error:', error);
+        console.log("catch錯誤");
        
     });
 });

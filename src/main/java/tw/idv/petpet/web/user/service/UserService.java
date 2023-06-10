@@ -8,7 +8,7 @@ public interface UserService extends CoreService {
 	public User register(User user);
 
 	public User getUser(User user);
-	
+
 	public User getUser(String userAccount);
 
 	public User login(User user);
@@ -17,6 +17,6 @@ public interface UserService extends CoreService {
 
 	public User update(String account, String password);
 
-	public User updatePwd(User user,User userSession);
+	public User updatePwd(User user, User userSession);
 
 }

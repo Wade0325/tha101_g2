@@ -23,13 +23,37 @@
 
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/style.css">
+<style>
+  .clinic-photo {
+    
+    width: 100%;
+    object-fit: cover;
+  }
+  h2 {
+  font-size: 40px;
+}
+
+h3 {
+  font-size: 35px;
+}
+#title {
+    font-size: 40px;
+    color: black;
+    text-align: center;
+  }
+
+
+</style>
+
+
+    
 </head>
 
 <body>
     <div class="wrap"  >
         <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
             <div class="container">
-                <a class="navbar-brand" href="index.html"><img src="/images/1.jpg" width="80px"
+                <a class="navbar-brand" href="index.html"><img src="images/petpet.png" width="80px"
                         height="80px">PetPet陪陪你</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
                     aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -56,76 +80,12 @@
           <div class="col-md-12 ftco-animate pt-2 pb-2" >
             <section>
                 <div class="container">
-                    <form action="#" method="post" novalidate="novalidate">
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="row">
-                                    <div class="col-lg-6 col-md-3 col-sm-12 pl-5">
-                                        <select class="form-control search-clinic" id="ClinicSelect1">
-                                            <option>請選擇寵物類型</option>
-                                            <option value="1">貓科</option>
-                                            <option value="2">犬科</option>
-                                            <option value="3">心臟科</option>
-                                            <option value="4">兔科</option>
-                                            <option value="5">腫瘤病理科</option>
-                                            <option value="6">急診加護科</option>
-                                            <option value="7">牙科</option>
-                                            <option value="8">中獸醫科</option>
-                                            <option value="9">眼科</option>
-                                            <option value="10">皮膚科</option>
-                                            <option value="11">腎病泌尿科</option>
-                                            <option value="12">進階外科</option>
-                                            <option value="13">麻醉科</option>
-                                            <option value="14">影像科</option>
-                                            <option value="15">臨床營養科</option>
-                                            <option value="16">骨關節科</option>
-                                            <option value="17">老年醫學科</option>
-                                            <option value="18">內分泌科</option>
-                                            <option value="19">家醫科</option>
-                                            <option value="20">神經內科</option>
-                                            <option value="21">兩棲爬蟲科</option>   
-                                        </select>
-                                    </div>
-                                    <!-- <div class="col-lg-1 col-md-1 col-sm-12 p-0">
-                                        
-                                    </div> -->
-                                    <div class="col-lg-4 col-md-3 col-sm-12 pl-6 pr-6">
-                                        <select class="form-control search-clinic" id="ClinicSelect2">
-                                            <option>請選擇縣市</option>
-                                            <option value="1"> 臺北市</option>
-                                            <option value="2">新北市</option>
-                                            <option value="3">基隆市</option>
-                                            <option value="4">桃園縣</option>
-                                            <option value="5">新竹市</option>
-                                            <option value="6">新竹縣</option>
-                                            <option value="7">苗栗縣</option>
-                                            <option value="8">台中市</option>
-                                            <option value="9">彰化縣</option>
-                                            <option value="10">南投縣</option>
-                                            <option value="11">雲林縣</option>
-                                            <option value="12">嘉義市</option>
-                                            <option value="13">嘉義縣</option>
-                                            <option value="14">台南市</option>
-                                            <option value="15">高雄市</option>
-                                            <option value="16">屏東縣</option>
-                                            <option value="17">台東縣</option>
-                                            <option value="18">花蓮縣</option>
-                                            <option value="19">宜蘭縣</option>
-                                            <option value="20">澎湖縣</option>
-                                            <option value="21">金門縣</option>
-                                            <option value="22">連江縣</option>
-                                        </select>
-                                    </div>
-                                    <!-- <div class="col-lg-1 col-md-1 col-sm-12 p-0 ">
-                                
-                                    </div> -->
-                                    <div class="col-lg-1 col-md-1 col-sm-12 p-1 ">
-                                        <button type="button" class="btn btn-success wrn-btn">Search</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
+                   <div class="row no-gutters slider-text align-items-end">
+                <div class="col-md-12 ftco-animate d-flex justify-content-center">
+                    <h1 class="mb-0 bread">尋找診所</h1>
+                </div>
+            </div>
+                   
                 </div>
             </section>
           </div>
@@ -133,44 +93,44 @@
       </div>
         <div class="ftco-section bg-light p-3"></div>
         <!-- 診所搜尋結果 -->
-        <a href="/vetsearch3.html">
+        <a href="http://localhost:8080/petpet/clinic/clinicAppointment/frontstage/PetPet/clinicReservationSpot.html">
         <section class="ftco-section bg-light p-0" >
             <div class="container">
               <div class="row">
                 <div class="col-md-6 col-lg-12 ftco-animate">
             <div class="staff">
-              <div class="img-wrap d-flex align-items-stretch">
-                <div
-                  class="col-md-6 col-lg-3 img align-self-stretch"
-                  style="background-image: url(images/clinci-pic1.jpeg)"
-                ></div>
-                <div class="col-md-6 col-lg-9 text pt-3 px-3 pb-4 text-left">
-                    <h2>全國動物醫院</h2>
-                    <span class="flaticon-pawprint-1 mr-2"></span>
-                    <h3 class="position mb-2">台北市北區中清路一段566號</h3>
-                    <br>
-                    <span class="flaticon-pawprint-1 mr-2"></span>
-                    <h3 class="position mb-2">02-12348765</h3>
-                    <div class="faded">
-                      <p>
-                        本體系於全台灣(台北、台中、台南)共有17間分院，其中包含3間24H醫院，依照分級醫療的方式，透過各院所分工合作及雙向轉診，
-                        提供毛孩整合性醫療照護以及優質的照護品質，且採用統一病歷系統，完整記錄檢測、診斷、用藥…等資訊，打造縝密醫療網。
-                      </p>
-                    </div>
-                  </div>
-              </div>
+<!--               <div class="img-wrap d-flex align-items-stretch"> -->
+<!--                 <div -->
+<!--                   class="col-md-6 col-lg-3 img align-self-stretch" -->
+<!--                   style="background-image: url(images/clinci-pic1.jpeg)" -->
+<!--                 ></div> -->
+<!--                 <div class="col-md-6 col-lg-9 text pt-3 px-3 pb-4 text-left"> -->
+<!--                     <h2>全國動物醫院</h2> -->
+<!--                     <span class="flaticon-pawprint-1 mr-2"></span> -->
+<!--                     <h3 class="position mb-2">台北市北區中清路一段566號</h3> -->
+<!--                     <br> -->
+<!--                     <span class="flaticon-pawprint-1 mr-2"></span> -->
+<!--                     <h3 class="position mb-2">02-12348765</h3> -->
+<!--                     <div class="faded"> -->
+<!--                       <p> -->
+<!--                         本體系於全台灣(台北、台中、台南)共有17間分院，其中包含3間24H醫院，依照分級醫療的方式，透過各院所分工合作及雙向轉診， -->
+<!--                         提供毛孩整合性醫療照護以及優質的照護品質，且採用統一病歷系統，完整記錄檢測、診斷、用藥…等資訊，打造縝密醫療網。 -->
+<!--                       </p> -->
+<!--                     </div> -->
+<!--                   </div> -->
+<!--               </div> -->
             </div>
         </div>
         </section>
         </a>
         <!-- 診所搜尋結果 -->
-        <a href="/vetsearch3.html">
+       <a href="http://localhost:8080/petpet/clinic/clinicAppointment/frontstage/PetPet/clinicReservationSpot.html">
           <section class="ftco-section bg-light p-0" >
               <div class="container">
                 <div class="row">
                   <div class="col-md-6 col-lg-12 ftco-animate">
               <div class="staff">
-                <div class="img-wrap d-flex align-items-stretch">
+                <!-- <div class="img-wrap d-flex align-items-stretch">
                   <div
                     class="col-md-6 col-lg-3 img align-self-stretch"
                     style="background-image: url(images/clinci-pic1.jpeg)"
@@ -189,104 +149,104 @@
                         </p>
                       </div>
                     </div>
-                </div>
+                </div> -->
               </div>
           </div>
           </section>
           </a>
-          <!-- 診所搜尋結果 -->
-        <a href="/vetsearch3.html">
-          <section class="ftco-section bg-light p-0" >
-              <div class="container">
-                <div class="row">
-                  <div class="col-md-6 col-lg-12 ftco-animate">
-              <div class="staff">
-                <div class="img-wrap d-flex align-items-stretch">
-                  <div
-                    class="col-md-6 col-lg-3 img align-self-stretch"
-                    style="background-image: url(images/clinci-pic1.jpeg)"
-                  ></div>
-                  <div class="col-md-6 col-lg-9 text pt-3 px-3 pb-4 text-left">
-                      <h2>全國動物醫院</h2>
-                      <span class="flaticon-pawprint-1 mr-2"></span>
-                      <h3 class="position mb-2">台北市北區中清路一段566號</h3>
-                      <br>
-                      <span class="flaticon-pawprint-1 mr-2"></span>
-                      <h3 class="position mb-2">02-12348765</h3>
-                      <div class="faded">
-                        <p>
-                          本體系於全台灣(台北、台中、台南)共有17間分院，其中包含3間24H醫院，依照分級醫療的方式，透過各院所分工合作及雙向轉診，
-                          提供毛孩整合性醫療照護以及優質的照護品質，且採用統一病歷系統，完整記錄檢測、診斷、用藥…等資訊，打造縝密醫療網。
-                        </p>
-                      </div>
-                    </div>
-                </div>
-              </div>
-          </div>
-          </section>
-          </a>
-          <!-- 診所搜尋結果 -->
-        <a href="/vetsearch3.html">
-          <section class="ftco-section bg-light p-0" >
-              <div class="container">
-                <div class="row">
-                  <div class="col-md-6 col-lg-12 ftco-animate">
-              <div class="staff">
-                <div class="img-wrap d-flex align-items-stretch">
-                  <div
-                    class="col-md-6 col-lg-3 img align-self-stretch"
-                    style="background-image: url(images/clinci-pic1.jpeg)"
-                  ></div>
-                  <div class="col-md-6 col-lg-9 text pt-3 px-3 pb-4 text-left">
-                      <h2>全國動物醫院</h2>
-                      <span class="flaticon-pawprint-1 mr-2"></span>
-                      <h3 class="position mb-2">台北市北區中清路一段566號</h3>
-                      <br>
-                      <span class="flaticon-pawprint-1 mr-2"></span>
-                      <h3 class="position mb-2">02-12348765</h3>
-                      <div class="faded">
-                        <p>
-                          本體系於全台灣(台北、台中、台南)共有17間分院，其中包含3間24H醫院，依照分級醫療的方式，透過各院所分工合作及雙向轉診，
-                          提供毛孩整合性醫療照護以及優質的照護品質，且採用統一病歷系統，完整記錄檢測、診斷、用藥…等資訊，打造縝密醫療網。
-                        </p>
-                      </div>
-                    </div>
-                </div>
-              </div>
-          </div>
-          </section>
-          </a>
-          <!-- 診所搜尋結果 -->
-        <a href="/vetsearch3.html">
-          <section class="ftco-section bg-light p-0" >
-              <div class="container">
-                <div class="row">
-                  <div class="col-md-6 col-lg-12 ftco-animate">
-              <div class="staff">
-                <div class="img-wrap d-flex align-items-stretch">
-                  <div
-                    class="col-md-6 col-lg-3 img align-self-stretch"
-                    style="background-image: url(images/clinci-pic1.jpeg)"
-                  ></div>
-                  <div class="col-md-6 col-lg-9 text pt-3 px-3 pb-4 text-left">
-                      <h2>全國動物醫院</h2>
-                      <span class="flaticon-pawprint-1 mr-2"></span>
-                      <h3 class="position mb-2">台北市北區中清路一段566號</h3>
-                      <br>
-                      <span class="flaticon-pawprint-1 mr-2"></span>
-                      <h3 class="position mb-2">02-12348765</h3>
-                      <div class="faded">
-                        <p>
-                          本體系於全台灣(台北、台中、台南)共有17間分院，其中包含3間24H醫院，依照分級醫療的方式，透過各院所分工合作及雙向轉診，
-                          提供毛孩整合性醫療照護以及優質的照護品質，且採用統一病歷系統，完整記錄檢測、診斷、用藥…等資訊，打造縝密醫療網。
-                        </p>
-                      </div>
-                    </div>
-                </div>
-              </div>
-          </div>
-          </section>
-          </a>
+<!--           診所搜尋結果 -->
+<!--         <a href="http://localhost:8080/petpet/clinic/clinicAppointment/frontstage/PetPet/clinicReservationSpot.html"> -->
+<!--           <section class="ftco-section bg-light p-0" > -->
+<!--               <div class="container"> -->
+<!--                 <div class="row"> -->
+<!--                   <div class="col-md-6 col-lg-12 ftco-animate"> -->
+<!--               <div class="staff"> -->
+<!--                 <div class="img-wrap d-flex align-items-stretch"> -->
+<!--                   <div -->
+<!--                     class="col-md-6 col-lg-3 img align-self-stretch" -->
+<!--                     style="background-image: url(images/clinci-pic1.jpeg)" -->
+<!--                   ></div> -->
+<!--                   <div class="col-md-6 col-lg-9 text pt-3 px-3 pb-4 text-left"> -->
+<!--                       <h2>全國動物醫院</h2> -->
+<!--                       <span class="flaticon-pawprint-1 mr-2"></span> -->
+<!--                       <h3 class="position mb-2">台北市北區中清路一段566號</h3> -->
+<!--                       <br> -->
+<!--                       <span class="flaticon-pawprint-1 mr-2"></span> -->
+<!--                       <h3 class="position mb-2">02-12348765</h3> -->
+<!--                       <div class="faded"> -->
+<!--                         <p> -->
+<!--                           本體系於全台灣(台北、台中、台南)共有17間分院，其中包含3間24H醫院，依照分級醫療的方式，透過各院所分工合作及雙向轉診， -->
+<!--                           提供毛孩整合性醫療照護以及優質的照護品質，且採用統一病歷系統，完整記錄檢測、診斷、用藥…等資訊，打造縝密醫療網。 -->
+<!--                         </p> -->
+<!--                       </div> -->
+<!--                     </div> -->
+<!--                 </div> -->
+<!--               </div> -->
+<!--           </div> -->
+<!--           </section> -->
+<!--           </a> -->
+<!--           診所搜尋結果 -->
+<!--         <a href="/vetsearch3.html"> -->
+<!--           <section class="ftco-section bg-light p-0" > -->
+<!--               <div class="container"> -->
+<!--                 <div class="row"> -->
+<!--                   <div class="col-md-6 col-lg-12 ftco-animate"> -->
+<!--               <div class="staff"> -->
+<!--                 <div class="img-wrap d-flex align-items-stretch"> -->
+<!--                   <div -->
+<!--                     class="col-md-6 col-lg-3 img align-self-stretch" -->
+<!--                     style="background-image: url(images/clinci-pic1.jpeg)" -->
+<!--                   ></div> -->
+<!--                   <div class="col-md-6 col-lg-9 text pt-3 px-3 pb-4 text-left"> -->
+<!--                       <h2>全國動物醫院</h2> -->
+<!--                       <span class="flaticon-pawprint-1 mr-2"></span> -->
+<!--                       <h3 class="position mb-2">台北市北區中清路一段566號</h3> -->
+<!--                       <br> -->
+<!--                       <span class="flaticon-pawprint-1 mr-2"></span> -->
+<!--                       <h3 class="position mb-2">02-12348765</h3> -->
+<!--                       <div class="faded"> -->
+<!--                         <p> -->
+<!--                           本體系於全台灣(台北、台中、台南)共有17間分院，其中包含3間24H醫院，依照分級醫療的方式，透過各院所分工合作及雙向轉診， -->
+<!--                           提供毛孩整合性醫療照護以及優質的照護品質，且採用統一病歷系統，完整記錄檢測、診斷、用藥…等資訊，打造縝密醫療網。 -->
+<!--                         </p> -->
+<!--                       </div> -->
+<!--                     </div> -->
+<!--                 </div> -->
+<!--               </div> -->
+<!--           </div> -->
+<!--           </section> -->
+<!--           </a> -->
+<!--           診所搜尋結果 -->
+<!--         <a href="/vetsearch3.html"> -->
+<!--           <section class="ftco-section bg-light p-0" > -->
+<!--               <div class="container"> -->
+<!--                 <div class="row"> -->
+<!--                   <div class="col-md-6 col-lg-12 ftco-animate"> -->
+<!--               <div class="staff"> -->
+<!--                 <div class="img-wrap d-flex align-items-stretch"> -->
+<!--                   <div -->
+<!--                     class="col-md-6 col-lg-3 img align-self-stretch" -->
+<!--                     style="background-image: url(images/clinci-pic1.jpeg)" -->
+<!--                   ></div> -->
+<!--                   <div class="col-md-6 col-lg-9 text pt-3 px-3 pb-4 text-left"> -->
+<!--                       <h2>全國動物醫院</h2> -->
+<!--                       <span class="flaticon-pawprint-1 mr-2"></span> -->
+<!--                       <h3 class="position mb-2">台北市北區中清路一段566號</h3> -->
+<!--                       <br> -->
+<!--                       <span class="flaticon-pawprint-1 mr-2"></span> -->
+<!--                       <h3 class="position mb-2">02-12348765</h3> -->
+<!--                       <div class="faded"> -->
+<!--                         <p> -->
+<!--                           本體系於全台灣(台北、台中、台南)共有17間分院，其中包含3間24H醫院，依照分級醫療的方式，透過各院所分工合作及雙向轉診， -->
+<!--                           提供毛孩整合性醫療照護以及優質的照護品質，且採用統一病歷系統，完整記錄檢測、診斷、用藥…等資訊，打造縝密醫療網。 -->
+<!--                         </p> -->
+<!--                       </div> -->
+<!--                     </div> -->
+<!--                 </div> -->
+<!--               </div> -->
+<!--           </div> -->
+<!--           </section> -->
+<!--           </a> -->
       
 
       
@@ -389,6 +349,7 @@
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
         <script src="js/google-map.js"></script>
         <script src="js/main.js"></script>
+        <script src="js/vetsearch.js"></script>
 
 
 </body>
