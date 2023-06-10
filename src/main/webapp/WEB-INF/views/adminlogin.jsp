@@ -17,12 +17,11 @@
 <body>
 	<nav class="sb-topnav navbar navbar-expand navbar-dark color">
 		<!-- Navbar Brand-->
-		<img src="../static/images/petpet.png" width="70px" height="70px" /> <img
-			src="../static/images/Petword.png" width="40px" height="40px" /> <a
-			class="navbar-brand ps-3" href="index">首頁</a>
-		<form
-			class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-			<div class="input-group"></div>
+		<img src="../static/images/petpet.png" width="70px" height="70px" /> 
+		<img src="../static/images/Petword.png" width="40px" height="40px" /> 
+		<a	class="navbar-brand ps-3" href="index">首頁</a>
+		<form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+		<div class="input-group"></div>
 			<!-- 首頁按鈕圖片 -->
 		</form>
 		<!-- Navbar-->
@@ -48,8 +47,14 @@
 			<div class="u-form-group">
 				<img src="../static/images/petpet.png" style="width: 120px" />
 			</div>
+			<select id="adminselect" style="margin-bottom: 10px">
+		          <option value="admin">Admin</option>
+		          <option value="shop">Shop</option>
+		          <option value="clinic">Clinic</option>
+		          <option value="shelter">Shelter</option>
+       		 </select>
 			<div class="u-form-group">
-				<input type="text" placeholder="account" id="adminLoginAccount" />
+				<input type="text" placeholder="Email" id="adminLoginAccount" />
 			</div>
 	
 			<div class="u-form-group">

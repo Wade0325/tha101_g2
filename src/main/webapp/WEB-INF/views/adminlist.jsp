@@ -115,7 +115,8 @@
 										<th scope="col">會員編號</th>
 										<th scope="col">名稱</th>
 										<th scope="col">帳號</th>
-										<th scope="col">密碼</th>
+										<th scope="col">審核狀態</th>
+										<th scope="col">功能</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -131,7 +132,6 @@
 <!--   ====================搜尋資料=================== -->
 <script>
 	var tbody = $('tbody');
-	var reportfirmsn = document.getElementById('reportfirmsn');
 
 		$.ajax({
 			url:"all",
@@ -141,23 +141,89 @@
 				tbody.empty();
 				console.log(list);
 				for(var index = 0; index < list.length; index++){
-					var select = '<select  class="form-select" >'
-									+'<option value="未停權">未停權</option>'
+					var select = '<select  class="form-select" disabled="disabled">'
+									+'<option value="未停權"selected>未停權</option>'
 									+'<option value="停權">停權</option>'
-								 '</select>';		    
-// 				    var button = '<button class="btn btn-primary" type="submit">修改</button>';
+								 '</select>';
+					var button = '<button class="btn btn-success">'+'<i class="fa-regular fa-pen-to-square fa-fade"></i>'+'</button>'
 					tbody.append('<tr>'
 							+'<td>' + list[index].adminId + '</td>'
 							+'<td>' + list[index].adminName + '</td>'
 							+'<td>' + list[index].adminAccount + '</td>'
-							+'<td>*******</td>'
 							+'<td>' + select  + '</td>'
-// 							+'<td>' + button + '</td>'
+							+'<td>' + button + '</td>'
 					+'</tr>');		
 				}
 			}
 		});
 </script>
 
+<!--     ====================編輯修改取值=================== -->
+<script>
+   	$(document).on('click','tbody button',function(){
+   		var userId = $(this).parent().parent().children().eq(0).text();
+   		var userName = $(this).parent().parent().children().eq(1).text();
+   		var userAcc = $(this).parent().parent().children().eq(2).text();
+   		var userPss = $(this).parent().parent().children().eq(3).text();
+   		var userStatus = $(this).parent().parent().children().eq(4).text();
+// 		console.log("test2" , $(this).parent().parent().children().eq(5).children().val());
+//    		console.log(userId);
+//    		console.log(userName);
+//    		console.log(userAcc);
+//    		console.log(userPss);
+//    		console.log(userStatus);
+
+   		$('#userId').val(userId);
+   		$('#userName').val(userName);
+   		$('#userAcc').val(userAcc);
+   		$('#userPss').val(userPss);
+
+   		console.log(userStatus);
+//    		console.log("test", $(this).parent().parent().children().eq(0).text());
+   		//
+   		$('#myModal').modal("show")
+   	})
+</script>
+
+
+<!-- 	彈窗Modal  -->
+<script	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="../static/js/scripts.js"></script>
+<div id ="myModal" class="modal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">會員權限</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div>
+        	<label>會員編號</label>
+        	<input type="text" id="userId" disabled />
+        </div>
+        <div>
+        	<label>名稱</label>
+        	<input type="text" id="userName" disabled />
+        </div>
+        <div>
+        	<label>帳號	</label>
+        	<input type="text" id="userAcc" disabled />
+        </div>
+        <div>
+        	<label>審核</label>
+        	<select class="form-control" id="userStatus">
+				<option value="未停權">未停權</option>
+				<option value="停權">停權</option>
+			</select>
+        </div>
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" data-bs-dismiss="modal">取消</button>
+        <button type="button" class="btnReportForm">提交</button>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 </html>
