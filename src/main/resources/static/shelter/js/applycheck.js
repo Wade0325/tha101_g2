@@ -88,23 +88,19 @@ fetch(`animalfindbyid/${animalid}`, {
 	
 
 
-var shelteranimal = {  
-  "ifAdopted": ifAdoptedValue,
-  "userId": userIdValue
-};
+
 
 
 subbtn.addEventListener('click', function() {
-  if (!confirm('確定將此設為animal領養人?')) {
+  if (!confirm('確定設為領養人?')) {
     return;
   } else {
 	  
-if (userIdValue === "") {
-  userIdValue = "未被領養";
-}
+
     var shelteranimal = {  
       "ifAdopted": "1",
-      "userId": useraccount.value
+      "userId": userid.value,
+      "userAccount": useraccount.value
     };
   
     fetch(`ifadopted/${animalid}`, {

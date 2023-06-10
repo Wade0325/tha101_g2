@@ -12,8 +12,8 @@
 
             var userId = $("#userId").val();
             // var articleId = $("#articleId").val();
-            var articleId = 35;
-            var userId = 5;
+            var articleId = '';
+            var userId = '';
             var reportReason = $("#reportReason").val(); // 获取举报原因
             
 

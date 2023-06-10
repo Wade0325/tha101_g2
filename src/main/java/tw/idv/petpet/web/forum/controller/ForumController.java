@@ -22,12 +22,9 @@ import tw.idv.petpet.web.user.entity.User;
 @RequestMapping("/forum")
 public class ForumController {
 
-	private final ForumService forumService;
-
 	@Autowired
-	public ForumController(ForumService forumService) {
-		this.forumService = forumService;
-	}
+	ForumService forumService;
+
 
 	@PostMapping("/publish") // @ModelAttribute("forum") Forum forum
 	public String createForum(@ModelAttribute("forum") Forum forum) {
@@ -60,13 +57,30 @@ public class ForumController {
 	}
 	
 	
-	@PostMapping("/article_cat")
-	public Forum findArticleById(@RequestBody Integer articleId) {
-		System.out.println("執行 findByArticleId 方法成功");
-		return forumService.findByArticleId(articleId);
+
+	
+
+//	@PostMapping("/article_cat/{articleId}")
+//	@ResponseBody
+//	public Forum findArticleById(@RequestBody Forum forum, @PathVariable int articleId) {
+//		System.out.println("執行 findByArticleId 方法成功");
+//		return (Forum) forumService.findByArticleId(forum.getArticleId());
+//	}
+
+//	@PostMapping("article_cat/{articleId}")
+//	@ResponseBody
+//	public List<Forum> getArticleId(@PathVariable int articleId, @RequestBody Forum forum) {
+//		List<Forum> findArticleId = forumService.findByArticleId(articleId);
+//		System.out.println("查看是否獲取Id");
+//		return findArticleId;
+//	}
+	
+	@PostMapping("article_cat/{articleId}")
+	public Forum findByArticleId(@PathVariable Integer articleId){
+		Forum findArticleId = forumService.findByArticleId(articleId);
+		System.out.println("查看是否獲取Id" + articleId);
+		return findArticleId;
 	}
-	
-	
 
 //	@GetMapping("/article_cat/{articleId}")
 //	public ResponseEntity<Forum> getForumById(@PathVariable int articleId) {
@@ -77,8 +91,6 @@ public class ForumController {
 //		System.out.println("getmapping:??? ok?");
 //		return ResponseEntity.ok(forum);
 //	}
-	
-	
 
 //	@GetMapping("/article_cat/{articleId}")
 //	public Forum findByArticleId(@PathVariable("articleId") int articleId, @RequestBody Forum forum) {
