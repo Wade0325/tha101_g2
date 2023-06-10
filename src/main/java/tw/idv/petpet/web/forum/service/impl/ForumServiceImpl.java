@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import tw.idv.petpet.web.forum.Repository.ForumRepository;
 import tw.idv.petpet.web.forum.entity.Forum;
 import tw.idv.petpet.web.forum.service.ForumService;
-import tw.idv.petpet.web.shelter.adoptApply.entity.AdoptApply;
 
 @Service("ForumService")
 public class ForumServiceImpl implements ForumService {
@@ -22,6 +21,7 @@ public class ForumServiceImpl implements ForumService {
 
 	@Override
 	public Forum createForum(Forum forum) {
+		
 		System.out.print("發表文章成功,進入ForumServiceImpl層");
 		return forumRepository.save(forum);
 	}

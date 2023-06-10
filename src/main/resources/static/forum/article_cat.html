@@ -131,12 +131,12 @@
                 </button>
                 <div class="collapse navbar-collapse" id="ftco-nav">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item"><a href="index.html" class="nav-link" style="color: black">首頁</a></li>
-                        <li class="nav-item"><a href="vet.html" class="nav-link" style="color: black">寵物診所</a></li>
-                        <li class="nav-item"><a href="gallery.html" class="nav-link" style="color: black">寵物商城</a></li>
-                        <li class="nav-item"><a href="blog.html" class="nav-link" style="color: black">寵物領養</a></li>
+                        <li class="nav-item"><a href="http://localhost:8080/petpet/" class="nav-link" style="color: black">首頁</a></li>
+                        <li class="nav-item"><a href="clinic/clinicAppointment/frontstage/PetPet/VetSearchResult.html" class="nav-link" style="color: black">寵物診所</a></li>
+                        <li class="nav-item"><a href="shop/frontdesk/petFoodShop.html" class="nav-link" style="color: black">寵物商城</a></li>
+                        <li class="nav-item"><a href="shelter/shelter.html" class="nav-link" style="color: black">寵物領養</a></li>
                         <li class="nav-item"><a href="forum.html" class="nav-link" style="color: black">寵物討論區</a></li>
-                        <li class="nav-item active"><a href="services_login.html" class="nav-link"
+                        <li class="nav-item active"><a href="user/login.html" class="nav-link"
                                 style="color: black">登入/註冊</a></li>
                     </ul>
                 </div>
@@ -174,7 +174,7 @@
             <!-- </div>  -->
 
             <div class="article-reaction">
-                <button class="reaction-btn" id="report-btn" onclick="">檢舉</button>
+                <button type="button" class="reaction-btn" id="report-btn" onclick="">檢舉</button>
             </div>
             
             <hr>
@@ -281,16 +281,12 @@
             //  document.getElementById("reply-button").addEventListener("click", function () { 
             //     window.location.href = "reply.html";
             // }); 
-            // document.getElementById("report-btn").addEventListener("click", function () {
-            //     window.location.href = "report_article.html";
-            // });
-
-
-            // 點擊檢舉按鈕的監聽事件
-            const reportBtn = document.querySelector('#report-btn');
-            reportBtn.addEventListener('click', () => {
-                window.location.href = `report_article.html?articleId=${articleId}`;
+            document.getElementById("report-btn").addEventListener("click", function () {
+                window.location.href = "report_article.html";
             });
+
+
+            
 
 
 
