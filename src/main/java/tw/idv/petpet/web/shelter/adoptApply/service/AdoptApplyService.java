@@ -5,7 +5,7 @@ import java.util.Optional;
 
 import tw.idv.petpet.core.service.CoreService;
 import tw.idv.petpet.web.shelter.adoptApply.entity.AdoptApply;
-import tw.idv.petpet.web.shelter.shelterAnimal.entity.ShelterAnimal;
+import tw.idv.petpet.web.shelter.adoptApply.entity.AdoptRecord;
 
 public interface AdoptApplyService extends CoreService{
 	AdoptApply upload(AdoptApply AdoptApply);
@@ -19,4 +19,7 @@ public interface AdoptApplyService extends CoreService{
 	Optional<AdoptApply> findById(Integer applyId);
 
 	AdoptApply update(AdoptApply AdoptApply);
+	
+	List<AdoptRecord> findRecord(String userAccount);
+	
 }
