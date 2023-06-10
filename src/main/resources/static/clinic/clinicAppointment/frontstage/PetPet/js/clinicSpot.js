@@ -17,7 +17,7 @@ $(document).ready(function() {
           if (data == 0) {
              return '<button class="appointDate full" ' + (data == 0 ? 'disabled' : '') + '>' + '已額滿' + '</button>';
           } else {
-            return '<button class="appointDate">' + data + '</button>';
+            return '<button id= "morning" class="appointDate">' + data + '</button>';
           }
         },
         className: "appointDate",
@@ -27,7 +27,7 @@ $(document).ready(function() {
           if (data == 0) {
             return '<button class="appointDate full" ' + (data == 0 ? 'disabled' : '') + '>' + '已額滿' + '</button>';
           } else {
-            return '<button class="appointDate">' + data + '</button>';
+            return '<button button id= "afternoon" class="appointDate">' + data + '</button>';
           }
         },
         className: "appointDate",
@@ -37,7 +37,7 @@ $(document).ready(function() {
           if (data == 0) {
             return '<button class="appointDate full" ' + (data == 0 ? 'disabled' : '') + '>' + '已額滿' + '</button>';
           } else {
-            return '<button class="appointDate">' + data + '</button>';
+            return '<button button id= "night" class="appointDate">' + data + '</button>';
           }
         },
         className: "appointDate",
@@ -51,6 +51,23 @@ $(document).ready(function() {
 
   $('#example_length').remove();
 
+$(document).on("click", "#morning", function () {
+	console.log("你很煩哎");
+    // 将"早上"填入appointTime输入框
+    $("#appointTime").val("早上");
+  });
+  
+$(document).on("click", "#afternoon", function () {
+	console.log("你很煩哎");
+    // 将"早上"填入appointTime输入框
+    $("#appointTime").val("中午");
+  });
+  
+  $(document).on("click", "#night", function () {
+	console.log("你很煩哎");
+    // 将"早上"填入appointTime输入框
+    $("#appointTime").val("晚上");
+  });
   $(document).on("click", ".appointDate", function () {
     let row = $(this).closest("tr");
     bussinessSn = table.row(row).data().businessSn;
@@ -61,15 +78,16 @@ $(document).ready(function() {
       .then((data) => {
         const clinicName = data.clinicName;
         const weekDate = data.weekDate;
-        const morningBusiness = data.morningBusiness;
-        const afternoonBusiness = data.afternoonBusiness;
-        const nightBusiness = data.nightBusiness;
+//        const morningBusiness = data.morningBusiness;
+//        const afternoonBusiness = data.afternoonBusiness;
+//        const nightBusiness = data.nightBusiness;
+//        
 
         document.getElementById("clinicName").value = clinicName;
         document.getElementById("weekDate").value = weekDate;
-        document.getElementById("morningBusiness").textContent = morningBusiness;
-        document.getElementById("afternoonBusiness").textContent = afternoonBusiness;
-        document.getElementById("nightBusiness").textContent = nightBusiness;
+//        document.getElementById("morningBusiness").textContent = morningBusiness;
+//        document.getElementById("afternoonBusiness").textContent = afternoonBusiness;
+//        document.getElementById("nightBusiness").textContent = nightBusiness;
 //        
 //        const formElement = document.getElementById("res");
 //        formElement.scrollIntoView({ behavior: "smooth" });
@@ -78,6 +96,13 @@ $(document).ready(function() {
         formElement.scrollIntoView({ behavior: "smooth" });
   });
 });
+
+//$(document).on("click", "#morning", function () {
+//	console.log("你很煩哎");
+//    // 将"早上"填入appointTime输入框
+//    $("#appointTime").val("早上");
+//  });
+
 
 document.addEventListener("DOMContentLoaded", function() {
   var btn = document.getElementById("btn2");
@@ -94,6 +119,7 @@ document.addEventListener("DOMContentLoaded", function() {
   var petSituation = document.getElementById("petSituation");
   var msg = document.getElementById("msg");
   var inputs = document.querySelectorAll("input");
+  
 //	點擊預約項目會show出需付款金額
 var serviceItemSelect = document.getElementById("serviceItem");
   var payInfoSelect = document.getElementById("payInfo");
@@ -111,7 +137,6 @@ var serviceItemSelect = document.getElementById("serviceItem");
       payInfoSelect.value = "預付2000元";
     }
   });
-
 
 btn.addEventListener("click", function() {
   var selectedValue = serviceItem.value;
@@ -146,12 +171,58 @@ btn.addEventListener("click", function() {
     msg.textContent = "請簡述寵物概況";
     return;
   }
+  
+  //送出預約導向付款頁面
   if (selectedValue === "結紮" || selectedValue === "健康檢查" || selectedValue === "洗牙") {
-    // 直接跳转到指定页面
-    window.location.href = "http://localhost:8080/petpet/clinic/clinicAppointment/frontstage/PetPet/VetSearchResult.html";
-    return; // 增加return语句，防止后续逻辑执行
-  }
+  
+  if (confirm("確認預約嗎?")) {
+    msg.textContent = "";
+    fetch("../../../../clinicAppointmentInsert", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        clinicName: clinicName.value,
+        vetName: vetName.value,
+        appointDate: weekDate.value,
+        appointTime: appointTime.value,
+        ownerName: ownerName.value,
+        ownerMobile: ownerMobile.value,
+        serviceItem: serviceItem.value,
+        petName: petName.value,
+        petType: petType.value,
+        petSituation: petSituation.value
+      })
+    })
+    .then(function(resp) {
+      return resp.json();
+    })
+    .then(function(body) {
+      var successful = body.successful;
+      var message = body.message;
 
+      if (successful) {
+        for (var i = 0; i < inputs.length; i++) {
+          inputs[i].disabled = true;
+        }
+        btn.disabled = true;
+        msg.className = "info";
+        msg.textContent = "預約成功";
+        alert("預約成功");
+        alert("即將前往付款頁面");
+        payClick()
+      } else {
+        msg.className = "error";
+        msg.textContent = "預約失敗，時段未營業或人數已滿";
+      }
+    });
+  }
+   
+  }
+  //送出預約導向付款頁面
+  //送出預約
+  if (selectedValue === "一般診療" ) {
 
   if (confirm("確認預約嗎?")) {
     msg.textContent = "";
@@ -195,6 +266,8 @@ btn.addEventListener("click", function() {
       }
     });
   }
+  }
+  //送出預約
 });
 
 // 預約成功後的跳轉
@@ -204,8 +277,14 @@ function redirectToSearchResult() {
 }
 });
 
-// 預約成功後的跳轉
-function redirectToSearchResult() {
-  alert("已預約成功");
-  window.location.href = "http://localhost:8080/petpet/clinic/clinicAppointment/frontstage/PetPet/VetSearchResult.html";
-}
+function payClick() {
+			$.ajax({
+				url: "../../../../ecpayCheck",
+				type: "POST",
+				success: function (response) {
+					const form = response;
+					$("body").append(form); //將接收到資料插入頁面body中
+					$("#ecpayForm").submit(); //假設表單的 id 屬性設為ecpayForm。
+				}
+			})
+		}
