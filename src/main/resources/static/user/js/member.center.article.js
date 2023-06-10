@@ -1,18 +1,7 @@
 $(document).ready(function () {
-    $('.nav-link').on('click', function () {
-
-
-    })
-
 
     $('.example').DataTable({
-        columnDefs: [
-            {
-                target: 3,
-                visible: false,
-                searchable: false,
-            },
-        ],
+
 
 
 
