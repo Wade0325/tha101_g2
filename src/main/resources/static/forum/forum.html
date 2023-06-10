@@ -64,10 +64,10 @@
                 </button>
                 <div class="collapse navbar-collapse" id="ftco-nav">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item"><a href="index.html" class="nav-link" style="color: black">首頁</a></li>
-                        <li class="nav-item"><a href="vet.html" class="nav-link" style="color: black">寵物診所</a></li>
-                        <li class="nav-item"><a href="gallery.html" class="nav-link" style="color: black">寵物商城</a></li>
-                        <li class="nav-item"><a href="blog.html" class="nav-link" style="color: black">寵物領養</a></li>
+                        <li class="nav-item"><a href="http://localhost:8080/petpet/" class="nav-link" style="color: black">首頁</a></li>
+                        <li class="nav-item"><a href="clinic/clinicAppointment/frontstage/PetPet/VetSearchResult.html" class="nav-link" style="color: black">寵物診所</a></li>
+                        <li class="nav-item"><a href="shop/frontdesk/petFoodShop.html" class="nav-link" style="color: black">寵物商城</a></li>
+                        <li class="nav-item"><a href="shelter/shelter.html" class="nav-link" style="color: black">寵物領養</a></li>
                         <li class="nav-item"><a href="forum.html" class="nav-link" style="color: black">寵物討論區</a></li>
                         <li class="nav-item active"><a href="services_login.html" class="nav-link"
                                 style="color: black">登入/註冊</a></li>
@@ -81,47 +81,50 @@
         <main style="background-color: white;">
             <nav>
                 <ul>
-                    <li><a href="index.html">首頁</a></li>|
-                    <li><a href="cat_chat.html">貓貓討論區</a></li>|
-                    <li><a href="dog_chat.html">狗狗討論區</a></li>
+                    <li><a href="http://localhost:8080/petpet/">首頁</a></li>|
+                    <li>貓貓討論區</li>|
+                    <li>狗狗討論區</li>
                 </ul>
             </nav>
 
 
             <div style="background-color: white;">
-                <div class="cat-discussion">
+                <!-- <div class="cat-discussion" id="1">
                     <h5>
                         <span id="articleGroupId">【貓貓討論區】</span>
-                        <!-- <span class="">【閒聊】</span> -->
-                        <span><a href="">分享領養心得</a></span>
+                        <span class="">【閒聊】</span>
+                        <span><a href="article_cat.html/">分享領養心得</a></span>
                     </h5>
                 </div>
-                <div class="cat-discussion">
+                <div class="cat-discussion" id="2">
                     <h5>
                         <span id="articleGroupId">【貓貓討論區】</span>
-                        <!-- <span class="">【閒聊】</span> -->
-                        <span><a href="article_cat.html">大家好這是我剛領養的貓貓</a></span>
+                        <span class="">【閒聊】</span>
+                        <span><a href="article_cat.html/">大家好這是我剛領養的貓貓</a></span>
                     </h5>
                 </div>
-                <div class="dog-discussion">
+                <div class="dog-discussion" id="3">
                     <h5>
                         <span id="articleGroupId">【狗狗討論區】</span>
-                        <!-- <span class="">【閒聊】</span> -->
-                        <span><a href="">分享領養心得</a></span>
+                        <span class="">【閒聊】</span>
+                        <span><a href="article_cat.html/">分享領養心得</a></span>
                     </h5>
                 </div>
-                <div class="dog-discussion">
+                <div class="dog-discussion" id="4">
                     <h5>
                         <span id="articleGroupId">【狗狗討論區】</span>
-                        <!-- <span class="">【閒聊】</span> -->
-                        <span><a href="">大家好這是我剛領養的狗狗</a></span>
+                        <span class="">【閒聊】</span>
+                        <span><a href="article_cat.html/">大家好這是我剛領養的狗狗</a></span>
                     </h5>
+                </div> -->
+                <div id="articleList" style="background-color: white;">
+                    <!-- 文章列表将在这里动态渲染 -->
                 </div>
             </div>
             <!-- 这里是展示文章的位置 -->
-            <div id="articleList" style="background-color: white;">
-                <!-- 文章列表将在这里动态渲染 -->
-            </div>
+            <!-- <div id="articleList" style="background-color: white;">
+               
+            </div> -->
     </div>
     <!-- 加入發表文章的按鈕 -->
     <div>
