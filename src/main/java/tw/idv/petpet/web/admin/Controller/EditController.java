@@ -5,6 +5,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import tw.idv.petpet.web.admin.Entity.AdminEntity;
@@ -12,11 +13,12 @@ import tw.idv.petpet.web.admin.Repository.AdminRepository;
 import tw.idv.petpet.web.admin.dto.AdminUpdateVO;
 
 @RestController
+@RequestMapping("/admin")
 public class EditController {
 	@Autowired
 	private AdminRepository adminRepository;
 	//先取得資料放進前端資料
-	@PostMapping("admin/edit")
+	@PostMapping("/edit")
 	public AdminEntity edit(HttpSession session) {
 		AdminEntity adminEntity = (AdminEntity) session.getAttribute("loginAdminEntity");
 		System.out.println("test1 : 查詢個人Session");
@@ -24,7 +26,7 @@ public class EditController {
 		return adminEntity;
 	}
 	//2.再從表單輸入值做修改
-	@PostMapping("admin/update")
+	@PostMapping("/update")
 	public AdminEntity update(@RequestBody AdminUpdateVO adminUpdateVO, AdminEntity adminEntity) {
 		System.out.println("test1 : 進入編輯方法");
 		System.out.println("adminUpdateVO : " + adminUpdateVO);

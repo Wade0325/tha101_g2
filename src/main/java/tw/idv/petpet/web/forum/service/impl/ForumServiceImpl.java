@@ -26,7 +26,7 @@ public class ForumServiceImpl implements ForumService {
 	}
 
 	@Override
-	public Forum findByArticleId(Integer articleId) {
+	public Forum findByArticleId(int articleId) {
 		System.out.println("透過文章ID，找到文章內容");
 		return forumRepository.findById(articleId).orElse(null);
 	}

@@ -66,7 +66,7 @@
             </nav>
             <div class="article-container">
                 <div id="articleContainer">
-                <!-- 動態頁面，從資料庫抓id -->
+                    <!-- 動態頁面，從資料庫抓id -->
                 </div>
                 <!-- <h2 class="article-title" id="articleTitle"></h2>
                 <div class="article-info">
@@ -105,11 +105,12 @@
                 <!-- 回覆內容將動態插入這裡 -->
             </div>
 
-            <form id="reply-form">
-                <!-- <input type="text" id="reply-name" placeholder="你的姓名" required> -->
-                <textarea id="reply-message" placeholder="在這裡輸入你的回覆..." required></textarea>
+            <!-- <form id="reply-form"> -->
+            <!-- <input type="text" id="reply-name" placeholder="你的姓名" required> -->
+            <!-- <textarea id="reply-message" placeholder="在這裡輸入你的回覆..." required></textarea>
                 <button type="submit">送出回覆</button>
-            </form>
+            </form> -->
+            <button type="submit" id="reply-button">回覆</button>
         </main>
         <!-- 程式放裡面 -->
 
@@ -193,11 +194,19 @@
         <script src="js/google-map.js"></script>
         <script src="js/main.js"></script>
 
-        <script src="js\article_cat.js"></script>
+        <!-- <script src="js\article_cat.js"></script> -->
         <!-- <script src="js/article_like.js"></script> -->
         <script src="js/article_list_for_chat.js"></script>
 
+        <!-- <script src="js/test_article_cat.js"></script> -->
         <script type="text/javascript">
+            document.getElementById("reply-button").addEventListener("click", function () {
+                window.location.href = "reply.html";
+            });
+            document.getElementById("report-btn").addEventListener("click", function () {
+                window.location.href = "report_article.html";
+            });
+
             // const articleContainer = document.querySelector('#articleContainer');
             // const articleId = 35;
 

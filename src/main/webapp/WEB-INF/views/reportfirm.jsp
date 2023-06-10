@@ -60,17 +60,12 @@
 				  </div>
 				  檢舉清單
 				</a>
-				<a class="nav-link" href="../reportfirmform">
+				<a class="nav-link" href="reportfirmform">
 				  <div class="sb-nav-link-icon">
 					<i class="fas fa-tachometer-alt"></i>
 				  </div>
 				  檢舉表單
 				</a>
-				<a class="nav-link" href="#">
-				  <div class="sb-nav-link-icon">
-					<i class="fas fa-tachometer-alt"></i>
-				  </div> 訂單管理
-				</a> 
 				<!-- 會員管理 -->
 				<div class="sb-sidenav-menu-heading">會員管理</div>
 				<a class="nav-link" href="reportuser">
@@ -79,7 +74,7 @@
 				  </div>
 				  檢舉清單
 				</a>
-				<a class="nav-link" href="../reportuserform">
+				<a class="nav-link" href="reportuserform">
 				  <div class="sb-nav-link-icon">
 					<i class="fas fa-tachometer-alt"></i>
 				  </div>
@@ -122,13 +117,13 @@
 							<table class="table table-striped table-hover table align-middle">
 								<thead>
 									<tr>
-										<th scope="col">檢舉流水號</th>
-										<th scope="col">(檢舉人)商家ID</th>
-										<th scope="col">被檢舉會員ID</th>
+										<th scope="col">檢舉單號</th>
+										<th scope="col">(檢舉人)商家帳號</th>
+										<th scope="col">被檢舉會員帳號</th>
 										<th scope="col">檢舉內容</th>
 										<th scope="col">檢舉時間</th>
-										<th scope="col">審核代碼</th>
-										<th scope="col">編輯</th>
+										<th scope="col">檢舉狀態</th>
+										<th scope="col">功能</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -137,9 +132,9 @@
 						</div>
 					</div>
 			</main>
-			<footer class="footer">
-				<p>&copy; by | PETPET陪陪你</p>
-			</footer>
+<!-- 			<footer class="footer"> -->
+<!-- 				<p>&copy; by | PETPET陪陪你</p> -->
+<!-- 			</footer> -->
 		</div>
 
 <!--   ====================搜尋資料=================== -->
@@ -150,7 +145,7 @@ $('#btnFirmsn').on('click',function(e){
 	var reportfirmsn = document.getElementById('reportfirmsn');
 	if(reportfirmsn.value.length === 0) {
 		$.ajax({
-			url:"../reportfirm/all",
+			url:"reportfirm/all",
 			dataType:"JSON",
 			type:"GET",
 			data:"",
@@ -164,8 +159,8 @@ $('#btnFirmsn').on('click',function(e){
 // 									+'<option value="審核中">'+ list[index].confirmCode + '</option>'
 							    +'</select>';
 							    
-				    var button = '<button type="submit">修改</button>';
-				    var button2 = '<button>刪除</button>';
+				    var button = '<button class="btn btn-primary" type="submit">修改</button>';
+// 				    var button2 = '<button>刪除</button>';
 					tbody.append('<tr>'
 							+'<td data-id=' + list[index].firmSn + '>' + list[index].firmSn + '</td>'
 							+'<td>' + list[index].userId + '</td>'
@@ -174,7 +169,7 @@ $('#btnFirmsn').on('click',function(e){
 							+'<td>' + list[index].firmDate + '</td>'
 							+'<td>' + select + '</td>'
 							+'<td>' + button + '</td>'
-							+'<td>' + button2 + '</td>'
+// 							+'<td>' + button2 + '</td>'
 					+'</tr>');		
 				}
 			}
@@ -188,7 +183,7 @@ $('#btnFirmsn').on('click',function(e){
 		alert("檢舉單號為: " + reportfirmsn);
 		console.log(reportFirmData);
 		$.ajax({
-			url :"/reportfirm/getone",
+			url :"reportfirm/getone",
 			contentType :"application/json",
 			type :"post",
 			data :JSON.stringify(reportFirmData),
@@ -250,7 +245,7 @@ $('#btnFirmsn').on('click',function(e){
 	$('#btnFirmdate').on('click', function(){
 		var startDate = $('#startDate').val();
 		var endDate = $('#endDate').val();
-		var button = '<button type="submit">編輯</button>'
+		var button = '<button class="btn btn-primary" type="submit">修改</button>';
 		console.log("val" , startDate);
 		console.log("val" , endDate);
 		var dateData = {
@@ -259,7 +254,7 @@ $('#btnFirmsn').on('click',function(e){
 		};
 		console.log(dateData);
 		$.ajax({
-			url : "/getreportfirmbydate",
+			url : "getreportfirmbydate",
 			type : "post",
 			contentType : "application/json",
 			data : JSON.stringify(dateData),
@@ -268,9 +263,9 @@ $('#btnFirmsn').on('click',function(e){
 				tbody.empty();
 				for(var i = 0; i < res.length ; i++){
 				var select = '<select class="form-control" id="confirmCode" disabled>'
-								+'<option value="審核成功">' + res[i].confirmCode + '</option>'
-								+'<option value="審核失敗">'+ res[i].confirmCode + '</option>'
-								+'<option value="審核中" selected>'+ res[i].confirmCode + '</option>'
+								+'<option value="' + res[i].confirmCode + '">' + res[i].confirmCode + '</option>'
+// 								+'<option value="審核失敗">'+ res[i].confirmCode + '</option>'
+// 								+'<option value="審核中">'+ res[i].confirmCode + '</option>'
 	    					+'</select>';
 					tbody.append('<tr>'
 							+ '<td>' + res[i].firmSn + '</td>' 
@@ -329,7 +324,7 @@ $('#btnFirmsn').on('click',function(e){
         
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+        <button type="button" data-bs-dismiss="modal">取消</button>
         <button type="button" class="btnReportForm">提交</button>
       </div>
     </div>
@@ -348,8 +343,9 @@ $(document).ready(function() {
 	      firmDate: $('#inptFirmDate').val(),
 	      confirmCode: $('#inptSelect').val()
 	    };
+	    console.log(formData.confirmCode);
 	    $.ajax({
-	      url: '/reportfirm/edit',
+	      url: 'reportfirm/edit',
 	      type: 'POST',
 	      contentType: 'application/json',
 	      data: JSON.stringify(formData),
@@ -358,11 +354,11 @@ $(document).ready(function() {
 	    	$('#confirmCode').val("111");
 	    	tbody.empty();
 	        console.log("編輯成功");
-
-//				window.location.href = '/admin/reportfirm';
+	       		$('#modal').modal('toggle');
+				window.location.href = 'reportfirm';
 	      },
 	      error: function(error) {
-	        console.log("編輯失败");
+	        console.log("編輯失敗");
 	      }
 	    });
 	  });
@@ -373,7 +369,7 @@ $(document).ready(function() {
 var btnFirmCode = $('#btnFirmCode');
 var reportConfirmCode = $('#reportConfirmCode').val();
 var tbody = $('tbody');
-var button = '<button type="submit">編輯</button>'
+
 $(document).ready(function() {
 	  $('#reportConfirmCode').change(function() {
 	    var selectedValue = $(this).val();
@@ -386,7 +382,7 @@ btnFirmCode.on('click', function(){
 			confirmCode : reportConfirmCode
 	}
 	$.ajax({
-		url : "/getreportfirmbycode",
+		url : "getreportfirmbycode",
 		contentType : "application/json",
 		type : "POST",
 		data : JSON.stringify(codeData),
@@ -395,10 +391,11 @@ btnFirmCode.on('click', function(){
 			console.log(res);
 			for(var i = 0; i < res.length ; i++){
 				var select = '<select class="form-control" id="confirmCode" disabled>'
-								+'<option value="審核成功">' + res[i].confirmCode + '</option>'
-								+'<option value="審核失敗">'+ res[i].confirmCode + '</option>'
-								+'<option value="審核中" selected>'+ res[i].confirmCode + '</option>'
+								+'<option value="' + res[i].confirmCode + '">' + res[i].confirmCode + '</option>'
+// 								+'<option value="審核失敗">'+ res[i].confirmCode + '</option>'
+// 								+'<option value="審核中">'+ res[i].confirmCode + '</option>'
 							+'</select>';
+				var button = '<button class="btn btn-primary" type="submit">修改</button>';
 				tbody.append(
 						'<tr>'
 							+ '<td>' + res[i].firmSn + '</td>'

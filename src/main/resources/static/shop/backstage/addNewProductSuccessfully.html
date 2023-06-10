@@ -195,26 +195,28 @@
 
   <table>
     <tr>
+      <th>商品圖片</th>
       <th>商品名稱</th>
-      <th>商品貨號</th>
       <th>商品價格</th>
       <th>商品數量</th>
-      <th>商品規格</th>
+      <th>商品狀態</th>
     </tr>
     <tr>
       <td>
-        <div class="item">
-          <img src="https://picsum.photos/50/50?random=2" />
+        <div class="item" style="width:100px; height:100px;">
+          <img id="proImg" style="width:100px; height:100px;"src="https://picsum.photos/50/50?random=2" />
         </div>
       </td>
-      <td>adog001</td>
-      <td>NT$700</td>
-      <td>60</td>
-      <td>20KG</td>
+      <td id="productName">adog001</td>
+      <td id="productPrice">NT$700</td>
+      <td id="productAmount">60</td>
+      <td id="productStatus">20KG</td>
     </tr>
   </table>
 
-  <button onclick="window.location.href = 'continue_listing.html';">繼續上架商品</button>
+  	<button id="btntest" class="btn btn-primary btn-submit" onclick="window.location.href = './addNewProduct.html';">
+	繼續新增商品
+	</button>
 </body>
 </html>
 
@@ -248,8 +250,8 @@
       src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
       crossorigin="anonymous"
     ></script>
-    <script src="assets/demo/chart-area-demo.js"></script>
-    <script src="assets/demo/chart-bar-demo.js"></script>
+    <!-- <script src="assets/demo/chart-area-demo.js"></script>
+    <script src="assets/demo/chart-bar-demo.js"></script> -->
     <script
       src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
       crossorigin="anonymous"
@@ -259,87 +261,46 @@
 
 
     <script>
-      const uploadDiv = document.getElementById("uploadDiv");
-      const uploadInput = document.getElementById("uploadInput");
-      const uploadContainer = document.querySelector(".upload-container");
-      const imageCountElement = document.getElementById("imageCount");
+        // 取得 URL 中的 query 參數值
+function getQueryParam(name) {
+  const urlParams = new URLSearchParams(window.location.search);
+  console.log(name);
+  return urlParams.get(name);
+}
 
-      let imageCount = 0;
+// 取得商品資訊並動態填入頁面
+function displayProductInfo() {
+  // 從 URL 中取得 productId 參數值
+  const productId = getQueryParam('productId');
+  console.log("test");
+  console.log(productId);
 
-      // 監聽圖片選擇事件
-      uploadInput.addEventListener("change", handleImageUpload);
+  // 發送請求至後端取得商品資訊
+  fetch(`http://localhost:8080/petpet/shoptest/${productId}`)
+    .then(response => response.json())
+    .then(product => {
+      // 動態填入商品資訊至頁面元素
+    //   ${productId}
+      console.log("123123");
+      document.getElementById('productName').textContent = product.pro_name;
+      document.getElementById('productPrice').textContent = product.pro_price;
+      document.getElementById('productAmount').textContent = product.pro_amount;
+      document.getElementById('productStatus').textContent = product.pro_status;
+      document.getElementById('proImg').src = 'data:image/png;base64,' + product.pro_pic1;
+      
 
-      // 處理圖片上傳
-      function handleImageUpload(event) {
-        const files = event.target.files;
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      console.log('發生錯誤');
+    });
+}
 
-        // 遍歷選擇的文件
-        for (let i = 0; i < files.length; i++) {
-          const file = files[i];
+// 在頁面載入完成後呼叫 displayProductInfo 函式
+window.addEventListener('DOMContentLoaded', displayProductInfo);
 
-          // 檢查文件類型是否為圖片
-          if (file.type.match("image.*")) {
-            // 檢查是否超過上傳數量限制
-            if (imageCount >= 3) {
-              alert("一次最多只能上傳 3 張圖片");
-              break;
-            }
 
-            // 創建圖片預覽元素
-            const previewImage = document.createElement("div");
-            previewImage.classList.add("preview-image");
 
-            const img = document.createElement("img");
-            img.src = URL.createObjectURL(file);
-
-            const deleteButton = document.createElement("button");
-            deleteButton.classList.add("delete-button");
-            deleteButton.innerHTML = "&times;";
-
-            // 監聽刪除按鈕點擊事件
-            deleteButton.addEventListener("click", () => {
-              // 從預覽區域中移除該圖片
-              uploadContainer.removeChild(previewImage);
-              imageCount--;
-
-              // 檢查是否低於最大圖片數量
-              if (imageCount < 3) {
-                // 重新啟用上傳按鈕
-                uploadDiv.style.display = "flex";
-                uploadDiv.style.flexDirection = "column";
-                uploadInput.disabled = false;
-              }
-
-              // 更新圖片數量顯示
-              updateImageCount();
-            });
-
-            // 將圖片和刪除按鈕添加到預覽元素中
-            previewImage.appendChild(img);
-            previewImage.appendChild(deleteButton);
-
-            // 將圖片預覽元素添加到預覽區域
-            uploadContainer.insertBefore(previewImage, uploadDiv);
-
-            imageCount++;
-
-            // 檢查是否達到圖片上限
-            if (imageCount >= 3) {
-              // 隱藏上傳按鈕
-              uploadDiv.style.display = "none";
-              uploadInput.disabled = true;
-            }
-
-            // 更新圖片數量顯示
-            updateImageCount();
-          }
-        }
-      }
-
-      // 更新圖片數量顯示
-      function updateImageCount() {
-        imageCountElement.textContent = `(${imageCount}/3)`;
-      }
     </script>
   </body>
 </html>

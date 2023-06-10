@@ -85,11 +85,11 @@
               <div class="profile">
               <img class="report-image" src="../static/images/alert.png" alt="Report Image" style="display:block; margin:auto"  />
                 <div class="form-group">
-                  <label for="userId">(檢舉人)會員ID</label>
+                  <label for="userId">(檢舉人)會員帳號</label>
                   <input type="text" class="form-control" id="userId"  placeholder="Enter user ID"/>
                 </div>
                 <div class="form-group">
-                  <label for="merchantId">被檢舉商家ID</label>
+                  <label for="merchantId">被檢舉商家帳號</label>
                   <input type="text" class="form-control" id="companyId" placeholder="Enter merchant ID"/>
                 </div>
                 <div class="form-group">
