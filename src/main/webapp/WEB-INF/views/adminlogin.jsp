@@ -10,27 +10,18 @@
 <script src="../static/js/jquery-3.4.1.min.js"></script>
 <link href="../static/css/style2.css" rel="stylesheet" />
 <link href="../static/css/styles.css" rel="stylesheet" />
-<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
-	crossorigin="anonymous"></script>
-<script
-	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-	crossorigin="anonymous"></script>
-<style>
-.errortext {
-	color: red;
-	font-weight: bold;
-}
-</style>
+<script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"	crossorigin="anonymous"></script>
+<script	src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"	crossorigin="anonymous"></script>
+
 </head>
 <body>
 	<nav class="sb-topnav navbar navbar-expand navbar-dark color">
 		<!-- Navbar Brand-->
-		<img src="../static/images/petpet.png" width="70px" height="70px" /> <img
-			src="../static/images/Petword.png" width="40px" height="40px" /> <a
-			class="navbar-brand ps-3" href="index">首頁</a>
-		<form
-			class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
-			<div class="input-group"></div>
+		<img src="../static/images/petpet.png" width="70px" height="70px" /> 
+		<img src="../static/images/Petword.png" width="40px" height="40px" /> 
+		<a	class="navbar-brand ps-3" href="index">首頁</a>
+		<form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+		<div class="input-group"></div>
 			<!-- 首頁按鈕圖片 -->
 		</form>
 		<!-- Navbar-->
@@ -56,19 +47,30 @@
 			<div class="u-form-group">
 				<img src="../static/images/petpet.png" style="width: 120px" />
 			</div>
+			<select id="adminselect" style="margin-bottom: 10px">
+		          <option value="admin">Admin</option>
+		          <option value="shop">Shop</option>
+		          <option value="clinic">Clinic</option>
+		          <option value="shelter">Shelter</option>
+       		 </select>
 			<div class="u-form-group">
-				<input type="text" placeholder="account" id="adminLoginAccount" />
+				<input type="text" placeholder="Email" id="adminLoginAccount" />
 			</div>
 	
 			<div class="u-form-group">
 				<input type="password" placeholder="Password" id="adminLoginPassword" />
 			</div>
-
+			
+<!--       		<span id="captchaText"></span> -->
+<!--   			<div class="u-form-group"> -->
+<!--      		 	<input type="text" id="captchaInput" placeholder="驗證碼"> -->
+<!--    			</div> -->
+			
 			<div class="u-form-group" id="login-btn">
 				<button type="submit">Log in</button>
 			</div>
 			<div class="u-form-group">
-				<a href="Forgot.html" class="forgot-password">Forgot password?</a>
+				<a href="forgot" class="forgot-password">Forgot password?</a>
 			</div>
 		</form>
 
@@ -137,56 +139,60 @@
 			var passlength = pass.value.length;
 			console.log("取值和長度完成");
 			if (acclength === 0 || passlength === 0) {
-				// 				$("#errorMsg").addClass("errortext");
 				errorMsg.classList.add("errortext");
 				errorMsg.innerText = "帳號密碼不能為空";
 			} else if (acclength < 6 || passlength < 6) {
 				errorMsg.classList.add("errortext");
 				errorMsg.innerText = "帳號密碼不能少於6位數";
+			}else{
+				$("#errorMsg").removeClass("errortext");
+				console.log("清除完畢");
+				$('#adminRegisterForm').submit();
 			}
-			// 			$("#errorMsg").removeClass("errortext");
-			console.log(acclength + "\n" + passlength);
-			
-			alert();
-			$('#adminRegisterForm').submit();
 		});
 	</script>
 	<!--   註冊動作  -->
 
 	<script>
 		$('#adminRegisterForm').on('submit', function(e) {
-			e.preventDefault(); // 阻止表单默认提交行为
+			e.preventDefault(); 
 
-			// 获取表单数据
+			// 取得表單數據
 			var adminName = $("#adminName").val();
 			var adminAccount = $("#adminAccount").val();
 			var adminPassword = $("#adminPassword").val();
 
-			// 创建一个包含管理员数据的对象
+			// 創建一個包含管理員數據物件
 			var adminData = {
 				adminName : adminName,
 				adminAccount : adminAccount,
 				adminPassword : adminPassword,
 			};
 
-			// 发送Ajax请求
+			// 發送Ajax请求
 			$.ajax({
-				url : "/admin/register",
+				url : "register",
 				type : "POST",
 				contentType : "application/json",
 				data : JSON.stringify(adminData),
 				success : function(response) {
-					// 处理成功响应
-					console.log("新增成功");
-					alert("新增成功")
-					window.location.href = "register";
+// 					alert(response);
+					if(response == 1){
+						console.log("新增成功");
+						alert("新增成功")
+						window.location.href = "login";
+					}else{
+						console.log("新增失败，請重新申辦帳號");
+						alert("帳號重複，新增失敗");
+						window.location.href = "register";
+					}
 				},
 				error : function(error) {
-					// 处理错误响应
+					// 處理錯誤反應
 					console.log("新增失败");
-					alert("新增成功")
-					// 显示错误消息或执行其他错误处理逻辑
-				},
+					alert("新增失败")
+					// 顯示錯誤消息執行其他錯誤
+					},
 			});
 		});
 	</script>
@@ -198,32 +204,32 @@
 		$('#adminLoginForm').on('submit', function(e) {
 			e.preventDefault(); // 阻止表单默认提交行为
 
-			// 获取表单数据
+			// 獲取輸入的值
 			var adminAccount = $("#adminLoginAccount").val();
 			var adminPassword = $("#adminLoginPassword").val();
 
-			// 创建一个包含管理员数据的对象
+			// 創建一个包含管理員數據物件
 			var adminData = {
 				adminAccount : adminAccount,
 				adminPassword : adminPassword,
 			};
 
-			// 发送Ajax请求
+			// 發送Ajax请求
 			$.ajax({
-				url : "/admin/login",
+				url : "login",
 				type : "POST",
 				contentType : "application/json",
 				data : JSON.stringify(adminData),
 				success : function(response) {
 					// 处理成功响应
 					console.log("response" , response);
-					if(response.code===0000){
+					if(response.code == 0000){
 						alert(response.msg);
+						window.location.href = "index";
 					}else{
 						alert(response.msg);
+						window.location.href = "login";
 					}
-					
-// 					window.location.href = "";
 				},
 				error : function(error) {			
 					console.log("error" , error);
@@ -231,7 +237,7 @@
 			});
 		});
 	</script>
-
 	<!--     登入結束 -->
+<!-- 	<script src="../static/js/authcode.js"></script> -->
 </body>
 </html>

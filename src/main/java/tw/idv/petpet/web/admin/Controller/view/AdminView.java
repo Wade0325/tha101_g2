@@ -12,29 +12,29 @@ public class AdminView {
 		return "adminindex";
 	}
 
-////	商家檢舉
-//	@RequestMapping("/admin/reportfirm")
-//	public String adminReportFirm() {
-//		return "reportfirm";
-//	}
+//	商家檢舉
+	@RequestMapping("/admin/reportfirm")
+	public String adminReportFirm() {
+		return "reportfirm";
+	}
+	
+//	會員檢舉
+	@RequestMapping("/admin/reportuser")
+	public String adminReportUser() {
+		return "reportuser";
+	}
+	
+//	管理員註冊
+	@RequestMapping("/admin/register")
+	public String adminRegister() {
+		return "adminlogin";
+	}
 //	
-////	會員檢舉
-//	@RequestMapping("/admin/reportuser")
-//	public String adminReportUser() {
-//		return "reportuser";
-//	}
-//	
-////	管理員註冊
-//	@RequestMapping("/admin/register")
-//	public String adminRegister() {
-//		return "adminlogin";
-//	}
-//	
-////	忘記密碼
-//	@RequestMapping("/admin/forgot")
-//	public String adminForgot() {
-//		return "forgotpss";
-//	}
+//	忘記密碼
+	@RequestMapping("/admin/forgot")
+	public String adminForgot() {
+		return "forgotpss";
+	}
 //	
 //	管理員登入
 	@RequestMapping("/admin/login")
@@ -47,18 +47,18 @@ public class AdminView {
 	public String adminedit() {
 		return "adminedit";
 	}
-//	
-////	商家檢舉表單
-//	@RequestMapping("/reportfirmform")
-//	public String reportfirmform() {
-//		return "reportfirmform";
-//	}
-//	
-////	會員檢舉表單
-//	@RequestMapping("/reportuserform")
-//	public String reportuserform() {
-//		return "reportuserform";
-//	}
+	
+//	商家檢舉表單
+	@RequestMapping("/admin/reportfirmform")
+	public String reportfirmform() {
+		return "reportfirmform";
+	}
+	
+//	會員檢舉表單
+	@RequestMapping("/admin/reportuserform")
+	public String reportuserform() {
+		return "reportuserform";
+	}
 //	
 ////	圖片上傳Form表單
 //	@RequestMapping("/admin/upload")
@@ -90,10 +90,10 @@ public class AdminView {
 //		return "testpage";
 //	}
 //	
-////	測試會員清單
-//	@RequestMapping("/list")
-//	public String adminList() {
-//		return "adminlist";
-//	}
+//	測試會員清單
+	@RequestMapping("/admin/list")
+	public String adminList() {
+		return "adminlist";
+	}
 //
 }

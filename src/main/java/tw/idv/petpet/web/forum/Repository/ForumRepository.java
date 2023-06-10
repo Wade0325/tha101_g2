@@ -12,4 +12,6 @@ public interface ForumRepository extends JpaRepository<Forum, Integer>{
 //	void updateForum(int articleId, Integer articleGroupId ,
 //			String articleTitle, String articleContent);
 	 List<Forum> findAll();
+	 
+	 Forum findByArticleId(Integer articleId);
 }

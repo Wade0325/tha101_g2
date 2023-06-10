@@ -65,149 +65,40 @@
         <section class="ftco-section bg-light">
           <div class="container">
              <div class="formbar-wrap">
-<!--                         <div class="row"> -->
-<!--                             <div class="col-lg-3"> -->
-<!--                                 <div class="form-group"><i class="material-icons">search</i> 請選擇欲查詢的資料</div> -->
-<!--                             </div> -->
-<!--                             <div class="col-lg-8"> -->
-<!--                                 <div class="row"> -->
-<!--                                     <div class="col-sm-12" style="text-align:left;"> -->
-<!--                                         <div class="form-group"> -->
-<!--                                             <div class="form-check form-check-inline" id="chk_0"> -->
-<!--                                                 <label class="form-check-label"> -->
-<!--                                                     <input class="form-check-input" data-sVal="0" type="radio" -->
-<!--                                                         name="exampleRadios1" id="radPetType0" value="0">犬 -->
-<!--                                                     <span class="circle"><span class="check"></span></span> -->
-<!--                                                 </label> -->
-<!--                                             </div> -->
-<!--                                             <div class="form-check form-check-inline" id="chk_1"> -->
-<!--                                                 <label class="form-check-label"> -->
-<!--                                                     <input class="form-check-input" data-sVal="1" type="radio" -->
-<!--                                                         name="exampleRadios1" id="radPetType1" value="1">貓 -->
-<!--                                                     <span class="circle"><span class="check"></span></span> -->
-<!--                                                 </label> -->
-<!--                                             </div> -->
-<!--                                             <div class="form-check form-check-inline" id="chk_O"> -->
-<!--                                                 <label class="form-check-label"> -->
-<!--                                                     <input class="form-check-input" data-sVal="O" type="radio" -->
-<!--                                                         name="exampleRadios1" id="radPetTypeO" value="O">其他 -->
-<!--                                                     <span class="circle"><span class="check"></span></span> -->
-<!--                                                 </label> -->
-<!--                                             </div> -->
-<!--                                             <select name="form-select" id="cobVariety" class="form-select"> -->
-<!--                                                 <option value='' selected>選擇品種</option> -->
-<!--                                             </select> -->
-<!--                                         </div> -->
-<!--                                     </div> -->
+                        <div class="row">
+                        <div class="col-md-2 form-group">
+                        <select class="form-control" name="area" id="area">
+                        <option value>不限區域</option>
+                        <option value="北部區域">北部區域</option>
+                        <option value="中部區域">中部區域</option>
+                        <option value="南部區域">南部區域</option>
+                        <option value="東部區域">東部區域</option>
+                        <option value="離島區域">離島區域</option>
+                        </select>
+                        </div>
+                        <div class="col-md-2 form-group">
+                        <select class="form-control" name="type" id="type">
+                        <option value>不限種類</option>
+                        <option value="貓">貓</option>
+                        <option value="狗">狗</option>
+                        <option value="兔">兔</option>
+                        <option value="鳥">鳥</option>
+                        <option value="其他">其他</option>
+                        </select>
+                        </div>
+                          <div class="col-md-2 form-group">
+                        <select class="form-control" name="gender" id="gender">
+                        <option value>不限性別</option>
+                        <option value="公">公</option>
+                        <option value="母">母</option>
+                        <option value="未知">未知</option>
+                        </select>
+                        </div>
+                         <div class="col-md-2 form-group">
+                         <button class="btn btn-primary" id="search" style="margin-top: 5px;">搜尋</button>
+                         </div>
+                        </div>
 
-                                    
-<!--                                 </div> -->
-<!--                                 <input type="text" id="txtKeyWord" class="form-control" style="display: none" -->
-<!--                                     placeholder="晶片/特徵/遺失時間/遺失地點"> -->
-
-<!--                             </div> -->
-<!--                         </div> -->
-                      
-                        
-<!--                             <div class="row"> -->
-<!--                                 <div class="col-lg-1"> -->
-<!--                                 </div> -->
-<!--                                 <div class="col-lg-10"> -->
-<!--                                     <div class="row"> -->
-<!--                                         <div class="form-inline col-lg-5"> -->
-<!--                                             <div class="form-group"> -->
-<!--                                                 <div class="form-label">收容所縣市 -->
-<!--                                                     <select name="form-select" id="sel_County" class="form-select">  -->
-<!--                                                     </select> -->
-<!--                                                 </div> -->
-<!--                                             </div> -->
-<!--                                         </div> -->
-<!--                                         <div class="form-inline col-lg-5"> -->
-<!--                                             <div class="form-group"> -->
-<!--                                                 <div class="form-label">收容所 -->
-<!--                                                      <select name="form-select" id="sel_shelter" class="form-select"> -->
-<!--                                                         <option value='' selected>-- 選擇收容所 --</option> -->
-<!--                                                     </select> -->
-<!--                                                 </div> -->
-<!--                                             </div> -->
-<!--                                         </div> -->
-<!--                                     </div> -->
-<!--                                     <div class="row"> -->
-<!--                                         <div class="form-inline col-lg-5"> -->
-<!--                                             <div class="form-group"> -->
-<!--                                                 <div class="form-label">動物性別 -->
-<!--                                                     <select name="form-select" id="cobSex" class="form-select"> -->
-<!--                                                         <option value='' selected>選擇性別</option> -->
-<!--                                                         <option value='1' selected>公</option> -->
-<!--                                                         <option value='0' selected>母</option> -->
-<!--                                                     </select> -->
-<!--                                                 </div> -->
-<!--                                             </div> -->
-<!--                                         </div> -->
-<!--                                         <div class="form-inline col-lg-5"> -->
-<!--                                             <div class="form-group"> -->
-<!--                                                 <div class="form-label">入所年齡 -->
-<!--                                                     <select name="form-select" id="cobAge" class="form-select">  -->
-<!--                                                         <option value='' selected>選擇年齡</option> -->
-<!--                                                     </select> -->
-<!--                                                 </div> -->
-<!--                                             </div> -->
-<!--                                         </div>  -->
-<!--                                     </div> -->
-<!--                                     <div class="row"> -->
-<!--                                         <div class="form-inline col-lg-5"> -->
-<!--                                             <div class="form-group"> -->
-<!--                                                 <div class="form-label">來源行政區 -->
-<!--                                                     <select name="form-select" id="cobCounty" class="form-select">  -->
-<!--                                                     </select> -->
-<!--                                                     <select name="form-select" id="cobTown" class="form-select">  -->
-<!--                                                         <option value='' selected>選擇行政區</option> -->
-<!--                                                     </select> -->
-<!--                                                 </div>  -->
-<!--                                             </div> -->
-<!--                                         </div> -->
-<!--                                         <div class="form-inline col-lg-5"> -->
-<!--                                             <div class="form-group"> -->
-<!--                                                 花色 -->
-<!--                                             </div> -->
-<!--                                             <div class="form-group"> -->
-<!--                                                 <input type="text" id="txtHAIRCOLOR" class="form-control" -->
-<!--                                                     placeholder="花色" maxlength="10"> -->
-<!--                                             </div> -->
-<!--                                         </div> -->
-<!--                                     </div> -->
-<!--                                     <div class="row"> -->
-<!--                                         <div class="form-inline col-lg-5"> -->
-<!--                                             <div class="form-group"> -->
-<!--                                                 <div class="form-label">收容編號</div> -->
-<!--                                             </div> -->
-<!--                                             <div class="form-group"> -->
-<!--                                                 <input type="text" id="txtAcNum" class="form-control" -->
-<!--                                                     placeholder="收容編號"> -->
-<!--                                             </div> -->
-<!--                                         </div> -->
-<!--                                         <div class="form-inline col-lg-5"> -->
-<!--                                             <div class="form-group"> -->
-<!--                                                 動物晶片號碼 -->
-<!--                                             </div> -->
-<!--                                             <div class="form-group"> -->
-<!--                                                 <input type="text" id="txtCNum" class="form-control" -->
-<!--                                                     placeholder="動物晶片號碼"> -->
-<!--                                             </div> -->
-<!--                                         </div> -->
-<!--                                         <div class="col-lg-2"> -->
-<!--                                             <input type="button" id="SelData" onclick="QueryData()" -->
-<!--                                                 class="btn btn-round btn-success btn-sm" value="查詢" /> -->
-<!--                                         </div> -->
-<!--                                     </div> -->
-<!--                                 </div> -->
-<!--                                 <div class="col-lg-1"> -->
-<!--                                 </div> -->
-                                
-<!--                             </div> -->
-
-
-<!--                     </div> -->
               <div class="row" id="tbody">
              
                     </div>

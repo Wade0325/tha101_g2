@@ -15,9 +15,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import lombok.experimental.PackagePrivate;
 import tw.idv.petpet.core.pojo.Core;
-import tw.idv.petpet.web.clinic.clinicAppointment.repository.ClinicAppointmentRepository;
+import tw.idv.petpet.web.clinicMember.Repository.ClinicMemberRepository;
 import tw.idv.petpet.web.clinicMember.entity.ClinicMember;
 import tw.idv.petpet.web.clinicMember.service.ClinicMemberService;
 
@@ -29,7 +28,7 @@ public class ClinicMemberManageController {
 	private ClinicMemberService service;
 	
 	@Autowired
-	private ClinicAppointmentRepository clinicAppointmentRepository;
+	private ClinicMemberRepository clinicMemberRepository;
 
 	@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
 	@ResponseBody
@@ -52,7 +51,7 @@ public class ClinicMemberManageController {
 	}
 
 	@PutMapping
-	@ResponseBody
+	
 	public Core save(@RequestBody ClinicMember clinicMember, HttpSession session) {
 		final Core core = new Core();
 		ClinicMember clinicMemberSession = (ClinicMember) session.getAttribute("clinicEmail");
@@ -60,7 +59,7 @@ public class ClinicMemberManageController {
 			core.setMessage("無此會員");
 			core.setSuccessful(false);
 		} else {
-			core.setSuccessful(service.save(clinicMember));
+			core.setSuccessful(clinicMemberRepository.save(clinicMember) != null);
 		}
 		return core;
 	}

@@ -14,6 +14,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import tw.idv.petpet.core.pojo.Core;
 
 @Entity
 @Table
@@ -21,7 +22,7 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class AdoptApply {
+public class AdoptApply extends Core{
 
 	
 	@Id
@@ -42,5 +43,7 @@ public class AdoptApply {
     private String plan;
     private String question;
     private Date adopterApplyDate;
-    private boolean adopterChecked;
+    @Column(insertable = false)
+    private String adopterChecked;
+    private String userAccount;
 }

@@ -1,7 +1,6 @@
 package tw.idv.petpet.web.shelter.shelterMember.service.impl;
 
 import java.util.List;
-import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -48,6 +47,20 @@ public class ShelterMemberServiceImpl implements ShelterMemberService{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	@Override
+	public ShelterMember login(ShelterMember ShelterMember) {
+		ShelterMember login = repo.findByAccountAndPassword(ShelterMember.getShelterEmail(), ShelterMember.getShelterPassword());
+		if (login != null) {
+			login.setSuccessful(true);
+			login.setLogin(true);
+			System.out.println("登入成功");
+			return login;
+		} else {
+			ShelterMember.setSuccessful(false);
+			ShelterMember.setMessage("帳號密碼錯誤");
+			System.out.println("登入失敗");
+			return login;
+		}
+	}
 	
 }

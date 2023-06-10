@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +21,7 @@ import tw.idv.petpet.web.shop.dao.CategoriesRepository;
 import tw.idv.petpet.web.shop.dao.ProductRepository;
 import tw.idv.petpet.web.shop.entity.Categories;
 import tw.idv.petpet.web.shop.entity.Product;
-
+@Transactional 
 @RestController
 @CrossOrigin(origins = "http://127.0.0.1:5500")
 public class ProductController {
@@ -44,26 +45,34 @@ public class ProductController {
 	}
 
 	@PostMapping("/shoptestinsert") // 新增商品
-	public String insert(@RequestBody Product product) {
-		System.out.println("test");
+	public Product insert(@RequestBody Product product) {
 		 Timestamp now = new Timestamp(System.currentTimeMillis());
-	        product.setCreate_time(now);
+	     product.setCreate_time(now);
 		productRepository.save(product);
-		return "測試insert";
+		return product;
 	}
+	
+	@DeleteMapping("/shoptest/{proName}")
+	public String delete(@PathVariable String proName) {
 
-
-	@DeleteMapping("/shoptest/{shopId}")
-	public String delete(@PathVariable Integer shopId) {
-
-		productRepository.deleteById(shopId);
+		productRepository.deleteByName(proName);
+		
 
 		return "測試delete";
 	}
 
+
+//	@DeleteMapping("/shoptest/{shopId}")
+//	public String delete(@PathVariable Integer shopId) {
+//
+//		productRepository.deleteById(shopId);
+//
+//		return "測試delete";
+//	}
+
 	@GetMapping("/shoptest/{shopId}")
 	public Product read(@PathVariable Integer shopId) {
-
+		System.out.println("test1243");
 		Product product = productRepository.findById(shopId).orElse(null);
 		return product;
 	}
