@@ -14,7 +14,7 @@ public interface ShelterAnimalRepo extends JpaRepository<ShelterAnimal, Integer>
 	
 	List<ShelterAnimal> findByifAdopted(Integer ifAdopted);
 	
-	@Query(value = "SELECT * FROM Shelter_Animal where animal_type = ?1 and if_adopted = 0", nativeQuery = true)
+	@Query(value = "SELECT * FROM Shelter_Animal where animal_type = ?1 and if_adopted = ?2", nativeQuery = true)
 	ShelterAnimal findByAnimalType(String aniamlType);
 
 }
