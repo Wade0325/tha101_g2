@@ -2,6 +2,8 @@ package tw.idv.petpet.web.forum.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import tw.idv.petpet.web.forum.entity.ArticleComment;
 import tw.idv.petpet.web.forum.service.ArticleCommentService;
+import tw.idv.petpet.web.user.entity.User;
 
 @RestController
 @RequestMapping("/forum")
@@ -35,7 +38,13 @@ public class ArticleCommentController {
 //	}
 	
 	@GetMapping("article_cat/{articleId}")
-	public List<ArticleComment> findByArticleId(@PathVariable Integer articleId) {
+	public List<ArticleComment> findByArticleId(@PathVariable Integer articleId, HttpSession session) {
+		
+		User userSession = (User) session.getAttribute("userAccount");
+		userSession.getUserAccount();
+		userSession.getUserId();
+		
+		
 		System.out.println("ArticleCommentController 開始執行");
 		List<ArticleComment> findArticleIdAll = articleCommentService.findByArticleId(articleId);
 		System.out.println("查看是否獲取Id" + articleId);
