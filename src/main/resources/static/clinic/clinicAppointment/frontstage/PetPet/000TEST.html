@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+
+<body>
+	<button type="button" class="btn-pay" onclick="payClick()">前往付款</button>
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+	<script>
+		function payClick() {
+			$.ajax({
+				url: "../../../../ecpayCheck",
+				type: "POST",
+				success: function (response) {
+					const form = response;
+					$("body").append(form); //將接收到資料插入頁面body中
+					$("#ecpayForm").submit(); //假設表單的 id 屬性設為ecpayForm。
+				}
+			})
+		}
+	</script>
+</body>
+
+</html>
