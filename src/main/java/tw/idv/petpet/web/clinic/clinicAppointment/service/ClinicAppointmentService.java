@@ -5,6 +5,9 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -58,7 +61,7 @@ public class ClinicAppointmentService {
 
 					businessDate.setMorningAppointMax(morningAppointMax - 1); // 更新可預約人數
 					businessDateRepository.save(businessDate);
-					
+
 					clinicAppointment.setMessage("預約成功");
 					clinicAppointment.setSuccessful(true);
 					System.out.println(clinicAppointment.getClinicName() + "診所上午時段可預約人數更新成功");
@@ -73,7 +76,7 @@ public class ClinicAppointmentService {
 
 					businessDate.setAfternoonAppointMax(afternoonAppointMax - 1); // 更新可預約人數
 					businessDateRepository.save(businessDate);
-					
+
 					clinicAppointment.setMessage("預約成功");
 					clinicAppointment.setSuccessful(true);
 					System.out.println(clinicAppointment.getClinicName() + "診所下午時段可預約人數更新成功");
@@ -88,7 +91,7 @@ public class ClinicAppointmentService {
 
 					businessDate.setNightAppointMax(nightAppointMax - 1);// 更新可預約人數
 					businessDateRepository.save(businessDate);
-					
+
 					clinicAppointment.setMessage("預約成功");
 					clinicAppointment.setSuccessful(true);
 					System.out.println(clinicAppointment.getClinicName() + "診所晚上時段可預約人數更新成功");
@@ -115,6 +118,7 @@ public class ClinicAppointmentService {
 			clinicAppointment1.setServiceItem(clinicAppointment.getServiceItem());
 			clinicAppointment1.setOwnerName(clinicAppointment.getOwnerName());
 			clinicAppointment1.setPetSituation(clinicAppointment.getPetSituation());
+			clinicAppointment1.setPayInfo(clinicAppointment.getPayInfo());
 			clinicAppointmentRepository.save(clinicAppointment1);
 		}
 	}
@@ -179,8 +183,18 @@ public class ClinicAppointmentService {
 	public List<ClinicAppointment> findByClinicName(String clinicName) {
 		return clinicAppointmentRepository.findByClinicName(clinicName);
 	}
-	
+
 	public List<ClinicAppointment> findByOwnerName(String ownerName) {
 		return clinicAppointmentRepository.findByOwnerName(ownerName);
+	}
+
+	public ClinicAppointment getLatestReservation() {
+		Sort sort = Sort.by(Sort.Direction.DESC, "reservationNumber"); // 創建一個排序規則，按照reservationNumber欄位進行降序排序。
+		Pageable pageable = PageRequest.of(0, 1, sort);// 創建一個Pageable對象，設置頁數為0，每頁返回的資料數量為1，並應用上述的排序規則。
+		List<ClinicAppointment> list = clinicAppointmentRepository.findAll(pageable).getContent();
+		if (!list.isEmpty()) {
+			return list.get(0);
+		}
+		return null;
 	}
 }

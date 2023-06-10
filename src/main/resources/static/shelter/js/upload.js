@@ -10,9 +10,9 @@
 	const animalDate = document.querySelector('#animalDate');
 	const animalAge = document.querySelector('#animalAge');
 	const animalDescribe = document.querySelector('#animalDescribe');
+	const animalArea = document.querySelector('#animalArea');
 	const ifAdopted = document.querySelector('#ifAdopted');
-	const fileInputs = document.querySelectorAll('.fileupload');
-
+	
 
 
 	delaybtn.addEventListener('click', async () => {
@@ -23,13 +23,15 @@
 		const colorLength = animalColor.value.trim().length;
 		const genderLength = animalGender.value.trim().length;
 		const ageLength = animalAge.value.trim().length;
-		const inputs = [animalId, userId, animalName, animalType, animalCategory, animalColor, animalGender, animalDate, animalAge, animalDescribe, ifAdopted];
-	
+		
 		if (nameLength === 0) {
 			alert('名稱不可為空');
 			return;
 		} else if (idLength === 0) {
 			alert('收容編號不可為空');
+			return;
+		} else if (animalArea.value === "") {
+			alert('請選擇區域');
 			return;
 		} else if (typeLength === 0) {
 			alert('種類不可為空');
@@ -80,6 +82,7 @@
 			animalDate: animalDate.value,
 			animalAge: animalAge.value,
 			animalDescribe: animalDescribe.value,
+			animalArea:animalArea.value,
 			animalPhoto1: base64Data1,
 			animalPhoto2: base64Data2,
 			animalPhoto3: base64Data3
