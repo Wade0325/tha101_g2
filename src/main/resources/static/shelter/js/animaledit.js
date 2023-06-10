@@ -131,7 +131,8 @@ fetch(`animalfindbyid/${id}`, {
 				const {successful} = body;
 				if (successful) {
 					msg.className = 'info';
-					msg.textContent = '送出成功';
+					alert('送出成功');
+					 window.location.href = 'animalmanage.html';
 				} else {
 					msg.className = 'error';
 					msg.textContent = '送出失敗';
