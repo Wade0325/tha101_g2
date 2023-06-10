@@ -7,23 +7,29 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import tw.idv.petpet.web.shelter.Repository.AdoptApplyRepo;
+import tw.idv.petpet.web.shelter.Repository.AdoptRecordRepo;
 import tw.idv.petpet.web.shelter.adoptApply.entity.AdoptApply;
+import tw.idv.petpet.web.shelter.adoptApply.entity.AdoptRecord;
 import tw.idv.petpet.web.shelter.adoptApply.service.AdoptApplyService;
-import tw.idv.petpet.web.shelter.shelterAnimal.entity.ShelterAnimal;
+
 @Service
-public class AdoptApplyServiceImpl implements AdoptApplyService{
+public class AdoptApplyServiceImpl implements AdoptApplyService {
 	@Autowired
 	private AdoptApplyRepo repo;
+
+	@Autowired
+	private AdoptRecordRepo adoptRecordRepo;
+	
 	@Override
-	public  AdoptApply upload(AdoptApply AdoptApply) {
+	public AdoptApply upload(AdoptApply AdoptApply) {
 		repo.save(AdoptApply);
 		System.out.println("AdoptApply上傳 service收到");
-		return  AdoptApply;
+		return AdoptApply;
 	}
 
 	@Override
 	public List<AdoptApply> findAll() {
-		 return repo.findAll();
+		return repo.findAll();
 	}
 
 	@Override
@@ -34,11 +40,11 @@ public class AdoptApplyServiceImpl implements AdoptApplyService{
 
 	@Override
 	public Optional<AdoptApply> findById(Integer applyId) {
-		 return repo.findById(applyId);
+		return repo.findById(applyId);
 	}
 
 	@Override
-	public  AdoptApply update(AdoptApply AdoptApply) {
+	public AdoptApply update(AdoptApply AdoptApply) {
 		AdoptApply adopt = repo.findById(AdoptApply.getApplyId()).orElse(null);
 		return repo.save(adopt);
 	}
@@ -48,4 +54,10 @@ public class AdoptApplyServiceImpl implements AdoptApplyService{
 		return repo.findByanimalId(animalId);
 	}
 
+	@Override
+	public List<AdoptRecord> findRecord(String userAccount) {
+		return adoptRecordRepo.findRecord(userAccount);
+	}
+	
+	
 }

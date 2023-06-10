@@ -24,15 +24,15 @@ public class ReportArticleController {
 		this.reportArticleService = reportArticleService;
 	}
 
-	@PostMapping
+	@PostMapping  //用戶前台發送檢舉請求, 儲存在資料庫
 	public ResponseEntity<ReportArticle> createReportArticle(@RequestBody ReportArticle reportArticle) {
-		System.out.println("ReportArticleController: createReportArticle");
+		System.out.println("--- ReportArticleController: createReportArticle ---");
 		
 		ReportArticle savedReportArticle = reportArticleService.saveReportArticle(reportArticle);
 		return ResponseEntity.status(HttpStatus.CREATED).body(savedReportArticle);
 	}
 
-	@GetMapping("/{reportId}")
+	@GetMapping("/{reportId}") // 抓取檢舉資料給前台
 	public ResponseEntity<ReportArticle> getReportArticleById(@PathVariable Integer reportId) {
 		System.out.println("ReportArticleController: getReportArticleById");
 		ReportArticle reportArticle = reportArticleService.getReportArticleById(reportId);
