@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import tw.idv.petpet.web.forum.entity.ArticleComment;
 import tw.idv.petpet.web.forum.service.ArticleCommentService;
+import tw.idv.petpet.web.user.entity.User;
 
 @RestController
 @RequestMapping("/forum")
@@ -38,6 +39,11 @@ public class ArticleCommentController {
 	
 	@GetMapping("article_cat/{articleId}")
 	public List<ArticleComment> findByArticleId(@PathVariable Integer articleId, HttpSession session) {
+		
+		User userSession = (User) session.getAttribute("userAccount");
+		userSession.getUserAccount();
+		userSession.getUserId();
+		
 		
 		System.out.println("ArticleCommentController 開始執行");
 		List<ArticleComment> findArticleIdAll = articleCommentService.findByArticleId(articleId);
