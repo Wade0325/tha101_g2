@@ -141,14 +141,17 @@
 				tbody.empty();
 				console.log(list);
 				for(var index = 0; index < list.length; index++){
-							    
+					var select = '<select  class="form-select" >'
+									+'<option value="未停權">未停權</option>'
+									+'<option value="停權">停權</option>'
+								 '</select>';		    
 // 				    var button = '<button class="btn btn-primary" type="submit">修改</button>';
 					tbody.append('<tr>'
 							+'<td>' + list[index].adminId + '</td>'
 							+'<td>' + list[index].adminName + '</td>'
 							+'<td>' + list[index].adminAccount + '</td>'
 							+'<td>*******</td>'
-// 							+'<td>' + list[index].userDate + '</td>'
+							+'<td>' + select  + '</td>'
 // 							+'<td>' + button + '</td>'
 					+'</tr>');		
 				}
