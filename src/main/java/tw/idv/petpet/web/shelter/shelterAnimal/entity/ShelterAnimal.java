@@ -34,6 +34,7 @@ public class ShelterAnimal extends Core{
 	@Column
 	private Integer animalId;
 	private Integer userId;
+	private String userAccount;
     private String animalName;
     private String animalType;
     private String animalCategory;

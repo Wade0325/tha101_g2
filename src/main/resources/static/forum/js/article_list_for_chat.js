@@ -40,6 +40,12 @@
     replyButton.addEventListener('click', () => {
         window.location.href = `reply.html?articleId=${articleId}`;
     });
+    // 點擊檢舉按鈕的監聽事件
+    // const reportBtn = document.querySelector('#report-btn');
+    // reportBtn.addEventListener('click', () => {
+    //     window.location.href = `report_article.html?articleId=${articleId}`;
+    // });
+    
 
 
     var replyC = document.querySelector('#reply_content');
@@ -71,7 +77,15 @@
 
                 replyContainer.appendChild(newDiv);
             }
-            // data.forEach(
+
+        })
+
+
+
+})()
+/*
+
+  // data.forEach(
             //     item => {
             //         const { replyContent } = item;
             //         console.log(replyContent);
@@ -100,10 +114,6 @@
             //         // replyContainer.innerHTML += replyCItemHTML;
             //     }
             // )
-        })
-
-})()
-/*
 
 .then(resp => resp.json())
         .then(article => {
