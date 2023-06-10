@@ -5,16 +5,18 @@ import java.util.List;
 import tw.idv.petpet.core.service.CoreService;
 import tw.idv.petpet.web.forum.entity.Forum;
 
-public interface ForumService extends CoreService{
+public interface ForumService extends CoreService {
 
 	public Forum createForum(Forum forum);
-	
-	public Forum findByArticleId(int articleId);
-	
+
+//	public Forum findByArticleId(int articleId);
+
+	Forum findByArticleId(Integer articleId);
+
 	void deleteArticle(Integer articleId);
-	
-	 List<Forum> findAll();
-	
+
+	List<Forum> findAll();
+
 //	void updateForum(int articleId, Integer articleGroupId ,
 //			String articleTitle, String articleContent);
 }
