@@ -122,6 +122,7 @@ public class ShelterAnimalServiceImpl implements ShelterAnimalService {
 		ShelterAnimal existAnimal = repo.findById(ShelterAnimal.getAnimalId()).orElse(null);
 		if (existAnimal != null) {
 			existAnimal.setIfAdopted(ShelterAnimal.getIfAdopted());
+			existAnimal.setUserAccount(ShelterAnimal.getUserAccount());
 			existAnimal.setUserId(ShelterAnimal.getUserId());
 			return repo.save(existAnimal);
 		} else {
@@ -129,4 +130,14 @@ public class ShelterAnimalServiceImpl implements ShelterAnimalService {
 		}
 	}
 
+	@Override
+	public List<ShelterAnimal> findByAnimalType(ShelterAnimal ShelterAnimal) {
+		List<ShelterAnimal> search = repo.findByAnimalType(ShelterAnimal.getAnimalArea(), ShelterAnimal.getAnimalGender(), ShelterAnimal.getAnimalType(),ShelterAnimal.getIfAdopted());
+		return search;
+	}
+
+	@Override
+	public List<ShelterAnimal> findByShelterId(Integer shelterId) {
+		return repo.findByShelterId(shelterId);
+	}
 }
