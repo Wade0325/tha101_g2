@@ -33,12 +33,18 @@ public class AllInOneBase {
 //		try{
 			Document doc;
 			/* when using web project*/
-//			ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
-//			String configPath = URLDecoder.decode(classLoader.getResource("/payment_conf.xml").getPath(), "UTF-8");
-//			doc = EcpayFunction.xmlParser(configPath);
-			/* when using testing code*/
+			ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+			String configPath;
+//			try {
+//				configPath = URLDecoder.decode(classLoader.getResource("/payment_conf.xml").getPath(), "UTF-8");
+//			} catch (UnsupportedEncodingException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
 			String paymentConfPath = "./src/main/resources/payment_conf.xml";
 			doc = EcpayFunction.xmlParser(paymentConfPath);
+//			doc = EcpayFunction.xmlParser(configPath);
+			/* when using testing code*/
 			
 			doc.getDocumentElement().normalize();
 			//OperatingMode

@@ -22,6 +22,7 @@ import tw.idv.petpet.web.user.entity.User;
 public class FindanimalIdController {
 	@Autowired
 	private AdoptApplyService service;
+
 	@PostMapping("findbyanimalid/{animalId}")
 	@ResponseBody
 	public List<AdoptApply> getadopter(@PathVariable Integer animalId) {
@@ -30,14 +31,15 @@ public class FindanimalIdController {
 		System.out.println("查看申請人findByanimalId完成");
 		return adoptApply;
 	}
+
 	@PostMapping("adoptfindbyid/{applyId}")
 	@ResponseBody
-	public  AdoptApply adopt(@PathVariable Integer applyId) {
-		 AdoptApply  adoptApply = service.findById(applyId).orElse(null);
+	public AdoptApply adopt(@PathVariable Integer applyId) {
+		AdoptApply adoptApply = service.findById(applyId).orElse(null);
 
 		service.findById(applyId);
 		System.out.println("申請表單findById完成");
-		return  adoptApply;
+		return adoptApply;
 	}
 	
 	@GetMapping("adoptfindbyuserAccount")
@@ -46,4 +48,5 @@ public class FindanimalIdController {
 		System.out.println(userSession.getUserAccount());
 		return service.findRecord(userSession.getUserAccount());
 	}
+
 }

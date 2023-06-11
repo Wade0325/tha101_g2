@@ -6,6 +6,7 @@ import java.util.Optional;
 import tw.idv.petpet.core.service.CoreService;
 import tw.idv.petpet.web.shelter.adoptApply.entity.AdoptApply;
 import tw.idv.petpet.web.shelter.adoptApply.entity.AdoptRecord;
+import tw.idv.petpet.web.shelter.shelterAnimal.entity.ShelterAnimal;
 
 public interface AdoptApplyService extends CoreService{
 	AdoptApply upload(AdoptApply AdoptApply);
