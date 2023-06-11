@@ -229,8 +229,8 @@
       src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
       crossorigin="anonymous"
     ></script>
-    <script src="assets/demo/chart-area-demo.js"></script>
-    <script src="assets/demo/chart-bar-demo.js"></script>
+    <!-- <script src="assets/demo/chart-area-demo.js"></script>
+    <script src="assets/demo/chart-bar-demo.js"></script> -->
     <script
       src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
       crossorigin="anonymous"
@@ -241,25 +241,30 @@
     <script>
      document.addEventListener('DOMContentLoaded', function() {
     // 登入表單提交事件處理
-    document.getElementById('loginForm').addEventListener('submit', function(event) {
+    
+    document.getElementById('loginForm').addEventListener('click', function(event) {
         event.preventDefault(); // 防止表單自動提交
         
+        console.log("按下送出按鈕");
         var username = document.getElementById('exampleInputEmail1').value;
         var password = document.getElementById('exampleInputPassword1').value;
-        
+        console.log("test1");
         // 發送登入請求
-        fetch('/login', {
+        fetch('http://localhost:8080/petpet/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({username: username, password: password})
+            body: JSON.stringify({username: username, password: password})      
         })
         .then(function(response) {
+          
             if (response.ok) {
+              console.log("test2");
                 // 登入成功，重新導向到其他頁面
                 window.location.href = '/dashboard'; // 假設登入成功後要導向的頁面是 /dashboard
             } else {
+              console.log("test3");
                 // 登入失敗，顯示錯誤訊息
                 response.text().then(function(errorMessage) {
                     alert(errorMessage);
