@@ -149,15 +149,27 @@
 												<div class="card-body pt-5">
 													<fieldset>
 														<div class="row">
-															<div class="form-group col-6">
+															<div class="form-group col-4">
 																<label for="name">動物暱稱/小名 *</label> <input type="text"
 																	class="form-control border-stone" maxlength="20"
 																	name="animalName" id="animalName" value required />
 															</div>
-															<div class="form-group col-6">
+															<div class="form-group col-4">
 																<label for="name">收容編號 *</label> <input type="text"
 																	class="form-control border-stone" maxlength="20"
 																	name="animalId" id="animalId" value required />
+															</div>
+															<div class="form-group col-md-4">
+																<label for="name">所在區域 *</label> <select
+																	class="form-control border-stone" name="animalArea"
+																	id="animalArea" required>
+																	<option value>請選擇</option>
+																	<option value="北部區域">北部區域</option>
+																	<option value="中部區域">中部區域</option>
+																	<option value="南部區域">南部區域</option>
+																	<option value="東部區域">東部區域</option>
+																	<option value="離島區域">離島區域</option>
+																</select>
 															</div>
 														</div>
 														<div class="row">
@@ -248,10 +260,10 @@
 											</div>
 										</div>
 										<div class="col-12 pb-5">
-											<div id="msg" class="error"></div>
-											<p
-												class="d-flex justify-content-center text-danger font-weight-bold">資訊送出後需經過審核，因此不會立即出現在列表中，請耐心等待審核勿重覆刊登
-											</p>
+<!-- 											<div id="msg" class="error"></div> -->
+<!-- 											<p -->
+<!-- 												class="d-flex justify-content-center text-danger font-weight-bold">資訊送出後需經過審核，因此不會立即出現在列表中，請耐心等待審核勿重覆刊登 -->
+<!-- 											</p> -->
 											<div class="col-md-12 ">
 												<div class="register-btn">
 													<div class="d-flex justify-content-center">

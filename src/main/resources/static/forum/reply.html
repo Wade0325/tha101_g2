@@ -42,12 +42,12 @@
                 </button>
                 <div class="collapse navbar-collapse" id="ftco-nav">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item"><a href="index.html" class="nav-link" style="color: black">首頁</a></li>
-                        <li class="nav-item"><a href="vet.html" class="nav-link" style="color: black">寵物診所</a></li>
-                        <li class="nav-item"><a href="gallery.html" class="nav-link" style="color: black">寵物商城</a></li>
-                        <li class="nav-item"><a href="blog.html" class="nav-link" style="color: black">寵物領養</a></li>
+                        <li class="nav-item"><a href="http://localhost:8080/petpet/" class="nav-link" style="color: black">首頁</a></li>
+                        <li class="nav-item"><a href="http://localhost:8080/petpet/clinic/clinicAppointment/frontstage/PetPet/VetSearchResult.html" class="nav-link" style="color: black">寵物診所</a></li>
+                        <li class="nav-item"><a href="http://localhost:8080/petpet/shop/frontdesk/petFoodShop.html" class="nav-link" style="color: black">寵物商城</a></li>
+                        <li class="nav-item"><a href="http://localhost:8080/petpet/shelter/shelter.html" class="nav-link" style="color: black">寵物領養</a></li>
                         <li class="nav-item"><a href="forum.html" class="nav-link" style="color: black">寵物討論區</a></li>
-                        <li class="nav-item active"><a href="services_login.html" class="nav-link"
+                        <li class="nav-item active"><a href="http://localhost:8080/petpet/user/login.html" class="nav-link"
                                 style="color: black">登入/註冊</a></li>
                     </ul>
                 </div>
@@ -59,13 +59,11 @@
         <main style="background-color: white ;">
             <div class="container">
                 <h1>回覆文章</h1>
-                <h3>RE: 大家好這是我剛領養的貓貓</h3>
-                <form>
-                    <textarea id="message" placeholder="在這裡輸入你的回覆..." required></textarea>
-                    <button type="submit">送出回覆</button>
+                <form id="replyForm" class="">
+                    <textarea id="replyContent" placeholder="在這裡輸入你的回覆..." required></textarea>
+                    <button type="button" id="replyBtn">送出回覆</button>
                 </form>
             </div>
-
         </main>
         <!-- 程式放裡面 -->
 
@@ -148,8 +146,8 @@
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
         <script src="js/google-map.js"></script>
         <script src="js/main.js"></script>
-        <script src="poster.js"></script>
-
+        <script src="js/article_reply.js"></script> <!-- 獲取回覆內容渲染在頁面上 -->
+        <!-- <script src="js/article_list_for_chat.js"></script>  監聽點擊事件：回覆和檢舉 -->
 </body>
 
 </html>

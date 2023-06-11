@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="js/jquery-3.4.1.min.js"></script>
+    <link href="css/style2.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+    <script
+      src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <style>
+      .errortext {
+        color: red;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="sb-topnav navbar navbar-expand navbar-dark color">
+      <!-- Navbar Brand-->
+      <img src="images/petpet.png" width="70px" height="70px" />
+      <img src="images/Petword.png" width="40px" height="40px" />
+      <a class="navbar-brand ps-3" href="index.html">首頁</a>
+      <form
+        class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0"
+      >
+        <div class="input-group"></div>
+        <!-- 首頁按鈕圖片 -->
+      </form>
+      <!-- Navbar-->
+      <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+        <li class="nav-item dropdown">
+          <ul
+            class="dropdown-menu dropdown-menu-end"
+            aria-labelledby="navbarDropdown"
+          >
+            <li><a class="dropdown-item" href="login.html">註冊</a></li>
+            <li><a class="dropdown-item" href="login.html">登入</a></li>
+            <li><hr class="dropdown-divider" /></li>
+            <li><a class="dropdown-item" href="#!">登出</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="login-box">
+      <div class="lb-header">
+        <a href="#" class="active" id="login-box-link">Login</a>
+        <a href="#" id="signup-box-link">Sign Up</a>
+      </div>
+      <!--登入 -->
+      <form class="email-login" action="#" method="#">
+        <div class="u-form-group">
+          <img src="images/petpet.png" style="width: 120px" />
+        </div>
+        <select id="adminselect" style="margin-bottom: 10px">
+          <option value="admin">Admin</option>
+          <option value="shop">Shop</option>
+          <option value="clinic">Clinic</option>
+          <option value="shelter">Shelter</option>
+        </select>
+        <div class="u-form-group">
+          <input type="email" placeholder="adminEmail" name="adminAccount" />
+        </div>
+
+        <div class="u-form-group">
+          <input type="password" placeholder="Password" name="adminPassword" />
+        </div>
+
+        <div class="u-form-group" id="login-btn">
+          <button>Log in</button>
+        </div>
+        <div class="u-form-group">
+          <a href="Forgot.html" class="forgot-password">Forgot password?</a>
+        </div>
+      </form>
+
+      <!-- 商店登入 -->
+      <form class="shop-login" action="#" method="#">
+        <div class="u-form-group">
+          <img src="images/petpet.png" style="width: 120px" />
+        </div>
+        <select id="shopselect" style="margin-bottom: 10px">
+          <option value="admin">Admin</option>
+          <option value="shop">Shop</option>
+          <option value="clinic">Clinic</option>
+          <option value="shelter">Shelter</option>
+        </select>
+        <div class="u-form-group">
+          <input type="email" placeholder="shopEmail" name="shopAccount" />
+        </div>
+
+        <div class="u-form-group">
+          <input type="password" placeholder="Password" name="shopPassword" />
+        </div>
+
+        <div class="u-form-group" id="shoplogin">
+          <button>Log in</button>
+        </div>
+        <div class="u-form-group">
+          <a href="Forgot.html" class="forgot-password">Forgot password?</a>
+        </div>
+      </form>
+<!-- 診所登入 -->
+      <form class="clinic-login" action="#" method="#">
+        <div class="u-form-group">
+          <img src="images/petpet.png" style="width: 120px" />
+        </div>
+        <select id="clinicselect" style="margin-bottom: 10px">
+          <option value="admin">Admin</option>
+          <option value="shop">Shop</option>
+          <option value="clinic">Clinic</option>
+          <option value="shelter">Shelter</option>
+        </select>
+        <div class="u-form-group">
+          <input type="email" placeholder="clinicEmail" name="clinicAccount" id="clinicEmail"/>
+        </div>
+
+        <div class="u-form-group">
+          <input type="password" placeholder="Password" name="clinicPassword" id="clinicPassword"/>
+        </div>
+
+        <div class="u-form-group" id="cliniclogin">
+          <button>Log in</button>
+        </div>
+        <div class="u-form-group">
+          <a href="Forgot.html" class="forgot-password">Forgot password?</a>
+        </div>
+      </form>
+
+      <!-- 收容所登入 -->
+      <form class="shelter-login" action="#" method="#">
+        <div class="u-form-group">
+          <img src="images/petpet.png" style="width: 120px" />
+        </div>
+        <select id="shelterselect" style="margin-bottom: 10px">
+          <option value="admin">Admin</option>
+          <option value="shop">Shop</option>
+          <option value="clinic">Clinic</option>
+          <option value="shelter">Shelter</option>
+        </select>
+        <div class="u-form-group">
+          <input
+            type="email"
+            placeholder="shelterEmail"
+            id="shelterAcc"
+          />
+        </div>
+
+        <div class="u-form-group">
+          <input
+            type="password"
+            placeholder="Password"
+            id="shelterPass"
+          />
+        </div>
+
+        <div class="u-form-group" id="shelterlogin">
+          <button>Log in</button>
+        </div>
+        <div class="u-form-group">
+          <a href="Forgot.html" class="forgot-password">Forgot password?</a>
+        </div>
+      </form>
+      <!-- 註冊畫面 -->
+      <form class="email-signup" action="#" method="#">
+        <div class="u-form-group">
+          <img src="images/petpet.png" style="width: 120px" />
+        </div>
+        <div class="u-form-group">
+          <select id="signviewModeSelect">
+            <option value="admin">Admin Sign Up</option>
+            <option value="shop">Shop Sign Up</option>
+            <option value="clinic">Clinic Sign Up</option>
+            <option value="shelter">Shelter Sign Up</option>
+          </select>
+        </div>
+        <div class="u-form-group">
+          <input type="text" placeholder="Name" id="adminName" />
+        </div>
+        <div class="u-form-group">
+          <input
+            type="email"
+            placeholder="Email"
+            id="adminAccount"
+            name="adminAccount"
+          />
+        </div>
+        <div class="u-form-group">
+          <input
+            type="password"
+            placeholder="Password"
+            id="adminPassword"
+            name="adminPassword"
+          />
+        </div>
+        <div id="errorMsg"></div>
+        <div class="u-form-group">
+          <button type="button" id="signbtn">Sign Up</button>
+        </div>
+        <div class="u-form-group">
+          <a href="forgot_pss.html" class="forgot-password">Forgot password?</a>
+        </div>
+      </form>
+
+      <!-- 領養註冊 -->
+      <form class="shelter-signup" action="#" method="#">
+        <div class="u-form-group">
+          <img src="images/petpet.png" style="width: 120px" />
+        </div>
+        <div class="container-fluid">
+          <div class="col-md-12">
+            <div class="u-form-group">
+              <select id="shelterviewModeSelect">
+                <option value="admin">Admin Sign Up</option>
+                <option value="shop">Shop Sign Up</option>
+                <option value="clinic">Clinic Sign Up</option>
+                <option value="shelter">Shelter Sign Up</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="u-form-group">
+                <input
+                  type="email"
+                  placeholder="shelterEmail"
+                  id="shelterAccount"
+                  name="shelterAccount"
+                />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="u-form-group">
+                <input type="text" placeholder="shelterName" id="shelterName" />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="u-form-group">
+                <input
+                  type="password"
+                  placeholder="shelterPassword"
+                  id="shelterPassword"
+                />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="u-form-group">
+                <input
+                  type="password"
+                  placeholder="passwordChecked"
+                  id="shelterpasswordChecked"
+                  name="shelterpasswordChecked"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="u-form-group">
+                <input
+                  type="text"
+                  placeholder="shelterPrincipal"
+                  id="shelterPrincipal"
+                />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="u-form-group">
+                <input
+                  type="text"
+                  placeholder="shelterPhone"
+                  id="shelterPhone"
+                  name="shelterPhone"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="u-form-group">
+                <input
+                  type="text"
+                  placeholder="shelterAddress"
+                  id="shelterAddress"
+                  name="shelterAddress"
+                />
+              </div>
+            </div>
+          </div>
+          <div id="errorMsg"></div>
+          <div class="u-form-group">
+            <button type="submit" id="shelterbtn">Sign Up</button>
+          </div>
+          <div class="u-form-group">
+            <a href="forgot_pss.html" class="forgot-password"
+              >Forgot password?</a
+            >
+          </div>
+        </div>
+      </form>
+
+      <!-- 診所註冊 -->
+      <form class="clinic-signup" action="#" method="#">
+        <div class="u-form-group">
+          <img src="images/petpet.png" style="width: 120px" />
+        </div>
+        <div class="container-fluid">
+          <div class="col-md-12">
+            <div class="u-form-group">
+              <select id="clinicviewModeSelect">
+                <option value="admin">Admin Sign Up</option>
+                <option value="shop">Shop Sign Up</option>
+                <option value="clinic">Clinic Sign Up</option>
+                <option value="shelter">Shelter Sign Up</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="u-form-group">
+                <input
+                  type="email"
+                  placeholder="clinicEmail"
+                  id="clinicAccount"
+                  name="clinicAccount"
+                />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="u-form-group">
+                <input type="text" placeholder="clinicName" id="clinicName" />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="u-form-group">
+                <input
+                  type="password"
+                  placeholder="clinicPassword"
+                  id="clinicPassword"
+                />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="u-form-group">
+                <input
+                  type="password"
+                  placeholder="passwordChecked"
+                  id="clinicpasswordChecked"
+                  name="clinicpasswordChecked"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="u-form-group">
+                <input
+                  type="text"
+                  placeholder="clinicPrincipal"
+                  id="clinicPrincipal"
+                />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="u-form-group">
+                <input
+                  type="text"
+                  placeholder="clinicPhone"
+                  id="clinicPhone"
+                  name="clinicPhone"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="u-form-group">
+                <input
+                  type="text"
+                  placeholder="clinicAddress"
+                  id="clinicAddress"
+                  name="clinicAddress"
+                />
+              </div>
+            </div>
+          </div>
+          <div id="errorMsg"></div>
+          <div class="u-form-group">
+            <button type="submit" id="clinicbtn">Sign Up</button>
+          </div>
+          <div class="u-form-group">
+            <a href="forgot_pss.html" class="forgot-password"
+              >Forgot password?</a
+            >
+          </div>
+        </div>
+      </form>
+
+      <!-- 商店註冊 -->
+      <form class="shop-signup" action="#" method="#">
+        <div class="u-form-group">
+          <img src="images/petpet.png" style="width: 120px" />
+        </div>
+        <div class="container-fluid">
+          <div class="col-md-12">
+            <div class="u-form-group">
+              <select id="shopviewModeSelect">
+                <option value="admin">Admin Sign Up</option>
+                <option value="shop">Shop Sign Up</option>
+                <option value="clinic">Clinic Sign Up</option>
+                <option value="shelter">Shelter Sign Up</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="u-form-group">
+                <input
+                  type="email"
+                  placeholder="shopEmail"
+                  id="shopAccount"
+                  name="shopAccount"
+                />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="u-form-group">
+                <input type="text" placeholder="shopName" id="shopName" />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="u-form-group">
+                <input
+                  type="password"
+                  placeholder="shopPassword"
+                  id="shopPassword"
+                />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="u-form-group">
+                <input
+                  type="password"
+                  placeholder="passwordChecked"
+                  id="shoppasswordChecked"
+                  name="shoppasswordChecked"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="u-form-group">
+                <input
+                  type="text"
+                  placeholder="shopPrincipal"
+                  id="shopPrincipal"
+                />
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="u-form-group">
+                <input
+                  type="text"
+                  placeholder="shopPhone"
+                  id="shopPhone"
+                  name="shopPhone"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="u-form-group">
+                <input
+                  type="text"
+                  placeholder="shopAddress"
+                  id="shopAddress"
+                  name="shopAddress"
+                />
+              </div>
+            </div>
+          </div>
+          <div id="errorMsg"></div>
+          <div class="u-form-group">
+            <button type="submit" id="shopbtn">Sign Up</button>
+          </div>
+          <div class="u-form-group">
+            <a href="forgot_pss.html" class="forgot-password"
+              >Forgot password?</a
+            >
+          </div>
+        </div>
+      </form>
+    </div>
+    <footer class="py-4 bg-light mt-auto">
+      <div class="container-fluid px-4">
+        <div class="d-flex align-items-center justify-content-between small">
+          <div class="text-muted">Copyright &copy;by | PETPET陪陪你 2023</div>
+          <div>
+            <a href="#">TOP</a>
+            &middot;
+            <a href="#">置頂</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script>
+      $(".email-signup").hide();
+      $("#signup-box-link").click(function () {
+        $(".email-login").fadeOut(100);
+        $(".email-signup").delay(100).fadeIn(100);
+        $("#login-box-link").removeClass("active");
+        $("#signup-box-link").addClass("active");
+        $(".login-box").css({
+          width: "680px",
+          height: "600px",
+        });
+      });
+      $("#login-box-link").click(function () {
+        $(".shelter-signup").hide();
+        $(".clinic-signup").hide();
+        $(".shop-signup").hide();
+        $(".email-login").delay(100).fadeIn(100);
+        $(".email-signup").fadeOut(100);
+        $("#login-box-link").addClass("active");
+        $("#signup-box-link").removeClass("active");
+        $(".login-box").css({
+          width: "500px",
+          height: "480px",
+        });
+      });
+    </script>
+    <script src="js/signup.js"></script>
+    <script src="js/clinicsign.js"></script>
+    <script src="js/shopsign.js"></script>
+    <script src="js/sheltersign.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/admin.js"></script>
+  </body>
+</html>

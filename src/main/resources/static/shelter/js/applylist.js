@@ -23,10 +23,10 @@ fetch(`findbyanimalid/${id}`, {
 				<td id="adopter${adopt.adopterId}">${adopt.adopterId}</td>
 				<td id="adopter${adopt.adopterApplyDate}">${adopt.adopterApplyDate}</td>	
 				<td class="button-td">			
-					<button type="button" class="btn-edit btn btn-success" onclick="editItem(${adopt.applyId},${adopt.animalId})">查看</button>
+					<button type="button" class="btn-edit btn btn-success" onclick="editItem(${adopt.applyId},${adopt.animalId})"><i class="fa-solid fa-magnifying-glass fa-spin"></i></button>
 				</td>
 				<td class="button-td">
-					<button type="button" class="btn-delete btn btn-danger" onclick="deleteClick(${adopt.applyId})">刪除</button>
+					<button type="button" class="btn-delete btn btn-danger" onclick="deleteClick(${adopt.applyId})"><i class="fa-regular fa-pen-to-square fa-fade"></i></button>
 				</td>
 				</tr>`
 		}

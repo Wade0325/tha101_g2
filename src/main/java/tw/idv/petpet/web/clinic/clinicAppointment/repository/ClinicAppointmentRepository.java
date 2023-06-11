@@ -12,5 +12,5 @@ public interface ClinicAppointmentRepository extends JpaRepository<ClinicAppoint
 	List<ClinicAppointment> findByClinicName(String clinicName);
 	
 	List<ClinicAppointment> findByOwnerName(String ownerName);
-
+	
 }

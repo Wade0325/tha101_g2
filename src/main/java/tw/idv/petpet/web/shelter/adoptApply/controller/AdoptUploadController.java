@@ -1,5 +1,8 @@
 package tw.idv.petpet.web.shelter.adoptApply.controller;
 
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -13,6 +16,7 @@ import tw.idv.petpet.web.shelter.adoptApply.entity.AdoptApply;
 import tw.idv.petpet.web.shelter.adoptApply.service.AdoptApplyService;
 import tw.idv.petpet.web.shelter.shelterAnimal.entity.ShelterAnimal;
 import tw.idv.petpet.web.shelter.shelterAnimal.service.ShelterAnimalService;
+import tw.idv.petpet.web.user.entity.User;
 
 @RestController
 @RequestMapping("shelter/adoptupload")
@@ -23,7 +27,10 @@ public class AdoptUploadController {
 		private AdoptApplyRepo repo;
 		
 		@PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-		public Core upload(@RequestBody AdoptApply AdoptApply) {
+		public Core upload(@RequestBody AdoptApply AdoptApply, HttpSession session) {
+			User userSession =	(User) session.getAttribute("userAccount");
+			AdoptApply.setUserId(userSession.getUserId());
+			AdoptApply.setUserAccount(userSession.getUserAccount());
 			final Core core = new Core();
 			if (AdoptApply == null) {
 				core.setMessage("無此Id");

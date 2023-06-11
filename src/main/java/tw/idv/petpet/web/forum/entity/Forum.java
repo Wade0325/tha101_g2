@@ -12,10 +12,13 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import tw.idv.petpet.core.pojo.Core;
 
 @Entity
 @Table(name = "forum")
@@ -23,7 +26,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Forum {   // 這個forum有publish的功能，兼具publish entity
+public class Forum extends Core{   // 這個forum有publish的功能，兼具publish entity
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "article_id")
@@ -45,6 +48,7 @@ public class Forum {   // 這個forum有publish的功能，兼具publish entity
 	@Column(name = "article_image")
 	private byte[] articleImage;
 
+	@JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss", timezone = "GMT+8")
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "article_create_time")
 	private Date articleCreateTime;

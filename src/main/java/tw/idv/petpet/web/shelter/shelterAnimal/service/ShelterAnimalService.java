@@ -19,7 +19,11 @@ public interface ShelterAnimalService extends CoreService {
 	List<ShelterAnimal> findByifAdopted(Integer ifAdopted);
 
 	ShelterAnimal update(ShelterAnimal ShelterAnimal);
-	
+
 	ShelterAnimal adopted(ShelterAnimal ShelterAnimal);
 
+	List<ShelterAnimal> findByAnimalType(ShelterAnimal ShelterAnimal);
+
+
+	List<ShelterAnimal> findByShelterId(Integer shelterId);
 }
