@@ -57,14 +57,54 @@
             border-color: #d9534f;
             color: #fff;
         }
+        #edit-modal {
+            display: none;
+            background-color: #525050;
+            border: 1px solid #ccc;
+            padding: 20px;
+            z-index: 9999;
+            color:#ccc
+        }
+    
+        body.modal-open {
+        overflow: hidden;
+        }
+      
     </style>
-    </style>
+    
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 
 </head>
 
 <body class="sb-nav-fixed">
+    <div id="edit-modal" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 300px;">
+        <h2>Edit Product</h2>
+        <label for="edit-pro-name">Product Name:</label>
+        <input type="text" id="edit-pro-name">
+      
+        <label for="edit-cate-name">Category Name:</label><br>
+        <!-- <input type="select" id="edit-cate-name"> -->
+        <select name="dropdown" id="selecttest">
+            <option >寵物食品</option>
+            <option >寵物服飾</option>
+            <option >外出用品</option>
+            <option >寵物玩具</option>
+          </select><br>
+      
+        <label for="edit-pro-det">Product Details:</label>
+        <textarea id="edit-pro-det"></textarea>
+      
+        <label for="edit-pro-price">Product Price:</label>
+        <input type="number" id="edit-pro-price">
+      
+        <label for="edit-pro-amount">Product Amount:</label>
+        <input type="number" id="edit-pro-amount"><br>
+        
+        <button id="edit-confirm">修改</button>
+        <button id="cancel-btn">取消</button>
+      </div>
+      
     <nav class="sb-topnav navbar navbar-expand navbar-dark color">
         <!-- Navbar Brand-->
         <img src="./images/petpet.png" width="70px" height="70px" />
@@ -84,8 +124,8 @@
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown"
                     aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="Login2.html">註冊</a></li>
-                    <li><a class="dropdown-item" href="Login2.html">登入</a></li>
+                    <li><a class="dropdown-item" href="./vendorRegistration.html">註冊</a></li>
+                    <li><a class="dropdown-item" href="./backstagelogin/admin_login.html">登入</a></li>
                     <li>
                         <hr class="dropdown-divider" />
                     </li>
@@ -109,58 +149,66 @@
                             首頁
                         </a>
                         <div class="sb-sidenav-menu-heading">操作介面</div>
-                        <a class="nav-link collapsed" href="#" data-bs-toggle="collapse"
-                            data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                            <div class="sb-nav-link-icon">
-                                <i class="fas fa-columns"></i>
-                            </div>
-                            商家管理
-                            <div class="sb-sidenav-collapse-arrow">
-                                <i class="fas fa-angle-down"></i>
-                            </div>
-                        </a>
-                        <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne"
-                            data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav">
-                                <a class="nav-link" href="report_firm.html">商家檢舉</a>
-                            </nav>
-                        </div>
+                        <a
+                class="nav-link collapsed"
+                href="#"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseLayouts"
+                aria-expanded="false"
+                aria-controls="collapseLayouts"
+              >
+                <div class="sb-nav-link-icon">
+                  <i class="fas fa-columns"></i>
+                </div>
+                商家管理
+                <div class="sb-sidenav-collapse-arrow">
+                  <i class="fas fa-angle-down"></i>
+                </div>
+              </a>
+              <div
+                class="collapse"
+                id="collapseLayouts"
+                aria-labelledby="headingOne"
+                data-bs-parent="#sidenavAccordion"
+              >
+              <nav class="sb-sidenav-menu-nested nav">
+                <a class="nav-link" href="./addNewProduct.html">新增商品</a>
+              </nav>
+              
+              <nav class="sb-sidenav-menu-nested nav">
+                <a class="nav-link" href="./productManagement.html">商品管理</a>
+              </nav>
+
+              <nav class="sb-sidenav-menu-nested nav">
+                <a class="nav-link" href="./testvms.html">訂單管理</a>
+                  <div
+                  class="collapse"
+                  id="collapseLayouts"
+                  aria-labelledby="headingOne"
+                  data-bs-parent="#sidenavAccordion"
+                  >
+                  <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link" href="./orderDetail.html">訂單明細</a>
+                  </nav> 
+              </nav>
                         <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages"
                             aria-expanded="false" aria-controls="collapsePages">
-                            <div class="sb-nav-link-icon">
-                                <i class="fas fa-book-open"></i>
-                            </div>
-                            會員管理
-                            <div class="sb-sidenav-collapse-arrow">
-                                <i class="fas fa-angle-down"></i>
-                            </div>
                         </a>
-                        <div class="collapse" id="collapsePages" aria-labelledby="headingTwo"
-                            data-bs-parent="#sidenavAccordion">
-                            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
-                                <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="report_user.html">會員檢舉</a>
-                                    <a class="nav-link" href="Login2.html">註冊會員</a>
-                                    <a class="nav-link" href="Forgot.html">忘記密碼</a>
-                                </nav>
-                            </nav>
-                        </div>
-                        <div class="sb-sidenav-menu-heading">Addons</div>
-                        <a class="nav-link" href="report_from.html">
-                            <div class="sb-nav-link-icon">
-                                <i class="fas fa-chart-area"></i>
-                            </div>
-                            檢舉表單
-                        </a>
-                    </div>
                 </div>
             </nav>
         </div>
         <div id="layoutSidenav_content">
-            <!-- 新增商品頁 -->
+            
             <main>
                 <div class="container">
-                    <h1>商品管理</h1>
+                    <h1>商品管理</h1><br>
+                    <div class="search-container">
+                        <input type="text" id="searchText" placeholder="輸入要查詢的內容">
+                        <button onclick="searchTable()">查詢</button>
+                      </div>
+                      <br>
+                      
+					
                     <table class="table table-bordered">
                         <thead>
                             <tr>
@@ -195,7 +243,10 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-        crossorigin="anonymous"></script>
+        crossorigin="anonymous">
+    </script>
+ 
+    
     <script src="js/scripts.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
     <!-- <script src="assets/demo/chart-area-demo.js"></script>
@@ -204,6 +255,34 @@
         crossorigin="anonymous"></script>
     <script src="js/datatables-simple-demo.js"></script>
     <script src="js/productManagement.js"></script>
+
+
+    <script>
+        function searchTable() {
+  var searchText = document.getElementById("searchText").value.toUpperCase();
+  var table = document.querySelector("table");
+  var rows = table.getElementsByTagName("tr");
+
+  for (var i = 1; i < rows.length; i++) {
+    var cells = rows[i].getElementsByTagName("td");
+    var found = false;
+    for (var j = 0; j < cells.length; j++) {
+      var cellText = cells[j].textContent.toUpperCase();
+      if (cellText.indexOf(searchText) > -1) {
+        found = true;
+        break;
+      }
+    }
+    if (found) {
+      rows[i].style.display = "";
+    } else {
+      rows[i].style.display = "none";
+    }
+  }
+}
+
+    </script>
+
 </body>
 
 </html>

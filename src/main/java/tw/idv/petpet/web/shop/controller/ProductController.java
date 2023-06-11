@@ -72,7 +72,7 @@ public class ProductController {
 
 	@GetMapping("/shoptest/{shopId}")
 	public Product read(@PathVariable Integer shopId) {
-		System.out.println("test1243");
+		
 		Product product = productRepository.findById(shopId).orElse(null);
 		return product;
 	}
@@ -85,17 +85,21 @@ public class ProductController {
 
 
 	@PutMapping("/shoptest/{shopId}")
-	public String update(@PathVariable Integer shopId, @RequestBody Product product) {
+	public Product update(@PathVariable Integer shopId, @RequestBody Product product) {
 
 		Product p = productRepository.findById(shopId).orElse(null);
 		if (p != null) {
 
 			p.setPro_name(product.getPro_name());
+			p.setPro_price(product.getPro_price());
+			p.setPro_det(product.getPro_det());
+			p.setPro_amount(product.getPro_amount());
+			p.setCate_name(product.getCate_name());
 			productRepository.save(p);
 
-			return "測試update";
+			return p;
 		} else {
-			return "資料庫中沒有此資料";
+			return null;
 		}
 	}
 

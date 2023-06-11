@@ -14157,7 +14157,7 @@ textarea.form-control {
   }
 /* 進入購物車的按鈕 */
 .in_cart{
-    display:none;
+    /* display:none; */
     position:absolute;
     bottom:0;
     left: 50%;
