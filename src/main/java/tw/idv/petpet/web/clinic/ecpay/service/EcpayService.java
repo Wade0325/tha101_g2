@@ -66,7 +66,7 @@ public class EcpayService {
 	}
 
 	// 更改付款狀態
-	public void updatePayIfo(Integer reservationNumber) {
+	public void updatePayInfo(Integer reservationNumber) {
 		clinicAppointmentService.updatePayInfo(reservationNumber);
 	}
 }
