@@ -2,7 +2,7 @@ function deleteClick(clinicId) {
 	if (!confirm('是否刪除?')) {
 		return;
 	}
-	fetch(`../../manage/${clinicId}`, {
+	fetch(`../../../manage/${clinicId}`, {
 		method: `DELETE`,
 	})
 		.then(resp => resp.json())
@@ -23,7 +23,7 @@ function saveClick(clinicId) {
 	// const clinicEmail = sessionStorage.getItem('clinicemail');
 	const clinicEmail = document.querySelector(`#clinicemail${clinicId}`).textContent;
 	console.log(clinicEmail)
-	fetch('../../clinicMember/manage', {
+	fetch('../../../clinicMember/manage', {
 		method: 'PUT',
 		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify({
