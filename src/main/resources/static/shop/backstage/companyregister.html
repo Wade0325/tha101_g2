@@ -274,7 +274,7 @@
               <div class="form-group">
                 <label for="company_password">確認密碼</label>
                 <input
-                  type="text"
+                  type="password"
                   class="form-control"
                   id="company_passwordaga"
                   placeholder="請再次輸入密碼"
@@ -380,7 +380,7 @@ document.getElementById('btntest').addEventListener('click', function(event) {
     var company = {
        
     "company_name" : companyName,
-    "company_account": companyAccount,
+    "company_email": companyAccount,
     "company_password": companyPassword,
     "company_man" : companyMan, 
     "company_phone": companyPhone,
@@ -400,6 +400,8 @@ document.getElementById('btntest').addEventListener('click', function(event) {
     .then(data => {
       
     console.log("test2");
+    alert("新增成功");
+    window.location.href = "http://localhost:8080/petpet/shop/backstage/login.html";
   })
         
     .catch(error => {
