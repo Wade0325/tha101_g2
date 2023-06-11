@@ -172,7 +172,7 @@
                                         <label class="label" for="appointTime">預約時段</label> 
                            				<input
                                             type="text" class="form-control" name="appointTime" id="appointTime"
-                                            placeholder="請從上方選擇可預約時段" readonly>
+                                            placeholder="請從上方選擇可預約時段" value="" readonly>
 <!--                                         <select -->
 <!--                                             class="form-control search-clinic" id="appointTime" -->
 <!--                                             name="appointTime" > -->
@@ -216,18 +216,18 @@
                                         <label class="label" for="serviceItem">預約類別</label> 
                                         <select class="form-control search-clinic" id="serviceItem" >
                                             <option value="一般診療">一般診療</option>
-                                            <option value="結紮">結紮</option>
-                                            <option value="健康檢查">健康檢查</option>
-                                            <option value="洗牙">洗牙</option>
+                                            <option value="結紮">結紮：2000元</option>
+                                            <option value="健康檢查">健康檢查：2000元</option>
+                                            <option value="洗牙">洗牙：2000元</option>
                                         </select>
                                     </div>
                                 </div>
                                <div class="col-md-6">
                                     <div class="form-group">
-                                        <label class="label" for="payInfo">預付款項</label> 
+                                        <label class="label" for="payInfo">付款狀態</label> 
                                         <input
                                             type="text" class="form-control" name="payInfo" id="payInfo"
-                                            placeholder="一般診療-無需預付款" readonly>
+                                            placeholder="一般診療-無需預付款" value="" readonly >
                                          
                                     </div>
                                 </div>
@@ -247,12 +247,9 @@
                                                 <div id="msg" class="error"></div>
                                             </div>
                                             <div class="col-md-6 text-left">
-                                                <button id="btn2" type="button" class="btn btn-primary"
-                                                    data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                                <button id="btn2" type="button" class="btn btn-primary"  data-bs-toggle="modal" data-bs-target="#staticBackdrop">
                                                     送出預約</button>
-
-
-                                                <div id="msg" class="error"></div>
+					                    <div id="msg" class="error"></div>
                                             </div>
                                         </div>
                                     </div>
