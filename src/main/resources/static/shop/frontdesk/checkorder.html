@@ -30,50 +30,65 @@
     <link rel="stylesheet" href="css/flaticon.css" />
     <link rel="stylesheet" href="css/style.css" />
     <style>
-      .product-info {
+     .order-details {
         padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 5px;
+        border: 1px solid black;
       }
-
-      .product-image {
-        width: 200px;
-        height: 200px;
-        margin-bottom: 10px;
-      }
-
-      .product-title {
+      .order-details .title {
+        font-size: 24px;
         font-weight: bold;
-        font-size: 20px;
-        margin-bottom: 5px;
+        margin-bottom: 20px;
       }
-
-      .product-price {
-        font-size: 18px;
-        color: #ff0000;
-        margin-bottom: 5px;
+      .order-details .customer-info {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-bottom: 20px;
       }
-
-      .product-description {
+      .order-details .customer-info .info-item {
+        flex-basis: 48%;
         margin-bottom: 10px;
       }
-
-      .product-details {
-        font-size: 14px;
+      .order-details .customer-info .info-item .label {
+        font-weight: bold;
+      }
+      .order-details .customer-info .info-item .value {
+        margin-left: 10px;
+      }
+      .order-details .products-list {
+        margin-bottom: 20px;
+        border: 1px solid black;
+      }
+      .order-details .products-list .product {
         margin-bottom: 10px;
       }
-
-      .product-rating {
-        font-size: 16px;
-        color: #ffd700;
-        margin-bottom: 5px;
+      .order-details .products-list .product .label {
+        font-weight: bold;
       }
-
-      .product-buttons {
-        margin-top: 10px;
+      .order-details .products-list .product .value {
+        margin-left: 10px;
       }
-      img.product-image{
-        background-size: cover; 
-  /* background-position: center; */
+      .order-items,
+      .itemex {
+        margin-bottom: 20px;
       }
+      .order-items .item {
+        padding: 10px;
+      }
+      .order-items .item:nth-child(odd) {
+        background-color: #f6efef;
+      }
+      .order-items .item:nth-child(even) {
+        background-color: #ffffff;
+      }
+      .back-btn {
+        margin-bottom: 20px;
+      }
+      
+        
+      
 
     </style>
   </head>
@@ -180,48 +195,30 @@
 
 
     <!-- 程式放裡面 -->
-    <div class="container product-info">
-      <div class="row">
-        <div class="col-md-4">
-          <img
-            src="product-image.jpg"
-            alt="Product Image"
-            class="product-image"
-            style="width:100%; height: 100%;"
-          />
-        </div>
-        <div class="col-md-8">
-          <h1 class="product-title">商品名稱</h1>
-          <h2 class="product-price">$99.99</h2>
-          <p class="product-description">
-            商品描述Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            Nunc auctor tincidunt ultrices.
-          </p>
-          <p class="product-details"><br />尺寸: M<br />庫存: 10</p>
-          <div class="product-rating">★★★★☆</div>
-          <div class="quantity-container">
-            <button class="decrement-button q-button">-</button>
-            <input
-              type="number"
-              class="quantity-input q-input"
-              id="quantity"
-              name="quantity"
-              value="1"
-              min="1"
-              style="width:100px"
-            />
-            <button class="increment-button q-button" >+</button>
-          </div>
-          <div class="product-buttons">
-            <button class="btn btn-primary">加入購物車</button>
-            <button class="btn btn-secondary">立即購買</button>
+    <div id="layoutSidenav_content">
+      <!-- 新增商品頁 -->
+      <main>
+        
+        <div style="text-align: center; font-size: 40px;">商品訂單</div>
+          <div class="testclass" style="border:1px solid hsl(0, 5%, 89%); width:80%; 
+          margin: 0 auto;margin-bottom: 20px; border-radius: 5px;">
+            <div class="itemex">
+              <div class="row">
+                <div class="col-md-2">商品圖片</div>
+                <div class="col-md-2">商品名稱</div>
+                
+                <div class="col-md-2">價格</div>
+                <div class="col-md-2">數量</div>
+                <div class="col-md-2">小計</div>
+              </div>
+            </div>
+            <div class="order-items"></div>
+
+            <a href="#" class="btn btn-primary">返回</a>
           </div>
         </div>
       </div>
-    </div>
-
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+      </main>
     <!-- 程式放裡面 -->
 
     <footer class="footer">
@@ -335,66 +332,116 @@
     <script src="js/google-map.js"></script>
     <script src="js/main.js"></script>
 
-
-
     <script>
-      var addToCartBtn = $(".btn-primary");
-	var cartItemsList = $(".cart-items");
-      $(document).ready(function() {
-	
-  
-	addToCartBtn.on("click", function() {
-	  // var productName = $(this).closest("h1.product-title").text(); // 假設這是你要加入購物車的商品名稱
-	  // var quantity = $(this).siblings("div.quantity-container").find("input").val(); // 假設這是你要加入購物車的商品數量
-    var productTitleElement = document.querySelector('.product-title').innerText;
-    var quantityInput = document.querySelector("#quantity").value;
-    
-	  var listItem = $("<li>").text(productTitleElement + " - " + quantityInput);
-	  var deleteButton = $('<button>').text('X').addClass('delete-button');
-	  listItem.append(deleteButton);
-	  cartItemsList.append(listItem);
+      
+      document.addEventListener("DOMContentLoaded", function () {
+        console.log("test");
+        fetch("http://localhost:8080/petpet/cartproall")
+          .then(function (response) {
+            return response.json();
+            console.log("test-1");
+          })
+          .then(function (data) {
+            // 根據資料庫回傳的資訊動態產生HTML代碼
+            console.log("test-2");
+            generateOrderItems(data);
+          })
+          .catch(function (error) {
+            console.log("Error:", error);
+          });
+        fetch("http://localhost:8080/petpet/OrderDetailSelect/2")
+          .then((response) => response.json())
+          .then((data) => {
+            // 將訂單資料動態生成HTML標籤
+            data.forEach((item) => {
+              // 建立tr元素
+              console.log(item.order_number);
+              document.querySelector(".value3").textContent = item.user_name;
+              document.querySelector(".value2").textContent = item.order_date;
+              document.querySelector(".value1").textContent = item.order_number;
+              document.querySelector(".value4").textContent = item.phone;
+              document.querySelector(".value6").textContent = item.address;
+            });
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      });
+      function generateOrderItems(data) {
+        var orderItemsContainer = document.querySelector(".order-items");
 
-	 // 增加商品數量
-	  currentCount = parseInt($('.pro_amount').text());
-      var newCount = currentCount + 1;
+        // 清空order-items容器內的內容
+        orderItemsContainer.innerHTML = "";
 
-     // 更新購物車數字顯示
-      $('.pro_amount').text(newCount);
-	  checkEmptyCart();
-  });
-});
+        // 建立標題列
+        var titleDiv = document.createElement("div");
+        titleDiv.className = "title";
+        orderItemsContainer.appendChild(titleDiv);
+
+        // 建立每個商品項目
+        var totalAmount = 0; // 初始化總金額變數
+
+        data.forEach(function (item) {
+          var itemDiv = document.createElement("div");
+          itemDiv.className = "item";
+
+          var rowDiv = document.createElement("div");
+          rowDiv.className = "row";
+
+        
+          var imageDiv = document.createElement("div");
+          imageDiv.className = "col-md-2";
+
+          var image = document.createElement("div");
+          image.style.backgroundImage = "url(data:image/png;base64," + item.pro_pic1;;
+          image.style.backgroundSize = 'cover';
+          image.style.backgroundPosition = 'center';
+          image.style.height = '100px';
+          image.style.width = '100px';
+          // image.style.marginLeft = '300px';
+          imageDiv.appendChild(image);
+
+          rowDiv.appendChild(imageDiv);
 
 
-    </script>
+          // 建立商品名稱欄位
+          var nameDiv = document.createElement("div");
+          nameDiv.className = "col-md-2";
+          nameDiv.textContent = item.pro_name;
+          rowDiv.appendChild(nameDiv);
 
-    <script>
-      document.addEventListener("DOMContentLoaded", function() {
-  // 從瀏覽器的會話存儲中獲取商品識別符
-  var selectedProductId = sessionStorage.getItem("selectedProductId");
-  console.log(selectedProductId);
-  // 發送Fetch請求以獲取商品詳細資訊
-  fetch("http://localhost:8080/petpet/shoptest/" + selectedProductId)
-    .then(function(response) {
-      if (response.ok) {
-        return response.json();
+          // 建立價格欄位
+          var priceDiv = document.createElement("div");
+          priceDiv.className = "col-md-2";
+          priceDiv.textContent = "$" + item.pro_price.toFixed(2);
+          rowDiv.appendChild(priceDiv);
+
+          // 建立數量欄位
+          var quantityDiv = document.createElement("div");
+          quantityDiv.className = "col-md-2";
+          quantityDiv.textContent = item.pro_amount;
+          rowDiv.appendChild(quantityDiv);
+
+          // 建立小計欄位
+          var subtotalDiv = document.createElement("div");
+          subtotalDiv.className = "col-md-2";
+          subtotalDiv.textContent =
+            "$" + (item.pro_price * item.pro_amount).toFixed(2);
+          rowDiv.appendChild(subtotalDiv);
+
+          itemDiv.appendChild(rowDiv);
+          orderItemsContainer.appendChild(itemDiv);
+
+          totalAmount += item.pro_price * item.pro_amount; // 累加每個商品的小計到總金額
+        });
+
+        // 建立總金額欄位
+        var totalDiv = document.createElement("div");
+        totalDiv.className = "total";
+        totalDiv.textContent = "總金額: $" + totalAmount.toFixed(2);
+        orderItemsContainer.appendChild(totalDiv);
       }
-      throw new Error("Network response was not ok.");
-    })
-    .then(function(product) {
-      // 將商品詳細資訊填充到詳細頁面的對應元素中
-      document.getElementsByClassName("product-title")[0].textContent = product.pro_name;
-      document.getElementsByClassName("product-price")[0].textContent = "$" + product.pro_price;      
-      document.getElementsByClassName("product-image")[0].src = "data:image/jpeg;base64," + product.pro_pic1;
-      document.getElementsByClassName("product-description")[0].textContent = product.pro_det;
-      
-      
-      // 其他商品詳細資訊的填充
-      
-    })
-    .catch(function(error) {
-      console.error("Error:", error);
-    });
-});
+    </script>
 
 
     </script>
