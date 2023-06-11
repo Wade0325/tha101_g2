@@ -15,9 +15,11 @@ public interface ClinicMemberService extends CoreService {
 	
 	void save (ClinicMember clinicMember);
 	
-	ClinicMember edit(ClinicMember clinicMember);
+//	ClinicMember edit(ClinicMember clinicMember);
 
 	ClinicMember login(ClinicMember clinicMember);
 
 	ClinicMember getClinicMember(ClinicMember clinicMemberSession);
+
+	void update1(Integer clinicId, ClinicMember clinicMember);
 }
