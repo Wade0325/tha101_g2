@@ -110,6 +110,7 @@ public class ClinicMemberServiceImpl implements ClinicMemberService {
 		if (clinicMemberLogin != null) {
 			clinicMemberLogin.setSuccessful(true);
 			clinicMemberLogin.setLogin(true);
+			clinicMemberLogin.setMessage("登入成功");
 			return clinicMemberLogin;
 		} else {
 			clinicMember.setSuccessful(false);
