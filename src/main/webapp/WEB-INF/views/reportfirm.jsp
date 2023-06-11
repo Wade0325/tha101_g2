@@ -101,16 +101,17 @@
 				
 				<div class="container-fluid px-4">
 					<h1 class="mt-4">後台首頁</h1>
-					檢舉單號: <input tpye="text" id="reportfirmsn"> 
-					<input type="button" id="btnFirmsn" value="查詢">
-					開始日期: <input type="date" id="startDate">結束時間:<input type="date" id="endDate">
-					<input type="button" id="btnFirmdate" value="查詢">
-					狀態: <select id="reportConfirmCode">
+					檢舉單號 : <input type="text" id="reportfirmsn">
+					<button class="btn btn-primary" id="btnFirmsn"><i class="fa-solid fa-magnifying-glass"></i>查詢</button> 
+<!-- 					<input type="button" id="btnFirmsn" value="查詢"> -->
+					開始日期 : <input type="date" id="startDate">結束時間:<input type="date" id="endDate">
+					<input class="btn btn-primary" type="button" id="btnFirmdate" value="查詢">
+					狀態 : <select id="reportConfirmCode">
 							<option value="審核成功">審核成功</option>
 							<option value="審核失敗">審核失敗</option>
 							<option value="審核中">審核中</option>
 						</select>
-					<input type="button" id="btnFirmCode" value="查詢">
+					<input class="btn btn-primary" type="button" id="btnFirmCode" value="查詢">
 					<div class="row">
 						<div class="col-xl-12 col-md-6">
 							<!-- ===============內容放入此處=============== -->
@@ -159,7 +160,7 @@ $('#btnFirmsn').on('click',function(e){
 // 									+'<option value="審核中">'+ list[index].confirmCode + '</option>'
 							    +'</select>';
 							    
-				    var button = '<button class="btn btn-primary" type="submit">修改</button>';
+				    var button = '<button class="btn btn-primary" type="submit"><i class="fa-regular fa-pen-to-square fa-fade"></i>審核</button>';
 // 				    var button2 = '<button>刪除</button>';
 					tbody.append('<tr>'
 							+'<td data-id=' + list[index].firmSn + '>' + list[index].firmSn + '</td>'
@@ -189,7 +190,7 @@ $('#btnFirmsn').on('click',function(e){
 			data :JSON.stringify(reportFirmData),
 			success :function(data){
 				console.log(data);
-				var button = '<button type="submit">修改</button>';
+				var button = '<button type="submit" class="btn btn-primary"><i class="fa-regular fa-pen-to-square fa-fade"></i>審核</button>';
 				var select = '<select class="form-control" id="confirmCode">'
 								+'<option value="' + data.confirmCode + '" >' + data.confirmCode + '</option>'
 // 								+'<option value="1">' + data.confirmCode + '</option>'
@@ -245,7 +246,7 @@ $('#btnFirmsn').on('click',function(e){
 	$('#btnFirmdate').on('click', function(){
 		var startDate = $('#startDate').val();
 		var endDate = $('#endDate').val();
-		var button = '<button class="btn btn-primary" type="submit">修改</button>';
+		var button = '<button class="btn btn-primary" type="submit"><i class="fa-regular fa-pen-to-square fa-fade"></i>審核</button>';
 		console.log("val" , startDate);
 		console.log("val" , endDate);
 		var dateData = {
@@ -395,7 +396,7 @@ btnFirmCode.on('click', function(){
 // 								+'<option value="審核失敗">'+ res[i].confirmCode + '</option>'
 // 								+'<option value="審核中">'+ res[i].confirmCode + '</option>'
 							+'</select>';
-				var button = '<button class="btn btn-primary" type="submit">修改</button>';
+				var button = '<button class="btn btn-primary" type="submit"><i class="fa-regular fa-pen-to-square fa-fade"></i>審核</button>';
 				tbody.append(
 						'<tr>'
 							+ '<td>' + res[i].firmSn + '</td>'
