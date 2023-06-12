@@ -35,7 +35,7 @@ public class ForumController {
 	UserService userService;
 
 	@PostMapping("/publish") // @ModelAttribute("forum") Forum forum
-	public void createForum(@ModelAttribute("forum") Forum forum, HttpSession session, HttpServletResponse response) {
+	public void createForum(@ModelAttribute("forum") Forum forum, HttpSession session, HttpServletResponse response) throws IOException {
 		// 檢查用戶是否已登錄
 		User userSession = (User) session.getAttribute("userAccount");
 		if (userSession.isLogin()) {
@@ -100,7 +100,7 @@ public class ForumController {
 	}
 
 //	http://localhost:8080/petpet/user/member_center_article.html  ?
-	@DeleteMapping("delete/{articleId}")
+	@DeleteMapping("/delete/{articleId}")
 	public ResponseEntity<String> deleteArticle(@PathVariable Integer articleId) {
 		forumService.deleteArticleByArticleId(articleId);
 		return ResponseEntity.ok("刪除文章成功");

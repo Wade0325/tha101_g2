@@ -1,16 +1,16 @@
 package tw.idv.petpet.web.forum.service.impl;
 
-import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
+import org.springframework.transaction.annotation.Transactional;
 
 import tw.idv.petpet.web.forum.Repository.ForumRepository;
 import tw.idv.petpet.web.forum.entity.Forum;
 import tw.idv.petpet.web.forum.service.ForumService;
 
+@Transactional
 @Service("ForumService")
 public class ForumServiceImpl implements ForumService {
 
@@ -64,7 +64,7 @@ public class ForumServiceImpl implements ForumService {
 
 	@Override
 	public void deleteArticleByArticleId(Integer articleId) {
-		// TODO Auto-generated method stub
+		forumRepository.deleteArticle(articleId);
 		System.out.println("刪除文章成功");
 		forumRepository.deleteArticleByArticleId(articleId);
 	}
