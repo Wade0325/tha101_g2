@@ -28,21 +28,21 @@ public class ProductController {
 
 	@Autowired
 	private ProductRepository productRepository;
-	@Autowired
-	private CategoriesRepository cate;
+//	@Autowired
+//	private CategoriesRepository cate;
 
 	@GetMapping("/shoptest123")
 	public void test() {
 		System.out.println("test");
 	}
 
-	@PostMapping("/shoptest1") // 種類測試
-	public String inserttest(@RequestBody Categories cat) {
-		System.out.println("test");
-		cate.save(cat);
-
-		return "測試insert";
-	}
+//	@PostMapping("/shoptest1") // 種類測試
+//	public String inserttest(@RequestBody Categories cat) {
+//		System.out.println("test");
+//		cate.save(cat);
+//
+//		return "測試insert";
+//	}
 
 	@PostMapping("/shoptestinsert") // 新增商品
 	public Product insert(@RequestBody Product product) {
@@ -60,6 +60,16 @@ public class ProductController {
 
 		return "測試delete";
 	}
+	@GetMapping("/productselectca/{cateName}")
+	public List<Product> selectByName(@PathVariable String cateName) {
+		System.out.println("進入");
+		System.out.println(cateName);
+		
+		List<Product> cateProducts = productRepository.findByCateName(cateName);
+		
+		return cateProducts;
+	}
+	
 
 
 //	@DeleteMapping("/shoptest/{shopId}")
@@ -72,7 +82,7 @@ public class ProductController {
 
 	@GetMapping("/shoptest/{shopId}")
 	public Product read(@PathVariable Integer shopId) {
-		System.out.println("test1243");
+		
 		Product product = productRepository.findById(shopId).orElse(null);
 		return product;
 	}
@@ -83,19 +93,23 @@ public class ProductController {
 	    return products;
 	}
 
-
+	//修改
 	@PutMapping("/shoptest/{shopId}")
-	public String update(@PathVariable Integer shopId, @RequestBody Product product) {
+	public Product update(@PathVariable Integer shopId, @RequestBody Product product) {
 
 		Product p = productRepository.findById(shopId).orElse(null);
 		if (p != null) {
 
 			p.setPro_name(product.getPro_name());
+			p.setPro_price(product.getPro_price());
+			p.setPro_det(product.getPro_det());
+			p.setPro_amount(product.getPro_amount());
+			p.setCate_name(product.getCate_name());
 			productRepository.save(p);
 
-			return "測試update";
+			return p;
 		} else {
-			return "資料庫中沒有此資料";
+			return null;
 		}
 	}
 

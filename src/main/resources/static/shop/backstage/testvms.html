@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>PET PET陪陪你後台</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css"
+      rel="stylesheet"
+    />
+    <link href="./css/styles.css" rel="stylesheet" />
+    <style>
+      .container {
+        width: 80%;
+        margin: 20px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+      }
+
+      h1 {
+        text-align: center;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+
+      th,
+      td {
+        padding: 10px;
+        border: 1px solid #ccc;
+        text-align: center;
+      }
+
+      thead {
+        background-color: #f2f2f2;
+      }
+
+      tbody tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+
+      tbody tr:hover {
+        background-color: #eaf6ff;
+      }
+      .btn-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+      }
+      td {
+        text-align: center;
+      }
+
+
+    </style>
+    </style>
+    <script
+      src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body class="sb-nav-fixed">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark color">
+      <!-- Navbar Brand-->
+      <img src="./images/petpet.png" width="70px" height="70px" />
+      <img src="./images/Petword.png" width="40px" height="40px" />
+      <a class="navbar-brand ps-3" href="index.html">首頁</a>
+      <!-- Sidebar Toggle-->
+      <button
+        class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0"
+        id="sidebarToggle"
+        href="#!"
+      >
+        <i class="fas fa-bars"></i>
+      </button>
+      <!-- Navbar Search-->
+      <form
+        class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0"
+      >
+        <div class="input-group"></div>
+      </form>
+      <!-- Navbar-->
+      <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            id="navbarDropdown"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            ><i class="fas fa-user fa-fw"></i
+          ></a>
+          <ul
+            class="dropdown-menu dropdown-menu-end"
+            aria-labelledby="navbarDropdown"
+          >
+            <li><a class="dropdown-item" href="Login2.html">註冊</a></li>
+            <li><a class="dropdown-item" href="Login2.html">登入</a></li>
+            <li><hr class="dropdown-divider" /></li>
+            <li><a class="dropdown-item" href="#!">登出</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <!-- end NAVBAR -->
+
+    <div id="layoutSidenav">
+      <div id="layoutSidenav_nav">
+        <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+          <div class="sb-sidenav-menu">
+            <div class="nav">
+              <div class="sb-sidenav-menu-heading">Core</div>
+              <a class="nav-link" href="index.html">
+                <div class="sb-nav-link-icon">
+                  <i class="fas fa-tachometer-alt"></i>
+                </div>
+                首頁
+              </a>
+              <div class="sb-sidenav-menu-heading">操作介面</div>
+              <a
+                class="nav-link collapsed"
+                href="#"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseLayouts"
+                aria-expanded="false"
+                aria-controls="collapseLayouts"
+              >
+                <div class="sb-nav-link-icon">
+                  <i class="fas fa-columns"></i>
+                </div>
+                商家管理
+                <div class="sb-sidenav-collapse-arrow">
+                  <i class="fas fa-angle-down"></i>
+                </div>
+              </a>
+              <div
+                class="collapse"
+                id="collapseLayouts"
+                aria-labelledby="headingOne"
+                data-bs-parent="#sidenavAccordion"
+              >
+              <nav class="sb-sidenav-menu-nested nav">
+               <a class="nav-link" href="./addNewProduct.html">新增商品</a>
+              </nav>
+              
+              <nav class="sb-sidenav-menu-nested nav">
+                <a class="nav-link" href="./productManagement.html">商品管理</a>
+              </nav>
+
+              <nav class="sb-sidenav-menu-nested nav">
+                <a class="nav-link" href="./testvms.html">訂單管理</a>
+              </nav>
+                <nav class="sb-sidenav-menu-nested nav">
+                  <a class="nav-link" href="report_firm.html">商家檢舉</a>
+                </nav>
+              </div>
+              <a
+                class="nav-link collapsed"
+                href="#"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapsePages"
+                aria-expanded="false"
+                aria-controls="collapsePages"
+              >
+                <div class="sb-nav-link-icon">
+                  <i class="fas fa-book-open"></i>
+                </div>
+                會員管理
+                <div class="sb-sidenav-collapse-arrow">
+                  <i class="fas fa-angle-down"></i>
+                </div>
+              </a>
+              <div
+                class="collapse"
+                id="collapsePages"
+                aria-labelledby="headingTwo"
+                data-bs-parent="#sidenavAccordion"
+              >
+                <nav
+                  class="sb-sidenav-menu-nested nav accordion"
+                  id="sidenavAccordionPages"
+                >
+                  <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link" href="report_user.html">會員檢舉</a>
+                    <a class="nav-link" href="Login2.html">註冊會員</a>
+                    <a class="nav-link" href="Forgot.html">忘記密碼</a>
+                  </nav>
+                </nav>
+              </div>
+              <div class="sb-sidenav-menu-heading">Addons</div>
+              <a class="nav-link" href="report_from.html">
+                <div class="sb-nav-link-icon">
+                  <i class="fas fa-chart-area"></i>
+                </div>
+                檢舉表單
+              </a>
+            </div>
+          </div>
+        </nav>
+      </div>
+      <div id="layoutSidenav_content">       
+      <main> 
+      <!-- html寫在這裡哦 -->
+      <div class="container">
+        <h1>訂單管理</h1>
+        <div class="search-container">
+			<input type="text" id="searchText" placeholder="輸入要查詢的內容">
+			<button onclick="searchTable()">查詢</button>
+		</div>
+		<br>
+		<br>
+		
+        <table>
+          <thead>
+            <tr>
+              <th>訂單編號</th>
+              <th>客戶姓名</th>
+              <!-- <th>商品名稱</th> -->
+              <th>金額</th>
+              <th>操作</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+        
+      <!-- html寫在這裡哦 -->
+      </main>     
+      </div>   
+        
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/scripts.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="assets/demo/chart-area-demo.js"></script>
+    <script src="assets/demo/chart-bar-demo.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/datatables-simple-demo.js"></script>
+
+    <script>
+	    
+function searchTable() {
+  var searchText = document.getElementById("searchText").value.toUpperCase();
+  var table = document.querySelector("table");
+  var rows = table.getElementsByTagName("tr");
+
+  for (var i = 1; i < rows.length; i++) {
+    var cells = rows[i].getElementsByTagName("td");
+    var found = false;
+    for (var j = 0; j < cells.length; j++) {
+      var cellText = cells[j].textContent.toUpperCase();
+      if (cellText.indexOf(searchText) > -1) {
+        found = true;
+        break;
+      }
+    }
+    if (found) {
+      rows[i].style.display = "";
+    } else {
+      rows[i].style.display = "none";
+    }
+  }
+}
+
+    </script>
+
+
+
+    <script>
+      fetch("http://localhost:8080/petpet/OrderDetailSelect/2")
+        .then((response) => response.json())
+        .then((data) => {
+          // 將訂單資料動態生成HTML標籤
+          data.forEach((item) => {
+            // 建立tr元素
+            const row = document.createElement("tr");
+  
+            // 建立td元素，設置訂單編號
+            const orderIdCell = document.createElement("td");
+            orderIdCell.textContent = item.order_number;
+            row.appendChild(orderIdCell);
+  
+            // 建立td元素，設置客戶姓名
+            const customerNameCell = document.createElement("td");
+            customerNameCell.textContent = item.user_name;
+            row.appendChild(customerNameCell);
+            
+  
+            // 建立td元素，設置商品名稱
+            // const productNameCell = document.createElement("td");
+            // productNameCell.textContent = order.productName;
+            // row.appendChild(productNameCell);
+  
+            // 建立td元素，設置金額
+            const amountCell = document.createElement("td");
+            amountCell.textContent = "$"+ item.orderAmount ;
+            row.appendChild(amountCell);
+            
+  
+            // 建立td元素，設置操作按鈕
+            const actionCell = document.createElement("td");
+            const detailsButton = document.createElement("button");
+            detailsButton.className = "btn-details";
+            detailsButton.textContent = "詳細資料";
+            actionCell.appendChild(detailsButton);
+            row.appendChild(actionCell);
+  
+            // 將每個訂單的tr元素插入到tbody內
+            const tbody = document.querySelector("tbody");
+            tbody.appendChild(row);
+//             function searchTable() {
+
+//               var input, filter, table, tr, th, i, txtValue;
+//               input = document.getElementById("search-input");
+//               filter = input.value.toUpperCase();
+//               table = document.querySelector("table");
+//               tr = table.getElementsByTagName("tr");
+              
+//               for (i = 0; i < tr.length; i++) {
+//               th = tr[i].getElementsByTagName("th");
+//               for (var j = 0; j < th.length; j++) {
+//               txtValue = th[j].textContent || th[j].innerText;
+//               if (txtValue.toUpperCase().indexOf(filter) > -1) {
+//               tr[i].style.display = "";
+//               break;
+//               } else {
+//               tr[i].style.display = "none";
+//               }
+//               }
+//               }
+//               }
+
+
+          });
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    </script>
+  
+    <script>
+      // 假設訂單明細頁面的路徑是 "order-details.html"
+  
+      // 假設點擊事件的監聽器綁定在 document 上，可以根據需求調整監聽的元素
+      document.addEventListener("click", function (event) {
+        if (event.target.classList.contains("btn-details")) {
+          // 取得訂單編號
+          const orderId = event.target
+            .closest("tr")
+            .querySelector("td:first-child").textContent;
+  
+          // 將訂單編號作為參數拼接到訂單明細頁面的 URL 上
+          const url = `http://127.0.0.1:5500/shop/backstage/orderDetail.html?orderId=${orderId}`;
+          
+          // 執行頁面跳轉
+          window.location.href = url;
+        }
+      });
+    </script>
+
+
+
+
+
+
+
+  </body>
+</html>

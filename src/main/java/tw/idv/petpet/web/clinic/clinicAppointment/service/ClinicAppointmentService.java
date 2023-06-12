@@ -197,4 +197,12 @@ public class ClinicAppointmentService {
 		}
 		return null;
 	}
+	
+	public void updatePayInfo(Integer reservationNumber) {
+			ClinicAppointment clinicAppointment = clinicAppointmentRepository.findById(reservationNumber).orElse(null);
+			if (clinicAppointment != null) {
+				clinicAppointment.setPayInfo("付款");
+				clinicAppointmentRepository.save(clinicAppointment);
+			}
+	}
 }

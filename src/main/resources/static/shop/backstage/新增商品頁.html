@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>PET PET陪陪你後台</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css"
+      rel="stylesheet"
+    />
+    <link href="./css/styles.css" rel="stylesheet" />
+    <style>
+      body {
+        padding: 20px;
+      }
+      .form-group {
+        margin-bottom: 20px;
+      }
+      label {
+        font-weight: bold;
+      }
+      .btn-submit {
+        margin-top: 20px;
+      }
+
+      /* 上傳圖片 */
+      .upload-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .preview-image {
+        position: relative;
+        width: 100px;
+        height: 100px;
+      }
+
+      .preview-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      .delete-button {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        background-color: red;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+      }
+      
+      .upload-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .preview-image {
+        position: relative;
+        width: 100px;
+        height: 100px;
+      }
+
+      .preview-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+      }
+
+      .delete-button {
+        position: absolute;
+        top: 5px;
+        right: 5px;
+        background-color: red;
+        color: white;
+        border: none;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+      }
+    </style>
+    </style>
+    <script
+      src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body class="sb-nav-fixed">
+    <nav class="sb-topnav navbar navbar-expand navbar-dark color">
+      <!-- Navbar Brand-->
+      <img src="./images/petpet.png" width="70px" height="70px" />
+      <img src="./images/Petword.png" width="40px" height="40px" />
+      <a class="navbar-brand ps-3" href="index.html">首頁</a>
+      <!-- Sidebar Toggle-->
+      <button
+        class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0"
+        id="sidebarToggle"
+        href="#!"
+      >
+        <i class="fas fa-bars"></i>
+      </button>
+      <!-- Navbar Search-->
+      <form
+        class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0"
+      >
+        <div class="input-group"></div>
+      </form>
+      <!-- Navbar-->
+      <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            id="navbarDropdown"
+            href="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            ><i class="fas fa-user fa-fw"></i
+          ></a>
+          <ul
+            class="dropdown-menu dropdown-menu-end"
+            aria-labelledby="navbarDropdown"
+          >
+            <li><a class="dropdown-item" href="Login2.html">註冊</a></li>
+            <li><a class="dropdown-item" href="Login2.html">登入</a></li>
+            <li><hr class="dropdown-divider" /></li>
+            <li><a class="dropdown-item" href="#!">登出</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+    <!-- end NAVBAR -->
+
+    <div id="layoutSidenav">
+      <div id="layoutSidenav_nav">
+        <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+          <div class="sb-sidenav-menu">
+            <div class="nav">
+              <div class="sb-sidenav-menu-heading">Core</div>
+              <a class="nav-link" href="index.html">
+                <div class="sb-nav-link-icon">
+                  <i class="fas fa-tachometer-alt"></i>
+                </div>
+                首頁
+              </a>
+              <div class="sb-sidenav-menu-heading">操作介面</div>
+              <a
+                class="nav-link collapsed"
+                href="#"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseLayouts"
+                aria-expanded="false"
+                aria-controls="collapseLayouts"
+              >
+                <div class="sb-nav-link-icon">
+                  <i class="fas fa-columns"></i>
+                </div>
+                商家管理
+                <div class="sb-sidenav-collapse-arrow">
+                  <i class="fas fa-angle-down"></i>
+                </div>
+              </a>
+              <div
+                class="collapse"
+                id="collapseLayouts"
+                aria-labelledby="headingOne"
+                data-bs-parent="#sidenavAccordion"
+              >
+              <nav class="sb-sidenav-menu-nested nav">
+                <a class="nav-link" href="report_firm.html">新增商品</a>
+              </nav>
+                <nav class="sb-sidenav-menu-nested nav">
+                  <a class="nav-link" href="report_firm.html">商家檢舉</a>
+                </nav>
+              </div>
+              <a
+                class="nav-link collapsed"
+                href="#"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapsePages"
+                aria-expanded="false"
+                aria-controls="collapsePages"
+              >
+                <div class="sb-nav-link-icon">
+                  <i class="fas fa-book-open"></i>
+                </div>
+                會員管理
+                <div class="sb-sidenav-collapse-arrow">
+                  <i class="fas fa-angle-down"></i>
+                </div>
+              </a>
+              <div
+                class="collapse"
+                id="collapsePages"
+                aria-labelledby="headingTwo"
+                data-bs-parent="#sidenavAccordion"
+              >
+                <nav
+                  class="sb-sidenav-menu-nested nav accordion"
+                  id="sidenavAccordionPages"
+                >
+                  <nav class="sb-sidenav-menu-nested nav">
+                    <a class="nav-link" href="report_user.html">會員檢舉</a>
+                    <a class="nav-link" href="Login2.html">註冊會員</a>
+                    <a class="nav-link" href="Forgot.html">忘記密碼</a>
+                  </nav>
+                </nav>
+              </div>
+              <div class="sb-sidenav-menu-heading">Addons</div>
+              <a class="nav-link" href="report_from.html">
+                <div class="sb-nav-link-icon">
+                  <i class="fas fa-chart-area"></i>
+                </div>
+                檢舉表單
+              </a>
+            </div>
+          </div>
+        </nav>
+      </div>
+      <div id="layoutSidenav_content">
+        <!-- 新增商品頁 -->
+        <main>
+          <div class="container">
+            <h1>新增商品</h1>
+            <form>
+              <div class="form-group">
+                <label for="product-name">商品名稱</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="product-name"
+                  placeholder="請輸入商品名稱"
+                />
+              </div>
+              <div class="form-group">
+                <label for="product-description">商品描述</label>
+                <textarea
+                  class="form-control"
+                  id="product-description"
+                  rows="3"
+                  placeholder="請輸入商品描述"
+                ></textarea>
+              </div>
+              <div class="form-group" style="width: 150px">
+                <label for="product-price">價格</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="product-price"
+                  placeholder="請輸入價格"
+                />
+              </div>
+              <div class="form-group">
+                <label for="product-quantity">數量</label>
+                <input
+                  type="number"
+                  class="form-control"
+                  id="product-quantity"
+                  placeholder="請輸入數量"
+                />
+              </div>
+              <div class="form-group">
+                <label for="product-category">商品類別</label>
+                <select class="form-control" id="product-category">
+                  <option>選擇類別</option>
+                  <option>電子產品</option>
+                  <option>家具</option>
+                  <option>服飾</option>
+                  <option>食品</option>
+                </select>
+              </div>
+        
+
+              <!-- 新增圖片 -->
+
+              <div class="form-control upload-container">
+                <label for="product-category">商品圖片</label>
+                <div
+                  id="uploadDiv"
+                  style="
+                    display: inline-block;
+                    background-color: coral;
+                    color: aliceblue;
+                    max-height: 40px;
+                    border-radius: 3px;
+                  "
+                >
+                
+                  <label
+                    for="uploadInput"
+                    style="
+                      cursor: pointer;
+                      width: 100%;
+                      height: 20px;
+                      display: block;
+                    "
+                    >新增圖片</label
+                  >
+                  <label
+                    for="uploadInput"
+                    id="imageCount"
+                    style="cursor: pointer; display: block; text-align: center"
+                    >(0/3)</label
+                  >
+                  <input
+                    style="display: none"
+                    type="file"
+                    id="uploadInput"
+                    accept="image/*"
+                    multiple
+                  />
+                </div>
+              </div>
+
+              <!-- 新增圖片/ -->
+              <div class="form-group">
+                <label for="product-featured">特色商品</label>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="product-featured"
+                  />
+                  <label class="form-check-label" for="product-featured">
+                    是
+                  </label>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="product-colors">可選顏色</label>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="color-red"
+                  />
+                  <label class="form-check-label" for="color-red"> 紅色 </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="color-blue"
+                  />
+                  <label class="form-check-label" for="color-blue">
+                    藍色
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="color-green"
+                  />
+                  <label class="form-check-label" for="color-green">
+                    綠色
+                  </label>
+                </div>
+              </div>
+              <!-- 商品狀態 -->
+              <div class="form-group">
+                <label for="product-category">商品狀態</label>
+                <select class="form-control" id="product-category">
+                  <option>上架中</option>
+                  <option>未上架</option>
+                  <option>x</option>
+                  <option>x</option>
+                  <option>x</option>
+                </select>
+              </div>
+              <!-- 商品狀態/ -->
+              <button type="submit" class="btn btn-primary btn-submit">
+                新增
+              </button>
+            </form>
+          </div>
+        </main>
+         <!-- 新增商品頁/ -->
+        <footer class="py-4 bg-light mt-auto">
+          <div class="container-fluid px-4">
+            <div
+              class="d-flex align-items-center justify-content-between small"
+            >
+              <div class="text-muted">Copyright &copy; Your Website 2023</div>
+              <div>
+                <a href="#">TOP</a>
+                &middot;
+                <a href="#">置頂</a>
+              </div>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/scripts.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="assets/demo/chart-area-demo.js"></script>
+    <script src="assets/demo/chart-bar-demo.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/datatables-simple-demo.js"></script>
+
+
+
+    <script>
+      const uploadDiv = document.getElementById("uploadDiv");
+      const uploadInput = document.getElementById("uploadInput");
+      const uploadContainer = document.querySelector(".upload-container");
+      const imageCountElement = document.getElementById("imageCount");
+
+      let imageCount = 0;
+
+      // 監聽圖片選擇事件
+      uploadInput.addEventListener("change", handleImageUpload);
+
+      // 處理圖片上傳
+      function handleImageUpload(event) {
+        const files = event.target.files;
+
+        // 遍歷選擇的文件
+        for (let i = 0; i < files.length; i++) {
+          const file = files[i];
+
+          // 檢查文件類型是否為圖片
+          if (file.type.match("image.*")) {
+            // 檢查是否超過上傳數量限制
+            if (imageCount >= 3) {
+              alert("一次最多只能上傳 3 張圖片");
+              break;
+            }
+
+            // 創建圖片預覽元素
+            const previewImage = document.createElement("div");
+            previewImage.classList.add("preview-image");
+
+            const img = document.createElement("img");
+            img.src = URL.createObjectURL(file);
+
+            const deleteButton = document.createElement("button");
+            deleteButton.classList.add("delete-button");
+            deleteButton.innerHTML = "&times;";
+
+            // 監聽刪除按鈕點擊事件
+            deleteButton.addEventListener("click", () => {
+              // 從預覽區域中移除該圖片
+              uploadContainer.removeChild(previewImage);
+              imageCount--;
+
+              // 檢查是否低於最大圖片數量
+              if (imageCount < 3) {
+                // 重新啟用上傳按鈕
+                uploadDiv.style.display = "flex";
+                uploadDiv.style.flexDirection = "column";
+                uploadInput.disabled = false;
+              }
+
+              // 更新圖片數量顯示
+              updateImageCount();
+            });
+
+            // 將圖片和刪除按鈕添加到預覽元素中
+            previewImage.appendChild(img);
+            previewImage.appendChild(deleteButton);
+
+            // 將圖片預覽元素添加到預覽區域
+            uploadContainer.insertBefore(previewImage, uploadDiv);
+
+            imageCount++;
+
+            // 檢查是否達到圖片上限
+            if (imageCount >= 3) {
+              // 隱藏上傳按鈕
+              uploadDiv.style.display = "none";
+              uploadInput.disabled = true;
+            }
+
+            // 更新圖片數量顯示
+            updateImageCount();
+          }
+        }
+      }
+
+      // 更新圖片數量顯示
+      function updateImageCount() {
+        imageCountElement.textContent = `(${imageCount}/3)`;
+      }
+    </script>
+  </body>
+</html>

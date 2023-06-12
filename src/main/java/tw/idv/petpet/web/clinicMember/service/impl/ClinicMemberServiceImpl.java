@@ -1,5 +1,7 @@
 package tw.idv.petpet.web.clinicMember.service.impl;
 
+import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,78 +25,79 @@ public class ClinicMemberServiceImpl implements ClinicMemberService {
 
 	@Override
 	public ClinicMember register(ClinicMember clinicMember) {
-//		if (clinicMember.getClinicName() == null) {
-//			clinicMember.setMessage("名稱未輸入");
-//			clinicMember.setSuccessful(false);
-//			return clinicMember;
-//		}
-//
-//		if (clinicMember.getClinicPrincipal() == null) {
-//			clinicMember.setMessage("負責人未輸入");
-//			clinicMember.setSuccessful(false);
-//			return clinicMember;
-//		}
-//
-//		if (clinicMember.getClinicEmail() == null) {
-//			clinicMember.setMessage("信箱未輸入");
-//			clinicMember.setSuccessful(false);
-//			return clinicMember;
-//		}
-//
-//		if (clinicMemberDao.selectByClinicName(clinicMember.getClinicName()) != null) {
-//			clinicMember.setMessage("名稱重複");
-//			clinicMember.setSuccessful(false);
-//			return clinicMember;
-//		}
-//
-//		if (clinicMember.getClinicPassword() == null) {
-//			clinicMember.setMessage("密碼未輸入");
-//			clinicMember.setSuccessful(false);
-//			return clinicMember;
-//		}
-//
-//		if (clinicMember.getClinicPhone() == null) {
-//			clinicMember.setMessage("電話未輸入");
-//			clinicMember.setSuccessful(false);
-//			return clinicMember;
-//		}
-//
-//		if (clinicMember.getClinicAddress() == null) {
-//			clinicMember.setMessage("地址未輸入");
-//			clinicMember.setSuccessful(false);
-//			return clinicMember;
-//		}
-//
-//		if (clinicMember.getClinicService() == null) {
-//			clinicMember.setMessage("服務項目未輸入");
-//			clinicMember.setSuccessful(false);
-//			return clinicMember;
-//		}
-//
-//		final int id = clinicMemberDao.insert(clinicMember);
-//		if (id < 1) {
-//			clinicMember.setMessage("註冊有誤，請聯絡管理員!");
-//			clinicMember.setSuccessful(false);
-//			return clinicMember;
-//		}
-//
-//		clinicMember.setMessage("註冊成功");
-//		clinicMember.setSuccessful(true);
-//
-//		// 創建成功再新增日期
+		if (clinicMember.getClinicName() == null) {
+			clinicMember.setMessage("名稱未輸入");
+			clinicMember.setSuccessful(false);
+			return clinicMember;
+		}
+
+		if (clinicMember.getClinicPrincipal() == null) {
+			clinicMember.setMessage("負責人未輸入");
+			clinicMember.setSuccessful(false);
+			return clinicMember;
+		}
+
+		if (clinicMember.getClinicEmail() == null) {
+			clinicMember.setMessage("信箱未輸入");
+			clinicMember.setSuccessful(false);
+			return clinicMember;
+		}
+
+		if (clinicMemberDao.selectByClinicName(clinicMember.getClinicName()) != null) {
+			clinicMember.setMessage("名稱重複");
+			clinicMember.setSuccessful(false);
+			return clinicMember;
+		}
+
+		if (clinicMember.getClinicPassword() == null) {
+			clinicMember.setMessage("密碼未輸入");
+			clinicMember.setSuccessful(false);
+			return clinicMember;
+		}
+
+		if (clinicMember.getClinicPhone() == null) {
+			clinicMember.setMessage("電話未輸入");
+			clinicMember.setSuccessful(false);
+			return clinicMember;
+		}
+
+		if (clinicMember.getClinicAddress() == null) {
+			clinicMember.setMessage("地址未輸入");
+			clinicMember.setSuccessful(false);
+			return clinicMember;
+		}
+
+		if (clinicMember.getClinicService() == null) {
+			clinicMember.setMessage("服務項目未輸入");
+			clinicMember.setSuccessful(false);
+			return clinicMember;
+		}
+
+		final int id = clinicMemberDao.insert(clinicMember);
+		if (id < 1) {
+			clinicMember.setMessage("註冊有誤，請聯絡管理員!");
+			clinicMember.setSuccessful(false);
+			return clinicMember;
+		}
+
+		clinicMember.setMessage("註冊成功");
+		clinicMember.setSuccessful(true);
+
+		// 創建成功再新增日期
 //		Timestamp currenTimestamp = new Timestamp(new Date().getTime());
-//		clinicMember.setClinicMemberCreateDate(currenTimestamp);
-//		clinicMember.setClinicMemberLastUpdateDate(currenTimestamp);
-//
+		Timestamp currenTimestamp = new Timestamp(new Date().getTime());
+		clinicMember.setClinicMemberCreateDate(currenTimestamp);
+		clinicMember.setClinicMemberLastUpdateDate(currenTimestamp);
+
 //		return clinicMember;
 
-		if (clinicMemberRepository.findByClinicEmail(clinicMember.getClinicEmail()) != null) {
-			clinicMember.setSuccessful(false);
-			clinicMember.setMessage("帳號已存在");
-		} else {
-			clinicMember.setSuccessful(true);
-			return clinicMemberRepository.save(clinicMember);
-		}
+//		if (clinicMemberRepository.findByClinicEmail(clinicMember.getClinicEmail()) != null) {
+//			clinicMember.setSuccessful(false);
+//			clinicMember.setMessage("帳號已存在");
+//		} else {
+//			clinicMember.setSuccessful(true);
+//			return clinicMemberRepository.save(clinicMember);
+//		}
 		return clinicMember;
 	}
 
@@ -110,6 +113,7 @@ public class ClinicMemberServiceImpl implements ClinicMemberService {
 		if (clinicMemberLogin != null) {
 			clinicMemberLogin.setSuccessful(true);
 			clinicMemberLogin.setLogin(true);
+			clinicMemberLogin.setMessage("登入成功");
 			return clinicMemberLogin;
 		} else {
 			clinicMember.setSuccessful(false);
@@ -149,14 +153,34 @@ public class ClinicMemberServiceImpl implements ClinicMemberService {
 
 	@Override
 	public void save(ClinicMember clinicMember) {
-		clinicMemberRepository.save(clinicMember);
+//		clinicMemberRepository.save(clinicMember);
 	}
 
 	@Override
-	public ClinicMember edit(ClinicMember clinicMember) {
-		// TODO Auto-generated method stub
-		return null;
+	public void update1(Integer clinicId, ClinicMember clinicMember) {
+		ClinicMember clinicMember1 = clinicMemberRepository.findById(clinicId).orElse(null);
+		if (clinicMember1 != null) {
+			clinicMember1.setClinicName(clinicMember.getClinicName());
+			clinicMember1.setClinicPrincipal(clinicMember.getClinicPrincipal());
+			clinicMember1.setClinicEmail(clinicMember.getClinicEmail());
+			clinicMember1.setClinicPassword(clinicMember.getClinicPassword());
+			clinicMember1.setClinicPhone(clinicMember.getClinicPhone());
+//			clinicMember1.setClinicMemberCreateDate(clinicMember.getClinicMemberCreateDate());
+			clinicMember1.setClinicAddress(clinicMember.getClinicAddress());
+			clinicMember1.setClinicPhoto1(clinicMember.getClinicPhoto1());
+			clinicMember1.setClinicPhoto2(clinicMember.getClinicPhoto2());
+			clinicMember1.setClinicPhoto3(clinicMember.getClinicPhoto3());
+			clinicMember1.setClinicService(clinicMember.getClinicService());
+			clinicMember1.setClinicMemberLastUpdateDate(clinicMember.getClinicMemberLastUpdateDate());
+			clinicMemberRepository.save(clinicMember1);
+		}
 	}
+
+//	@Override
+//	public ClinicMember edit(ClinicMember clinicMember) {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
 //	@Override
 //	public ClinicMember login(ClinicMember clinicMember) {

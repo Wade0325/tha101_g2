@@ -260,10 +260,10 @@
 											</div>
 										</div>
 										<div class="col-12 pb-5">
-											<div id="msg" class="error"></div>
-											<p
-												class="d-flex justify-content-center text-danger font-weight-bold">資訊送出後需經過審核，因此不會立即出現在列表中，請耐心等待審核勿重覆刊登
-											</p>
+<!-- 											<div id="msg" class="error"></div> -->
+<!-- 											<p -->
+<!-- 												class="d-flex justify-content-center text-danger font-weight-bold">資訊送出後需經過審核，因此不會立即出現在列表中，請耐心等待審核勿重覆刊登 -->
+<!-- 											</p> -->
 											<div class="col-md-12 ">
 												<div class="register-btn">
 													<div class="d-flex justify-content-center">
@@ -295,62 +295,6 @@
 		</div>
 	</div>
 
-	<script>
-		const fileuploadInput = document.getElementById('fileupload');
-		const uploadShowDiv = document.getElementById('upload_show_div');
-		let uploadedCount = 0;
-
-		fileuploadInput.addEventListener('change', function() {
-			const files = fileuploadInput.files;
-
-			if (uploadedCount + files.length > 3) {
-				alert('最多只能上傳三張照片！');
-				return;
-			}
-
-			for (let i = 0; i < files.length; i++) {
-				const file = files[i];
-				const reader = new FileReader();
-
-				reader.onload = function(event) {
-					const imageSrc = event.target.result;
-					const imageElement = document.createElement('div');
-					imageElement.setAttribute('class', 'col-md-4 text-center');
-
-					const imgElement = document.createElement('img');
-					imgElement.setAttribute('src', imageSrc);
-					imgElement.setAttribute('class', 'uploaded-image');
-					imgElement.setAttribute('name', 'animalPhoto'
-							+ uploadedCount);
-					imageElement.appendChild(imgElement);
-
-					const deleteButton = document.createElement('button');
-					deleteButton.textContent = '删除';
-					deleteButton.setAttribute('class',
-							'delete-button btn btn-success');
-					deleteButton.addEventListener('click', function() {
-						imageElement.parentNode.removeChild(imageElement);
-						uploadedCount--;
-					});
-					console.log(imageSrc);
-					imageElement.appendChild(deleteButton);
-					uploadShowDiv.appendChild(imageElement);
-					if(uploadedCount==1){
-					animalphoto1 = imageSrc;}
-					if(uploadedCount==2){
-					animalphoto2 = imageSrc;}
-					if(uploadedCount==3){
-					animalphoto3 = imageSrc;}
-				};
-
-				reader.readAsDataURL(file);
-			}
-
-			uploadedCount += files.length;
-		});
-
-
-	</script>
 	<script>
 		// 获取当前日期
 		var currentDate = new Date();

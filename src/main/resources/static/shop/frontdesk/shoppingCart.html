@@ -178,7 +178,9 @@
 
     </div>
     <div class="cart-total"><h4>總金額: $0</h4></div>
-    <div class="btn btn-primary checkout-btn">結帳</div>
+    <a href="checkout.html">
+    	<div class="btn btn-primary checkout-btn">結帳</div>
+    </a>
     <footer class="footer">
       <div class="container">
         <div class="row">
@@ -429,7 +431,7 @@ function updateTotalPrice(items) {
       var quantity = document
         .querySelector('.cart-total h4')
         .getAttribute('data-quantity');
-      alert('結帳成功！商品數量: ' + quantity);
+      // alert('結帳成功！商品數量: ' + quantity);
       // 清空購物車
       document.querySelector('.cart-items').innerHTML = "";
       updateCartTotal();

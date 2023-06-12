@@ -19,14 +19,14 @@ fetch(`findbyanimalid/${id}`, {
 			tbody.innerHTML += `
 				<tr>
 				<td id="applyId${adopt.applyId}">${adopt.applyId}</td>
-				<td id="animalId${adopt.animalId}">${adopt.animalId}</td>
-				<td id="adopter${adopt.adopterId}">${adopt.adopterId}</td>
+				<td id="animalId${adopt.animalNumber}">${adopt.animalNumber}</td>
+				<td id="adopter${adopt.userAccount}">${adopt.userAccount}</td>
 				<td id="adopter${adopt.adopterApplyDate}">${adopt.adopterApplyDate}</td>	
 				<td class="button-td">			
-					<button type="button" class="btn-edit btn btn-success" onclick="editItem(${adopt.applyId},${adopt.animalId})">查看</button>
+					<button type="button" class="btn-edit btn btn-success" onclick="editItem(${adopt.applyId},${adopt.animalId})"><i class="fa-solid fa-magnifying-glass fa-spin"></i></button>
 				</td>
 				<td class="button-td">
-					<button type="button" class="btn-delete btn btn-danger" onclick="deleteClick(${adopt.applyId})">刪除</button>
+					<button type="button" class="btn-delete btn btn-danger" onclick="deleteClick(${adopt.applyId})"><i class="fa-regular fa-pen-to-square fa-fade"></i></button>
 				</td>
 				</tr>`
 		}
@@ -36,7 +36,7 @@ function deleteClick(applyId) {
 	if (!confirm('是否刪除?')) {
 		return;
 	}
-	fetch(`deleteanimal/${applyId}`, {
+	fetch(`deleteapply/${applyId}`, {
 		method: `DELETE`,
 	})
 		.then(resp => {
@@ -46,10 +46,6 @@ function deleteClick(applyId) {
 				alert('刪除失敗'); // 删除失败，显示错误消息
 			}
 		})
-		.catch(error => {
-			console.error(error);
-			alert('刪除失敗'); // 删除失败，显示错误消息
-		});
 }
 
 function editItem(applyId,animalId) {
