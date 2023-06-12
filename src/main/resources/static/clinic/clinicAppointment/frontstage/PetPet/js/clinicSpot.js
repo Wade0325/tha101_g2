@@ -416,7 +416,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 	// 預約成功後的跳轉
 	function redirectToSearchResult() {
-		alert("已預約成功");
+//		alert("已預約成功");
 		window.location.href = "http://localhost:8080/petpet/clinic/clinicAppointment/frontstage/PetPet/VetSearchResult.html";
 	}
 });
