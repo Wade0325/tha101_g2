@@ -35,7 +35,7 @@ public class ForumController {
 	UserService userService;
 
 	@PostMapping("/publish") // @ModelAttribute("forum") Forum forum
-	public void createForum(@ModelAttribute("forum") Forum forum, HttpSession session, HttpServletResponse response) {
+	public void createForum(@ModelAttribute("forum") Forum forum, HttpSession session, HttpServletResponse response) throws IOException {
 		// 檢查用戶是否已登錄
 		User userSession = (User) session.getAttribute("userAccount");
 		if (userSession.isLogin()) {
