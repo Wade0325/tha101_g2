@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#preview{
+			width:200px;
+			margin-bottom:10px;
+		}
+	</style>
+</head>
+<body>
+	<input type="file" name="" id="btn">
+	<div id="preview"></div>
+	
+ 
+	<script>
+		var preview = document.querySelector("#preview");
+		var btn = document.querySelector("#btn");
+		btn.onchange = function(e){
+			var file = this;
+			for(var i = 0; i < this.files.length; i++){
+				var reader = new FileReader();
+				reader.onload = function(event){
+					console.log(event);
+					preview.innerHTML += '<img src="'+event.target.result+'"/>'
+				}
+				reader.readAsDataURL(file.files[0]);
+			}
+		}
+		
+	</script>
+</body>
+</html>

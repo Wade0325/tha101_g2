@@ -8,8 +8,25 @@
     // const articleId = document.querySelector('#articleId');
     const articleTitle = document.querySelector('#articleTitle');
     const userId = document.querySelector('#userId');
+    const userName = document.querySelector('#userName');
     const articleCreateTime = document.querySelector('#articleCreateTime');
     const articleContent = document.querySelector('#articleContent');
+    const editButton = document.querySelector('#edit-btn');
+    const reportButton = document.querySelector('#report-btn');
+
+    editButton.addEventListener('click', () => {
+        window.location.href = `edit_article.html?articleId=${articleId}`;
+        console.log(articleId);
+    });
+
+    // reportButton.addEventListener('click', () => {
+    //     window.location.href = `report_article.html?articleId=${articleId}`;
+    // })
+
+
+
+
+
 
     fetch(`article_cat/${articleId}`, {
         method: 'POST',
@@ -22,14 +39,17 @@
     })
         .then(resp => resp.json())
         .then(article => {
+            
             const art = article;
             // console.log(art.article);
+            
 
             articleId.textContent = art.articleId;
             articleTitle.textContent = art.articleTitle;
             articleContent.textContent = art.articleContent;
             articleCreateTime.textContent = art.articleCreateTime;
             userId.textContent = art.userId;
+            
 
 
 
@@ -45,7 +65,7 @@
     // reportBtn.addEventListener('click', () => {
     //     window.location.href = `report_article.html?articleId=${articleId}`;
     // });
-    
+
 
 
     var replyC = document.querySelector('#reply_content');
@@ -64,14 +84,15 @@
         .then(resp => resp.json())
         .then(data => {
             console.log(data)
-            for (const { replyContent } of data) {
-                console.log(replyContent);
+            for (const { replyContent:repcon, userId:Id, name:userName, replyTime:time } of data) {
+                console.log(repcon);
 
                 const newDiv = document.createElement('div');
                 newDiv.classList.add('reply-item');
                 newDiv.setAttribute('style', 'color:black; font-size:20px');
                 newDiv.innerHTML = `
-                    <p>${replyContent}</p>
+                    <p>用戶ID:${Id} - 用戶姓名:${userName} - 回覆時間:${time}</p>
+                    <p>回覆內容:${repcon}</p>
                     <hr>
                 `;
 
