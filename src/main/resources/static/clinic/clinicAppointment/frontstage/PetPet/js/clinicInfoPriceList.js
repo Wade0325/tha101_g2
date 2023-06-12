@@ -41,10 +41,7 @@ fetch('../../../../clinicMember/manage', {
         </dd>
       </dl>
     <div class="row text-right">
-  <a class="btn" onclick="window.location.href = 'http://localhost:8080/petpet/admin/reportfirmform'">
-    <span class="icon fa fa-paper-plane">商家檢舉</span>
-  </a>
-  
+ 
 </div>
 
 
