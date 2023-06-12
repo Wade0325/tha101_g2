@@ -28,46 +28,46 @@ public class ShelterAnimalServiceImpl implements ShelterAnimalService {
 	public ShelterAnimal upload(ShelterAnimal shelteranimal) {
 		final int resultCount = dao.insert(shelteranimal);
 		System.out.println("upload service收到");
-		if (shelteranimal.getAnimalName() == null) {
-			shelteranimal.setMessage("收容編號未輸入");
-			shelteranimal.setSuccessful(false);
-			return shelteranimal;
-		}
-		if (shelteranimal.getAnimalName() == null) {
-			shelteranimal.setMessage("動物名稱未輸入");
-			shelteranimal.setSuccessful(false);
-			return shelteranimal;
-		}
-		if (shelteranimal.getAnimalCategory() == null) {
-			shelteranimal.setMessage("動物品種未輸入");
-			shelteranimal.setSuccessful(false);
-			return shelteranimal;
-		}
-		if (shelteranimal.getAnimalType() == null) {
-			shelteranimal.setMessage("動物種類未輸入");
-			shelteranimal.setSuccessful(false);
-			return shelteranimal;
-		}
-		if (shelteranimal.getAnimalColor() == null) {
-			shelteranimal.setMessage("毛色未輸入");
-			shelteranimal.setSuccessful(false);
-			return shelteranimal;
-		}
-		if (shelteranimal.getAnimalGender() == null) {
-			shelteranimal.setMessage("性別未輸入");
-			shelteranimal.setSuccessful(false);
-			return shelteranimal;
-		}
-		if (shelteranimal.getAnimalDescribe() == null) {
-			shelteranimal.setMessage("描述未輸入");
-			shelteranimal.setSuccessful(false);
-			return shelteranimal;
-		}
-		if (shelteranimal.getAnimalAge() == null) {
-			shelteranimal.setMessage("年齡未輸入");
-			shelteranimal.setSuccessful(false);
-			return shelteranimal;
-		}
+//		if (shelteranimal.getAnimalName() == null) {
+//			shelteranimal.setMessage("收容編號未輸入");
+//			shelteranimal.setSuccessful(false);
+//			return shelteranimal;
+//		}
+//		if (shelteranimal.getAnimalName() == null) {
+//			shelteranimal.setMessage("動物名稱未輸入");
+//			shelteranimal.setSuccessful(false);
+//			return shelteranimal;
+//		}
+//		if (shelteranimal.getAnimalCategory() == null) {
+//			shelteranimal.setMessage("動物品種未輸入");
+//			shelteranimal.setSuccessful(false);
+//			return shelteranimal;
+//		}
+//		if (shelteranimal.getAnimalType() == null) {
+//			shelteranimal.setMessage("動物種類未輸入");
+//			shelteranimal.setSuccessful(false);
+//			return shelteranimal;
+//		}
+//		if (shelteranimal.getAnimalColor() == null) {
+//			shelteranimal.setMessage("毛色未輸入");
+//			shelteranimal.setSuccessful(false);
+//			return shelteranimal;
+//		}
+//		if (shelteranimal.getAnimalGender() == null) {
+//			shelteranimal.setMessage("性別未輸入");
+//			shelteranimal.setSuccessful(false);
+//			return shelteranimal;
+//		}
+//		if (shelteranimal.getAnimalDescribe() == null) {
+//			shelteranimal.setMessage("描述未輸入");
+//			shelteranimal.setSuccessful(false);
+//			return shelteranimal;
+//		}
+//		if (shelteranimal.getAnimalAge() == null) {
+//			shelteranimal.setMessage("年齡未輸入");
+//			shelteranimal.setSuccessful(false);
+//			return shelteranimal;
+//		}
 
 		shelteranimal.setMessage("上傳成功");
 		shelteranimal.setSuccessful(true);
@@ -122,6 +122,7 @@ public class ShelterAnimalServiceImpl implements ShelterAnimalService {
 		ShelterAnimal existAnimal = repo.findById(ShelterAnimal.getAnimalId()).orElse(null);
 		if (existAnimal != null) {
 			existAnimal.setIfAdopted(ShelterAnimal.getIfAdopted());
+			existAnimal.setUserAccount(ShelterAnimal.getUserAccount());
 			existAnimal.setUserId(ShelterAnimal.getUserId());
 			return repo.save(existAnimal);
 		} else {
@@ -129,4 +130,14 @@ public class ShelterAnimalServiceImpl implements ShelterAnimalService {
 		}
 	}
 
+	@Override
+	public List<ShelterAnimal> findByAnimalType(ShelterAnimal ShelterAnimal) {
+		List<ShelterAnimal> search = repo.findByAnimalType(ShelterAnimal.getAnimalArea(), ShelterAnimal.getAnimalGender(), ShelterAnimal.getAnimalType(),ShelterAnimal.getIfAdopted());
+		return search;
+	}
+
+	@Override
+	public List<ShelterAnimal> findByShelterId(Integer shelterId) {
+		return repo.findByShelterId(shelterId);
+	}
 }

@@ -21,7 +21,7 @@ public class UserController {
 	UserService userService;
 
 	@PostMapping("/register")
-	public User register(@RequestBody User user, HttpSession session) {
+	public User register(@RequestBody User user) {
 		System.out.println("Controller 開始執行 register 方法");
 		userService.register(user);
 		System.out.println("Controller 執行 register 方法成功");
@@ -32,6 +32,7 @@ public class UserController {
 	public User getUser(User user, HttpSession session) {
 		System.out.println("Controller 開始執行 getUser 方法");
 		User userSession = (User) session.getAttribute("userAccount");
+		
 		if (userSession.isLogin()) {
 			System.out.println("Controller 執行 getUser 方法成功");
 			return userService.getUser(userSession);
@@ -79,6 +80,19 @@ public class UserController {
 			return user;
 		}
 	}
+	
+	@PostMapping("/newLogin")
+	public User newLogin(@RequestBody User user, HttpSession session) {
+		System.out.println("Controller 開始執行 newLogin 方法");
+		User userSession = userService.login(user);
+		if (userSession.isSuccessful()) {
+			session.setAttribute("userAccount", userSession);
+		}
+		System.out.println("Controller 執行 newLogin 方法成功");
+		System.out.println(userSession.isSuccessful());
+		return userSession;
+	}
+	
 }
 
 //		@GetMapping("/findUser")

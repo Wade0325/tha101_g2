@@ -1,3 +1,60 @@
+const fileuploadInput = document.getElementById('fileupload');
+		const uploadShowDiv = document.getElementById('upload_show_div');
+		let uploadedCount = 0;
+		var a = 0;
+		fileuploadInput.addEventListener('change', function() {
+			const files = fileuploadInput.files;
+
+			if (uploadedCount + files.length > 3) {
+				alert('最多只能上傳三張照片！');
+				return;
+			}
+
+			for (let i = 0; i < files.length; i++) {
+				const file = files[i];
+				const reader = new FileReader();
+
+				reader.onload = function(event) {
+					const imageSrc = event.target.result;
+					const imageElement = document.createElement('div');
+					imageElement.setAttribute('class', 'col-md-4 text-center');
+
+					const imgElement = document.createElement('img');
+					imgElement.setAttribute('src', imageSrc);
+					imgElement.setAttribute('class', 'uploaded-image');
+					imgElement.setAttribute('name', 'animalPhoto'
+							+ uploadedCount);
+					imageElement.appendChild(imgElement);
+					a++;
+
+					const deleteButton = document.createElement('button');
+					deleteButton.textContent = '删除';
+					deleteButton.setAttribute('class',
+							'delete-button btn btn-success');
+					deleteButton.addEventListener('click', function() {
+						imageElement.parentNode.removeChild(imageElement);
+						uploadedCount--;
+						a--;
+					});
+					imageElement.appendChild(deleteButton);
+					uploadShowDiv.appendChild(imageElement);
+					if(a==1){
+					animalphoto1 = imageSrc;}
+					if(a==2){
+					animalphoto2 = imageSrc;}
+					if(a==3){
+					animalphoto3 = imageSrc;}
+				};
+				reader.readAsDataURL(file);
+			}
+
+			uploadedCount += files.length;
+		});
+
+
+
+
+
 (() => {
 	const delaybtn = document.querySelector('#delaybtn');
 	const animalId = document.querySelector('#animalId');
@@ -10,9 +67,9 @@
 	const animalDate = document.querySelector('#animalDate');
 	const animalAge = document.querySelector('#animalAge');
 	const animalDescribe = document.querySelector('#animalDescribe');
+	const animalArea = document.querySelector('#animalArea');
 	const ifAdopted = document.querySelector('#ifAdopted');
-	const fileInputs = document.querySelectorAll('.fileupload');
-
+	
 
 
 	delaybtn.addEventListener('click', async () => {
@@ -23,13 +80,15 @@
 		const colorLength = animalColor.value.trim().length;
 		const genderLength = animalGender.value.trim().length;
 		const ageLength = animalAge.value.trim().length;
-		const inputs = [animalId, userId, animalName, animalType, animalCategory, animalColor, animalGender, animalDate, animalAge, animalDescribe, ifAdopted];
-	
+		
 		if (nameLength === 0) {
 			alert('名稱不可為空');
 			return;
 		} else if (idLength === 0) {
 			alert('收容編號不可為空');
+			return;
+		} else if (animalArea.value === "") {
+			alert('請選擇區域');
 			return;
 		} else if (typeLength === 0) {
 			alert('種類不可為空');
@@ -50,22 +109,21 @@
 			alert('請上傳三張圖片');
 			return;
 		}
-		console.log(animalphoto1)
-		let base64Data1 = animalPhoto1.src
-		let base64Data2 = animalPhoto2.src
-		let base64Data3 = animalPhoto3.src
+//		let base64Data1 = animalPhoto1.src
+//		let base64Data2 = animalPhoto2.src
+//		let base64Data3 = animalPhoto3.src
 
-		var parts1 = base64Data1.split(",");
+		var parts1 = animalphoto1.split(",");
 		if (parts1.length > 1) {
-			base64Data1 = parts1[1]; // 去除前缀，保留编码数据部分
+			animalphoto1 = parts1[1]; // 去除前缀，保留编码数据部分
 		}
-		var parts2 = base64Data2.split(",");
+		var parts2 = animalphoto2.split(",");
 		if (parts2.length > 1) {
-			base64Data2 = parts2[1]; // 去除前缀，保留编码数据部分
+			animalphoto2 = parts2[1]; // 去除前缀，保留编码数据部分
 		}
-		var parts3 = base64Data3.split(",");
+		var parts3 = animalphoto3.split(",");
 		if (parts3.length > 1) {
-			base64Data3 = parts3[1]; // 去除前缀，保留编码数据部分
+			animalphoto3 = parts3[1]; // 去除前缀，保留编码数据部分
 		}
 	
 
@@ -80,9 +138,10 @@
 			animalDate: animalDate.value,
 			animalAge: animalAge.value,
 			animalDescribe: animalDescribe.value,
-			animalPhoto1: base64Data1,
-			animalPhoto2: base64Data2,
-			animalPhoto3: base64Data3
+			animalArea:animalArea.value,
+			animalPhoto1: animalphoto1,
+			animalPhoto2: animalphoto2,
+			animalPhoto3: animalphoto3
 		};
 
 
@@ -100,18 +159,12 @@
 			.then((body) => {
 				const { successful, message } = body;
 				if (successful) {
-					msg.className = 'info';
-					msg.textContent = '送出成功';
+					alert('送出成功');
+					window.location.href = 'animalmanage.html';
 				} else {
-					msg.className = 'error';
-					msg.textContent = '送出失敗';
+					alert('送出失敗');
 				}
 			})
-			.catch((error) => {
-				msg.className = 'error';
-				msg.textContent = '送出失敗';
-				console.log(error.message);
-			});
 
 	});
 })();

@@ -70,16 +70,19 @@
         border: 1px solid #e9e9e9;
         border-radius: 5px;
         margin-bottom: 10px;
+        
       }
       .cart-item img {
         width: 100px;
         height: auto;
         margin-right: 10px;
+        
       }
       .cart-item div {
         width: 100px;
         height: auto;
         margin-right: 10px;
+        
       }
       .cart-item .item-details {
         flex-grow: 1;
@@ -105,7 +108,7 @@
 
   <body>
     
-  <!-- 購物車圖示 結束-->
+ 
     <div class="wrap" style="z-index: 1;"></div>
     <nav
       class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
@@ -175,7 +178,9 @@
 
     </div>
     <div class="cart-total"><h4>總金額: $0</h4></div>
-    <div class="btn btn-primary checkout-btn">結帳</div>
+    <a href="checkout.html">
+    	<div class="btn btn-primary checkout-btn">結帳</div>
+    </a>
     <footer class="footer">
       <div class="container">
         <div class="row">
@@ -300,14 +305,18 @@ fetch('http://localhost:8080/petpet/cartproall')
     data.forEach(item => {
       const cartItem = document.createElement('div');
       cartItem.className = 'cart-item';
+      //自訂屬性
+      // cartItem.setAttribute('data-custom-attribute', item.cart_item_id);
 
+      var imgtest = item.pro_pic1;
+      var pic = "url(data:image/png;base64," + imgtest ;
       const itemImage = document.createElement('div');
-      itemImage.style.backgroundImage = item.pro_pic1;
-      
-
-      // const itemImage = document.createElement('img');
-      // itemImage.src = item.pro_pic1;
-      // itemImage.alt = item.name;
+      itemImage.style.backgroundImage = pic;
+      itemImage.style.backgroundSize = 'cover';
+      itemImage.style.backgroundPosition = 'center';
+      itemImage.style.height = '200px';
+      itemImage.style.width = '200px';
+      itemImage.style.marginLeft = '100px';
 
       const itemDetails = document.createElement('div');
       itemDetails.className = 'item-details';
@@ -331,7 +340,8 @@ fetch('http://localhost:8080/petpet/cartproall')
       const removeButton = document.createElement('button');
       removeButton.className = 'btn btn-danger remove-item';
       removeButton.textContent = '移除';
-
+      removeButton.setAttribute('data-custom-attribute', item.cart_item_id);
+      removeButton.style.marginRight = '100px';
 
       // 将生成的标签添加到购物车容器中
       itemDetails.appendChild(itemName);
@@ -346,14 +356,7 @@ fetch('http://localhost:8080/petpet/cartproall')
       cartContainer.appendChild(cartItem);
       
     });
-    // const btn = document.createElement('button');
-    //   btn.className = 'btn btn-primary checkout-btn';
-    //   btn.textContent = '結帳';
-    //   cartContainer.appendChild(btn);
-      
-    //   var checkoutBtn = document.querySelector('.checkout-btn');
-  
-    //    console.log(checkoutBtn);
+   
     // 更新总金额
     updateTotalPrice(data);
   })
@@ -380,17 +383,7 @@ function updateTotalPrice(items) {
 
 
 <script>
-  // 移除商品項目
- 
- var cartContaine = document.querySelector('.containertest');
-  cartContaine.addEventListener('click', function(event) {
-    if (event.target.classList.contains('remove-item')) {
-      var cartItem = event.target.closest('.cart-item');
-      cartItem.remove();
-      updateCartTotal();
-    }
-  });
-
+  
   // 更新總金額和商品數量
   function updateCartTotal() {
     var cartItems = document.querySelectorAll('.cart-item');
@@ -438,7 +431,7 @@ function updateTotalPrice(items) {
       var quantity = document
         .querySelector('.cart-total h4')
         .getAttribute('data-quantity');
-      alert('結帳成功！商品數量: ' + quantity);
+      // alert('結帳成功！商品數量: ' + quantity);
       // 清空購物車
       document.querySelector('.cart-items').innerHTML = "";
       updateCartTotal();
@@ -447,5 +440,41 @@ function updateTotalPrice(items) {
 
 </script>
 
+
+<!-- 移除購物車商品 -->
+<script>
+  const fButton = document.querySelector('.containertest');
+ 
+  fButton.addEventListener('click', (e) => {
+    if (e.target.classList.contains('remove-item')) {
+      const removeButton = event.target;
+      const confirmRemove = confirm('確定要移除此商品嗎？');
+      const del = removeButton.getAttribute('data-custom-attribute'); 
+      if (confirmRemove) {
+          // 發送 Fetch 請求
+          fetch('http://localhost:8080/petpet/cartpro/'+del, {
+              method: 'DELETE',
+              body: JSON.stringify({ productId: 'your-product-id' }),
+              headers: {
+                  'Content-Type': 'application/json'
+              }
+          })
+          .then(response => {
+              if (response.ok) {
+                  alert('商品已成功從資料庫移除。');
+                  location.reload();
+              } else {
+                  alert('移除商品時發生錯誤。');
+              }
+          })
+          .catch(error => {
+              alert('發生錯誤：' + error);
+          });
+      }
+    }
+  });
+</script>
+
   </body>
 </html>
+

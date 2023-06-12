@@ -1,7 +1,11 @@
 (() => {
 
+    // const urlParams = new URLSearchParams(window.location.search);
+    // const id = urlParams.get('id');
+
     const articleGroupId = document.querySelector("#articleGroupId");
     const articleId = document.querySelector('#articleId');
+    const articleList = document.querySelector('#articleList');
 
     fetch('http://localhost:8080/petpet/forum/forum')
         .then(resp => resp.json())
@@ -14,17 +18,6 @@
         });
 
     function renderArticles(articles) {
-        // const articleListDiv = document.getElementById('articleList');
-        // // 清空现有的文章列表
-        // articleListDiv.innerHTML = '';
-
-        // innerHTML=` <div class="dog-discussion">
-        // <h5>
-        //     <span class="">${}</span>
-        //     <!-- <span class="">【閒聊】</span> -->
-        //     <span><a href="">分享領養心得</a></span>
-        // </h5>
-        // </div>`
 
         let articleListHTML = '';
 
@@ -41,15 +34,26 @@
                 <div class="dog-discussion" id="${article.articleId}">
                     <h5>
                         <span>${articleGroupIdText}</span>
-                        <span><a href="#" class="article-link" data-articleid="${articleId}">${article.articleTitle}</a></span>
-                        <span><a href="">${article.articleContent}</a></span>
+                        <span><a  href="http://localhost:8080/petpet/forum/article_cat.html?articleId=${article.articleId}">${article.articleTitle}</a></span>
+                        <span><a  href="http://localhost:8080/petpet/forum/article_cat.html?articleId=${article.articleId}">${article.articleContent}</a></span>
                     </h5>
                 </div>
             `;
+            // href="http://localhost:8080/petpet/forum/article_cat.html/${article.articleId}" class="article-link" data-articleid="${articleId}
             articleListHTML += articleItemHTML;
         });
+
         const articleListDiv = document.getElementById('articleList');
         articleListDiv.innerHTML = articleListHTML;
+
+        const articleLinks = document.querySelectorAll('.article-link');
+        articleLinks.forEach(articleLink => {
+            
+            const title = articleLink.dataset.title;
+            const content = articleLink.dataset.content;
+            window.location.href = `article_cat.html?articleId=${articleId}`;
+        });
+
     }
     // function getArticleGroupIdText(groupId) {
     //     if (groupId === 1) {

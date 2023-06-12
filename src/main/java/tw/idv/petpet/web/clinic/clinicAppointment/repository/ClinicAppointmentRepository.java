@@ -10,4 +10,7 @@ public interface ClinicAppointmentRepository extends JpaRepository<ClinicAppoint
 	
 	//自己寫的方法
 	List<ClinicAppointment> findByClinicName(String clinicName);
+	
+	List<ClinicAppointment> findByOwnerName(String ownerName);
+	
 }

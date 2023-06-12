@@ -7,9 +7,11 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
 
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="css/animate.css">
 <link rel="stylesheet" href="css/owl.carousel.min.css">
 <link rel="stylesheet" href="css/owl.theme.default.min.css">
@@ -34,18 +36,24 @@
 <script src="js/jquery.magnific-popup.min.js"></script>
 <script src="js/scrollax.min.js"></script>
 <script src="js/main.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.1/dist/umd/popper.min.js" integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js" integrity="sha512-TPh2Oxlg1zp+kz3nFA0C5vVC6leG/6mm1z9+mA81MI5eaUVqasPLO8Cuk4gMF4gUfP5etR73rgU/8PNMsSesoQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.1/dist/umd/popper.min.js"
+	integrity="sha384-W8fXfP3gkOKtndU4JGtKDvXbO53Wy8SZCQHczT5FMiiqmQfUpWbYdTil/SxwZgAN"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js"
+	integrity="sha512-TPh2Oxlg1zp+kz3nFA0C5vVC6leG/6mm1z9+mA81MI5eaUVqasPLO8Cuk4gMF4gUfP5etR73rgU/8PNMsSesoQ=="
+	crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 <style>
-  /* 自定义样式 */
-  .modal.fade.highest-z-index {
-  /* 自定义样式 */
-  z-index: 9999 !important;
+/* 自定义样式 */
+.modal.fade.highest-z-index {
+	/* 自定义样式 */
+	z-index: 9999 !important;
 }
-#staticBackdrop.modal.fade.highest-z-index {
-  z-index: 1000000000 !important;
 
+#staticBackdrop.modal.fade.highest-z-index {
+	z-index: 1000000000 !important;
 }
 </style>
 
@@ -58,7 +66,7 @@
 			id="ftco-navbar">
 			<div class="container">
 				<a class="navbar-brand" href="index.html"><img
-					src="/images/1.jpg" width="80px" height="80px">PetPet陪陪你</a>
+					src="images/petpet.png" width="80px" height="80px">PetPet陪陪你</a>
 				<button class="navbar-toggler" type="button" data-toggle="collapse"
 					data-target="#ftco-nav" aria-controls="ftco-nav"
 					aria-expanded="false" aria-label="Toggle navigation">
@@ -102,7 +110,7 @@
 													<option value="2">犬科</option>
 													<option value="3">心臟科</option>
 													<option value="4">兔科</option>
-												
+
 												</select>
 											</div>
 											<!-- <div class="col-lg-1 col-md-1 col-sm-12 p-0">
@@ -161,36 +169,40 @@
 							<form method="POST" id="clinicAppointment"
 								name="clinicAppointment">
 								<div class="row">
-								
+
 									<div class="col-md-6">
 										<div class="form-group">
 											<label class="label" for="clinicName">診所名稱</label> <input
 												type="text" class="form-control" name="clinicName"
-												id="clinicName" placeholder="門診名稱會自動帶入" readonly>
+												id="clinicName" readonly>
 										</div>
 									</div>
 									<div class="col-md-6">
 										<div class="form-group" id="clinic_appointment">
-											<label class="label" for="vetName">門診醫師</label> <input
-												type="text" class="form-control" name="vetName" id="vetName"
-												placeholder="門診醫師會自動帶入" readonly>
+											<label class="label" for="vetName">門診醫師</label> <select
+												class="form-control search-clinic" id="appointTime"
+												name="appointTime" readonly>
+												<option value="陳志明">陳志明</option>
+												<option value="涂雅筑">涂雅筑</option>
+												<option value="楊喬博">楊喬博</option>
+											</select>
 										</div>
 									</div>
 									<div class="col-md-6">
 										<div class="form-group">
-											<label class="label" for="appointDate">預約日期</label> <input
-												type="text" class="form-control" name="appointDate"
-												id="appointDate" placeholder="門診日期會自動帶入" readonly>
+											<label class="label" for="weekDate">預約日期</label> <input
+												type="text" class="form-control" name="weekDate"
+												id="weekDate" readonly>
 										</div>
 									</div>
 									<div class="col-md-6">
 										<div class="form-group">
 											<label class="label" for="appointTime">預約時段</label> <select
 												class="form-control search-clinic" id="appointTime"
-												name="appointTime" readonly>
-												<option value="1">上午</option>
-												<option value="2">下午</option>
-												<option value="3">晚上</option>
+												name="appointTime" >
+												<option id="morningBusiness"></option>
+												<option id="afternoonBusiness"></option>
+												<option id="nightBusiness"></option>
 											</select>
 										</div>
 									</div>
@@ -213,10 +225,10 @@
 										<div class="form-group">
 											<label class="label" for="serviceItem">預約類別</label> <select
 												class="form-control search-clinic" id="serviceItem">
-												<option value="1">一般診療</option>
-												<option value="2">結紮</option>
-												<option value="3">健康檢查</option>
-												<option value="4">洗牙</option>
+												<option value="一般診療">一般診療</option>
+												<option value="結紮">結紮</option>
+												<option value="健康檢查">健康檢查</option>
+												<option value="洗牙">洗牙</option>
 											</select>
 										</div>
 									</div>
@@ -236,7 +248,7 @@
 									</div>
 									<div class="col-md-12">
 										<div class="form-group">
-											<label class="label" for="petSituation">訊息</label>
+											<label class="label" for="petSituation">寵物概況</label>
 											<textarea name="petSituation" class="form-control"
 												id="petSituation" cols="30" rows="4" placeholder="請簡述寵物慨況"></textarea>
 										</div>
@@ -250,11 +262,11 @@
 													<div id="msg" class="error"></div>
 												</div>
 												<div class="col-md-6 text-left">
-													<button id="btn2" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                      							      送出預約
-													</button>
+													<button id="btn2" type="button" class="btn btn-primary"
+														data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+														送出預約</button>
 
-  
+
 													<div id="msg" class="error"></div>
 												</div>
 											</div>
@@ -340,46 +352,12 @@
 				</div>
 			</div>
 		</footer>
+		<script scr="js/clinicResForm.js"></script>
 
 
-    <!-- ----彈窗------- -->
-    <!-- <div class="modal fade highest-z-index" id="staticBackdrop" data-bs-backdrop="true" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">已完成預約！</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            請在預約時段至診所看診，謝謝您！
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" id="myInput"class="btn btn-primary">Understood</button>
-          </div>
-        </div>
-      </div>
-    </div> -->
-     <!-- ----彈窗------- -->
+		</script>
 
-     <script>
-      // 在页面加载完成后执行
-      document.addEventListener("DOMContentLoaded", function () {
-  // 获取按钮元素
-  var btn = document.getElementById("btn2");
-
-  // 添加点击事件处理程序
-  btn.addEventListener("click", function () {
-    // 显示警示框
-    alert("已送出預約");
-    window.location.href = "http://www.yahoo.com.tw";
-  });
-});
-
-     </script>
-
-     </script>
-
+		<script src="js/clinicResForm.js"></script>
 </body>
 
 </html>

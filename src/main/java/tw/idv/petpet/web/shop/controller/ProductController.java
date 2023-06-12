@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,50 +21,68 @@ import tw.idv.petpet.web.shop.dao.CategoriesRepository;
 import tw.idv.petpet.web.shop.dao.ProductRepository;
 import tw.idv.petpet.web.shop.entity.Categories;
 import tw.idv.petpet.web.shop.entity.Product;
-
+@Transactional 
 @RestController
 @CrossOrigin(origins = "http://127.0.0.1:5500")
 public class ProductController {
 
 	@Autowired
 	private ProductRepository productRepository;
-	@Autowired
-	private CategoriesRepository cate;
+//	@Autowired
+//	private CategoriesRepository cate;
 
 	@GetMapping("/shoptest123")
 	public void test() {
 		System.out.println("test");
 	}
 
-	@PostMapping("/shoptest1") // 種類測試
-	public String inserttest(@RequestBody Categories cat) {
-		System.out.println("test");
-		cate.save(cat);
-
-		return "測試insert";
-	}
+//	@PostMapping("/shoptest1") // 種類測試
+//	public String inserttest(@RequestBody Categories cat) {
+//		System.out.println("test");
+//		cate.save(cat);
+//
+//		return "測試insert";
+//	}
 
 	@PostMapping("/shoptestinsert") // 新增商品
-	public String insert(@RequestBody Product product) {
-		System.out.println("test");
+	public Product insert(@RequestBody Product product) {
 		 Timestamp now = new Timestamp(System.currentTimeMillis());
-	        product.setCreate_time(now);
+	     product.setCreate_time(now);
 		productRepository.save(product);
-		return "測試insert";
+		return product;
 	}
+	
+	@DeleteMapping("/shoptest/{proName}")
+	public String delete(@PathVariable String proName) {
 
-
-	@DeleteMapping("/shoptest/{shopId}")
-	public String delete(@PathVariable Integer shopId) {
-
-		productRepository.deleteById(shopId);
+		productRepository.deleteByName(proName);
+		
 
 		return "測試delete";
 	}
+	@GetMapping("/productselectca/{cateName}")
+	public List<Product> selectByName(@PathVariable String cateName) {
+		System.out.println("進入");
+		System.out.println(cateName);
+		
+		List<Product> cateProducts = productRepository.findByCateName(cateName);
+		
+		return cateProducts;
+	}
+	
+
+
+//	@DeleteMapping("/shoptest/{shopId}")
+//	public String delete(@PathVariable Integer shopId) {
+//
+//		productRepository.deleteById(shopId);
+//
+//		return "測試delete";
+//	}
 
 	@GetMapping("/shoptest/{shopId}")
 	public Product read(@PathVariable Integer shopId) {
-
+		
 		Product product = productRepository.findById(shopId).orElse(null);
 		return product;
 	}
@@ -74,19 +93,23 @@ public class ProductController {
 	    return products;
 	}
 
-
+	//修改
 	@PutMapping("/shoptest/{shopId}")
-	public String update(@PathVariable Integer shopId, @RequestBody Product product) {
+	public Product update(@PathVariable Integer shopId, @RequestBody Product product) {
 
 		Product p = productRepository.findById(shopId).orElse(null);
 		if (p != null) {
 
 			p.setPro_name(product.getPro_name());
+			p.setPro_price(product.getPro_price());
+			p.setPro_det(product.getPro_det());
+			p.setPro_amount(product.getPro_amount());
+			p.setCate_name(product.getCate_name());
 			productRepository.save(p);
 
-			return "測試update";
+			return p;
 		} else {
-			return "資料庫中沒有此資料";
+			return null;
 		}
 	}
 

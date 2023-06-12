@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <title>PetPet陪陪你</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,500,600,700,800&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="css/animate.css">
+
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+
+    <link rel="stylesheet" href="css/flaticon.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+    .pic {
+	  width: 600px; /* 定義容器的寬度 */
+	  height: 400px; /* 定義容器的高度 */
+	  object-fit: contain; /* 保持原始比例，自動縮放以符合容器 */
+	}
+	
+ 
+	.serviceImg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 380px;
+  height: 280px;
+}
+
+
+ </style>   
+</head>
+
+<body>
+    <div class="wrap"  >
+      
+ <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="../../../../index.html"><img src="images/petpet.png" width="80px"
+                    height="80px">PetPet陪陪你</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
+                aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="fa fa-bars"></span> MENU
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active"><a href="../../../../index.html" class="nav-link" style="color: black">首頁</a></li>
+                    <li class="nav-item"><a href="VetSearchResult.html"
+                            class="nav-link" style="color: black">寵物診所</a></li>
+                    <li class="nav-item"><a href="../../../../shop/frontdesk/petFoodShop.html" class="nav-link"
+                            style="color: black">寵物商城</a></li>
+                    <li class="nav-item"><a href="../../../../shelter/shelter.html" class="nav-link" style="color: black">寵物領養</a>
+                    </li>
+                    <li class="nav-item"><a href="../../../../forum/forum.html" class="nav-link" style="color: black">寵物討論區</a></li>
+                    <li class="nav-item"><a href="../../../../user/login.html" class="nav-link" style="color: black">會員中心</a>
+                    </li>
+                    <li class="nav-item"><a href="../../../../admin/reportfirmform" class="nav-link" style="color: black">檢舉表單</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+        <!-- END nav -->
+      
+        <!-- 搜尋bar -->
+      <div class="container" >
+        <div class="row no-gutters slider-text align-items-end" >
+          <div class="col-md-12 ftco-animate pt-2 pb-2" >
+            <p></p>
+          </div>
+        </div>
+      </div>
+      <!-- 醫院資訊顯示 -->
+    <section class="ftco-section bg-light">
+			<div class="container">
+				<div class="row justify-content-center">
+              <div class=" clinicInfo col-xl-5 col-lg-6 bg-light">
+                 <!-- 自動生成診所資訊 開始 -->
+                <div class="store_box2">
+                  <!-- <h1 id="clinicName${clinicMember.clinicId}">${clinicMember.clinicName} </h1>
+                  <dl>
+                    
+                    <dd>
+                      <span class="flaticon-pawprint-1 mr-2">醫院地址</span>
+                      <br>
+                      <p id="clinicAddress${clinicMember.clinicId}">${clinicMember.clinicAddress}
+                        <br>
+                        <a href="https://www.google.com.tw/maps/place/台中市大里區國光路二段441號" target="_blank" class="icon fa fa-map"> GOOGLE MAP</a></p>
+                    </dd>
+                    <dd>
+                      <span class="flaticon-pawprint-1 mr-2">預約電話</span><p id="clinicPhone${clinicMember.clinicId}">${clinicMember.clinicPhone}</p>
+                    </dd>
+                    <dd>
+                      <span class="flaticon-pawprint-1 mr-2">門診時間</span>
+                      <p>門診時間會隨時調整，可點選預約查看詳情</p>
+                    </dd>
+                     <dd>
+                      <span class="flaticon-pawprint-1 mr-2">特色服務</span>
+                      <p id="clinicService${clinicMember.clinicId}">${clinicMember.clinicService}</p>
+                    </dd>
+                  </dl> -->
+                </div>
+                 <!-- 自動生成診所資訊 結束 -->
+              </div>
+               
+              <!-- 右邊區塊 -->
+              <div class=" staff col-xl-7 col-lg-6 bg-light">
+                <!-- 照片滑動方塊 -->
+                <div class="container">
+                  <div class="row">
+                    <div class="col-md-12 align-items-center">
+                    <div class= "photoshift">
+<!--                       <div id="custCarousel" class="carousel slide" data-ride="carousel" aligan="center"> -->
+<!--                         slides -->
+<!--                            自動生成照片輪播 開始 -->
+<!--                         <div class="carousel-inner"> -->
+<!--                           <div class="carousel-item active"> -->
+<!--                             ${clinicPhoto1.outerHTML} -->
+<!--                           </div> -->
+                
+<!--                           <div class="carousel-item"> -->
+<!--                             ${clinicPhoto2.outerHTML} -->
+<!--                           </div> -->
+                
+<!--                           <div class="carousel-item"> -->
+<!--                             ${clinicPhoto3.outerHTML} -->
+<!--                           </div> -->
+<!--                         </div> -->
+<!--                             自動生成照片輪播 結束 -->
+<!--                         Left right -->
+<!--                         <a class="carousel-control-prev" href="#custCarousel" data-slide="prev"> -->
+<!--                           <span class="carousel-control-prev-icon"></span> -->
+<!--                         </a> -->
+<!--                         <a class="carousel-control-next" href="#custCarousel" data-slide="next"> -->
+<!--                           <span class="carousel-control-next-icon"></span> -->
+<!--                         </a> -->
+                
+<!--                         Thumbnails -->
+<!--                         <ol class="carousel-indicators list-inline"> -->
+<!--                           <li class="list-inline-item active"> -->
+<!--                             <a id="carousel-selector-0" class="selected" data-slide-to="0" data-target="#custCarousel"> -->
+<!--                               <img src="https://i.imgur.com/weXVL8M.jpg" class="img-fluid"> -->
+<!--                             </a> -->
+<!--                           </li> -->
+                
+<!--                           <li class="list-inline-item"> -->
+<!--                             <a id="carousel-selector-1" data-slide-to="1" data-target="#custCarousel"> -->
+<!--                               <img src="https://i.imgur.com/Rpxx6wU.jpg" class="img-fluid"> -->
+<!--                             </a> -->
+<!--                           </li> -->
+                
+<!--                           <li class="list-inline-item"> -->
+<!--                             <a id="carousel-selector-2" data-slide-to="2" data-target="#custCarousel"> -->
+<!--                               <img src="https://i.imgur.com/83fandJ.jpg"  class="img-fluid"> -->
+<!--                             </a> -->
+<!--                           </li> -->
+                
+                         
+<!--                          </ol> -->
+<!--                       </div> -->
+<!--                     </div> -->
+                    <div>
+                  </div>
+                </div>
+
+                <div class="container">
+                  <div class="row">
+                    <div class="col-xl-6 col-lg-6 " >
+                      <br>
+                    </div>
+                  </div>
+                </div> 
+
+                <!-- 選取方塊 -->
+                <div class="container">
+                  <div class="row">
+                    <div class="col-xl-6 col-lg-6">
+                      <div>
+                        <a href="http://localhost:8080/petpet/clinic/clinicAppointment/frontstage/PetPet/VetSearchResult.html"type="submit" value="回上一頁" class="btn btn-primary" style="width: 100%; display: inline-block;">回上一頁</a>
+                      </div>
+                    </div>
+          
+                    <div class="col-xl-6 col-lg-6">
+                      <div>
+                        <a href="http://localhost:8080/petpet/clinic/clinicAppointment/frontstage/PetPet/clinicReservationSpot.html" type="submit" value="線上預約" class="btn btn-primary" style="width: 100%; display: inline-block;">線上預約</a>
+                      </div>
+                    </div>
+                  </div>
+                </div> 
+                <div class="container">
+                  <div class="row">
+                    <div class="col-xl-6 col-lg-6 " >
+                      <br>
+                    </div>
+                  </div>
+                </div> 
+
+
+               </div>
+               
+            
+					
+					
+				</div>
+			</div>
+		</section>
+
+    <section class="ftco-section bg-light">
+    	<div class="container">
+    		<div class="row justify-content-center pb-1 mb-3">
+          <div class="col-md-7 heading-section text-center ftco-animate">
+            <h1>寵物檢查優惠方案</h1>
+          </div>
+        </div>
+    		<div class="price">
+   
+<!-- 			自動生成 -->
+
+	        </div>
+	      </div>
+         <!-- 注意事項 -->
+         <div class="row">
+          <div class="col-md-2 ftco-animate text-center">
+            <h3>注意事項</h3>
+          </div>
+          <div class="col-md-10 ftco-animate text-left">
+            <p id="service_note">
+              ※大於5公斤,每公斤加價100元。公斤數之小數點,採無條件捨去
+              <br>
+              ※犬大於8歲、貓大於10歲及特殊體型(肥胖、短顎、深胸)若有洗牙需求者,會因身體狀況而挑選不同的檢驗項目, 並且調整麻醉藥品或方式,故不適用此包套優惠。
+              <br>
+              ※為讓手術順利施行,並於麻醉中維持生理功能之穩定,術前須由獸醫師進行麻醉評估。
+              <br>
+              ※若術前檢查有異常,則不適用此包套優惠;須先 回歸正常門診治療程序後,再重新評估身體狀況是否適合洗牙。
+              <br>
+              ※若經獸醫師評估有其他疾病須使用藥物治療,則用藥費與診察費不含在此範圍內。
+            </p>
+          </div>
+         </div>
+    	</div>
+        <!-- 注意事項 -->
+    </section>
+   
+
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-lg-4 mb-4 mb-md-0">
+                        <h2 class="footer-heading">PetPet陪陪你</h2>
+                        <p>一個能提供購物、醫療、送領養的平台</p>
+                        <ul class="ftco-footer-social p-0">
+                            <li class="ftco-animate">
+                              <a
+                                href="#"
+                                data-toggle="tooltip"
+                                data-placement="top"
+                                title="Twitter"
+                                ><span class="fa fa-twitter"></span
+                              ></a>
+                            </li>
+                            <li class="ftco-animate">
+                              <a
+                                href="#"
+                                data-toggle="tooltip"
+                                data-placement="top"
+                                title="Facebook"
+                                ><span class="fa fa-facebook"></span
+                              ></a>
+                            </li>
+                            <li class="ftco-animate">
+                              <a
+                                href="#"
+                                data-toggle="tooltip"
+                                data-placement="top"
+                                title="Instagram"
+                                ><span class="fa fa-instagram"></span
+                              ></a>
+                            </li>
+                          </ul>
+                    </div>
+                   
+                    <div class="col-md-6 col-lg-4 mb-4 mb-md-0">
+                        <h2 class="footer-heading">寵物討論區</h2>
+                        <div class="block-21 mb-4 d-flex">
+                            <a class="img mr-4 rounded" style="background-image: url(images/image_1.jpg);"></a>
+                            <div class="text">
+                                <h3 class="heading"><a href="#">狗狗討論區</a></h3>
+                            </div>
+                        </div>
+                        <div class="block-21 mb-4 d-flex">
+                            <a class="img mr-4 rounded" style="background-image: url(images/image_2.jpg);"></a>
+                            <div class="text">
+                                <h3 class="heading"><a href="#">貓咪討論區</a></h3>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-4 pl-lg-5 mb-4 mb-md-0">
+                        <h2 class="footer-heading">快速連結</h2>
+                        <ul class="list-unstyled">
+                            <li><a href="#" class="py-2 d-block">首頁</a></li>
+                            <li><a href="#" class="py-2 d-block">登入/註冊</a></li>
+                            <li><a href="#" class="py-2 d-block">寵物診所</a></li>
+                            <li><a href="#" class="py-2 d-block">寵物商城</a></li>
+                            <li><a href="#" class="py-2 d-block">寵物領養</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-md-12 text-center">
+                        <p class="copyright">
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            Copyright &copy;
+                            <script>document.write(new Date().getFullYear());</script> All rights reserved |
+                            This template
+                            is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a
+                                href="https://colorlib.com" target="_blank">Colorlib.com</a>
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script src="js/jquery.min.js"></script>
+        <script src="js/jquery-migrate-3.0.1.min.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/jquery.easing.1.3.js"></script>
+        <script src="js/jquery.waypoints.min.js"></script>
+        <script src="js/jquery.stellar.min.js"></script>
+        <script src="js/jquery.animateNumber.min.js"></script>
+        <script src="js/bootstrap-datepicker.js"></script>
+        <script src="js/jquery.timepicker.min.js"></script>
+        <script src="js/owl.carousel.min.js"></script>
+        <script src="js/jquery.magnific-popup.min.js"></script>
+        <script src="js/scrollax.min.js"></script>
+        <script
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+        <script src="js/google-map.js"></script>
+        <script src="js/main.js"></script>
+		<script src="js/clinicInfoPriceList.js"></script>
+
+</body>
+
+</html>

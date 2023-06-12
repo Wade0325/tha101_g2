@@ -3,6 +3,7 @@
 package tw.idv.petpet.web.user.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -27,7 +28,25 @@ public class EmailController {
 	@PostMapping("/sendMailWithAttachment")
 	public String sendMailWithAttachment(@RequestBody EmailDetails details) {
 		String status = emailService.sendMailWithAttachment(details);
+		return status;
+	}
+	
+	@PostMapping("/user/forgotMail")
+	public String sendForgotMail(@RequestBody EmailDetails details) {
+		System.out.println("Controller 開始執行 sendForgotMail 方法");
+		String status = emailService.sendForgotMail(details);
+		System.out.println("Controller 執行 sendForgotMail 方法成功");
+		return status;
+	}
 
+	@PostMapping("/user/checkVerify/{verifyText}/{userAccount}")
+	public String checkVerify(@PathVariable String verifyText,
+			@PathVariable  String userAccount) {
+		System.out.println("Controller 開始執行 checkVerify 方法");
+		System.out.println(verifyText);
+		String status = emailService.checkVerifyText(verifyText, userAccount);
+		System.out.println("Controller 執行 checkVerify 方法成功");
+		System.out.println(status);
 		return status;
 	}
 }

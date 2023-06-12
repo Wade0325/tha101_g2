@@ -64,7 +64,7 @@
         align-items: center;
         cursor: pointer;
       }
-      
+
       .upload-container {
         display: flex;
         flex-wrap: wrap;
@@ -141,7 +141,8 @@
       .order-details .products-list .product .value {
         margin-left: 10px;
       }
-      .order-items {
+      .order-items,
+      .itemex {
         margin-bottom: 20px;
       }
       .order-items .item {
@@ -157,11 +158,6 @@
         margin-bottom: 20px;
       }
     </style>
-    </style>
-    <script
-      src="https://use.fontawesome.com/releases/v6.3.0/js/all.js"
-      crossorigin="anonymous"
-    ></script>
   </head>
   <body class="sb-nav-fixed">
     <nav class="sb-topnav navbar navbar-expand navbar-dark color">
@@ -301,73 +297,45 @@
               <div class="customer-info">
                 <div class="info-item">
                   <span class="label">訂單編號:</span>
-                  <span class="value">ORD123456</span>
+                  <span class="value1">ORD123456</span>
                 </div>
                 <div class="info-item">
                   <span class="label">訂單日期:</span>
-                  <span class="value">2023-05-23</span>
+                  <span class="value2">2023-05-23</span>
                 </div>
                 <div class="info-item">
                   <span class="label">顧客姓名:</span>
-                  <span class="value">John Doe</span>
+                  <span class="value3">John Doe</span>
                 </div>
                 <div class="info-item">
                   <span class="label">聯絡電話:</span>
-                  <span class="value">1234567890</span>
+                  <span class="value4">1234567890</span>
                 </div>
                 <div class="info-item">
                   <span class="label">付款方式:</span>
-                  <span class="value">信用卡</span>
+                  <span class="value5">信用卡</span>
                 </div>
                 <div class="info-item">
                   <span class="label">送貨地址:</span>
-                  <span class="value">台北市中正區</span>
-                </div>
-              </div>
-              
-              <div class="order-items">
-                <div class="title"></div>
-                <div class="item">
-                  <div class="row">
-                    <div class="col-md-2">商品名稱</div>
-                    <div class="col-md-2">價格</div>
-                    <div class="col-md-2">數量</div>
-                    <div class="col-md-2">小計</div>
-                  </div>
-                </div>
-                <div class="item">
-                  <div class="row">
-                    <div class="col-md-2">商品 A</div>
-                    <div class="col-md-2">$10.00</div>
-                    <div class="col-md-2">2</div>
-                    <div class="col-md-2">$20.00</div>
-                  </div>
-                </div>
-                <div class="item">
-                  <div class="row">
-                    <div class="col-md-2">商品 B</div>
-                    <div class="col-md-2">$15.00</div>
-                    <div class="col-md-2">1</div>
-                    <div class="col-md-2">$15.00</div>
-                  </div>
-                </div>
-                <div class="item">
-                  <div class="row">
-                    <div class="col-md-2">商品 C</div>
-                    <div class="col-md-2">$8.00</div>
-                    <div class="col-md-2">3</div>
-                    <div class="col-md-2">$24.00</div>
-                  </div>
+                  <span class="value6">台北市中正區</span>
                 </div>
               </div>
 
-
+              <div class="itemex">
+                <div class="row">
+                  <div class="col-md-2">商品名稱</div>
+                  <div class="col-md-2">價格</div>
+                  <div class="col-md-2">數量</div>
+                  <div class="col-md-2">小計</div>
+                </div>
+              </div>
+              <div class="order-items"></div>
 
               <a href="#" class="btn btn-primary">返回</a>
             </div>
           </div>
         </main>
-         <!-- 新增商品頁/ -->
+        <!-- 新增商品頁/ -->
         <footer class="py-4 bg-light mt-auto">
           <div class="container-fluid px-4">
             <div
@@ -402,89 +370,97 @@
     ></script>
     <script src="js/datatables-simple-demo.js"></script>
 
-
-
     <script>
-      const uploadDiv = document.getElementById("uploadDiv");
-      const uploadInput = document.getElementById("uploadInput");
-      const uploadContainer = document.querySelector(".upload-container");
-      const imageCountElement = document.getElementById("imageCount");
-
-      let imageCount = 0;
-
-      // 監聽圖片選擇事件
-      uploadInput.addEventListener("change", handleImageUpload);
-
-      // 處理圖片上傳
-      function handleImageUpload(event) {
-        const files = event.target.files;
-
-        // 遍歷選擇的文件
-        for (let i = 0; i < files.length; i++) {
-          const file = files[i];
-
-          // 檢查文件類型是否為圖片
-          if (file.type.match("image.*")) {
-            // 檢查是否超過上傳數量限制
-            if (imageCount >= 3) {
-              alert("一次最多只能上傳 3 張圖片");
-              break;
-            }
-
-            // 創建圖片預覽元素
-            const previewImage = document.createElement("div");
-            previewImage.classList.add("preview-image");
-
-            const img = document.createElement("img");
-            img.src = URL.createObjectURL(file);
-
-            const deleteButton = document.createElement("button");
-            deleteButton.classList.add("delete-button");
-            deleteButton.innerHTML = "&times;";
-
-            // 監聽刪除按鈕點擊事件
-            deleteButton.addEventListener("click", () => {
-              // 從預覽區域中移除該圖片
-              uploadContainer.removeChild(previewImage);
-              imageCount--;
-
-              // 檢查是否低於最大圖片數量
-              if (imageCount < 3) {
-                // 重新啟用上傳按鈕
-                uploadDiv.style.display = "flex";
-                uploadDiv.style.flexDirection = "column";
-                uploadInput.disabled = false;
-              }
-
-              // 更新圖片數量顯示
-              updateImageCount();
+      document.addEventListener("DOMContentLoaded", function () {
+        console.log("test");
+        fetch("http://localhost:8080/petpet/cartproall")
+          .then(function (response) {
+            return response.json();
+            console.log("test-1");
+          })
+          .then(function (data) {
+            // 根據資料庫回傳的資訊動態產生HTML代碼
+            console.log("test-2");
+            generateOrderItems(data);
+          })
+          .catch(function (error) {
+            console.log("Error:", error);
+          });
+        fetch("http://localhost:8080/petpet/OrderDetailSelect/2")
+          .then((response) => response.json())
+          .then((data) => {
+            // 將訂單資料動態生成HTML標籤
+            data.forEach((item) => {
+              // 建立tr元素
+              console.log(item.order_number);
+              document.querySelector(".value3").textContent = item.user_name;
+              document.querySelector(".value2").textContent = item.order_date;
+              document.querySelector(".value1").textContent = item.order_number;
+              document.querySelector(".value4").textContent = item.phone;
+              document.querySelector(".value6").textContent = item.address;
             });
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      });
+      function generateOrderItems(data) {
+        var orderItemsContainer = document.querySelector(".order-items");
 
-            // 將圖片和刪除按鈕添加到預覽元素中
-            previewImage.appendChild(img);
-            previewImage.appendChild(deleteButton);
+        // 清空order-items容器內的內容
+        orderItemsContainer.innerHTML = "";
 
-            // 將圖片預覽元素添加到預覽區域
-            uploadContainer.insertBefore(previewImage, uploadDiv);
+        // 建立標題列
+        var titleDiv = document.createElement("div");
+        titleDiv.className = "title";
+        orderItemsContainer.appendChild(titleDiv);
 
-            imageCount++;
+        // 建立每個商品項目
+        var totalAmount = 0; // 初始化總金額變數
 
-            // 檢查是否達到圖片上限
-            if (imageCount >= 3) {
-              // 隱藏上傳按鈕
-              uploadDiv.style.display = "none";
-              uploadInput.disabled = true;
-            }
+        data.forEach(function (item) {
+          var itemDiv = document.createElement("div");
+          itemDiv.className = "item";
 
-            // 更新圖片數量顯示
-            updateImageCount();
-          }
-        }
-      }
+          var rowDiv = document.createElement("div");
+          rowDiv.className = "row";
 
-      // 更新圖片數量顯示
-      function updateImageCount() {
-        imageCountElement.textContent = `(${imageCount}/3)`;
+          // 建立商品名稱欄位
+          var nameDiv = document.createElement("div");
+          nameDiv.className = "col-md-2";
+          nameDiv.textContent = item.pro_name;
+          rowDiv.appendChild(nameDiv);
+
+          // 建立價格欄位
+          var priceDiv = document.createElement("div");
+          priceDiv.className = "col-md-2";
+          priceDiv.textContent = "$" + item.pro_price.toFixed(2);
+          rowDiv.appendChild(priceDiv);
+
+          // 建立數量欄位
+          var quantityDiv = document.createElement("div");
+          quantityDiv.className = "col-md-2";
+          quantityDiv.textContent = item.pro_amount;
+          rowDiv.appendChild(quantityDiv);
+
+          // 建立小計欄位
+          var subtotalDiv = document.createElement("div");
+          subtotalDiv.className = "col-md-2";
+          subtotalDiv.textContent =
+            "$" + (item.pro_price * item.pro_amount).toFixed(2);
+          rowDiv.appendChild(subtotalDiv);
+
+          itemDiv.appendChild(rowDiv);
+          orderItemsContainer.appendChild(itemDiv);
+
+          totalAmount += item.pro_price * item.pro_amount; // 累加每個商品的小計到總金額
+        });
+
+        // 建立總金額欄位
+        var totalDiv = document.createElement("div");
+        totalDiv.className = "total";
+        totalDiv.textContent = "總金額: $" + totalAmount.toFixed(2);
+        orderItemsContainer.appendChild(totalDiv);
       }
     </script>
   </body>

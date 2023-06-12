@@ -603,8 +603,7 @@ pre code {
 
 .container-fluid {
     width: 100%;
-    padding-right: 15px;
-    padding-left: 15px;
+
     margin-right: auto;
     margin-left: auto;
 }
@@ -14158,7 +14157,7 @@ textarea.form-control {
   }
 /* 進入購物車的按鈕 */
 .in_cart{
-    display:none;
+    /* display:none; */
     position:absolute;
     bottom:0;
     left: 50%;

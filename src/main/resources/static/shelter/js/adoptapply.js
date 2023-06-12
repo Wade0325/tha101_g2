@@ -33,7 +33,6 @@ fetch(`animalfindbyid/${id}`, {
 
 
 	})
-	
 const adoptname = document.querySelector('#name');	
 const adopterid = document.querySelector('#id');	
 const birth = document.querySelector('#birth');	
@@ -112,7 +111,8 @@ delaybtn.addEventListener('click', () => {
     plan: plan.value,
     question: question.value,
     adopterApplyDate: formattedDate,
-    animalId:id
+    animalId:id,
+    animalNumber:animalNumber.textContent
 		};
 
 
@@ -130,18 +130,12 @@ delaybtn.addEventListener('click', () => {
 			.then((body) => {
 				const {successful, message} = body;
 				if (successful) { 
-					message.textcontent
 					alert('送出成功 (｡◕∀◕｡) 請等候收容所與您聯絡');
 					window.location.href = 'shelter.html';
 				} else {
-					alert('送出失敗QQ 請與聯絡');
+					alert('送出失敗QQ 請與管理員聯絡');
 				
 				}
-			})
-			.catch((error) => {
-				 console.error(error);
-
-
 			});
 
 	});

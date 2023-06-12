@@ -14,6 +14,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import tw.idv.petpet.core.pojo.Core;
 
 @Entity
 @Table
@@ -21,24 +22,26 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Company {
+public class Company extends Core{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column
-    private Integer companyId;
+    private Integer company_id;
 	@Column
-	private String companyName;
+	private String company_name;
 	@Column
-	private String companyPassword;
+	private String company_email;
+	@Column(name = "company_pw")
+	private String company_password;
 	@Column
-	private String companyMan;
+	private String company_man;
+//	@Column
+//	private String companyEmail;
 	@Column
-	private String companyEmail;
-	@Column
-	private String companyPhone;
-	@Column
-	private String companyAddress;
-	@Column
-	private String companyNum;
+	private String company_phone;
+	@Column(name = "company_addr")
+	private String company_address;
+//	@Column
+//	private String companyNum;
 
 }
