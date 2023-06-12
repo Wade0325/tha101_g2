@@ -24,14 +24,12 @@
                     console.log(resp);
                 })
             updateCountdown();
+            window.alert("驗證信已送出")
         } else if (email.value == '') {
             window.alert("電子信箱為必填")
         } else if (!(emailRegxp.test(email.value))) {
             window.alert('電子信箱格式錯誤');
         }
-        window.alert("驗證信已送出")
-
-
     })
 
     // 忘記密碼
