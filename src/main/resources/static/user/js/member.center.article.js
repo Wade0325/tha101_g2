@@ -10,11 +10,16 @@ document.addEventListener('DOMContentLoaded', function () {
             let table = new DataTable('#example', {
                 data: Article,
                 columns: [
+                    { data: 'articleId' },
                     { data: 'articleTitle' },
                     { data: 'articleContent' },
-                    { data: 'articleStatus' },
                     { data: 'articleCreateTime' },
-                    { data: 'modifierTime' },
+                    {
+                        data: 'articleId',
+                        render: function (data, type, row) {
+                            return '<button onclick="deleteArticle(' + data + ')" class="btn btn-danger btn-sm">刪除</button>';
+                        }
+                    },
                 ],
                 "language":
                 {
@@ -260,3 +265,22 @@ document.addEventListener('DOMContentLoaded', function () {
             });
         });
 });
+function deleteArticle(articleId) {
+    if (confirm("確定要刪除這篇文章嗎？")) {
+        fetch('../forum/delete/' + articleId, {
+            method: 'DELETE'
+        })
+            .then(function (response) {
+                if (response.ok) {
+                    alert("刪除成功");
+                    location.reload(); // 刷新页面
+                } else {
+                    alert("刪除失敗");
+                }
+            })
+            .catch(function (error) {
+                alert("刪除失敗");
+                console.log(error);
+            });
+    }
+}
