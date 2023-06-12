@@ -100,7 +100,7 @@ public class ForumController {
 	}
 
 //	http://localhost:8080/petpet/user/member_center_article.html  ?
-	@DeleteMapping("delete/{articleId}")
+	@DeleteMapping("/delete/{articleId}")
 	public ResponseEntity<String> deleteArticle(@PathVariable Integer articleId) {
 		forumService.deleteArticleByArticleId(articleId);
 		return ResponseEntity.ok("刪除文章成功");
