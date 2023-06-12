@@ -112,12 +112,13 @@
     <!-- end NAVBAR -->
 
     <div id="layoutSidenav">
+     
       <div id="layoutSidenav_nav">
         <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
           <div class="sb-sidenav-menu">
             <div class="nav">
               <div class="sb-sidenav-menu-heading">Core</div>
-              <a class="nav-link" href="index.html">
+              <a class="nav-link" href="../clinicAppointment/BackStage/clinicbusinessdate.html">
                 <div class="sb-nav-link-icon">
                   <i class="fas fa-tachometer-alt"></i>
                 </div>
@@ -125,7 +126,7 @@
               </a>
               <a
                 class="nav-link collapsed"
-                href="#"
+                href="../clinicAppointment/BackStage/ClinicMemberManage.html"
                 data-bs-toggle="collapse"
                 data-bs-target="#collapseLayouts"
                 aria-expanded="false"
@@ -146,7 +147,7 @@
                 data-bs-parent="#sidenavAccordion"
               >
                 <nav class="sb-sidenav-menu-nested nav">
-                  <a class="nav-link" href="report_firm.html">診所營業時間</a>
+                  <a class="nav-link" href="../clinicAppointment/BackStage/clinicbusinessdate.html">診所營業時間</a>
                 </nav>
               </div>
               <div
@@ -156,7 +157,7 @@
                 data-bs-parent="#sidenavAccordion"
               >
                 <nav class="sb-sidenav-menu-nested nav">
-                  <a class="nav-link" href="report_firm.html">預約管理</a>
+                  <a class="nav-link" href="../clinicAppointment/BackStage/clinicreservationFormManage.html">預約管理</a>
                 </nav>
               </div>
               <div
@@ -166,9 +167,40 @@
                 data-bs-parent="#sidenavAccordion"
               >
                 <nav class="sb-sidenav-menu-nested nav">
-                  <a class="nav-link" href="report_firm.html">價格表</a>
+                  <a class="nav-link" href="clinic_pricelist_insert.html">產品新增</a>
                 </nav>
               </div>
+              <div
+                class="collapse"
+                id="collapseLayouts"
+                aria-labelledby="headingOne"
+                data-bs-parent="#sidenavAccordion"
+              >
+                <nav class="sb-sidenav-menu-nested nav">
+                  <a class="nav-link" href="clinicpricelistmanage.html">價格表</a>
+                </nav>
+              </div>
+              <div
+                class="collapse"
+                id="collapseLayouts"
+                aria-labelledby="headingOne"
+                data-bs-parent="#sidenavAccordion"
+              >
+                <nav class="sb-sidenav-menu-nested nav">
+                  <a class="nav-link" href="../clinicAppointment/BackStage/petCaseInsert.html">病歷新增</a>
+                </nav>
+              </div>
+              <div
+                class="collapse"
+                id="collapseLayouts"
+                aria-labelledby="headingOne"
+                data-bs-parent="#sidenavAccordion"
+              >
+                <nav class="sb-sidenav-menu-nested nav">
+                  <a class="nav-link" href="../clinicAppointment/BackStage/petCaseManage.html">病歷管理</a>
+                </nav>
+              </div>
+              
               <a
                 class="nav-link collapsed"
                 href="#"
@@ -196,10 +228,11 @@
                   id="sidenavAccordionPages"
                 >
                   <nav class="sb-sidenav-menu-nested nav">
-                    <a class="nav-link" href="Login2.html">會員資料更新</a>
+                    <a class="nav-link" href="../clinicAppointment/BackStage/ClinicMemberManage.html">會員資料更新</a>
                   </nav>
                 </nav>
               </div>
+              
             </div>
           </div>
         </nav>
@@ -221,6 +254,7 @@
                     <div class="card-body">
                       <div class="pb-2"></div>
                       <form id="clinic_insert" action="">
+                        <div class="">
                         <p>
                           服務
                           <input type="text" id="clinic_service_name" />
@@ -228,6 +262,7 @@
                         <p>
                           價格 <input type="text" id="service_price" id="" />
                         </p>
+                         </div>
                         <p>
                           優惠價
                           <input type="text" id="service_discount_price" />
@@ -252,7 +287,7 @@
                           服務照片
                           <input type="file" id="file" />
                           <br />
-                          <img id="service_img"/>
+                          <img style="max-width: 200px; max-height: 200px;" id="service_img"/>
                         </p>
                       </form>
 
