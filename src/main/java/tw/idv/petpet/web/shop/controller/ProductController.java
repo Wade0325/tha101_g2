@@ -28,21 +28,21 @@ public class ProductController {
 
 	@Autowired
 	private ProductRepository productRepository;
-	@Autowired
-	private CategoriesRepository cate;
+//	@Autowired
+//	private CategoriesRepository cate;
 
 	@GetMapping("/shoptest123")
 	public void test() {
 		System.out.println("test");
 	}
 
-	@PostMapping("/shoptest1") // 種類測試
-	public String inserttest(@RequestBody Categories cat) {
-		System.out.println("test");
-		cate.save(cat);
-
-		return "測試insert";
-	}
+//	@PostMapping("/shoptest1") // 種類測試
+//	public String inserttest(@RequestBody Categories cat) {
+//		System.out.println("test");
+//		cate.save(cat);
+//
+//		return "測試insert";
+//	}
 
 	@PostMapping("/shoptestinsert") // 新增商品
 	public Product insert(@RequestBody Product product) {
@@ -60,6 +60,16 @@ public class ProductController {
 
 		return "測試delete";
 	}
+	@GetMapping("/productselectca/{cateName}")
+	public List<Product> selectByName(@PathVariable String cateName) {
+		System.out.println("進入");
+		System.out.println(cateName);
+		
+		List<Product> cateProducts = productRepository.findByCateName(cateName);
+		
+		return cateProducts;
+	}
+	
 
 
 //	@DeleteMapping("/shoptest/{shopId}")
@@ -83,7 +93,7 @@ public class ProductController {
 	    return products;
 	}
 
-
+	//修改
 	@PutMapping("/shoptest/{shopId}")
 	public Product update(@PathVariable Integer shopId, @RequestBody Product product) {
 

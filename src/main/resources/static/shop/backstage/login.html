@@ -246,34 +246,41 @@
         event.preventDefault(); // 防止表單自動提交
         
         console.log("按下送出按鈕");
+        var checkboxx = document.getElementById('exampleCheck1');
         var username = document.getElementById('exampleInputEmail1').value;
         var password = document.getElementById('exampleInputPassword1').value;
-        console.log("test1");
+        console.log(username);
+        console.log(password);
+        if(checkboxx.checked){
         // 發送登入請求
-        fetch('http://localhost:8080/petpet/login', {
+        fetch('http://localhost:8080/petpet/companyshoplogin', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({username: username, password: password})      
+            body: JSON.stringify({"company_email": username, "company_password": password})      
         })
         .then(function(response) {
           
             if (response.ok) {
               console.log("test2");
+                alert("登入成功");
                 // 登入成功，重新導向到其他頁面
                 window.location.href = '/dashboard'; // 假設登入成功後要導向的頁面是 /dashboard
             } else {
-              console.log("test3");
+              alert("帳號或密碼有誤");
                 // 登入失敗，顯示錯誤訊息
-                response.text().then(function(errorMessage) {
-                    alert(errorMessage);
-                });
+                // response.text().then(function(errorMessage) {
+                //     alert(errorMessage);
+                // });
             }
         })
         .catch(function(error) {
             console.log('發生錯誤：', error);
         });
+      }else{
+        alert("請勾選不是機器人");
+      }
     });
 });
 

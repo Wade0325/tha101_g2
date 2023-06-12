@@ -58,7 +58,9 @@
       text-align: center;
       color:black
     }
-
+    /* .test{
+      display:none;
+    } */
 
     </style>
   </head>
@@ -334,113 +336,138 @@
 <script src="js/google-map.js"></script>
 <script src="js/main.js"></script>
 <script>
-function redirectToPage() {
-window.location.href = "詳細商品頁面.html";
-}
 
+var catename = "寵物食品";
+document.addEventListener('DOMContentLoaded', function() {
+  console.log("測試開始");
+  productshow(catename);
+});catename
 
+var listItems = document.querySelectorAll('.list-group-item');
+listItems.forEach(function(item) {
+  item.addEventListener('click', function() {
+    
+    var value = this.innerText; // 獲取點擊元素的值
+    catename = value;
+   
+    // 獲取所有具有 "cont" id 的元素
+    var contElements = document.querySelectorAll('#cont');
 
-fetch('http://localhost:8080/petpet/shoptestall')
-.then(response => response.json())
-.then(data => {
-const container = document.getElementById("prorow");
-
-let count = 0;
-let procount = 0;
-data.forEach(product => {
-if(count < 12){
-const productDiv = document.createElement('div');
-productDiv.className = 'col-3 test';
-productDiv.style.backgroundImage = `url(data:image/jpeg;base64,${product.pro_pic1})`;
-productDiv.style.backgroundSize = 'cover';
-productDiv.style.backgroundPosition = 'center';
-productDiv.style.height = '200px';
-productDiv.setAttribute('data-comp-attribute', product.company_id)
-
-
-if (count <= 2) {
-productDiv.style.marginTop = '0';
-} else {
-// 設定第二排以後的商品與第一排保持距離
-productDiv.style.marginTop = '180px';
-}
-if (count % 3 !== 0) {
-  productDiv.style.marginLeft = '50px';
-}
-
-
-const cardDiv = document.createElement('div');
-cardDiv.className = 'card';
-cardDiv.style.position = 'absolute';
-cardDiv.style.top = '200px';
-cardDiv.style.right = '0.5px';
-cardDiv.style.width = '100%';
-
-const productNameLink = document.createElement('a');
-productNameLink.className = 'pro_name';
-productNameLink.href = 'productDetail.html';
-productNameLink.textContent = product.pro_name;
-productNameLink.setAttribute('data-proid',product.pro_id);
-
-const productPriceDiv = document.createElement('div');
-      productPriceDiv.className = 'pro_price';
-      productPriceDiv.style.textAlign = 'center';
-
-      const priceLabel = document.createElement('span');
-      priceLabel.className = 'price-label';
-      priceLabel.textContent = '價格: ';
-
-      const priceValue = document.createElement('span');
-      priceValue.className = 'price-value';
-      priceValue.textContent = product.pro_price;
-
-      productPriceDiv.appendChild(priceLabel);
-      productPriceDiv.appendChild(priceValue);
-
-const quantityContainerDiv = document.createElement('div');
-quantityContainerDiv.className = 'quantity-container';
-
-const decrementButton = document.createElement('button');
-decrementButton.className = 'decrement-button q-button';
-decrementButton.textContent = '-';
-
-const quantityInput = document.createElement('input');
-quantityInput.type = 'number';
-quantityInput.className = 'quantity-input q-input';
-quantityInput.id = 'quantity';
-quantityInput.name = 'quantity';
-quantityInput.value = '1';
-quantityInput.min = '1';
-
-const incrementButton = document.createElement('button');
-incrementButton.className = 'increment-button q-button';
-incrementButton.textContent = '+';
-
-const addToCartButton = document.createElement('button');
-addToCartButton.className = 'add-to-cart';
-addToCartButton.textContent = 'Add to Cart';
-
-
-
-quantityContainerDiv.appendChild(decrementButton);
-quantityContainerDiv.appendChild(quantityInput);
-quantityContainerDiv.appendChild(incrementButton);
-
-cardDiv.appendChild(productNameLink);
-cardDiv.appendChild(productPriceDiv);
-cardDiv.appendChild(quantityContainerDiv);
-cardDiv.appendChild(addToCartButton);
-
-productDiv.appendChild(cardDiv);
-container.appendChild(productDiv);
-count++;
-}
-if(procount >= 12) return;
+    // 遍歷所有元素並隱藏它們及其子元素
+    contElements.forEach(function(element) {
+      element.style.display = 'none'; // 或使用 element.style.visibility = 'hidden';
+    });
+    productshow(catename)
+    
+  });
 });
-})
-.catch(error => {
-console.error('Error:', error);
-});
+
+
+  function productshow(catename){
+      fetch('http://localhost:8080/petpet/productselectca/'+catename)
+          .then(response => response.json())
+          .then(data => {
+          const container = document.getElementById("prorow");
+          
+
+          let count = 0;
+          let procount = 0;
+          data.forEach(product => {
+          if(count < 12){
+          const productDiv = document.createElement('div');
+          productDiv.className = 'col-3 test';
+          productDiv.id = 'cont';
+          productDiv.style.backgroundImage = `url(data:image/jpeg;base64,${product.pro_pic1})`;
+          productDiv.style.backgroundSize = 'cover';
+          productDiv.style.backgroundPosition = 'center';
+          productDiv.style.height = '200px';
+          productDiv.setAttribute('data-comp-attribute', product.company_id)
+
+
+          if (count <= 2) {
+          productDiv.style.marginTop = '0';
+          } else {
+          // 設定第二排以後的商品與第一排保持距離
+          productDiv.style.marginTop = '180px';
+          }
+          if (count % 3 !== 0) {
+            productDiv.style.marginLeft = '50px';
+          }
+
+
+          const cardDiv = document.createElement('div');
+          cardDiv.className = 'card';
+          cardDiv.style.position = 'absolute';
+          cardDiv.style.top = '200px';
+          cardDiv.style.right = '0.5px';
+          cardDiv.style.width = '100%';
+
+          const productNameLink = document.createElement('a');
+          productNameLink.className = 'pro_name';
+          productNameLink.href = 'productDetail.html';
+          productNameLink.textContent = product.pro_name;
+          productNameLink.setAttribute('data-proid',product.pro_id);
+
+                const productPriceDiv = document.createElement('div');
+                productPriceDiv.className = 'pro_price';
+                productPriceDiv.style.textAlign = 'center';
+
+                const priceLabel = document.createElement('span');
+                priceLabel.className = 'price-label';
+                priceLabel.textContent = '價格: ';
+
+                const priceValue = document.createElement('span');
+                priceValue.className = 'price-value';
+                priceValue.textContent = product.pro_price;
+
+                productPriceDiv.appendChild(priceLabel);
+                productPriceDiv.appendChild(priceValue);
+
+          const quantityContainerDiv = document.createElement('div');
+          quantityContainerDiv.className = 'quantity-container';
+
+          const decrementButton = document.createElement('button');
+          decrementButton.className = 'decrement-button q-button';
+          decrementButton.textContent = '-';
+
+          const quantityInput = document.createElement('input');
+          quantityInput.type = 'number';
+          quantityInput.className = 'quantity-input q-input';
+          quantityInput.id = 'quantity';
+          quantityInput.name = 'quantity';
+          quantityInput.value = '1';
+          quantityInput.min = '1';
+
+          const incrementButton = document.createElement('button');
+          incrementButton.className = 'increment-button q-button';
+          incrementButton.textContent = '+';
+
+          const addToCartButton = document.createElement('button');
+          addToCartButton.className = 'add-to-cart';
+          addToCartButton.textContent = 'Add to Cart';
+
+
+
+          quantityContainerDiv.appendChild(decrementButton);
+          quantityContainerDiv.appendChild(quantityInput);
+          quantityContainerDiv.appendChild(incrementButton);
+
+          cardDiv.appendChild(productNameLink);
+          cardDiv.appendChild(productPriceDiv);
+          cardDiv.appendChild(quantityContainerDiv);
+          cardDiv.appendChild(addToCartButton);
+
+          productDiv.appendChild(cardDiv);
+          container.appendChild(productDiv);
+          count++;
+          }
+          if(procount >= 12) return;
+          });
+          })
+          .catch(error => {
+          console.error('Error:', error);
+          });
+      }
 
 
 </script>
@@ -527,5 +554,17 @@ sessionStorage.setItem('selectedProductId', productId);
   });
   
   </script>
+  <script>
+    const cate = document.getElementsByClassName('.list-group-item');
+    // querySelector('.list-group-item');
+    cate.addEventListener('click' , function(){
+
+      console.log(cate.innerHTML);
+
+
+    });
+
+  </script>
+  
 </body>
 </html>
