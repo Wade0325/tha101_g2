@@ -38,7 +38,7 @@ clinicbtn.addEventListener('click', () => {
 			.then(body => {
 				const { successful } = body;
 				if (successful) {
-					window.location.href = "https://www.youtube.com/";
+					window.location.href = "http://localhost:8080/petpet/clinic/clinicAppointment/BackStage/clinicbusinessdate.html";
 				} else {
 					alert('登入失敗');
 				}

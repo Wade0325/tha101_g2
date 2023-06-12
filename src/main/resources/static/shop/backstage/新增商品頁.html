@@ -142,8 +142,8 @@
             class="dropdown-menu dropdown-menu-end"
             aria-labelledby="navbarDropdown"
           >
-            <li><a class="dropdown-item" href="./vendorRegistration.html">註冊</a></li>
-            <li><a class="dropdown-item" href="./backstagelogin/admin_login.html">登入</a></li>
+            <li><a class="dropdown-item" href="Login2.html">註冊</a></li>
+            <li><a class="dropdown-item" href="Login2.html">登入</a></li>
             <li><hr class="dropdown-divider" /></li>
             <li><a class="dropdown-item" href="#!">登出</a></li>
           </ul>
@@ -188,30 +188,11 @@
                 data-bs-parent="#sidenavAccordion"
               >
               <nav class="sb-sidenav-menu-nested nav">
-                <a class="nav-link" href="./addNewProduct.html">新增商品</a>
+                <a class="nav-link" href="report_firm.html">新增商品</a>
               </nav>
-              
-              <nav class="sb-sidenav-menu-nested nav">
-                <a class="nav-link" href="./productManagement.html">商品管理</a>
-              </nav>
-
-              <nav class="sb-sidenav-menu-nested nav">
-                <a class="nav-link" href="./testvms.html">訂單管理</a>
-                  <div
-                  class="collapse"
-                  id="collapseLayouts"
-                  aria-labelledby="headingOne"
-                  data-bs-parent="#sidenavAccordion"
-                  >
-                  <nav class="sb-sidenav-menu-nested nav">
-                    <a class="nav-link" href="./orderDetail.html">訂單明細</a>
-                  </nav> 
-              </nav>
-
-              <!-- <nav class="sb-sidenav-menu-nested nav">
-                <a class="nav-link" href="report_firm.html">商家檢舉</a>
-              </nav> -->
-
+                <nav class="sb-sidenav-menu-nested nav">
+                  <a class="nav-link" href="report_firm.html">商家檢舉</a>
+                </nav>
               </div>
               <a
                 class="nav-link collapsed"
@@ -221,13 +202,13 @@
                 aria-expanded="false"
                 aria-controls="collapsePages"
               >
-<!--                 <div class="sb-nav-link-icon"> -->
-<!--                   <i class="fas fa-book-open"></i> -->
-<!--                 </div> -->
-<!--                 會員管理 -->
-<!--                 <div class="sb-sidenav-collapse-arrow"> -->
-<!--                   <i class="fas fa-angle-down"></i> -->
-<!--                 </div> -->
+                <div class="sb-nav-link-icon">
+                  <i class="fas fa-book-open"></i>
+                </div>
+                會員管理
+                <div class="sb-sidenav-collapse-arrow">
+                  <i class="fas fa-angle-down"></i>
+                </div>
               </a>
               <div
                 class="collapse"
@@ -240,34 +221,35 @@
                   id="sidenavAccordionPages"
                 >
                   <nav class="sb-sidenav-menu-nested nav">
-                    <!-- <a class="nav-link" href="report_user.html">會員檢舉</a> -->
-<!--                     <a class="nav-link" href="./vendorRegistration.html">註冊會員</a> -->
-<!--                     <a class="nav-link" href="./forgetThePassword.html">忘記密碼</a> -->
+                    <a class="nav-link" href="report_user.html">會員檢舉</a>
+                    <a class="nav-link" href="Login2.html">註冊會員</a>
+                    <a class="nav-link" href="Forgot.html">忘記密碼</a>
                   </nav>
                 </nav>
               </div>
-              <!-- <div class="sb-sidenav-menu-heading">Addons</div>
+              <div class="sb-sidenav-menu-heading">Addons</div>
               <a class="nav-link" href="report_from.html">
                 <div class="sb-nav-link-icon">
                   <i class="fas fa-chart-area"></i>
                 </div>
                 檢舉表單
-              </a> -->
+              </a>
             </div>
           </div>
         </nav>
       </div>
       <div id="layoutSidenav_content">
+        <!-- 新增商品頁 -->
         <main>
           <div class="container">
             <h1>新增商品</h1>
             <form>
               <div class="form-group">
-                <label for="productName">商品名稱</label>
+                <label for="product-name">商品名稱</label>
                 <input
                   type="text"
                   class="form-control"
-                  id="productName"
+                  id="product-name"
                   placeholder="請輸入商品名稱"
                 />
               </div>
@@ -302,10 +284,10 @@
                 <label for="product-category">商品類別</label>
                 <select class="form-control" id="product-category">
                   <option>選擇類別</option>
-                  <option>寵物食品</option>
-                  <option>寵物服飾</option>
-                  <option>外出用品</option>
-                  <option>寵物玩具</option>                  
+                  <option>電子產品</option>
+                  <option>家具</option>
+                  <option>服飾</option>
+                  <option>食品</option>
                 </select>
               </div>
         
@@ -352,18 +334,64 @@
               </div>
 
               <!-- 新增圖片/ -->
-              
+              <div class="form-group">
+                <label for="product-featured">特色商品</label>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="product-featured"
+                  />
+                  <label class="form-check-label" for="product-featured">
+                    是
+                  </label>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="product-colors">可選顏色</label>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="color-red"
+                  />
+                  <label class="form-check-label" for="color-red"> 紅色 </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="color-blue"
+                  />
+                  <label class="form-check-label" for="color-blue">
+                    藍色
+                  </label>
+                </div>
+                <div class="form-check">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    id="color-green"
+                  />
+                  <label class="form-check-label" for="color-green">
+                    綠色
+                  </label>
+                </div>
+              </div>
               <!-- 商品狀態 -->
               <div class="form-group">
                 <label for="product-category">商品狀態</label>
-                <select class="form-control" id="product-category-n">
+                <select class="form-control" id="product-category">
                   <option>上架中</option>
                   <option>未上架</option>
+                  <option>x</option>
+                  <option>x</option>
+                  <option>x</option>
                 </select>
               </div>
               <!-- 商品狀態/ -->
-              <button id="btntest"  class ="btn btn-primary btn-submit" ">
-              	新增
+              <button type="submit" class="btn btn-primary btn-submit">
+                新增
               </button>
             </form>
           </div>
@@ -395,8 +423,8 @@
       src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
       crossorigin="anonymous"
     ></script>
-    <!-- <script src="assets/demo/chart-area-demo.js"></script>
-    <script src="assets/demo/chart-bar-demo.js"></script> -->
+    <script src="assets/demo/chart-area-demo.js"></script>
+    <script src="assets/demo/chart-bar-demo.js"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
       crossorigin="anonymous"
@@ -406,193 +434,87 @@
 
 
     <script>
-    
       const uploadDiv = document.getElementById("uploadDiv");
       const uploadInput = document.getElementById("uploadInput");
       const uploadContainer = document.querySelector(".upload-container");
       const imageCountElement = document.getElementById("imageCount");
-    
+
       let imageCount = 0;
-      let imgimg;
-      let imgSrc; 
-      var animalphoto1;
-      var animalphoto2;
-      var animalphoto3;
-      let base64Data1 ;
-  let base64Data2;
-  let base64Data3;
-  var parts1;
-  var parts2;
-  var parts3;
-      
-     // 監聽圖片選擇事件
-uploadInput.addEventListener("change", handleImageUpload);
 
-// 處理圖片上傳
-function handleImageUpload(event) {
-  const files = event.target.files;
+      // 監聽圖片選擇事件
+      uploadInput.addEventListener("change", handleImageUpload);
 
-  // 檢查是否已經達到最多圖片數量
-  if (imageCount >= 3) {
-    alert("一次最多只能上傳 3 張圖片");
-    return;
-  }
+      // 處理圖片上傳
+      function handleImageUpload(event) {
+        const files = event.target.files;
 
-  // 遍歷選擇的文件
-  for (let i = 0; i < files.length; i++) {
-    // 檢查是否已經達到最多圖片數量
-    if (imageCount >= 3) {
-      alert("一次最多只能上傳 3 張圖片");
-      return;
-    }
+        // 遍歷選擇的文件
+        for (let i = 0; i < files.length; i++) {
+          const file = files[i];
 
-    const file = files[i];
+          // 檢查文件類型是否為圖片
+          if (file.type.match("image.*")) {
+            // 檢查是否超過上傳數量限制
+            if (imageCount >= 3) {
+              alert("一次最多只能上傳 3 張圖片");
+              break;
+            }
 
-    // 檢查文件類型是否為圖片
-    if (file.type.match("image.*")) {
-      const fileReader = new FileReader();
-      fileReader.onload = function (e) {
-        // 創建圖片預覽元素
-        const previewImage = document.createElement("div");
-        previewImage.classList.add("preview-image");
+            // 創建圖片預覽元素
+            const previewImage = document.createElement("div");
+            previewImage.classList.add("preview-image");
 
-        const imgimg = document.createElement("img");
-        const imgSrc = e.target.result;
+            const img = document.createElement("img");
+            img.src = URL.createObjectURL(file);
 
-        const deleteButton = document.createElement("button");
-        deleteButton.classList.add("delete-button");
-        deleteButton.innerHTML = "&times;";
+            const deleteButton = document.createElement("button");
+            deleteButton.classList.add("delete-button");
+            deleteButton.innerHTML = "&times;";
 
-        // 監聽刪除按鈕點擊事件
-        deleteButton.addEventListener("click", () => {
-          // 從預覽區域中移除該圖片
-          uploadContainer.removeChild(previewImage);
-          imageCount--;
+            // 監聽刪除按鈕點擊事件
+            deleteButton.addEventListener("click", () => {
+              // 從預覽區域中移除該圖片
+              uploadContainer.removeChild(previewImage);
+              imageCount--;
 
-          // 檢查是否低於最大圖片數量
-          if (imageCount < 3) {
-            // 重新啟用上傳按鈕
-            uploadDiv.style.display = "flex";
-            uploadDiv.style.flexDirection = "column";
-            uploadInput.disabled = false;
+              // 檢查是否低於最大圖片數量
+              if (imageCount < 3) {
+                // 重新啟用上傳按鈕
+                uploadDiv.style.display = "flex";
+                uploadDiv.style.flexDirection = "column";
+                uploadInput.disabled = false;
+              }
+
+              // 更新圖片數量顯示
+              updateImageCount();
+            });
+
+            // 將圖片和刪除按鈕添加到預覽元素中
+            previewImage.appendChild(img);
+            previewImage.appendChild(deleteButton);
+
+            // 將圖片預覽元素添加到預覽區域
+            uploadContainer.insertBefore(previewImage, uploadDiv);
+
+            imageCount++;
+
+            // 檢查是否達到圖片上限
+            if (imageCount >= 3) {
+              // 隱藏上傳按鈕
+              uploadDiv.style.display = "none";
+              uploadInput.disabled = true;
+            }
+
+            // 更新圖片數量顯示
+            updateImageCount();
           }
-
-          // 更新圖片數量顯示
-          updateImageCount();
-        });
-
-        // 將圖片和刪除按鈕添加到預覽元素中
-        imgimg.src = imgSrc;
-        previewImage.appendChild(imgimg);
-        previewImage.appendChild(deleteButton);
-
-        // 將圖片預覽元素添加到預覽區域
-        uploadContainer.insertBefore(previewImage, uploadDiv);
-
-        imageCount++;
-
-        // 檢查是否達到圖片上限
-        if (imageCount >= 3) {
-          // 隱藏上傳按鈕
-          uploadDiv.style.display = "none";
-          uploadInput.disabled = true;
         }
+      }
 
-        // 參考：將base64圖片資料存儲到相應變量中
-        if (imageCount === 1) {
-          animalphoto1 = imgSrc;
-          base64Data1 = imgSrc.split(",")[1];
-        }
-        if (imageCount === 2) {
-          animalphoto2 = imgSrc;
-          base64Data2 = imgSrc.split(",")[1];
-        }
-        if (imageCount === 3) {
-          animalphoto3 = imgSrc;
-          base64Data3 = imgSrc.split(",")[1];
-        }
-
-        // 更新圖片數量顯示
-        updateImageCount();
-      };
-
-      // 開始讀取文件
-      fileReader.readAsDataURL(file);
-    }
-  }
-}
-
-
-
-
-     
-    
       // 更新圖片數量顯示
       function updateImageCount() {
         imageCountElement.textContent = `(${imageCount}/3)`;
-
-  
       }
     </script>
-   
-
-<script>
-
-
-document.getElementById('btntest').addEventListener('click', function(event) {
-	
-	console.log("test");
-    event.preventDefault();
-    var proname = document.getElementById('productName').value;
-    var proprice = document.getElementById('product-price').value;
-    var proquantity = document.getElementById('product-quantity').value;
-    var productdescription = document.getElementById('product-description').value;  //商品描述
-    var catename = document.getElementById('product-category').value;
-    var prostatus = document.getElementById('product-category-n').value;
-    
-    
-    // 构建商品对象
-    var product = {
-       
-    "pro_name" : proname,
-    "pro_price": proprice,
-    "pro_amount": proquantity,
-    "pro_det" : productdescription, 
-    "cate_name": catename,
-    "company_id": 2,
-    "email":"test",
-    "pro_status":prostatus,
-    "pro_pic1": base64Data1,
-    "pro_pic2": base64Data2,
-    "pro_pic3": base64Data3
-    };
-
-    
-    // 发送POST请求至后端
-    fetch('http://localhost:8080/petpet/shoptestinsert', {
-        method: 'POST',
-        headers: {
-    "Content-Type": "application/json"
-  },
-        body: JSON.stringify(product)
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log(data);
-        window.location.href = 'addNewProductSuccessfully.html?productId=' + data.pro_id;
-        
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        console.log("catch錯誤");
-       
-    });
-});
-
-
-
-
-</script>
-
   </body>
 </html>
