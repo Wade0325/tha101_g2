@@ -46,4 +46,5 @@ public class AdoptApply extends Core{
     @Column(insertable = false)
     private String adopterChecked;
     private String userAccount;
+    private String animalNumber;
 }

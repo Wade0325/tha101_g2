@@ -33,7 +33,6 @@ fetch(`animalfindbyid/${id}`, {
 
 
 	})
-	
 const adoptname = document.querySelector('#name');	
 const adopterid = document.querySelector('#id');	
 const birth = document.querySelector('#birth');	
@@ -112,7 +111,8 @@ delaybtn.addEventListener('click', () => {
     plan: plan.value,
     question: question.value,
     adopterApplyDate: formattedDate,
-    animalId:id
+    animalId:id,
+    animalNumber:animalNumber.textContent
 		};
 
 
