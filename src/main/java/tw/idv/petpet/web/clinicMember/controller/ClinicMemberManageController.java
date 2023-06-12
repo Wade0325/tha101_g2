@@ -26,7 +26,7 @@ public class ClinicMemberManageController {
 
 	@Autowired
 	private ClinicMemberService service;
-	
+
 	@Autowired
 	private ClinicMemberRepository clinicMemberRepository;
 
@@ -50,9 +50,21 @@ public class ClinicMemberManageController {
 		return core;
 	}
 
+//	@PutMapping
+//	public Core save(@RequestBody ClinicMember clinicMember, HttpSession session) {
+//		final Core core = new Core();
+//		ClinicMember clinicMemberSession = (ClinicMember) session.getAttribute("clinicEmail");
+//		if (clinicMemberSession == null) {
+//			core.setMessage("無此會員");
+//			core.setSuccessful(false);
+//		} else {
+//			core.setSuccessful(clinicMemberRepository.save(clinicMember) != null);
+//		}
+//		return core;
+//	}
+
 	@PutMapping
-	
-	public Core save(@RequestBody ClinicMember clinicMember, HttpSession session) {
+	public Core update(@RequestBody ClinicMember clinicMember, HttpSession session) {
 		final Core core = new Core();
 		ClinicMember clinicMemberSession = (ClinicMember) session.getAttribute("clinicEmail");
 		if (clinicMemberSession == null) {
@@ -64,4 +76,16 @@ public class ClinicMemberManageController {
 		return core;
 	}
 
+	@PutMapping("{clinicId}")
+	public Core update1(@PathVariable Integer clinicId, @RequestBody ClinicMember clinicMember) {
+		final Core core = new Core();
+		if (clinicMember == null) {
+			core.setMessage("無此會員");
+			core.setSuccessful(false);
+		} else {
+			core.setSuccessful(true);
+			service.update1(clinicId, clinicMember);
+		}
+		return core;
+	}
 }

@@ -25,19 +25,6 @@ public class EcpayController {
 
 		String form = service.ecpayCheck();// 前往ecpay付款頁面
 
-//		ClinicAppointment latestAppointment = clinicAppointmentService.getLatestReservation();
-//		Integer reservation;
-//		if (latestAppointment != null) {
-//			reservation = latestAppointment.getReservationNumber();
-//			clinicAppointmentService.updatePayInfo(reservation);
-//		} else {
-//			reservation = null;
-//		}
-		return form;
-	}
-
-	@PostMapping("/return")
-	public String ReturnUrl() {
 		ClinicAppointment latestAppointment = clinicAppointmentService.getLatestReservation();
 		Integer reservation;
 		if (latestAppointment != null) {
@@ -46,7 +33,20 @@ public class EcpayController {
 		} else {
 			reservation = null;
 		}
-		return "OK";
+		return form;
 	}
+
+//	@PostMapping("/return")
+//	public String ReturnUrl() {
+//		ClinicAppointment latestAppointment = clinicAppointmentService.getLatestReservation();
+//		Integer reservation;
+//		if (latestAppointment != null) {
+//			reservation = latestAppointment.getReservationNumber();
+//			clinicAppointmentService.updatePayInfo(reservation);
+//		} else {
+//			reservation = null;
+//		}
+//		return "OK";
+//	}
 
 }

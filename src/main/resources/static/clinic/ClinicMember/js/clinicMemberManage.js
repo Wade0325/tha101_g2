@@ -2,7 +2,7 @@ function deleteClick(clinicId) {
 	if (!confirm('是否刪除?')) {
 		return;
 	}
-	fetch(`manage/${clinicId}`, {
+	fetch(`../../clinicMember/manage/${clinicId}`, {
 		method: `DELETE`,
 	})
 		.then(resp => resp.json())
@@ -22,8 +22,12 @@ function saveClick(clinicId) {
 	const clinicService = document.querySelector(`#clinicservice${clinicId}`).textContent;
 	// const clinicEmail = sessionStorage.getItem('clinicemail');
 	const clinicEmail = document.querySelector(`#clinicemail${clinicId}`).textContent;
+	
+//	const clinicMemberCreateDate = new Date().getTime();
+	const clinicMemberLastUpdateDate = new Date().getTime();
+	
 	console.log(clinicEmail)
-	fetch('../../clinicMember/manage', {
+	fetch(`../../clinicMember/manage/${clinicId}`, {
 		method: 'PUT',
 		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify({
@@ -33,14 +37,16 @@ function saveClick(clinicId) {
 			clinicPhone,
 			clinicAddress,
 			clinicService,
-			clinicEmail
+			clinicEmail,
+//			clinicMemberCreateDate,
+			clinicMemberLastUpdateDate
 		})
 	})
 		.then(resp => resp.json())
 		.then(body => {
 			const { successful } = body;
 			if (successful) {
-				alert('修改成功!');
+				alert('修改成功');
 				location.reload();
 			} else {
 				alert('修改失敗');
