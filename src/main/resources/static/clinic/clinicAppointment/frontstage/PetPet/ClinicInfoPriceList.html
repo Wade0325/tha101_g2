@@ -23,31 +23,55 @@
 
     <link rel="stylesheet" href="css/flaticon.css">
     <link rel="stylesheet" href="css/style.css">
+    <style>
+    .pic {
+	  width: 600px; /* 定義容器的寬度 */
+	  height: 400px; /* 定義容器的高度 */
+	  object-fit: contain; /* 保持原始比例，自動縮放以符合容器 */
+	}
+	
+ 
+	.serviceImg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 380px;
+  height: 280px;
+}
+
+
+ </style>   
 </head>
 
 <body>
     <div class="wrap"  >
-        <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-            <div class="container">
-                <a class="navbar-brand" href="index.html"><img src="/images/1.jpg" width="80px"
-                        height="80px">PetPet陪陪你</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
-                    aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="fa fa-bars"></span> MENU
-                </button>
-                <div class="collapse navbar-collapse" id="ftco-nav">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item"><a href="index.html" class="nav-link" style="color: black">首頁</a></li>
-                        <li class="nav-item"><a href="vet.html" class="nav-link" style="color: black">寵物診所</a></li>
-                        <li class="nav-item"><a href="gallery.html" class="nav-link" style="color: black">寵物商城</a></li>
-                        <li class="nav-item"><a href="blog.html" class="nav-link" style="color: black">寵物領養</a></li>
-                        <li class="nav-item"><a href="contact.html" class="nav-link" style="color: black">寵物討論區</a></li>
-                        <li class="nav-item active"><a href="services_login.html" class="nav-link"
-                                style="color: black">登入/註冊</a></li>
-                    </ul>
-                </div>
+      
+ <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="../../../../index.html"><img src="images/petpet.png" width="80px"
+                    height="80px">PetPet陪陪你</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
+                aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="fa fa-bars"></span> MENU
+            </button>
+            <div class="collapse navbar-collapse" id="ftco-nav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active"><a href="../../../../index.html" class="nav-link" style="color: black">首頁</a></li>
+                    <li class="nav-item"><a href="VetSearchResult.html"
+                            class="nav-link" style="color: black">寵物診所</a></li>
+                    <li class="nav-item"><a href="../../../../shop/frontdesk/petFoodShop.html" class="nav-link"
+                            style="color: black">寵物商城</a></li>
+                    <li class="nav-item"><a href="../../../../shelter/shelter.html" class="nav-link" style="color: black">寵物領養</a>
+                    </li>
+                    <li class="nav-item"><a href="../../../../forum/forum.html" class="nav-link" style="color: black">寵物討論區</a></li>
+                    <li class="nav-item"><a href="../../../../user/login.html" class="nav-link" style="color: black">會員中心</a>
+                    </li>
+                    <li class="nav-item"><a href="../../../../admin/reportfirmform" class="nav-link" style="color: black">檢舉表單</a>
+                    </li>
+                </ul>
             </div>
-        </nav>
+        </div>
+    </nav>
         <!-- END nav -->
       
         <!-- 搜尋bar -->
@@ -62,7 +86,7 @@
     <section class="ftco-section bg-light">
 			<div class="container">
 				<div class="row justify-content-center">
-              <div class=" clinicInfo col-xl-6 col-lg-6 bg-light">
+              <div class=" clinicInfo col-xl-5 col-lg-6 bg-light">
                  <!-- 自動生成診所資訊 開始 -->
                 <div class="store_box2">
                   <!-- <h1 id="clinicName${clinicMember.clinicId}">${clinicMember.clinicName} </h1>
@@ -92,66 +116,68 @@
               </div>
                
               <!-- 右邊區塊 -->
-              <div class=" staff col-xl-6 col-lg-6 bg-light">
+              <div class=" staff col-xl-7 col-lg-6 bg-light">
                 <!-- 照片滑動方塊 -->
                 <div class="container">
                   <div class="row">
                     <div class="col-md-12 align-items-center">
-                      <div id="custCarousel" class="carousel slide" data-ride="carousel" aligan="center">
-                        <!-- slides -->
-                           <!-- 自動生成照片輪播 開始 -->
-                        <div class="carousel-inner">
-                          <div class="carousel-item active">
-                            ${clinicPhoto1.outerHTML}
-                          </div>
+                    <div class= "photoshift">
+<!--                       <div id="custCarousel" class="carousel slide" data-ride="carousel" aligan="center"> -->
+<!--                         slides -->
+<!--                            自動生成照片輪播 開始 -->
+<!--                         <div class="carousel-inner"> -->
+<!--                           <div class="carousel-item active"> -->
+<!--                             ${clinicPhoto1.outerHTML} -->
+<!--                           </div> -->
                 
-                          <div class="carousel-item">
-                            ${clinicPhoto2.outerHTML}
-                          </div>
+<!--                           <div class="carousel-item"> -->
+<!--                             ${clinicPhoto2.outerHTML} -->
+<!--                           </div> -->
                 
-                          <div class="carousel-item">
-                            ${clinicPhoto3.outerHTML}
-                          </div>
-                        </div>
-                            <!-- 自動生成照片輪播 結束 -->
-                        <!-- Left right -->
-                        <a class="carousel-control-prev" href="#custCarousel" data-slide="prev">
-                          <span class="carousel-control-prev-icon"></span>
-                        </a>
-                        <a class="carousel-control-next" href="#custCarousel" data-slide="next">
-                          <span class="carousel-control-next-icon"></span>
-                        </a>
+<!--                           <div class="carousel-item"> -->
+<!--                             ${clinicPhoto3.outerHTML} -->
+<!--                           </div> -->
+<!--                         </div> -->
+<!--                             自動生成照片輪播 結束 -->
+<!--                         Left right -->
+<!--                         <a class="carousel-control-prev" href="#custCarousel" data-slide="prev"> -->
+<!--                           <span class="carousel-control-prev-icon"></span> -->
+<!--                         </a> -->
+<!--                         <a class="carousel-control-next" href="#custCarousel" data-slide="next"> -->
+<!--                           <span class="carousel-control-next-icon"></span> -->
+<!--                         </a> -->
                 
-                        <!-- Thumbnails -->
-                        <ol class="carousel-indicators list-inline">
-                          <li class="list-inline-item active">
-                            <a id="carousel-selector-0" class="selected" data-slide-to="0" data-target="#custCarousel">
-                              <img src="https://i.imgur.com/weXVL8M.jpg" class="img-fluid">
-                            </a>
-                          </li>
+<!--                         Thumbnails -->
+<!--                         <ol class="carousel-indicators list-inline"> -->
+<!--                           <li class="list-inline-item active"> -->
+<!--                             <a id="carousel-selector-0" class="selected" data-slide-to="0" data-target="#custCarousel"> -->
+<!--                               <img src="https://i.imgur.com/weXVL8M.jpg" class="img-fluid"> -->
+<!--                             </a> -->
+<!--                           </li> -->
                 
-                          <li class="list-inline-item">
-                            <a id="carousel-selector-1" data-slide-to="1" data-target="#custCarousel">
-                              <img src="https://i.imgur.com/Rpxx6wU.jpg" class="img-fluid">
-                            </a>
-                          </li>
+<!--                           <li class="list-inline-item"> -->
+<!--                             <a id="carousel-selector-1" data-slide-to="1" data-target="#custCarousel"> -->
+<!--                               <img src="https://i.imgur.com/Rpxx6wU.jpg" class="img-fluid"> -->
+<!--                             </a> -->
+<!--                           </li> -->
                 
-                          <li class="list-inline-item">
-                            <a id="carousel-selector-2" data-slide-to="2" data-target="#custCarousel">
-                              <img src="https://i.imgur.com/83fandJ.jpg"  class="img-fluid">
-                            </a>
-                          </li>
+<!--                           <li class="list-inline-item"> -->
+<!--                             <a id="carousel-selector-2" data-slide-to="2" data-target="#custCarousel"> -->
+<!--                               <img src="https://i.imgur.com/83fandJ.jpg"  class="img-fluid"> -->
+<!--                             </a> -->
+<!--                           </li> -->
                 
                          
-                         </ol>
-                      </div>
-                    </div>
+<!--                          </ol> -->
+<!--                       </div> -->
+<!--                     </div> -->
+                    <div>
                   </div>
                 </div>
 
                 <div class="container">
                   <div class="row">
-                    <div class="col-xl-6 col-lg-6 p-4" >
+                    <div class="col-xl-6 col-lg-6 " >
                       <br>
                     </div>
                   </div>
@@ -162,14 +188,21 @@
                   <div class="row">
                     <div class="col-xl-6 col-lg-6">
                       <div>
-                        <a href="/vetsearch2.html"type="submit" value="回上一頁" class="btn btn-primary" style="width: 100%; display: inline-block;">回上一頁</a>
+                        <a href="http://localhost:8080/petpet/clinic/clinicAppointment/frontstage/PetPet/VetSearchResult.html"type="submit" value="回上一頁" class="btn btn-primary" style="width: 100%; display: inline-block;">回上一頁</a>
                       </div>
                     </div>
           
                     <div class="col-xl-6 col-lg-6">
                       <div>
-                        <a href="/clinic_reservation1.html" type="submit" value="線上預約" class="btn btn-primary" style="width: 100%; display: inline-block;">線上預約</a>
+                        <a href="http://localhost:8080/petpet/clinic/clinicAppointment/frontstage/PetPet/clinicReservationSpot.html" type="submit" value="線上預約" class="btn btn-primary" style="width: 100%; display: inline-block;">線上預約</a>
                       </div>
+                    </div>
+                  </div>
+                </div> 
+                <div class="container">
+                  <div class="row">
+                    <div class="col-xl-6 col-lg-6 " >
+                      <br>
                     </div>
                   </div>
                 </div> 
@@ -191,60 +224,10 @@
             <h1>寵物檢查優惠方案</h1>
           </div>
         </div>
-    		<div class="row">
-          <!-- 價格表 -->
-    			<div class="col-md-4 ftco-animate">
-	          <div class="block-7">
-	          	 
-	            <div class="text-center p-4">
-	            	<h3 id="service">犬貓洗牙</h3>
-	            	<span class="price">
-                  <sup>優惠價</sup><sup>$</sup><span  class="number" id="service_discount_price">4010</span> <sub>元</sub>
-                </span>
-                <span>原價</span> <span  class="number" id="service_price">5100</span> <sub>元</sub></span>
-		            <ul class="pricing-text mb-5 pt-5" >
-		              <li><span class="fa fa-check mr-2" id="service_item1"></span>基礎理學檢查</li>
-		              <li><span class="fa fa-check mr-2" id="service_item2"></span>血液檢查</li>
-                  <li><span class="fa fa-check mr-2" id="service_item3"></span>氣體麻醉</li>
-                  <li><span class="fa fa-check mr-2" id="service_item4"></span>超音波洗牙</li>
-		            </ul>
- 	<a href="http://localhost:8080/petpet/clinic/clinicAppointment/frontstage/PetPet/clinicReservationSpot.html" class="btn btn-primary d-block px-2 py-3">點我預約</a>
-	            </div>
-	          </div>
-	        </div>
-          <div class="col-md-4 ftco-animate">
-	          <div class="block-7">
-	          	<div id="sevice_img" class="img" style="background-image: url(images/petservice1.jpeg);"></div>
-	            <div class="text-center p-4">
-	            	<h3 id="service">犬貓洗牙</h3>
-	            	<span class="price"><sup>優惠價</sup><sup>$</sup> <span  class="number" id="service_price">4010</span> <sub>元</sub></span>
-                <span>原價</span> <span  class="number" id="service_price">5100</span> <sub>元</sub></span>
-		            <ul class="pricing-text mb-5 pt-5" >
-		              <li><span class="fa fa-check mr-2" id="service_item1"></span>基礎理學檢查</li>
-		              <li><span class="fa fa-check mr-2" id="service_item2"></span>血液檢查</li>
-                  <li><span class="fa fa-check mr-2" id="service_item3"></span>氣體麻醉</li>
-                  <li><span class="fa fa-check mr-2" id="service_item4"></span>超音波洗牙</li>
-		            </ul>
-<!--  	<a href="#" class="btn btn-primary d-block px-2 py-3">Get Started</a> -->
-	            </div>
-	          </div>
-	        </div>
-          <div class="col-md-4 ftco-animate">
-	          <div class="block-7">
-	          	<div id="sevice_img" class="img" style="background-image: url(images/petservice1.jpeg);"></div>
-	            <div class="text-center p-4">
-	            	<h3 id="service">犬貓洗牙</h3>
-	            	<span class="price"><sup>優惠價</sup><sup>$</sup> <span  class="number" id="service_price">4010</span> <sub>元</sub></span>
-                <span>原價</span> <span  class="number" id="service_price">5100</span> <sub>元</sub></span>
-		            <ul class="pricing-text mb-5 pt-5" >
-		              <li><span class="fa fa-check mr-2" id="service_item1"></span>基礎理學檢查</li>
-		              <li><span class="fa fa-check mr-2" id="service_item2"></span>血液檢查</li>
-                  <li><span class="fa fa-check mr-2" id="service_item3"></span>氣體麻醉</li>
-                  <li><span class="fa fa-check mr-2" id="service_item4"></span>超音波洗牙</li>
-		            </ul>
+    		<div class="price">
+   
+<!-- 			自動生成 -->
 
-	            </div>
-	          </div>
 	        </div>
 	      </div>
          <!-- 注意事項 -->

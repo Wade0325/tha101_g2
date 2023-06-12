@@ -32,7 +32,7 @@ public class BusinessDate extends Core {
 	@Column
 	private String clinicName; 
 	@Column
-	private Integer vetSn;
+	private String vetName;
 	@Column
 	private LocalDate weekDate;
 	@Column
