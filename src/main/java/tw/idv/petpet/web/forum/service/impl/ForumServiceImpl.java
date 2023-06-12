@@ -64,7 +64,7 @@ public class ForumServiceImpl implements ForumService {
 
 	@Override
 	public void deleteArticleByArticleId(Integer articleId) {
-		// TODO Auto-generated method stub
+		forumRepository.deleteArticle(articleId);
 		System.out.println("刪除文章成功");
 		forumRepository.deleteArticleByArticleId(articleId);
 	}

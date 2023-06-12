@@ -35,7 +35,7 @@
     <div class="wrap">
         <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
             <div class="container">
-                <a class="navbar-brand" href="index.html"><img src="/images/1.jpg" width="80px"
+                <a class="navbar-brand" href="index.html"><img src="images/1.jpg" width="80px"
                         height="80px">PetPet陪陪你</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav"
                     aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,8 +52,9 @@
                         <li class="nav-item"><a href="http://localhost:8080/petpet/shelter/shelter.html"
                                 class="nav-link" style="color: black">寵物領養</a></li>
                         <li class="nav-item"><a href="forum.html" class="nav-link" style="color: black">寵物討論區</a></li>
-                        <li class="nav-item active"><a href="http://localhost:8080/petpet/user/member_center_article.html"
-                                class="nav-link" style="color: black">會員中心</a></li>
+                        <li class="nav-item active"><a
+                                href="http://localhost:8080/petpet/user/member_center_article.html" class="nav-link"
+                                style="color: black">會員中心</a></li>
                     </ul>
                 </div>
             </div>
@@ -183,6 +184,36 @@
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
         <script src="js/google-map.js"></script>
         <script src="js/main.js"></script>
+
+        <script type="text/javascript">
+            document.getElementById("btn").addEventListener("click", function () {
+                // 发表文章的逻辑代码
+                var postTitle = document.getElementById("postTitle").value;
+                var postContent = document.getElementById("postContent").value;
+
+                if (postTitle.trim() === "") {
+                    alert("標題不能為空");
+                    return;
+                }
+                if (postContent.trim() === "") {
+                    alert("內容不能為空");
+                    return;
+                }
+
+                // 假设发表成功的条件是某个变量 isSuccess 为 true
+                var isSuccess = true;
+
+                if (isSuccess) {
+                    // 发表成功
+                    alert("發表成功");
+                    // 返回論壇首頁的逻辑代码
+                    // window.location.href = '/petpet/forum/forum.html'; // 替换为論壇首頁的 URL
+                } else {
+                    // 发表失败
+                    alert("發表失敗");
+                }
+            });
+        </script>
 
         <!-- 沒有加入的時候可以run，加了看會不會出錯 -->
         <!-- <script src="js/publish.js"></script> -->
