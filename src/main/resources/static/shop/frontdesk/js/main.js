@@ -233,10 +233,10 @@ $(document).ready(function() {
 		
 		if (itemList.find('li').length === 0) {
 			itemList.html('<p>暫無商品</p>');
-			$("button.in_cart").hide();
+			// $("button.in_cart").hide();
 		  } else {
 			itemList.find("p:contains('暫無商品')").remove();
-			$("button.in_cart").show();
+			// $("button.in_cart").show();
 		  }
 	  }
 	
@@ -252,7 +252,7 @@ $(document).ready(function() {
 	$(document).on("click", ".add-to-cart", function() {
 	  var productName = $(this).closest(".card").find("a").text(); // 假設這是你要加入購物車的商品名稱
 	  var quantity = $(this).siblings("div.quantity-container").find("input").val(); // 假設這是你要加入購物車的商品數量
-	 
+	  alert("商品已加入購物車!")
 	  
 	//叉叉圖示
 	  var listItem = $("<li>").text(productName + " - " + quantity);
@@ -311,4 +311,16 @@ $(document).ready(function() {
         });
       });
     });
-  
+
+
+document.addEventListener('DOMContentLoaded', function() {
+	fetch('http://localhost:8080/api/data/count')
+  .then(response => response.json())
+  .then(data => {
+    console.log('資料筆數：', data);
+    // 在這裡處理回傳的資料筆數
+  })
+  .catch(error => {
+    console.error('錯誤：', error);
+  });
+});

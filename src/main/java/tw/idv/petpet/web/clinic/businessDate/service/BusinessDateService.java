@@ -26,7 +26,7 @@ public class BusinessDateService {
 		// businessSn不可修改
 		if (businessDate1 != null) {
 			businessDate1.setClinicName(businessDate.getClinicName());
-			businessDate1.setVetSn(businessDate.getVetSn());
+			businessDate1.setVetName(businessDate.getVetName());
 			businessDate1.setWeekDate(businessDate.getWeekDate());
 			businessDate1.setMorningBusiness(businessDate.getMorningBusiness());
 			businessDate1.setMorningAppointMax(businessDate.getMorningAppointMax());

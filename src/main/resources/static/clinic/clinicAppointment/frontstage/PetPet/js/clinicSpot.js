@@ -353,7 +353,13 @@ document.addEventListener("DOMContentLoaded", function() {
 						msg.textContent = "預約成功";
 						alert("預約成功");
 						alert("即將前往付款頁面");
-						payClick();
+						setTimeout(function() {
+					      payClick();
+					    }, 10000); // 5秒钟后执行payClick函数
+											
+						
+//						
+//						payClick();
 					} else {
 						msg.className = "error";
 						msg.textContent = "預約失敗，時段未營業或人數已滿";

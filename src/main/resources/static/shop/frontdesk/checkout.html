@@ -30,8 +30,53 @@
     <link rel="stylesheet" href="css/flaticon.css" />
     <link rel="stylesheet" href="css/style.css" />
     <style>
+     
+      body {
+        font-family: Arial, sans-serif;
+        
+      }
 
+      h1 {
+        text-align: center;
+      }
 
+      form {
+        max-width: 500px;
+        margin: 0 auto;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 10px;
+      }
+
+      input[type="text"],
+      input[type="email"],
+      textarea {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+
+      input[type="checkbox"] {
+        margin-right: 5px;
+      }
+
+      input[type="submit"] {
+        padding: 10px 20px;
+        background-color: #4caf50;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+
+      input[type="submit"]:hover {
+        background-color: #45a049;
+      }
+    
       #account{
         width:500px;
         
@@ -52,17 +97,13 @@
       transition: opacity 0.3s, visibility 0.3s;
       z-index: 9999;
       cursor: pointer;
-      /* font-size: 16px; */
       font-family: Arial;
-      /* font-weight: bold; */
     }
     #scroll-to-top.show {
       opacity: 1;
       visibility: visible;
     }
-    /* body {
-        padding: 20px;
-      } */
+   
       .cart-item {
         display: flex;
         align-items: center;
@@ -70,6 +111,7 @@
         border: 1px solid #e9e9e9;
         border-radius: 5px;
         margin-bottom: 10px;
+        background-color: rgb(244, 244, 244);
         
       }
       .cart-item img {
@@ -86,13 +128,20 @@
       }
       .cart-item .item-details {
         flex-grow: 1;
-        margin-right: 10px;
+        
       }
       .cart-item .item-quantity {
         width: 60px;
+        border-radius: 5px;
+        border:1px solid rgb(184, 183, 183);
       }
+      .item-quantity:focus{
+        outline: none;
+      }
+      
       .cart-item .item-price {
         width: 100px;
+        margin-right: 220px;
       }
       .cart-total {
         margin-top: 20px;
@@ -102,13 +151,11 @@
         margin-top: 20px;
         margin-bottom: 50px;
       }
-
     </style>
   </head>
 
   <body>
-    
- 
+   
     <div class="wrap" style="z-index: 1;"></div>
     <nav
       class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light"
@@ -169,18 +216,46 @@
         </div>
       </div>
     </nav>
-    
+
+
     <!-- 程式放裡面 -->
+    <p>訂單商品</p>
     <div class="containertest">
 
 
 
 
     </div>
-    <div class="cart-total"><h4>總金額: $0</h4></div>
-    <a href="checkout.html">
-    	<div class="btn btn-primary checkout-btn">結帳</div>
-    </a>
+    
+    <form action="#" method="post">
+      <label for="name">姓名：</label>
+      <input type="text" id="name" name="name" required />
+
+      <label for="email">電子郵件：</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="phone">聯絡電話：</label>
+      <textarea id="phone" name="phone" required></textarea>
+
+      <label for="address">地址：</label>
+      <textarea id="address" name="address" required></textarea>
+
+      <!-- <label for="creditCard">信用卡號碼：</label>
+      <input type="text" id="creditCard" name="creditCard" required />
+
+      <label for="expiry">信用卡到期日：</label>
+      <input type="text" id="expiry" name="expiry" required />
+
+      <label for="cvv">CVV：</label>
+      <input type="text" id="cvv" name="cvv" required /> -->
+
+      
+      <div class="cart-total"><h4>總金額: $0</h4></div>
+      <br /><br />
+      <input type="submit" value="下訂單" id="submitBtn"/>
+    </form>
+    <!-- 程式放裡面 -->
+
     <footer class="footer">
       <div class="container">
         <div class="row">
@@ -306,7 +381,7 @@ fetch('http://localhost:8080/petpet/cartproall')
       const cartItem = document.createElement('div');
       cartItem.className = 'cart-item';
       //自訂屬性
-      // cartItem.setAttribute('data-custom-attribute', item.cart_item_id);
+      cartItem.setAttribute('data-comp-attribute', item.company_id);
 
       var imgtest = item.pro_pic1;
       var pic = "url(data:image/png;base64," + imgtest ;
@@ -314,12 +389,14 @@ fetch('http://localhost:8080/petpet/cartproall')
       itemImage.style.backgroundImage = pic;
       itemImage.style.backgroundSize = 'cover';
       itemImage.style.backgroundPosition = 'center';
-      itemImage.style.height = '200px';
-      itemImage.style.width = '200px';
-      itemImage.style.marginLeft = '100px';
+      itemImage.style.height = '50px';
+      itemImage.style.width = '50px';
+      itemImage.style.marginLeft = '300px';
+    
 
       const itemDetails = document.createElement('div');
       itemDetails.className = 'item-details';
+      
 
       const itemName = document.createElement('h3');
       itemName.textContent = item.pro_name;
@@ -332,16 +409,14 @@ fetch('http://localhost:8080/petpet/cartproall')
       itemQuantity.className = 'item-quantity';
       itemQuantity.value = item.pro_amount;
       itemQuantity.min = '1';
+      itemQuantity.readOnly = true;
+      itemQuantity.style.backgroundColor = 'WhiteSmoke';
 
       const itemPrice = document.createElement('div');
       itemPrice.className = 'item-price';
-      itemPrice.textContent = `$${item.pro_price}`;
+      itemPrice.textContent = '$'+item.pro_price;
+      // item.value = item.pro_price;
 
-      const removeButton = document.createElement('button');
-      removeButton.className = 'btn btn-danger remove-item';
-      removeButton.textContent = '移除';
-      removeButton.setAttribute('data-custom-attribute', item.cart_item_id);
-      removeButton.style.marginRight = '100px';
 
       // 将生成的标签添加到购物车容器中
       itemDetails.appendChild(itemName);
@@ -351,7 +426,7 @@ fetch('http://localhost:8080/petpet/cartproall')
       cartItem.appendChild(itemDetails);
       cartItem.appendChild(itemQuantity);
       cartItem.appendChild(itemPrice);
-      cartItem.appendChild(removeButton);
+      
 
       cartContainer.appendChild(cartItem);
       
@@ -374,6 +449,7 @@ function updateTotalPrice(items) {
   });
 
   totalPriceContainer.textContent = `總金額: $${total}`;
+  
 }
 
 
@@ -383,98 +459,101 @@ function updateTotalPrice(items) {
 
 
 <script>
-  
-  // 更新總金額和商品數量
-  function updateCartTotal() {
-    var cartItems = document.querySelectorAll('.cart-item');
-    var total = 0;
-    var quantity = 0;
-    cartItems.forEach(function(item) {
-      var itemQuantity = parseInt(
-        item.querySelector('.item-quantity').value
-      );
-      var itemPrice = parseFloat(
-        item.querySelector('.item-price').textContent.replace('$', '')
-      );
-      total += itemQuantity * itemPrice;
-      quantity += itemQuantity;
-    });
-    document.querySelector('.cart-total h4').textContent =
-      '總金額: $' + total.toFixed(2);
-    document
-      .querySelector('.cart-total h4')
-      .setAttribute('data-quantity', quantity);
-  }
-
-  // 商品數量變更事件處理
-  var quantityInputs = document.querySelectorAll('.item-quantity');
-  quantityInputs.forEach(function(input) {
-    input.addEventListener('change', function() {
-      var value = parseInt(this.value);
-      if (isNaN(value) || value < 1) {
-        this.value = 1;
-      }
-      updateCartTotal();
-    });
-  });
 
   //結帳按鈕事件處理
   
-  var checkoutBtn = document.querySelector('.checkout-btn');
+  var checkoutBtn = document.querySelector('#submitBtn');
 
   checkoutBtn.addEventListener('click', function() {
     var cartItems = document.querySelectorAll('.cart-item');
     if (cartItems.length === 0) {
       alert('購物車是空的，無法結帳！');
     } else {
-      console.log("12345");
+      
       var quantity = document
         .querySelector('.cart-total h4')
         .getAttribute('data-quantity');
-      // alert('結帳成功！商品數量: ' + quantity);
+        window.location.href = 'checkorder.html';
+      alert('結帳成功！');
       // 清空購物車
       document.querySelector('.cart-items').innerHTML = "";
       updateCartTotal();
+      
     }
   });
 
 </script>
 
 
-<!-- 移除購物車商品 -->
+
+
+
+<!-- 下訂單 -->
 <script>
-  const fButton = document.querySelector('.containertest');
- 
-  fButton.addEventListener('click', (e) => {
-    if (e.target.classList.contains('remove-item')) {
-      const removeButton = event.target;
-      const confirmRemove = confirm('確定要移除此商品嗎？');
-      const del = removeButton.getAttribute('data-custom-attribute'); 
-      if (confirmRemove) {
-          // 發送 Fetch 請求
-          fetch('http://localhost:8080/petpet/cartpro/'+del, {
-              method: 'DELETE',
-              body: JSON.stringify({ productId: 'your-product-id' }),
-              headers: {
-                  'Content-Type': 'application/json'
-              }
-          })
-          .then(response => {
-              if (response.ok) {
-                  alert('商品已成功從資料庫移除。');
-                  location.reload();
-              } else {
-                  alert('移除商品時發生錯誤。');
-              }
-          })
-          .catch(error => {
-              alert('發生錯誤：' + error);
-          });
-      }
-    }
-  });
-</script>
+document.getElementById('submitBtn').addEventListener('click', function(event) {
+  event.preventDefault();  // 防止表單自動提交
 
+  // 獲取表單中的資料
+  var name = document.getElementById('name').value;
+  var email = document.getElementById('email').value;
+  var address = document.getElementById('address').value;
+  var phone = document.getElementById('phone').value;
+  var creditCard = document.getElementById('creditCard').value;
+  var expiry = document.getElementById('expiry').value;
+  var cvv = document.getElementById('cvv').value;
+  const cartItemte = document.querySelector('.cart-item').getAttribute('data-comp-attribute');
+  const totalPriceContainer = document.querySelector('.cart-total h4').textContent;
+  const pri = totalPriceContainer.substring(totalPriceContainer.indexOf('$') + 1);
+ 
+
+
+  // 將資料組成JSON物件
+  var data1 = {
+    "company_id" : cartItemte,
+    "user_id" : 1,
+    "amount": pri,
+    "user_name":name
+  };
+
+  var data2 = {
+    "user_id" : 1,
+    "order_state":"處理中",
+    "pay_state":"待付款",
+    "ship_state":"待寄送",
+    "orderAmount":pri,
+    "addr_name":address,
+    "phone": phone,
+    "address":address,
+    "user_name":name,
+    "company_id" : cartItemte,
+  
+  };
+
+ var mergedData = { data1, data2 };
+
+
+  // 發送fetch請求到後端
+  fetch('http://localhost:8080/petpet/OrderIteminserttwo', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(mergedData)
+  })
+  .then(response => response.json())
+  .then(data => {
+    // 在此處處理回應
+    console.log(data);
+  })
+  .catch(error => {
+    // 在此處處理錯誤
+    console.error(error);
+
+  });
+ });
+
+
+
+</script>
   </body>
 </html>
-

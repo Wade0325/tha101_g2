@@ -10,7 +10,7 @@ function deleteClick(businessSn) {
 
 function saveClick(businessSn) {
 	const clinicName = document.querySelector(`#clinicName${businessSn}`).textContent;
-	const vetSn = document.querySelector(`#vetSn${businessSn}`).textContent;
+	const vetName = document.querySelector(`#vetName${businessSn}`).textContent;
 	const weekDate = document.querySelector(`#weekDate${businessSn}`).textContent;
 	const morningBusiness = document.querySelector(`#morningBusiness${businessSn}`).textContent;
 	const morningAppointMax = document.querySelector(`#morningAppointMax${businessSn}`).textContent;
@@ -24,7 +24,7 @@ function saveClick(businessSn) {
 		headers: { 'Content-Type': 'application/json' },
 		body: JSON.stringify({
 			clinicName,
-			vetSn,
+			vetName,
 			weekDate,
 			morningBusiness,
 			morningAppointMax,

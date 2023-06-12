@@ -120,7 +120,7 @@
           <div class="sb-sidenav-menu">
             <div class="nav">
               <div class="sb-sidenav-menu-heading">Core</div>
-              <a class="nav-link" href="index.html">
+              <a class="nav-link" href="../BackStage/clinicbusinessdate.html">
                 <div class="sb-nav-link-icon">
                   <i class="fas fa-tachometer-alt"></i>
                 </div>
@@ -128,7 +128,7 @@
               </a>
               <a
                 class="nav-link collapsed"
-                href="#"
+                href="../BackStage/ClinicMemberManage.html"
                 data-bs-toggle="collapse"
                 data-bs-target="#collapseLayouts"
                 aria-expanded="false"
@@ -149,7 +149,7 @@
                 data-bs-parent="#sidenavAccordion"
               >
                 <nav class="sb-sidenav-menu-nested nav">
-                  <a class="nav-link" href="report_firm.html">診所營業時間</a>
+                  <a class="nav-link" href="../BackStage/clinicbusinessdate.html">診所營業時間</a>
                 </nav>
               </div>
               <div
@@ -159,7 +159,7 @@
                 data-bs-parent="#sidenavAccordion"
               >
                 <nav class="sb-sidenav-menu-nested nav">
-                  <a class="nav-link" href="report_firm.html">預約管理</a>
+                  <a class="nav-link" href="../BackStage/clinicreservationFormManage.html">預約管理</a>
                 </nav>
               </div>
               <div
@@ -169,9 +169,40 @@
                 data-bs-parent="#sidenavAccordion"
               >
                 <nav class="sb-sidenav-menu-nested nav">
-                  <a class="nav-link" href="report_firm.html">價格表</a>
+                  <a class="nav-link" href="../../ClinicMember/clinic_pricelist_insert.html">產品新增</a>
                 </nav>
               </div>
+              <div
+                class="collapse"
+                id="collapseLayouts"
+                aria-labelledby="headingOne"
+                data-bs-parent="#sidenavAccordion"
+              >
+                <nav class="sb-sidenav-menu-nested nav">
+                  <a class="nav-link" href="../../ClinicMember/clinicpricelistmanage.html">價格表</a>
+                </nav>
+              </div>
+              <div
+                class="collapse"
+                id="collapseLayouts"
+                aria-labelledby="headingOne"
+                data-bs-parent="#sidenavAccordion"
+              >
+                <nav class="sb-sidenav-menu-nested nav">
+                  <a class="nav-link" href="../BackStage/petCaseInsert.html">病歷新增</a>
+                </nav>
+              </div>
+              <div
+                class="collapse"
+                id="collapseLayouts"
+                aria-labelledby="headingOne"
+                data-bs-parent="#sidenavAccordion"
+              >
+                <nav class="sb-sidenav-menu-nested nav">
+                  <a class="nav-link" href="../BackStage/petCaseManage.html">病歷管理</a>
+                </nav>
+              </div>
+              
               <a
                 class="nav-link collapsed"
                 href="#"
@@ -199,7 +230,7 @@
                   id="sidenavAccordionPages"
                 >
                   <nav class="sb-sidenav-menu-nested nav">
-                    <a class="nav-link" href="Login2.html">會員資料更新</a>
+                    <a class="nav-link" href="../BackStage/ClinicMemberManage.html">會員資料更新</a>
                   </nav>
                 </nav>
               </div>
@@ -227,14 +258,14 @@
                             <div class="form-group">
                               <label class="label" for="clinicName">診所名稱</label> <input
                                 type="text" class="form-control" name="clinicName"
-                                id="clinicName" placeholder="自動帶入">
+                                id="clinicName" placeholder="自動帶入" value="PetPet" readonly>
                             </div>
                           </div>
                           <div class="col-md-3">
                             <div class="form-group">
-                              <label class="label" for="vetSn">獸醫編號</label> <input
-                                type="text" class="form-control" name="vetSn" id="vetSn"
-                                placeholder="自動帶入">
+                              <label class="label" for="vetName">獸醫姓名</label> <input
+                                type="text"class="form-control" name="vetName" id="vetName"
+                                >
                             </div>
                          </div>
                          <div class="col-md-3">
@@ -369,7 +400,7 @@
                             <thead>
                               <tr>
                                 <th>診所名稱</th>
-                                <th>獸醫編號</th>
+                                <th>獸醫姓名</th>
                                 <th>營業日期</th>
                                 <th>早上營業</th>
                                 <th>早上最大預約人數</th>
@@ -450,7 +481,7 @@
 						tbody.innerHTML += `
 				<tr>
 					<td id="clinicName${businessDate.businessSn}">${businessDate.clinicName}</td>
-					<td contenteditable="true" id="vetSn${businessDate.businessSn}">${businessDate.vetSn}</td>
+					<td contenteditable="true" id="vetName${businessDate.businessSn}">${businessDate.vetName}</td>
 					<td contenteditable="true" id="weekDate${businessDate.businessSn}">${businessDate.weekDate}</td>
 					<td contenteditable="true" id="morningBusiness${businessDate.businessSn}">${businessDate.morningBusiness}</td>
 					<td contenteditable="true" id="morningAppointMax${businessDate.businessSn}">${businessDate.morningAppointMax}</td>

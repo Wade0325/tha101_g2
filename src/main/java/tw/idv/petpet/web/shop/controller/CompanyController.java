@@ -20,11 +20,11 @@ public class CompanyController {
 	private CompanyRepository companyRepository;
 	
 	@PostMapping("/companyinsert") // 新增購物車商品
-	public String insert(@RequestBody Company company) {
+	public Company insert(@RequestBody Company company) {
 		 Timestamp now = new Timestamp(System.currentTimeMillis());
 //		 company.setCreate_time(now);
 		 companyRepository.save(company);
-		return "測試insert";
+		return company;
 		
 		
 		

@@ -57,7 +57,7 @@ public class EcpayService {
 		aio.setStoreID("petpet");
 		aio.setNeedExtraPaidInfo("N");
 
-		aio.setClientBackURL("http://localhost:8080/petpet/");// 付款完成頁面上顯示[返回商店]的按鈕，放petpet網站首頁網址
+		aio.setClientBackURL("https://localhost:8080/petpet/");// 付款完成頁面上顯示[返回商店]的按鈕，放petpet網站首頁網址
 		aio.setReturnURL("https://localhost:8080/petpet/return"); // 必是https，尚未測試
 
 		String form = all.aioCheckOut(aio, null);
@@ -66,7 +66,7 @@ public class EcpayService {
 	}
 
 	// 更改付款狀態
-	public void updatePayIfo(Integer reservationNumber) {
+	public void updatePayInfo(Integer reservationNumber) {
 		clinicAppointmentService.updatePayInfo(reservationNumber);
 	}
 }

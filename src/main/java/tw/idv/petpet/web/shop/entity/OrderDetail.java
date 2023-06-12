@@ -44,11 +44,16 @@ public class OrderDetail {
 //	@Column
 //	private String card_num;
 	@Column
-	private String addr_name;
+	private String user_name;
 	@Column
 	private String phone;
 	@Column
 	private String address;
+	@Column
+	private String order_number;
+	@Column
+	private Integer company_id;
+	
 	
 //	@Column
 //	@JsonFormat(pattern = "yyyy/MM/dd HH:mm:ss", timezone = "GMT+8")
