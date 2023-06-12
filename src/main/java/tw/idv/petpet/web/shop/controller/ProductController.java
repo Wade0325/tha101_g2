@@ -28,21 +28,12 @@ public class ProductController {
 
 	@Autowired
 	private ProductRepository productRepository;
-//	@Autowired
-//	private CategoriesRepository cate;
 
 	@GetMapping("/shoptest123")
 	public void test() {
 		System.out.println("test");
 	}
 
-//	@PostMapping("/shoptest1") // 種類測試
-//	public String inserttest(@RequestBody Categories cat) {
-//		System.out.println("test");
-//		cate.save(cat);
-//
-//		return "測試insert";
-//	}
 
 	@PostMapping("/shoptestinsert") // 新增商品
 	public Product insert(@RequestBody Product product) {
@@ -54,15 +45,14 @@ public class ProductController {
 	
 	@DeleteMapping("/shoptest/{proName}")
 	public String delete(@PathVariable String proName) {
-
+		System.out.println("進入刪除方法");
 		productRepository.deleteByName(proName);
-		
-
+		System.out.println("刪除方法");
 		return "測試delete";
 	}
 	@GetMapping("/productselectca/{cateName}")
 	public List<Product> selectByName(@PathVariable String cateName) {
-		System.out.println("進入");
+		
 		System.out.println(cateName);
 		
 		List<Product> cateProducts = productRepository.findByCateName(cateName);
@@ -72,13 +62,13 @@ public class ProductController {
 	
 
 
-//	@DeleteMapping("/shoptest/{shopId}")
-//	public String delete(@PathVariable Integer shopId) {
-//
-//		productRepository.deleteById(shopId);
-//
-//		return "測試delete";
-//	}
+	@DeleteMapping("/shopnumberdelete/{shopId}")
+	public String delete(@PathVariable Integer shopId) {
+
+		productRepository.deleteById(shopId);
+
+		return "測試delete";
+	}
 
 	@GetMapping("/shoptest/{shopId}")
 	public Product read(@PathVariable Integer shopId) {
@@ -121,27 +111,12 @@ public class ProductController {
 	}
 	
 	
-	// 測試接收圖片
-//	@PostMapping("/shoptest111") // 新增商品
-//	public String insert(@RequestParam("product") String productJson,
-//	        @RequestParam("images[]") List<MultipartFile> images) {
-//	    // 解析並處理productJson，這裡假設productJson是JSON格式的商品數據
-//	    Product product = new Gson().fromJson(productJson, Product.class);
-//
-//	    // 在這裡處理上傳的圖片，例如保存到文件系統或數據庫
-//
-//	    productRepository.save(product);
-//	    return "測試insert";
-//	}
-//測試接收圖片Base64
-//	@PostMapping("/shoptest111")  //新增商品
-//	public String insert(@ModelAttribute Product product) {
-//	    System.out.println("test");
-//	    // 將base64編碼的圖片資料轉換為byte陣列
-//	    byte[] serviceImgBytes = Base64.getDecoder().decode(product.getPro_pic1());
-//	    // 將byte陣列存儲到Product物件的serviceImg屬性中
-//	    product.setPro_pic1(serviceImgBytes);
-//	    productRepository.save(product);
-//	    return "測試insert";
-//	}
+	//模糊查詢
+	@GetMapping("/shopselvag/{proname}")
+	public List<Product> read(@PathVariable String proname) {
+	    List<Product> products = productRepository.findByproNameContaining(proname);
+	    return products;
+	}
+	
+	
 }

@@ -27,4 +27,7 @@ public interface ProductRepository extends CrudRepository<Product, Integer>{
 	@Query(value = "SELECT * FROM Product WHERE cate_name = :cateName", nativeQuery = true)
     List<Product> findByCateName(@Param("cateName") String cateName);
 	
+	@Query(value = "SELECT * FROM Product WHERE pro_name LIKE %:proName%", nativeQuery = true)
+	List<Product> findByproNameContaining(@Param("proName")String proName);
+	
 }

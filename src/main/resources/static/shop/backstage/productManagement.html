@@ -69,6 +69,14 @@
         body.modal-open {
         overflow: hidden;
         }
+        img{
+            width:100px;
+            height:100;
+        }
+        th,tr,td{
+            text-align: center;
+        }
+        
       
     </style>
     
@@ -207,11 +215,13 @@
                         <button onclick="searchTable()">查詢</button>
                       </div>
                       <br>
+
                       
 					
                     <table class="table table-bordered">
                         <thead>
                             <tr>
+                                <th>商品圖片</th>
                                 <th>商品名稱</th>
                                 <th>商品類別</th>
                                 <th>商品描述</th>
@@ -257,8 +267,8 @@
     <script src="js/productManagement.js"></script>
 
 
-    <script>
-        function searchTable() {
+<script>
+    function searchTable() {
   var searchText = document.getElementById("searchText").value.toUpperCase();
   var table = document.querySelector("table");
   var rows = table.getElementsByTagName("tr");
@@ -281,7 +291,10 @@
   }
 }
 
-    </script>
+
+
+
+</script>
 
 </body>
 

@@ -458,31 +458,7 @@ function updateTotalPrice(items) {
 </script>
 
 
-<script>
 
-  //結帳按鈕事件處理
-  
-  var checkoutBtn = document.querySelector('#submitBtn');
-
-  checkoutBtn.addEventListener('click', function() {
-    var cartItems = document.querySelectorAll('.cart-item');
-    if (cartItems.length === 0) {
-      alert('購物車是空的，無法結帳！');
-    } else {
-      
-      var quantity = document
-        .querySelector('.cart-total h4')
-        .getAttribute('data-quantity');
-        window.location.href = 'checkorder.html';
-      alert('結帳成功！');
-      // 清空購物車
-      document.querySelector('.cart-items').innerHTML = "";
-      updateCartTotal();
-      
-    }
-  });
-
-</script>
 
 
 
@@ -492,19 +468,16 @@ function updateTotalPrice(items) {
 <script>
 document.getElementById('submitBtn').addEventListener('click', function(event) {
   event.preventDefault();  // 防止表單自動提交
-
+ 
   // 獲取表單中的資料
   var name = document.getElementById('name').value;
   var email = document.getElementById('email').value;
   var address = document.getElementById('address').value;
   var phone = document.getElementById('phone').value;
-  var creditCard = document.getElementById('creditCard').value;
-  var expiry = document.getElementById('expiry').value;
-  var cvv = document.getElementById('cvv').value;
+ 
   const cartItemte = document.querySelector('.cart-item').getAttribute('data-comp-attribute');
   const totalPriceContainer = document.querySelector('.cart-total h4').textContent;
   const pri = totalPriceContainer.substring(totalPriceContainer.indexOf('$') + 1);
- 
 
 
   // 將資料組成JSON物件
@@ -521,17 +494,17 @@ document.getElementById('submitBtn').addEventListener('click', function(event) {
     "pay_state":"待付款",
     "ship_state":"待寄送",
     "orderAmount":pri,
-    "addr_name":address,
+    "user_name":name,
     "phone": phone,
     "address":address,
-    "user_name":name,
+    "order_number":name,
     "company_id" : cartItemte,
   
   };
 
  var mergedData = { data1, data2 };
 
-
+  
   // 發送fetch請求到後端
   fetch('http://localhost:8080/petpet/OrderIteminserttwo', {
     method: 'POST',
@@ -544,15 +517,44 @@ document.getElementById('submitBtn').addEventListener('click', function(event) {
   .then(data => {
     // 在此處處理回應
     console.log(data);
+    console.log("test3");
   })
   .catch(error => {
     // 在此處處理錯誤
     console.error(error);
+    console.log("test4");
 
   });
  });
 
 
+
+</script>
+
+
+<script>
+
+  //結帳按鈕事件處理
+  
+  var checkoutBtn = document.querySelector('#submitBtn');
+
+  checkoutBtn.addEventListener('click', function() {
+    var cartItems = document.querySelectorAll('.cart-item');
+    if (cartItems.length === 0) {
+      alert('購物車是空的，無法結帳！');
+    } else {
+      
+      var quantity = document
+        .querySelector('.cart-total h4')
+        .getAttribute('data-quantity');
+        window.location.href = 'http://localhost:8080/petpet/shop/frontdesk/checkorder.html';
+      alert('結帳成功！');
+      // 清空購物車
+      document.querySelector('.cart-items').innerHTML = "";
+      updateCartTotal();
+      
+    }
+  });
 
 </script>
   </body>

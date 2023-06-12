@@ -20,10 +20,11 @@
         .then(data => {
             console.log(data)
             data.forEach(item => {
-                const { pro_name, cate_name, pro_det, pro_price, pro_amount, pro_id } = item
+                const { pro_name, cate_name, pro_det, pro_price, pro_amount, pro_id ,pro_pic1} = item
 
                 const newRow = document.createElement('tr');
                 newRow.innerHTML = `
+                <img src="data:image/png;base64,${pro_pic1}">
                     <td class="pro_name ${pro_id}">${pro_name}</td>
                     <td id="cate_name">${cate_name}</td>
                     <td id="pro_det">${pro_det}</td>
@@ -39,25 +40,33 @@
             });
         });
 
-    tbody.addEventListener('click', function (event) {
-        if (event.target.classList.contains('btn-delete')) {
-            const row = event.target.closest('tr');
-            const proName = row.querySelector('.pro_name').textContent;
-            const proId = row.querySelector('.pro_name').classList[1]; // 获取 pro_id 值
-
-            // 发送 DELETE 请求，删除对应商品
-            fetch(`http://localhost:8080/petpet/shoptest/${proId}`, {
-                method: 'DELETE',
-                headers: {
-                    'Content-Type': 'text/plain',
-                },
-                body: {}
-            });
-
-            // 删除行
-            row.remove();
-        }
-    });
+        tbody.addEventListener('click', function (event) {
+            if (event.target.classList.contains('btn-delete')) {
+                const row = event.target.closest('tr');
+                const proName = row.querySelector('.pro_name').textContent;
+                const proId = row.querySelector('.pro_name').classList[1]; // 获取 pro_id 值
+                console.log(proId);
+                console.log("test");
+                
+                // 使用 alert 確認刪除操作
+                const confirmDelete = confirm(`確定要刪除商品 ${proName} 嗎？`);
+                
+                if (confirmDelete) {
+                    // 发送 DELETE 请求，删除对应商品
+                    fetch(`http://localhost:8080/petpet/shopnumberdelete/${proId}`, {
+                        method: 'DELETE',
+                        headers: {
+                            'Content-Type': 'text/plain',
+                        },
+                        body: {}
+                    });
+        
+                    // 删除行
+                    row.remove();
+                }
+            }
+        });
+        
 
     tbody.addEventListener('click', function (event) {
         if (event.target.classList.contains('btn-edit')) {
@@ -132,47 +141,47 @@
   
    });
 
-    const addForm = document.querySelector('#add-form');
-    addForm.addEventListener('submit', function (event) {
-        event.preventDefault();
+    // const addForm = document.querySelector('#add-form');
+    // addForm.addEventListener('submit', function (event) {
+    //     event.preventDefault();
 
-        // 获取新增商品的表单数据
-        const formData = new FormData(addForm);
-        const proName = formData.get('pro_name');
-        const cateName = formData.get('cate_name');
-        const proDet = formData.get('pro_det');
-        const proPrice = formData.get('pro_price');
-        const proAmount = formData.get('pro_amount');
+    //     // 获取新增商品的表单数据
+    //     const formData = new FormData(addForm);
+    //     const proName = formData.get('pro_name');
+    //     const cateName = formData.get('cate_name');
+    //     const proDet = formData.get('pro_det');
+    //     const proPrice = formData.get('pro_price');
+    //     const proAmount = formData.get('pro_amount');
 
-        // 构造包含新增商品信息的对象
-        const newProduct = {
-            pro_name: proName,
-            cate_name: cateName,
-            pro_det: proDet,
-            pro_price: proPrice,
-            pro_amount: proAmount
-        };
+    //     // 构造包含新增商品信息的对象
+    //     const newProduct = {
+    //         pro_name: proName,
+    //         cate_name: cateName,
+    //         pro_det: proDet,
+    //         pro_price: proPrice,
+    //         pro_amount: proAmount
+    //     };
 
-        // 发送 POST 请求，将新增商品信息发送给后端
-        fetch('http://localhost:8080/petpet/shoptest', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(newProduct),
-        })
-            .then(response => response.json())
-            .then(data => {
-                // 在成功收到后端的响应后，执行相应的处理逻辑
-                alert('商品已成功添加');
-                addForm.reset();
-                window.location.reload();
-            })
-            .catch(error => {
-                // 处理错误情况
-                console.error('添加商品时发生错误:', error);
-            });
-    });
+    //     // 发送 POST 请求，将新增商品信息发送给后端
+    //     fetch('http://localhost:8080/petpet/shoptest', {
+    //         method: 'POST',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //         },
+    //         body: JSON.stringify(newProduct),
+    //     })
+    //         .then(response => response.json())
+    //         .then(data => {
+    //             // 在成功收到后端的响应后，执行相应的处理逻辑
+    //             alert('商品已成功添加');
+    //             addForm.reset();
+    //             window.location.reload();
+    //         })
+    //         .catch(error => {
+    //             // 处理错误情况
+    //             console.error('添加商品时发生错误:', error);
+    //         });
+    // });
     
    
 

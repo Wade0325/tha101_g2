@@ -25,6 +25,7 @@ public class ShoppingCartItemController {
 	
 	@PostMapping("/cartproinsert") // 新增購物車商品
 	public String insert(@RequestBody ShoppingCartItem shoppingcart) {
+		System.out.println("進入cartproinsert");
 		 Timestamp now = new Timestamp(System.currentTimeMillis());
 		 shoppingcart.setCreate_time(now);
 	        shoppingCartItemRepository.save(shoppingcart);

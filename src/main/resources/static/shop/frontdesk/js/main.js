@@ -313,14 +313,14 @@ $(document).ready(function() {
     });
 
 
-document.addEventListener('DOMContentLoaded', function() {
-	fetch('http://localhost:8080/api/data/count')
-  .then(response => response.json())
-  .then(data => {
-    console.log('資料筆數：', data);
-    // 在這裡處理回傳的資料筆數
-  })
-  .catch(error => {
-    console.error('錯誤：', error);
-  });
-});
+// document.addEventListener('DOMContentLoaded', function() {
+// 	fetch('http://localhost:8080/api/data/count')
+//   .then(response => response.json())
+//   .then(data => {
+//     console.log('資料筆數：', data);
+//     // 在這裡處理回傳的資料筆數
+//   })
+//   .catch(error => {
+//     console.error('錯誤：', error);
+//   });
+// });

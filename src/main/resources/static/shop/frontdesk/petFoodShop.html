@@ -170,12 +170,13 @@
     >
       <div style="position: relative">
         <input
+          id="searchText"
           type="text"
           style="width: 500px; height: 50px; font-size: 24px"
           placeholder="輸入產品名稱"
         />
-        <div style="position: absolute; left: 455px; bottom: 4px">
-          <img src="foodimages/dd.jpg" style="width: 40px" />
+        <div id="textselect" style="position: absolute; left: 455px; bottom: 4px">
+          <img id="imgselect" src="foodimages/dd.jpg" style="width: 40px; cursor: pointer;" />
         </div>
       </div>
     </div>
@@ -337,11 +338,117 @@
 <script src="js/main.js"></script>
 <script>
 
-var catename = "寵物食品";
+
 document.addEventListener('DOMContentLoaded', function() {
-  console.log("測試開始");
-  productshow(catename);
-});catename
+  fetch('http://localhost:8080/petpet/shoptestall')
+          .then(response => response.json())
+          .then(data => {
+          const container = document.getElementById("prorow");
+          
+
+          let count = 0;
+          let procount = 0;
+          data.forEach(product => {
+          if(count < 12){
+          const productDiv = document.createElement('div');
+          productDiv.className = 'col-3 test';
+          productDiv.id = 'cont';
+          productDiv.style.backgroundImage = `url(data:image/jpeg;base64,${product.pro_pic1})`;
+          productDiv.style.backgroundSize = 'cover';
+          productDiv.style.backgroundPosition = 'center';
+          productDiv.style.height = '200px';
+          productDiv.setAttribute('data-comp-attribute', product.company_id)
+
+
+          if (count <= 2) {
+          productDiv.style.marginTop = '0';
+          } else {
+          // 設定第二排以後的商品與第一排保持距離
+          productDiv.style.marginTop = '180px';
+          }
+          if (count % 3 !== 0) {
+            productDiv.style.marginLeft = '50px';
+          }
+
+
+          const cardDiv = document.createElement('div');
+          cardDiv.className = 'card';
+          cardDiv.style.position = 'absolute';
+          cardDiv.style.top = '200px';
+          cardDiv.style.right = '0.5px';
+          cardDiv.style.width = '100%';
+
+          const productNameLink = document.createElement('a');
+          productNameLink.className = 'pro_name';
+          productNameLink.href = 'productDetail.html';
+          productNameLink.textContent = product.pro_name;
+          productNameLink.setAttribute('data-proid',product.pro_id);
+
+                const productPriceDiv = document.createElement('div');
+                productPriceDiv.className = 'pro_price';
+                productPriceDiv.style.textAlign = 'center';
+
+                const priceLabel = document.createElement('span');
+                priceLabel.className = 'price-label';
+                priceLabel.textContent = '價格: ';
+
+                const priceValue = document.createElement('span');
+                priceValue.className = 'price-value';
+                priceValue.textContent = product.pro_price;
+
+                productPriceDiv.appendChild(priceLabel);
+                productPriceDiv.appendChild(priceValue);
+
+          const quantityContainerDiv = document.createElement('div');
+          quantityContainerDiv.className = 'quantity-container';
+
+          const decrementButton = document.createElement('button');
+          decrementButton.className = 'decrement-button q-button';
+          decrementButton.textContent = '-';
+
+          const quantityInput = document.createElement('input');
+          quantityInput.type = 'number';
+          quantityInput.className = 'quantity-input q-input';
+          quantityInput.id = 'quantity';
+          quantityInput.name = 'quantity';
+          quantityInput.value = '1';
+          quantityInput.min = '1';
+
+          const incrementButton = document.createElement('button');
+          incrementButton.className = 'increment-button q-button';
+          incrementButton.textContent = '+';
+
+          const addToCartButton = document.createElement('button');
+          addToCartButton.className = 'add-to-cart';
+          addToCartButton.textContent = 'Add to Cart';
+
+
+
+          quantityContainerDiv.appendChild(decrementButton);
+          quantityContainerDiv.appendChild(quantityInput);
+          quantityContainerDiv.appendChild(incrementButton);
+
+          cardDiv.appendChild(productNameLink);
+          cardDiv.appendChild(productPriceDiv);
+          cardDiv.appendChild(quantityContainerDiv);
+          cardDiv.appendChild(addToCartButton);
+
+          productDiv.appendChild(cardDiv);
+          container.appendChild(productDiv);
+          count++;
+          }
+          if(procount >= 12) return;
+          });
+          })
+          .catch(error => {
+          console.error('Error:', error);
+          });
+      });
+
+
+  var catename;
+  // productshow(catename);
+
 
 var listItems = document.querySelectorAll('.list-group-item');
 listItems.forEach(function(item) {
@@ -522,6 +629,7 @@ sessionStorage.setItem('selectedProductId', productId);
   
   
       // 發送商品資訊到伺服器以寫入資料庫
+      console.log("test");
       fetch('http://localhost:8080/petpet/cartproinsert', {
         method: 'POST',
         headers: {
@@ -554,7 +662,7 @@ sessionStorage.setItem('selectedProductId', productId);
   });
   
   </script>
-  <script>
+  <!-- <script>
     const cate = document.getElementsByClassName('.list-group-item');
     // querySelector('.list-group-item');
     cate.addEventListener('click' , function(){
@@ -564,7 +672,162 @@ sessionStorage.setItem('selectedProductId', productId);
 
     });
 
+  </script> -->
+
+  <script>
+ 
+      function searchTable() {
+      var searchText = document.getElementById("searchText").value.toUpperCase();
+      var table = document.querySelector("table");
+      var rows = table.getElementsByTagName("tr");
+
+      for (var i = 1; i < rows.length; i++) {
+        var cells = rows[i].getElementsByTagName("td");
+        var found = false;
+        for (var j = 0; j < cells.length; j++) {
+          var cellText = cells[j].textContent.toUpperCase();
+          if (cellText.indexOf(searchText) > -1) {
+            found = true;
+            break;
+          }
+        }
+        if (found) {
+          rows[i].style.display = "";
+        } else {
+          rows[i].style.display = "none";
+        }
+      }
+    }
+
   </script>
+
+
+<script>
+
+var vtext = document.getElementById("searchText");
+document.getElementById("imgselect").addEventListener('click', function() {
+   // 獲取所有具有 "cont" id 的元素
+      var contElements = document.querySelectorAll('#cont');
+
+    // 遍歷所有元素並隱藏它們及其子元素
+    contElements.forEach(function(element) {
+      element.style.display = 'none'; // 或使用 element.style.visibility = 'hidden';
+    });  
+
+
+
+    fetch('http://localhost:8080/petpet/shopselvag/'+vtext.value )
+          .then(response => response.json())
+          .then(data => {
+          const container = document.getElementById("prorow");
+          
+
+          let count = 0;
+          let procount = 0;
+          data.forEach(product => {
+          if(count < 12){
+          const productDiv = document.createElement('div');
+          productDiv.className = 'col-3 test';
+          productDiv.id = 'cont';
+          productDiv.style.backgroundImage = `url(data:image/jpeg;base64,${product.pro_pic1})`;
+          productDiv.style.backgroundSize = 'cover';
+          productDiv.style.backgroundPosition = 'center';
+          productDiv.style.height = '200px';
+          productDiv.setAttribute('data-comp-attribute', product.company_id)
+
+
+          if (count <= 2) {
+          productDiv.style.marginTop = '0';
+          } else {
+          // 設定第二排以後的商品與第一排保持距離
+          productDiv.style.marginTop = '180px';
+          }
+          if (count % 3 !== 0) {
+            productDiv.style.marginLeft = '50px';
+          }
+
+
+          const cardDiv = document.createElement('div');
+          cardDiv.className = 'card';
+          cardDiv.style.position = 'absolute';
+          cardDiv.style.top = '200px';
+          cardDiv.style.right = '0.5px';
+          cardDiv.style.width = '100%';
+
+          const productNameLink = document.createElement('a');
+          productNameLink.className = 'pro_name';
+          productNameLink.href = 'productDetail.html';
+          productNameLink.textContent = product.pro_name;
+          productNameLink.setAttribute('data-proid',product.pro_id);
+
+                const productPriceDiv = document.createElement('div');
+                productPriceDiv.className = 'pro_price';
+                productPriceDiv.style.textAlign = 'center';
+
+                const priceLabel = document.createElement('span');
+                priceLabel.className = 'price-label';
+                priceLabel.textContent = '價格: ';
+
+                const priceValue = document.createElement('span');
+                priceValue.className = 'price-value';
+                priceValue.textContent = product.pro_price;
+
+                productPriceDiv.appendChild(priceLabel);
+                productPriceDiv.appendChild(priceValue);
+
+          const quantityContainerDiv = document.createElement('div');
+          quantityContainerDiv.className = 'quantity-container';
+
+          const decrementButton = document.createElement('button');
+          decrementButton.className = 'decrement-button q-button';
+          decrementButton.textContent = '-';
+
+          const quantityInput = document.createElement('input');
+          quantityInput.type = 'number';
+          quantityInput.className = 'quantity-input q-input';
+          quantityInput.id = 'quantity';
+          quantityInput.name = 'quantity';
+          quantityInput.value = '1';
+          quantityInput.min = '1';
+
+          const incrementButton = document.createElement('button');
+          incrementButton.className = 'increment-button q-button';
+          incrementButton.textContent = '+';
+
+          const addToCartButton = document.createElement('button');
+          addToCartButton.className = 'add-to-cart';
+          addToCartButton.textContent = 'Add to Cart';
+
+
+
+          quantityContainerDiv.appendChild(decrementButton);
+          quantityContainerDiv.appendChild(quantityInput);
+          quantityContainerDiv.appendChild(incrementButton);
+
+          cardDiv.appendChild(productNameLink);
+          cardDiv.appendChild(productPriceDiv);
+          cardDiv.appendChild(quantityContainerDiv);
+          cardDiv.appendChild(addToCartButton);
+
+          productDiv.appendChild(cardDiv);
+          container.appendChild(productDiv);
+          count++;
+          }
+          if(procount >= 12) return;
+          });
+          })
+          .catch(error => {
+          console.error('Error:', error);
+          });
+      
+});
+
+
+
+
+
+
+</script>
   
 </body>
 </html>
