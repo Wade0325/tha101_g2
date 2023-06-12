@@ -21,6 +21,11 @@ public class EcpayService {
 	@Autowired
 	ClinicAppointment clinicAppointment;
 
+	// 更改付款狀態
+	public void updatePayInfo(Integer reservationNumber) {
+		clinicAppointmentService.updatePayInfo(reservationNumber);
+	}
+
 	public String ecpayCheck() {
 
 		AllInOne all = new AllInOne("");
@@ -57,16 +62,11 @@ public class EcpayService {
 		aio.setStoreID("petpet");
 		aio.setNeedExtraPaidInfo("N");
 
-		aio.setClientBackURL("https://localhost:8080/petpet/");// 付款完成頁面上顯示[返回商店]的按鈕，放petpet網站首頁網址
+		aio.setClientBackURL("http://localhost:8080/petpet/");// 付款完成頁面上顯示[返回商店]的按鈕，放petpet網站首頁網址
 		aio.setReturnURL("https://localhost:8080/petpet/return"); // 必是https，尚未測試
 
 		String form = all.aioCheckOut(aio, null);
 
 		return form;
-	}
-
-	// 更改付款狀態
-	public void updatePayInfo(Integer reservationNumber) {
-		clinicAppointmentService.updatePayInfo(reservationNumber);
 	}
 }
