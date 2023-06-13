@@ -25,5 +25,7 @@ public interface OrderItemRepository extends CrudRepository<OrderItem, Integer>{
 //	@Query(value = "SELECT oi.user.user_name FROM OrderItem oi WHERE oi.company_id = :companyId")
 //	List<String> findUserNamesByCompanyId(@Param("companyId") Integer companyId);
 
+	
+	
 
 }
