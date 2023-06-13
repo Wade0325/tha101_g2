@@ -57,7 +57,7 @@
 
     //啟動倒數
     function updateCountdown() {
-        var countdownTime = 5;
+        var countdownTime = 15;
         var countdownElement = document.getElementById("buttonSendEmail");
 
         function formatTime(time) {

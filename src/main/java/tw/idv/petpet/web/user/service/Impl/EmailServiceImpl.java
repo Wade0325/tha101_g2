@@ -38,7 +38,7 @@ public class EmailServiceImpl implements EmailService {
 	private static void redisVerifiCode(String userAccount,String verifiCode) {
 		Jedis jedis = new Jedis("localhost", 6379);
 		jedis.lpush(userAccount, verifiCode); // 左側插入
-		jedis.expire(userAccount, 30);
+		jedis.expire(userAccount, 15);
 		jedis.close();
 	}
 	
@@ -59,7 +59,7 @@ public class EmailServiceImpl implements EmailService {
 			mailMessage.setFrom(sender);
 			mailMessage.setTo(details.getRecipient());
 
-			mailMessage.setText("此為驗證碼:" + verifiCode+"，"+"請在30秒內完成驗證" );
+			mailMessage.setText("此為驗證碼: " + verifiCode+"，"+" 請在15秒內完成驗證" );
 			mailMessage.setSubject("註冊驗證信");
 
 			System.out.println(details.getRecipient());
