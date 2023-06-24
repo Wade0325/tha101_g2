@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const btn = document.querySelector('#submitbtn2');
   const clinicName = document.querySelector('#clinicName');
-  const vetSn = document.querySelector('#vetSn');
+  const vetName = document.querySelector('#vetName');
   const weekDate = document.querySelector('#weekDate');
   const morningBusiness = document.querySelector('#morningBusiness');
   const morningAppointMax = document.querySelector('#morningAppointMax');
@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (confirm('確認營業時間?')) {
       const data = {
         clinicName: clinicName.value,
-        vetSn: vetSn.value,
+        vetName: vetName.value,
         weekDate: weekDate.value,
         morningBusiness: morningBusiness.value,
         morningAppointMax: morningAppointMax.value,
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', () => {
         nightBusiness: nightBusiness.value,
         nightAppointMax: nightAppointMax.value,
       };
-
+			
       fetch('../../../business', {
         method: 'POST',
         headers: {

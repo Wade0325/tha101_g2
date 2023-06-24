@@ -187,7 +187,7 @@
                 aria-labelledby="headingOne"
                 data-bs-parent="#sidenavAccordion"
               >
-               <nav class="sb-sidenav-menu-nested nav">
+              <nav class="sb-sidenav-menu-nested nav">
                 <a class="nav-link" href="./addNewProduct.html">新增商品</a>
               </nav>
               
@@ -196,7 +196,7 @@
               </nav>
 
               <nav class="sb-sidenav-menu-nested nav">
-                <a class="nav-link" href="./vendorManagementShipping.html">訂單管理</a>
+                <a class="nav-link" href="./testvms.html">訂單管理</a>
                   <div
                   class="collapse"
                   id="collapseLayouts"
@@ -221,13 +221,13 @@
                 aria-expanded="false"
                 aria-controls="collapsePages"
               >
-                <div class="sb-nav-link-icon">
-                  <i class="fas fa-book-open"></i>
-                </div>
-                會員管理
-                <div class="sb-sidenav-collapse-arrow">
-                  <i class="fas fa-angle-down"></i>
-                </div>
+<!--                 <div class="sb-nav-link-icon"> -->
+<!--                   <i class="fas fa-book-open"></i> -->
+<!--                 </div> -->
+<!--                 會員管理 -->
+<!--                 <div class="sb-sidenav-collapse-arrow"> -->
+<!--                   <i class="fas fa-angle-down"></i> -->
+<!--                 </div> -->
               </a>
               <div
                 class="collapse"
@@ -241,8 +241,8 @@
                 >
                   <nav class="sb-sidenav-menu-nested nav">
                     <!-- <a class="nav-link" href="report_user.html">會員檢舉</a> -->
-                    <a class="nav-link" href="./vendorRegistration.html">註冊會員</a>
-                    <a class="nav-link" href="./forgetThePassword.html">忘記密碼</a>
+<!--                     <a class="nav-link" href="./vendorRegistration.html">註冊會員</a> -->
+<!--                     <a class="nav-link" href="./forgetThePassword.html">忘記密碼</a> -->
                   </nav>
                 </nav>
               </div>
@@ -339,7 +339,7 @@
                     for="uploadInput"
                     id="imageCount"
                     style="cursor: pointer; display: block; text-align: center"
-                    >(0/3)</label
+                    >(0/1)</label
                   >
                   <input
                     style="display: none"
@@ -362,7 +362,7 @@
                 </select>
               </div>
               <!-- 商品狀態/ -->
-              <button id="btntest"  class ="btn btn-primary btn-submit" ">
+              <button id="btntest"  class ="btn btn-primary btn-submit">
               	新增
               </button>
             </form>
@@ -425,120 +425,111 @@
   var parts2;
   var parts3;
       
-      // 監聽圖片選擇事件
-      uploadInput.addEventListener("change", handleImageUpload);
-    
-		
-      
-      // 處理圖片上傳
-      function handleImageUpload(event) {
-        const files = event.target.files;
-    
-        // 遍歷選擇的文件
-        for (let i = 0; i < files.length; i++) {
-          const file = files[i];
-    
-          // 檢查文件類型是否為圖片
-          if (file.type.match("image.*")) {
-            // 檢查是否超過上傳數量限制
-            if (imageCount >= 3) {
-              alert("一次最多只能上傳 3 張圖片");
-              break;
-            }
-    
-            const fileReader = new FileReader();
-            fileReader.onload = function (e) {
-              // 創建圖片預覽元素
-              const previewImage = document.createElement("div");
-              previewImage.classList.add("preview-image");
-    
-              imgimg = document.createElement("img");
-              imgSrc = e.target.result;
-              console.log(imgSrc);
-              // const img = document.createElement("img");
-              // img.src = e.target.result;
-              const deleteButton = document.createElement("button");
-              deleteButton.classList.add("delete-button");
-              deleteButton.innerHTML = "&times;";
-    
-              // 監聽刪除按鈕點擊事件
-              deleteButton.addEventListener("click", () => {
-                // 從預覽區域中移除該圖片
-                uploadContainer.removeChild(previewImage);
-                imageCount--;
-    
-                // 檢查是否低於最大圖片數量
-                if (imageCount < 3) {
-                  // 重新啟用上傳按鈕
-                  uploadDiv.style.display = "flex";
-                  uploadDiv.style.flexDirection = "column";
-                  uploadInput.disabled = false;
-                }
-    
-                // 更新圖片數量顯示
-                updateImageCount();
-              });
-    
-              // 將圖片和刪除按鈕添加到預覽元素中
-              // previewImage.appendChild(img);
-              imgimg.src = imgSrc;
-              previewImage.appendChild(imgimg);
-              previewImage.appendChild(deleteButton);
-    
-              // 將圖片預覽元素添加到預覽區域
-              uploadContainer.insertBefore(previewImage, uploadDiv);
-    
-              imageCount++;
-    
-              // 檢查是否達到圖片上限
-              if (imageCount >= 3) {
-                // 隱藏上傳按鈕
-                uploadDiv.style.display = "none";
-                uploadInput.disabled = true;
-              }
+     // 監聽圖片選擇事件
+uploadInput.addEventListener("change", handleImageUpload);
 
+// 處理圖片上傳
+function handleImageUpload(event) {
+  const files = event.target.files;
 
-              // 參考
-              if (imageCount == 1) {
-          animalphoto1 = imgSrc;
-          base64Data1 =animalphoto1;
-        
-          parts1 = base64Data1.split(",");
-          base64Data1 = parts1[1];
-          // console.log(base64Data1);
-          
+  // 檢查是否已經達到最多圖片數量
+  if (imageCount >= 3) {
+    alert("一次最多只能上傳 3 張圖片");
+    return;
+  }
 
-        }
-        if (imageCount == 2) {
-          animalphoto2 = imgSrc;
-          base64Data2 = animalphoto2;
-         
-         
-          parts2 = base64Data2.split(",");
-          base64Data2 = parts2[1];
-        }
-        if (imageCount == 3) {
-          animalphoto3 = imgSrc;
-          base64Data3 =animalphoto3;
-          
-          parts3 = base64Data3.split(",");
-          base64Data3 = parts3[1];
-        }
-              // 更新圖片數量顯示
-              updateImageCount();
-            };
-    
-            // 開始讀取文件
-            fileReader.readAsDataURL(file);
+  // 遍歷選擇的文件
+  for (let i = 0; i < files.length; i++) {
+    // 檢查是否已經達到最多圖片數量
+    if (imageCount >= 3) {
+      alert("一次最多只能上傳 3 張圖片");
+      return;
+    }
+
+    const file = files[i];
+
+    // 檢查文件類型是否為圖片
+    if (file.type.match("image.*")) {
+      const fileReader = new FileReader();
+      fileReader.onload = function (e) {
+        // 創建圖片預覽元素
+        const previewImage = document.createElement("div");
+        previewImage.classList.add("preview-image");
+
+        const imgimg = document.createElement("img");
+        const imgSrc = e.target.result;
+
+        const deleteButton = document.createElement("button");
+        deleteButton.classList.add("delete-button");
+        deleteButton.innerHTML = "&times;";
+
+        // 監聽刪除按鈕點擊事件
+        deleteButton.addEventListener("click", () => {
+          // 從預覽區域中移除該圖片
+          uploadContainer.removeChild(previewImage);
+          imageCount--;
+
+          // 檢查是否低於最大圖片數量
+          if (imageCount < 3) {
+            // 重新啟用上傳按鈕
+            uploadDiv.style.display = "flex";
+            uploadDiv.style.flexDirection = "column";
+            uploadInput.disabled = false;
           }
+
+          // 更新圖片數量顯示
+          updateImageCount();
+        });
+
+        // 將圖片和刪除按鈕添加到預覽元素中
+        imgimg.src = imgSrc;
+        previewImage.appendChild(imgimg);
+        previewImage.appendChild(deleteButton);
+
+        // 將圖片預覽元素添加到預覽區域
+        uploadContainer.insertBefore(previewImage, uploadDiv);
+
+        imageCount++;
+
+        // 檢查是否達到圖片上限
+        if (imageCount >= 1) {
+          // 隱藏上傳按鈕
+          uploadDiv.style.display = "none";
+          uploadInput.disabled = true;
         }
-      }
+
+        // 參考：將base64圖片資料存儲到相應變量中
+        if (imageCount === 1) {
+          animalphoto1 = imgSrc;
+          base64Data1 = imgSrc.split(",")[1];
+        }
+        if (imageCount === 2) {
+          animalphoto2 = imgSrc;
+          base64Data2 = imgSrc.split(",")[1];
+        }
+        if (imageCount === 3) {
+          animalphoto3 = imgSrc;
+          base64Data3 = imgSrc.split(",")[1];
+        }
+
+        // 更新圖片數量顯示
+        updateImageCount();
+      };
+
+      // 開始讀取文件
+      fileReader.readAsDataURL(file);
+    }
+  }
+}
+
+
+
 
      
     
       // 更新圖片數量顯示
       function updateImageCount() {
-        imageCountElement.textContent = `(${imageCount}/3)`;
+        imageCountElement.textContent = `(${imageCount}/1)`;
 
   
       }
@@ -550,7 +541,7 @@
 
 document.getElementById('btntest').addEventListener('click', function(event) {
 	
-	console.log("test");
+	
     event.preventDefault();
     var proname = document.getElementById('productName').value;
     var proprice = document.getElementById('product-price').value;
@@ -558,6 +549,12 @@ document.getElementById('btntest').addEventListener('click', function(event) {
     var productdescription = document.getElementById('product-description').value;  //商品描述
     var catename = document.getElementById('product-category').value;
     var prostatus = document.getElementById('product-category-n').value;
+    console.log(proname)
+    console.log(proprice)
+    console.log(proquantity)
+    console.log(productdescription)
+    console.log(catename)
+    console.log(prostatus)
     
     
     // 构建商品对象
@@ -571,9 +568,9 @@ document.getElementById('btntest').addEventListener('click', function(event) {
     "company_id": 2,
     "email":"test",
     "pro_status":prostatus,
-    "pro_pic1": parts1[1],
-    "pro_pic2": parts2[1],
-    "pro_pic3": parts3[1]
+    "pro_pic1": base64Data1,
+    "pro_pic2": base64Data2,
+    "pro_pic3": base64Data3
     };
 
     
@@ -588,6 +585,7 @@ document.getElementById('btntest').addEventListener('click', function(event) {
     .then(response => response.json())
     .then(data => {
         console.log(data);
+        alert("成功加入商品");
         window.location.href = 'addNewProductSuccessfully.html?productId=' + data.pro_id;
         
     })

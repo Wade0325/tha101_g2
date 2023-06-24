@@ -178,7 +178,9 @@
 
     </div>
     <div class="cart-total"><h4>總金額: $0</h4></div>
-    <div class="btn btn-primary checkout-btn">結帳</div>
+    <a href="checkout.html">
+    	<div class="btn btn-primary checkout-btn">結帳</div>
+    </a>
     <footer class="footer">
       <div class="container">
         <div class="row">
@@ -294,7 +296,7 @@
     <script>
       // 获取购物车页面容器
 const cartContainer = document.querySelector('.containertest');
-
+console.log("123");
 // 发送 Fetch 请求获取商品信息
 fetch('http://localhost:8080/petpet/cartproall')
   .then(response => response.json())
@@ -305,7 +307,7 @@ fetch('http://localhost:8080/petpet/cartproall')
       cartItem.className = 'cart-item';
       //自訂屬性
       // cartItem.setAttribute('data-custom-attribute', item.cart_item_id);
-
+      console.log("test");
       var imgtest = item.pro_pic1;
       var pic = "url(data:image/png;base64," + imgtest ;
       const itemImage = document.createElement('div');
@@ -429,7 +431,7 @@ function updateTotalPrice(items) {
       var quantity = document
         .querySelector('.cart-total h4')
         .getAttribute('data-quantity');
-      alert('結帳成功！商品數量: ' + quantity);
+      // alert('結帳成功！商品數量: ' + quantity);
       // 清空購物車
       document.querySelector('.cart-items').innerHTML = "";
       updateCartTotal();
@@ -459,7 +461,7 @@ function updateTotalPrice(items) {
           })
           .then(response => {
               if (response.ok) {
-                  alert('商品已成功從資料庫移除。');
+                  alert('商品已成功從購物車移除。');
                   location.reload();
               } else {
                   alert('移除商品時發生錯誤。');

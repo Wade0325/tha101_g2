@@ -128,42 +128,52 @@ $("#updateBtn").on("click", function () {
   var serviceItem2 = $("#serviceItem2").val();
   var serviceItem3 = $("#serviceItem3").val();
   var serviceItem4 = $("#serviceItem4").val();
-  
-  
-  
-  // 在这里可以执行更新操作或发送更新请求到后端
 
-  // 添加其他字段
-  var data = {
-    clinicServiceName: clinicServiceName,
-    servicePrice: servicePrice,
-    serviceDiscountPrice: serviceDiscountPrice,
-    serviceItem1: serviceItem1,
-    serviceItem2: serviceItem2,
-    serviceItem3: serviceItem3,
-    serviceItem4: serviceItem4,
-  
-    // 添加其他字段
-  };
-console.log("資料"+data);
-// 发送Ajax请求
-$.ajax({
-  url: "../../PriceList/update/" + clinicServiceId, // 替换为实际的后端接口URL
-  type: "PUT",
-  contentType: "application/json",
-  data: JSON.stringify(data),
-  success: function (response) {
-    // 更新成功的处理逻辑
-    console.log('更新成功');
-    table.ajax.reload()
-  },
-  error: function (xhr, status, error) {
-    // 更新失败的处理逻辑
-  }
-});
+  // 图片处理
+  const file = document.querySelector('#file');
+
+  const fr = new FileReader();
+  fr.addEventListener('load', async (e) => {
+    const base64Img = e.target.result.split(',')[1]; // 获取 base64 字符串部分
+
+    try {
+      const response = await fetch('../../PriceList', {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          clinicServiceId: clinicServiceId,
+          clinicServiceName: clinicServiceName,
+          servicePrice: servicePrice,
+          serviceDiscountPrice: serviceDiscountPrice,
+          serviceItem1: serviceItem1,
+          serviceItem2: serviceItem2,
+          serviceItem3: serviceItem3,
+          serviceItem4: serviceItem4,
+          serviceImg: base64Img
+        })
+      });
+
+      if (response.ok) {
+        alert('成功提交表單！');
+        // 在這裡執行您希望在成功後進行的操作
+        // 重新加载表格数据
+        table.ajax.reload();
+      } else {
+        alert('提交表單失敗！');
+      }
+    } catch (error) {
+      console.log('錯誤：', error);
+    }
+  });
+
+  fr.readAsDataURL(file.files[0]);
+
   // 关闭模态框
   $("#updateModal").modal("hide");
 });
+
     
     }
 // ----------------------

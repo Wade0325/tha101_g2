@@ -181,7 +181,7 @@
 
     <section class="ftco-section bg-light">
         <div class="container">
-            <form>
+            <form >
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">電子信箱</label>
                     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
@@ -195,7 +195,7 @@
                     <input type="checkbox" class="form-check-input" id="exampleCheck1">
                     <label class="form-check-label" for="exampleCheck1">我不是機器人</label>
                 </div>
-                <button type="submit" class="btn btn-primary">送出</button>
+                <button id="loginForm" type="submit" class="btn btn-primary">送出</button>
             </form>
     </section>
 
@@ -229,99 +229,66 @@
       src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"
       crossorigin="anonymous"
     ></script>
-    <script src="assets/demo/chart-area-demo.js"></script>
-    <script src="assets/demo/chart-bar-demo.js"></script>
+    <!-- <script src="assets/demo/chart-area-demo.js"></script>
+    <script src="assets/demo/chart-bar-demo.js"></script> -->
     <script
       src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js"
       crossorigin="anonymous"
     ></script>
     <script src="js/datatables-simple-demo.js"></script>
-
-
+    <script src="js/jquery-3.6.4.min.js"></script>
 
     <script>
-      const uploadDiv = document.getElementById("uploadDiv");
-      const uploadInput = document.getElementById("uploadInput");
-      const uploadContainer = document.querySelector(".upload-container");
-      const imageCountElement = document.getElementById("imageCount");
-
-      let imageCount = 0;
-
-      // 監聽圖片選擇事件
-      uploadInput.addEventListener("change", handleImageUpload);
-
-      // 處理圖片上傳
-      function handleImageUpload(event) {
-        const files = event.target.files;
-
-        // 遍歷選擇的文件
-        for (let i = 0; i < files.length; i++) {
-          const file = files[i];
-
-          // 檢查文件類型是否為圖片
-          if (file.type.match("image.*")) {
-            // 檢查是否超過上傳數量限制
-            if (imageCount >= 3) {
-              alert("一次最多只能上傳 3 張圖片");
-              break;
+     document.addEventListener('DOMContentLoaded', function() {
+    // 登入表單提交事件處理
+    
+    document.getElementById('loginForm').addEventListener('click', function(event) {
+        event.preventDefault(); // 防止表單自動提交
+        
+        console.log("按下送出按鈕");
+        var checkboxx = document.getElementById('exampleCheck1');
+        var username = document.getElementById('exampleInputEmail1').value;
+        var password = document.getElementById('exampleInputPassword1').value;
+        console.log(username);
+        console.log(password);
+        if(checkboxx.checked){
+        // 發送登入請求
+        fetch('http://localhost:8080/petpet/companyshoplogin', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({"company_email": username, "company_password": password})      
+        })
+        .then(function(response) {
+          
+            if (response.ok) {
+              console.log("test2");
+                alert("登入成功");
+                // 登入成功，重新導向到其他頁面
+                window.location.href = '/productManagement'; // 假設登入成功後要導向的頁面是 /dashboard
+            } else {
+              alert("帳號或密碼有誤");
+                // 登入失敗，顯示錯誤訊息
+                // response.text().then(function(errorMessage) {
+                //     alert(errorMessage);
+                // });
             }
-
-            // 創建圖片預覽元素
-            const previewImage = document.createElement("div");
-            previewImage.classList.add("preview-image");
-
-            const img = document.createElement("img");
-            img.src = URL.createObjectURL(file);
-
-            const deleteButton = document.createElement("button");
-            deleteButton.classList.add("delete-button");
-            deleteButton.innerHTML = "&times;";
-
-            // 監聽刪除按鈕點擊事件
-            deleteButton.addEventListener("click", () => {
-              // 從預覽區域中移除該圖片
-              uploadContainer.removeChild(previewImage);
-              imageCount--;
-
-              // 檢查是否低於最大圖片數量
-              if (imageCount < 3) {
-                // 重新啟用上傳按鈕
-                uploadDiv.style.display = "flex";
-                uploadDiv.style.flexDirection = "column";
-                uploadInput.disabled = false;
-              }
-
-              // 更新圖片數量顯示
-              updateImageCount();
-            });
-
-            // 將圖片和刪除按鈕添加到預覽元素中
-            previewImage.appendChild(img);
-            previewImage.appendChild(deleteButton);
-
-            // 將圖片預覽元素添加到預覽區域
-            uploadContainer.insertBefore(previewImage, uploadDiv);
-
-            imageCount++;
-
-            // 檢查是否達到圖片上限
-            if (imageCount >= 3) {
-              // 隱藏上傳按鈕
-              uploadDiv.style.display = "none";
-              uploadInput.disabled = true;
-            }
-
-            // 更新圖片數量顯示
-            updateImageCount();
-          }
-        }
+        })
+        .catch(function(error) {
+            console.log('發生錯誤：', error);
+        });
+      }else{
+        alert("請勾選不是機器人");
       }
+    });
+});
 
-      // 更新圖片數量顯示
-      function updateImageCount() {
-        imageCountElement.textContent = `(${imageCount}/3)`;
-      }
-    </script>
-    <script src="js/jquery-3.6.4.min.js"></script>
+
+
+    </script>>
   </body>
 </html>
+
+
+
